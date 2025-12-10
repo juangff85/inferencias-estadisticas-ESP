@@ -1,3 +1,10 @@
+---
+layout: default
+title: Inicio
+nav_order: 1
+description: Traducción al castellano del recurso educativo abierto "Improving Your Statistical Inferences" de Daniël Lakens.
+---
+
 # inferencias-estadisticas-ESP
 Traducción al castellano de Improving Your Statistical Inferences de Daniël Lakens
 # Mejora de tus Inferencias Estadísticas
