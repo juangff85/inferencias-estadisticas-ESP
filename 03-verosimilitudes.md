@@ -1,3 +1,8 @@
+---
+layout: default
+title: Verosimilitudes
+nav_order: 4
+---
 # 3. Verosimilitudes
 
 ## 3.1. Introducción a la verosimilitud
