@@ -1,8 +1,8 @@
 ---
-layout: default
-title: Reproducibilidad Computacional
-nav_order: 15
+title: 14. Reproducibilidad como elemento fundamental de la ciencia
 ---
+
+
 # 14. Reproducibilidad como elemento fundamental de la ciencia
 
 ## 14.1. Definiciones de Reproducibilidad

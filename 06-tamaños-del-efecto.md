@@ -1,8 +1,8 @@
 ---
-layout: default
-title: Tamaños del Efecto
-nav_order: 7
+title: 6. Tamaños del Efecto
 ---
+
+
 # 6. Tamaños del Efecto
 
 ## 6.1. La Importancia del Tamaño del Efecto (Effect Size, ES)
