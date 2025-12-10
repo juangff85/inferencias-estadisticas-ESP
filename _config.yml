@@ -15,3 +15,10 @@ plugins:
   - jekyll-feed
   - jekyll-sitemap
 # --------------------
+
+# Asegúrate de mantener estas líneas si las tenías antes:
+gh_edit_link: false
+color_scheme: light
+
+# Excluir archivos innecesarios
+exclude:
