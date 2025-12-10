@@ -9,12 +9,17 @@ url: "https://juangff85.github.io" # Reemplaza con tu usuario de GitHub
 
 # Configuración de Jekyll
 markdown: kramdown
-theme: minima # Minima es un tema estándar de GitHub Pages.
-# El autor original usa un tema más complejo que no es Minima,
-# pero Minima nos sirve para empezar y construir los archivos básicos.
+remote_theme: just-the-docs/just-the-docs
 plugins:
-  - jekyll-feed
-  - jekyll-sitemap
+  - jekyll-remote-theme
+  # Configura el título que aparece en la barra superior
+title: Mejora de tus Inferencias Estadísticas
+
+# Oculta el enlace 'Edit this Page' si no quieres que aparezca
+gh_edit_link: false
+
+# Configura el color de la barra lateral (dark, light, o color)
+color_scheme: light
 
 # Excluir archivos innecesarios
 exclude:
