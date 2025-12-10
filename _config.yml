@@ -8,3 +8,10 @@ url: "https://juangff85.github.io"
 
 # Configuración de Jekyll y Tema (¡Copia este bloque!)
 markdown: kramdown
+theme: just-the-docs 
+
+# 2. Añade los plugins que el tema Just the Docs requiere
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+# --------------------
