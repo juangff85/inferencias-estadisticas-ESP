@@ -1,3 +1,8 @@
+---
+layout: default
+title: Detección de Sesgos
+nav_order: 13
+---
 # 12. Detección de Sesgos
 
 La validez de la inferencia estadística depende de la calidad de los datos y de los procedimientos utilizados para obtenerlos. El **sesgo** en la investigación se refiere a cualquier desviación sistemática de la verdad en la recopilación, análisis, interpretación o publicación de los resultados.
