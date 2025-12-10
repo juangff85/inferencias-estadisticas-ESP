@@ -1,11 +1,10 @@
 # Configuración básica del sitio
 title: Mejora de tus Inferencias Estadísticas
-email: tu_correo_electronico@ejemplo.com # Reemplaza con tu correo
 description: >-
-  Traducción al castellano del recurso educativo abierto "Improving Your Statistical Inferences"
+  Traducción al castellano por Juan G. Fernández del recurso abierto "Improving Your Statistical Inferences"
   de Daniël Lakens. Contiene información para mejorar la inferencia estadística,
   diseñar mejores experimentos e informar la investigación científica de forma más transparente.
-baseurl: "/inferencias-estadisticas-eESP" # Reemplaza "inferencias-estadisticas-es" con el nombre de tu repositorio
+baseurl: "/inferencias-estadisticas-ESP" # Reemplaza "inferencias-estadisticas-es" con el nombre de tu repositorio
 url: "https://juangff85.github.io" # Reemplaza con tu usuario de GitHub
 
 # Configuración de Jekyll
