@@ -2,8 +2,6 @@ project:
   type: book
   output-dir: docs
 
-language: es
-
 book:
   title: "Mejora de tus Inferencias Estadísticas"
   subtitle: "Traducción al castellano de \"Improving Your Statistical Inferences\" de Daniël Lakens"
