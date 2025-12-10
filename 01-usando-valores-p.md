@@ -1,3 +1,9 @@
+---
+layout: default
+title: Usando valores p para probar una hipótesis # Título en la barra lateral
+nav_order: 2  # ¡Importante! Debe ser un número único y secuencial.
+              # "index.md" es el 1, este es el 2, el siguiente será el 3, etc.
+---
 # 1. Usando valores p para probar una hipótesis
 
 ## 1.1. Introducción al enfoque de prueba de hipótesis de Neyman-Pearson
