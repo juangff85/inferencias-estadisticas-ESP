@@ -1,3 +1,8 @@
+---
+layout: default
+title: Estudios de Replicación
+nav_order: 18
+---
 # 17. Estudios de Replicación
 
 ## 17.1. La Importancia de la Replicación
