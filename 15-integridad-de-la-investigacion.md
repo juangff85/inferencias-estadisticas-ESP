@@ -1,3 +1,8 @@
+---
+layout: default
+title: Integridad de la Investigación
+nav_order: 16
+---
 # 15. Integridad de la Investigación
 
 ## 15.1. Definición de Mala Conducta Científica
