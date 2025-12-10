@@ -1,8 +1,8 @@
 ---
-layout: default
-title: Sesgo de Confirmación y Escepticismo Organizado
-nav_order: 17
+title: 16. Sesgo de Confirmación y Escepticismo Organizado
 ---
+
+
 # 16. Sesgo de Confirmación y Escepticismo Organizado
 
 No puedo dar a ningún científico, de cualquier edad, un mejor consejo que este: la intensidad de la convicción de que una hipótesis es verdadera no tiene relación con si realmente lo es. La importancia de la fuerza de nuestra convicción es únicamente proporcionar un incentivo proporcionalmente fuerte para averiguar si la hipótesis resistirá una evaluación crítica.

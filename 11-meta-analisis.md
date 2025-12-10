@@ -1,8 +1,8 @@
 ---
-layout: default
-title: Meta-análisis
-nav_order: 12
+title: 11. Meta-análisis
 ---
+
+
 # 11. Meta-análisis
 
 ## 11.1. Definición y Propósito

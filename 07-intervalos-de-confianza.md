@@ -1,8 +1,8 @@
 ---
-layout: default
-title: Intervalos de Confianza
-nav_order: 8
+title: 7. Intervalos de Confianza
 ---
+
+
 # 7. Intervalos de Confianza
 
 ## 7.1. La naturaleza de la estimación por intervalo

@@ -1,8 +1,8 @@
 ---
-layout: default
-title: Prerregistro y Transparencia
-nav_order: 14
+title: 13. Prerregistro y Transparencia
 ---
+
+
 # 13. Prerregistro y Transparencia
 
 Durante el tiempo que se han utilizado los datos para respaldar afirmaciones científicas, la gente ha intentado presentar datos de manera selectiva en línea con lo que desean que sea cierto. Un ejemplo de un científico que hizo esto es Daryl Bem, un parapsicólogo que estudia si las personas tienen percepción extrasensorial que les permite predecir el futuro. Al utilizar informes selectivos y publicar 9 estudios en una revista de primer nivel afirmando que la gente podía predecir el futuro, Bem desencadenó la crisis de replicación en psicología en 2011.
