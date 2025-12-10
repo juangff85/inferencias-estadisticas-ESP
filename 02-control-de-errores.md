@@ -1,3 +1,8 @@
+---
+layout: default
+title: Verosimilitudes
+nav_order: 4 # (Después del 2 y el 3)
+---
 # 2. Control de errores
 
 ## 2.1. Tasas de error de la prueba
