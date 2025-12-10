@@ -1,8 +1,8 @@
 ---
-layout: default
-title: Estadística Bayesiana
-nav_order: 5
+title: 4. Estadística Bayesiana
 ---
+
+
 # 4. Estadística Bayesiana
 
 La estadística Bayesiana ofrece un marco alternativo a los enfoques de Neyman-Pearson y del valor $p$. La inferencia Bayesiana se centra en la **probabilidad de las hipótesis** o de los parámetros, en lugar de la probabilidad de los datos.

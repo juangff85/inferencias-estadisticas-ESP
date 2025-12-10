@@ -1,8 +1,8 @@
 ---
-layout: default
-title: Pruebas de Equivalencia e Hipótesis de Intervalo
-nav_order: 10
+title: 9. Pruebas de Equivalencia e Hipótesis de Intervalo
 ---
+
+
 # 9. Pruebas de Equivalencia e Hipótesis de Intervalo
 
 ## 9.1. El problema de la ausencia de efecto

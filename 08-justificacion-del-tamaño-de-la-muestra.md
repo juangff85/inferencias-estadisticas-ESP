@@ -1,8 +1,8 @@
 ---
-layout: default
-title: Justificación del Tamaño de la Muestra
-nav_order: 9
+title: 8. Justificación del Tamaño de la Muestra
 ---
+
+
 # 8. Justificación del Tamaño de la Muestra
 
 ## 8.1. ¿Por qué justificar el tamaño de la muestra?
