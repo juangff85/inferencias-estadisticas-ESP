@@ -20,7 +20,7 @@
 {%- else -%}
 
   {%- capture site_nav -%}
-  {%- include_cached components/site_nav.html all=true -%}
+  {%- include components/site_nav.html all=true -%}
   {%- endcapture -%}
 
   {%- assign nav_children = nil -%}
