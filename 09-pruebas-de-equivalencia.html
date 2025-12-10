@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.33">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>10&nbsp; 9. Pruebas de Equivalencia e Hipótesis de Intervalo – Mejora de tus Inferencias Estadísticas</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./10-analisis-secuencial.html" rel="next">
+<link href="./08-justificacion-del-tamaño-de-la-muestra.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-485d01fc63b59abcd3ee1bf1e8e2748d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Sin resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./09-pruebas-de-equivalencia.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">9. Pruebas de Equivalencia e Hipótesis de Intervalo</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Mejora de tus Inferencias Estadísticas</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Inicio</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-usando-valores-p.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">1. Usando valores p para probar una hipótesis</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-control-de-errores.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">2. Control de errores</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-verosimilitudes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">3. Verosimilitudes</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-estadistica-bayesiana.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">4. Estadística Bayesiana</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-formulando-preguntas-estadisticas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">5. Formulando Preguntas Estadísticas</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-tamaños-del-efecto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">6. Tamaños del Efecto</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-intervalos-de-confianza.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">7. Intervalos de Confianza</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-justificacion-del-tamaño-de-la-muestra.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">8. Justificación del Tamaño de la Muestra</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-pruebas-de-equivalencia.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">9. Pruebas de Equivalencia e Hipótesis de Intervalo</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-analisis-secuencial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">10. Análisis Secuencial</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11-meta-analisis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">11. Meta-análisis</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12-deteccion-de-sesgos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">12. Detección de Sesgos</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13-prerregistro-y-transparencia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">13. Prerregistro y Transparencia</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./14-reproducibilidad-computacional.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">14. Reproducibilidad como elemento fundamental de la ciencia</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./15-integridad-de-la-investigacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">15. Integridad de la Investigación</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./16-sesgo-y-escepticismo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">16. Sesgo de Confirmación y Escepticismo Organizado</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./17-estudios-de-replicacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">17. Estudios de Replicación</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de contenidos</h2>
+   
+  <ul>
+  <li><a href="#pruebas-de-equivalencia-e-hipótesis-de-intervalo" id="toc-pruebas-de-equivalencia-e-hipótesis-de-intervalo" class="nav-link active" data-scroll-target="#pruebas-de-equivalencia-e-hipótesis-de-intervalo"><span class="header-section-number">11</span> 9. Pruebas de Equivalencia e Hipótesis de Intervalo</a>
+  <ul class="collapse">
+  <li><a href="#el-problema-de-la-ausencia-de-efecto" id="toc-el-problema-de-la-ausencia-de-efecto" class="nav-link" data-scroll-target="#el-problema-de-la-ausencia-de-efecto"><span class="header-section-number">11.1</span> 9.1. El problema de la ausencia de efecto</a></li>
+  <li><a href="#el-principio-de-la-prueba-de-equivalencia-tost" id="toc-el-principio-de-la-prueba-de-equivalencia-tost" class="nav-link" data-scroll-target="#el-principio-de-la-prueba-de-equivalencia-tost"><span class="header-section-number">11.2</span> 9.2. El principio de la Prueba de Equivalencia (TOST)</a></li>
+  <li><a href="#la-regla-de-decisión-tost" id="toc-la-regla-de-decisión-tost" class="nav-link" data-scroll-target="#la-regla-de-decisión-tost"><span class="header-section-number">11.3</span> 9.3. La Regla de Decisión TOST</a></li>
+  <li><a href="#ic-y-equivalencia" id="toc-ic-y-equivalencia" class="nav-link" data-scroll-target="#ic-y-equivalencia"><span class="header-section-number">11.4</span> 9.4. IC y Equivalencia</a></li>
+  <li><a href="#la-justificación-del-margen-de-equivalencia-delta" id="toc-la-justificación-del-margen-de-equivalencia-delta" class="nav-link" data-scroll-target="#la-justificación-del-margen-de-equivalencia-delta"><span class="header-section-number">11.5</span> 9.5. La Justificación del Margen de Equivalencia (<span class="math inline">\(\Delta\)</span>)</a></li>
+  <li><a href="#hipótesis-de-intervalo" id="toc-hipótesis-de-intervalo" class="nav-link" data-scroll-target="#hipótesis-de-intervalo"><span class="header-section-number">11.6</span> 9.6. Hipótesis de Intervalo</a></li>
+  <li><a href="#resumen-de-pruebas-de-decisión" id="toc-resumen-de-pruebas-de-decisión" class="nav-link" data-scroll-target="#resumen-de-pruebas-de-decisión"><span class="header-section-number">11.7</span> 9.7. Resumen de Pruebas de Decisión</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">9. Pruebas de Equivalencia e Hipótesis de Intervalo</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="pruebas-de-equivalencia-e-hipótesis-de-intervalo" class="level1" data-number="11">
+<h1 data-number="11"><span class="header-section-number">11</span> 9. Pruebas de Equivalencia e Hipótesis de Intervalo</h1>
+<section id="el-problema-de-la-ausencia-de-efecto" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="el-problema-de-la-ausencia-de-efecto"><span class="header-section-number">11.1</span> 9.1. El problema de la ausencia de efecto</h2>
+<p>Cuando un valor <span class="math inline">\(p\)</span> es no significativo (<span class="math inline">\(p \geq 0.05\)</span>), la conclusión formal en el marco de Neyman-Pearson es “no rechazar <span class="math inline">\(H_0\)</span>”. Esto <strong>no</strong> es evidencia de la ausencia de efecto. Un resultado no significativo puede deberse a:</p>
+<ol type="1">
+<li>El efecto es verdaderamente cero (o muy pequeño).</li>
+<li>El estudio tuvo baja potencia (error Tipo II) y no pudo detectar un efecto existente.</li>
+</ol>
+<p>Para demostrar que un efecto es <em>lo suficientemente pequeño como para ser irrelevante</em>, necesitamos un enfoque estadístico que invierta el papel de las hipótesis nula y alternativa: la <strong>Prueba de Equivalencia</strong>.</p>
+</section>
+<section id="el-principio-de-la-prueba-de-equivalencia-tost" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="el-principio-de-la-prueba-de-equivalencia-tost"><span class="header-section-number">11.2</span> 9.2. El principio de la Prueba de Equivalencia (TOST)</h2>
+<p>La Prueba de Equivalencia más común es la prueba de <strong>Two One-Sided Tests (TOST)</strong> (Pruebas de Dos Unilaterales).</p>
+<p>En la prueba TOST, el investigador define un <strong>margen de equivalencia</strong> (<span class="math inline">\(\Delta\)</span>), que representa el <strong>Tamaño del Efecto más Pequeño de Interés Práctico (MPE)</strong>. El <span class="math inline">\(\Delta\)</span> puede ser positivo (<span class="math inline">\(\Delta_U\)</span>) o negativo (<span class="math inline">\(\Delta_L\)</span>).</p>
+<p>El principio TOST invierte la hipótesis nula tradicional:</p>
+<ul>
+<li><strong>Hipótesis Nula de Equivalencia (<span class="math inline">\(H_{0E}\)</span>):</strong> El verdadero efecto está <strong>fuera</strong> del margen de equivalencia (es decir, el efecto es tan grande que no es equivalente al cero). <span class="math inline">\(H_{0E}: \delta \leq \Delta_L \text{ o } \delta \geq \Delta_U\)</span>.</li>
+<li><strong>Hipótesis Alternativa de Equivalencia (<span class="math inline">\(H_{1E}\)</span>):</strong> El verdadero efecto está <strong>dentro</strong> del margen de equivalencia (es decir, el efecto es equivalente al cero). <span class="math inline">\(H_{1E}: \Delta_L &lt; \delta &lt; \Delta_U\)</span>.</li>
+</ul>
+</section>
+<section id="la-regla-de-decisión-tost" class="level2" data-number="11.3">
+<h2 data-number="11.3" class="anchored" data-anchor-id="la-regla-de-decisión-tost"><span class="header-section-number">11.3</span> 9.3. La Regla de Decisión TOST</h2>
+<p>Para concluir la equivalencia, el investigador debe <strong>rechazar ambas</strong> las hipótesis unilaterales nulas. Esto se logra realizando dos pruebas de hipótesis <span class="math inline">\(t\)</span> separadas, cada una con un nivel <span class="math inline">\(\alpha\)</span> de significancia (típicamente <span class="math inline">\(\alpha = 0.05\)</span>):</p>
+<ol type="1">
+<li><strong>Prueba 1:</strong> Prueba si el efecto es significativamente <strong>mayor</strong> que el límite superior (<span class="math inline">\(\Delta_U\)</span>). Rechazamos si <span class="math inline">\(p &lt; \alpha\)</span>.</li>
+<li><strong>Prueba 2:</strong> Prueba si el efecto es significativamente <strong>menor</strong> que el límite inferior (<span class="math inline">\(\Delta_L\)</span>). Rechazamos si <span class="math inline">\(p &lt; \alpha\)</span>.</li>
+</ol>
+<p>Si <strong>ambas</strong> pruebas son rechazadas, se puede concluir que el efecto observado es estadísticamente equivalente a cero (o el valor de referencia), dentro del margen <span class="math inline">\(\Delta\)</span>.</p>
+</section>
+<section id="ic-y-equivalencia" class="level2" data-number="11.4">
+<h2 data-number="11.4" class="anchored" data-anchor-id="ic-y-equivalencia"><span class="header-section-number">11.4</span> 9.4. IC y Equivalencia</h2>
+<p>La prueba TOST es conceptualmente equivalente a verificar si el <strong>Intervalo de Confianza (IC)</strong> del <span class="math inline">\(100(1-2\alpha)\%\)</span> (es decir, un IC del 90% para <span class="math inline">\(\alpha=0.05\)</span>) cae completamente <strong>dentro</strong> del margen de equivalencia (<span class="math inline">\(\Delta_L\)</span> a <span class="math inline">\(\Delta_U\)</span>).</p>
+<ul>
+<li><strong>Si el IC del 90% está completamente dentro del margen de equivalencia:</strong> Se concluye la equivalencia.</li>
+<li><strong>Si el IC toca o se extiende más allá de cualquiera de los límites:</strong> No se puede concluir la equivalencia.</li>
+</ul>
+</section>
+<section id="la-justificación-del-margen-de-equivalencia-delta" class="level2" data-number="11.5">
+<h2 data-number="11.5" class="anchored" data-anchor-id="la-justificación-del-margen-de-equivalencia-delta"><span class="header-section-number">11.5</span> 9.5. La Justificación del Margen de Equivalencia (<span class="math inline">\(\Delta\)</span>)</h2>
+<p>El paso más crítico de una prueba TOST es la justificación del margen <span class="math inline">\(\Delta\)</span>. Este margen debe basarse en un argumento sustantivo, no estadístico. Las justificaciones comunes incluyen:</p>
+<ol type="1">
+<li><strong>Mínima Importancia Práctica (MPE):</strong> El efecto más grande que aún se consideraría clínicamente o prácticamente trivial.</li>
+<li><strong>Basado en Costos/Beneficios:</strong> El punto en el que el costo del tratamiento supera el beneficio marginal.</li>
+<li><strong>Basado en la Literatura/Estimación:</strong> Basado en la variabilidad o el error de medición del resultado (el “ruido”).</li>
+</ol>
+</section>
+<section id="hipótesis-de-intervalo" class="level2" data-number="11.6">
+<h2 data-number="11.6" class="anchored" data-anchor-id="hipótesis-de-intervalo"><span class="header-section-number">11.6</span> 9.6. Hipótesis de Intervalo</h2>
+<p>Las pruebas TOST son un tipo de <strong>Hipótesis de Intervalo</strong>, que es cualquier prueba de hipótesis donde la <span class="math inline">\(H_0\)</span> o la <span class="math inline">\(H_1\)</span> definen un rango de valores en lugar de un único valor puntual (como <span class="math inline">\(\delta=0\)</span>).</p>
+<p>Otro tipo de prueba de intervalo es la prueba de <strong>Superioridad con Margen</strong> (Superiority by a Margin). Aquí, el investigador prueba que un efecto es no solo diferente de cero, sino que es <strong>mejor</strong> que un margen específico (<span class="math inline">\(H_0: \delta \leq \Delta\)</span>).</p>
+</section>
+<section id="resumen-de-pruebas-de-decisión" class="level2" data-number="11.7">
+<h2 data-number="11.7" class="anchored" data-anchor-id="resumen-de-pruebas-de-decisión"><span class="header-section-number">11.7</span> 9.7. Resumen de Pruebas de Decisión</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Objetivo</th>
+<th style="text-align: left;">Hipótesis Nula (<span class="math inline">\(H_0\)</span>)</th>
+<th style="text-align: left;">Conclusión de Interés</th>
+<th style="text-align: left;">Herramienta</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Detección</strong></td>
+<td style="text-align: left;"><span class="math inline">\(\delta = 0\)</span> (No hay efecto)</td>
+<td style="text-align: left;">Rechazar <span class="math inline">\(H_0\)</span> (<span class="math inline">\(p &lt; \alpha\)</span>)</td>
+<td style="text-align: left;">NHST (Valor <span class="math inline">\(p\)</span>)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Equivalencia</strong></td>
+<td style="text-align: left;"><span class="math inline">\(|\delta| \geq \Delta\)</span> (Efecto no trivial)</td>
+<td style="text-align: left;">Rechazar <span class="math inline">\(H_0\)</span> (Ambas pruebas TOST son significativas)</td>
+<td style="text-align: left;">TOST (Prueba de Equivalencia)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Superioridad con Margen</strong></td>
+<td style="text-align: left;"><span class="math inline">\(\delta \leq \Delta\)</span> (No es mejor que <span class="math inline">\(\Delta\)</span>)</td>
+<td style="text-align: left;">Rechazar <span class="math inline">\(H_0\)</span> (El efecto es &gt; <span class="math inline">\(\Delta\)</span>)</td>
+<td style="text-align: left;">Prueba de una cola ajustada</td>
+</tr>
+</tbody>
+</table>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./08-justificacion-del-tamaño-de-la-muestra.html" class="pagination-link" aria-label="8. Justificación del Tamaño de la Muestra">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">8. Justificación del Tamaño de la Muestra</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./10-analisis-secuencial.html" class="pagination-link" aria-label="10. Análisis Secuencial">
+        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">10. Análisis Secuencial</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

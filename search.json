@@ -1,0 +1,1122 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Mejora de tus Inferencias Estadísticas",
+    "section": "",
+    "text": "1 inferencias-estadisticas-ESP\nTraducción al castellano de Improving Your Statistical Inferences de Daniël Lakens",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Inicio</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#resumen",
+    "href": "index.html#resumen",
+    "title": "Mejora de tus Inferencias Estadísticas",
+    "section": "2.1 Resumen",
+    "text": "2.1 Resumen\n“Ningún libro puede darse por terminado.\nMientras trabajamos en él aprendemos lo suficiente como para encontrarlo inmaduro en el momento en que nos alejamos de él.”\nKarl Popper, La Sociedad Abierta y sus Enemigos",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Inicio</span>"
+    ]
+  },
+  {
+    "objectID": "01-usando-valores-p.html",
+    "href": "01-usando-valores-p.html",
+    "title": "2  1. Usando valores p para probar una hipótesis",
+    "section": "",
+    "text": "3 1. Usando valores p para probar una hipótesis",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>1. Usando valores p para probar una hipótesis</span>"
+    ]
+  },
+  {
+    "objectID": "01-usando-valores-p.html#introducción-al-enfoque-de-prueba-de-hipótesis-de-neyman-pearson",
+    "href": "01-usando-valores-p.html#introducción-al-enfoque-de-prueba-de-hipótesis-de-neyman-pearson",
+    "title": "2  1. Usando valores p para probar una hipótesis",
+    "section": "3.1 1.1. Introducción al enfoque de prueba de hipótesis de Neyman-Pearson",
+    "text": "3.1 1.1. Introducción al enfoque de prueba de hipótesis de Neyman-Pearson\nCuando se utiliza el valor \\(p\\) para tomar decisiones sobre las hipótesis, a menudo se hace referencia al enfoque de la prueba de hipótesis de Neyman-Pearson (NP). En el enfoque NP, la meta principal es controlar la probabilidad de diferentes tipos de errores. Este enfoque requiere que el investigador especifique dos hipótesis mutuamente excluyentes:\n\nLa hipótesis nula (\\(H_0\\)): Representa el statu quo o la ausencia de un efecto. Se asume que es verdadera a menos que la evidencia empírica la contradiga fuertemente.\nLa hipótesis alternativa (\\(H_1\\)): Representa el efecto o la diferencia que el investigador espera o desea demostrar.\n\nEl enfoque NP te obliga a especificar un umbral, alfa (\\(\\alpha\\)), antes de la recopilación de datos. Alfa es la tasa de error Tipo I a largo plazo que el investigador está dispuesto a aceptar. El error Tipo I ocurre cuando el investigador rechaza una \\(H_0\\) verdadera.\nEn el contexto de las pruebas \\(t\\), la \\(H_0\\) es usualmente un valor específico (por ejemplo, una diferencia de medias de cero, \\(\\mu_1 - \\mu_2 = 0\\)). La \\(H_1\\) puede ser direccional (por ejemplo, \\(\\mu_1 &gt; \\mu_2\\)) o no direccional (por ejemplo, \\(\\mu_1 \\neq \\mu_2\\)).",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>1. Usando valores p para probar una hipótesis</span>"
+    ]
+  },
+  {
+    "objectID": "01-usando-valores-p.html#el-valor-p-y-su-distribución-bajo-h_0",
+    "href": "01-usando-valores-p.html#el-valor-p-y-su-distribución-bajo-h_0",
+    "title": "2  1. Usando valores p para probar una hipótesis",
+    "section": "3.2 1.2. El valor \\(p\\) y su distribución bajo \\(H_0\\)",
+    "text": "3.2 1.2. El valor \\(p\\) y su distribución bajo \\(H_0\\)\nEl valor \\(p\\) es la probabilidad de observar un resultado tan extremo o más extremo que el que se ha observado, asumiendo que la hipótesis nula (\\(H_0\\)) es verdadera.\nSi \\(H_0\\) es verdadera, el valor \\(p\\) está uniformemente distribuido entre 0 y 1. Esto significa que es igualmente probable que se obtenga cualquier valor \\(p\\) entre 0 y 1 si no hay un efecto real.\n\\[P(p \\leq x | H_0) = x\\]\ndonde \\(x\\) es cualquier número entre 0 y 1. Si realizas un gran número de experimentos en los que \\(H_0\\) es verdadera, rechazarás \\(H_0\\) el \\(5\\%\\) de las veces si estableces \\(\\alpha = 0.05\\).",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>1. Usando valores p para probar una hipótesis</span>"
+    ]
+  },
+  {
+    "objectID": "01-usando-valores-p.html#la-regla-de-decisión-de-neyman-pearson",
+    "href": "01-usando-valores-p.html#la-regla-de-decisión-de-neyman-pearson",
+    "title": "2  1. Usando valores p para probar una hipótesis",
+    "section": "3.3 1.3. La regla de decisión de Neyman-Pearson",
+    "text": "3.3 1.3. La regla de decisión de Neyman-Pearson\nEn el enfoque NP, la decisión se basa en comparar el valor \\(p\\) con \\(\\alpha\\):\n\nSi \\(p &lt; \\alpha\\), el resultado se considera estadísticamente significativo y se rechaza \\(H_0\\).\nSi \\(p \\geq \\alpha\\), el resultado se considera no significativo y se mantiene \\(H_0\\) (o se “no se rechaza”).\n\nSi rechazas \\(H_0\\) cuando \\(p &lt; \\alpha\\), tienes una tasa de error Tipo I a largo plazo controlada en \\(\\alpha\\).",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>1. Usando valores p para probar una hipótesis</span>"
+    ]
+  },
+  {
+    "objectID": "01-usando-valores-p.html#errores-tipo-ii-y-potencia-power",
+    "href": "01-usando-valores-p.html#errores-tipo-ii-y-potencia-power",
+    "title": "2  1. Usando valores p para probar una hipótesis",
+    "section": "3.4 1.4. Errores Tipo II y Potencia (Power)",
+    "text": "3.4 1.4. Errores Tipo II y Potencia (Power)\nEl error Tipo I (\\(\\alpha\\)) es rechazar una \\(H_0\\) que es verdadera.\nEl error Tipo II (\\(\\beta\\)) es mantener una \\(H_0\\) que es falsa (es decir, no detectar un efecto que realmente existe).\nLa potencia estadística o poder de una prueba (denotada como \\(1 - \\beta\\)) es la probabilidad de rechazar correctamente una \\(H_0\\) cuando \\(H_1\\) es verdadera. La potencia depende de tres factores:\n\nEl nivel \\(\\alpha\\): Una \\(\\alpha\\) más grande aumenta la potencia.\nEl tamaño del efecto (Effect Size, \\(ES\\)): Un efecto mayor es más fácil de detectar, por lo que aumenta la potencia.\nEl tamaño de la muestra (\\(N\\)): Una muestra más grande aumenta la potencia.\n\nEl enfoque NP enfatiza el control de ambos tipos de errores. Sin una justificación del tamaño de la muestra basada en un control de errores adecuado (es decir, alta potencia), el proceso de toma de decisiones está incompleto. Esto se abordará en el Capítulo 8: Justificación del Tamaño de la Muestra.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>1. Usando valores p para probar una hipótesis</span>"
+    ]
+  },
+  {
+    "objectID": "01-usando-valores-p.html#malentendidos-comunes-del-valor-p",
+    "href": "01-usando-valores-p.html#malentendidos-comunes-del-valor-p",
+    "title": "2  1. Usando valores p para probar una hipótesis",
+    "section": "3.5 1.5. Malentendidos comunes del valor \\(p\\)",
+    "text": "3.5 1.5. Malentendidos comunes del valor \\(p\\)\nEs fundamental entender lo que el valor \\(p\\) no es:\n\nEl valor \\(p\\) no es la probabilidad de que \\(H_0\\) sea verdadera. Es una probabilidad bajo la asunción de que \\(H_0\\) es verdadera.\n\\(1 - p\\) no es la probabilidad de que \\(H_1\\) sea verdadera.\nEl valor \\(p\\) no es la probabilidad de que el resultado sea un hallazgo por azar.\n\nEstos malentendidos son comunes, pero incorrectos. El valor \\(p\\) es una declaración sobre la compatibilidad de los datos con el modelo nulo; no es una declaración sobre la probabilidad de las hipótesis. Para obtener la probabilidad de una hipótesis, se requiere un enfoque Bayesiano (Capítulo 4).",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>1. Usando valores p para probar una hipótesis</span>"
+    ]
+  },
+  {
+    "objectID": "01-usando-valores-p.html#valor-p-o-enfoque-de-neyman-pearson",
+    "href": "01-usando-valores-p.html#valor-p-o-enfoque-de-neyman-pearson",
+    "title": "2  1. Usando valores p para probar una hipótesis",
+    "section": "3.6 1.6. ¿Valor \\(p\\) o enfoque de Neyman-Pearson?",
+    "text": "3.6 1.6. ¿Valor \\(p\\) o enfoque de Neyman-Pearson?\nExiste debate sobre si los investigadores deben usar el enfoque del valor \\(p\\) (propuesto por Fisher), que informa la evidencia contra \\(H_0\\), o el enfoque de Neyman-Pearson (NP), que se centra en el control de errores a largo plazo.\nEn la práctica, la comunidad científica suele mezclar ambos:\n\nSe utiliza el umbral de NP (\\(\\alpha = 0.05\\)) para tomar una decisión binaria (significativo/no significativo).\nSe informa el valor \\(p\\) exacto (el enfoque de Fisher).\n\nPara mejorar las inferencias, es más útil centrarse en el control de errores de Neyman-Pearson, ya que esto obliga a los investigadores a considerar la potencia y el tamaño del efecto de interés antes de recopilar los datos.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>1. Usando valores p para probar una hipótesis</span>"
+    ]
+  },
+  {
+    "objectID": "02-control-de-errores.html",
+    "href": "02-control-de-errores.html",
+    "title": "3  2. Control de errores",
+    "section": "",
+    "text": "4 2. Control de errores",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>2. Control de errores</span>"
+    ]
+  },
+  {
+    "objectID": "02-control-de-errores.html#tasas-de-error-de-la-prueba",
+    "href": "02-control-de-errores.html#tasas-de-error-de-la-prueba",
+    "title": "3  2. Control de errores",
+    "section": "4.1 2.1. Tasas de error de la prueba",
+    "text": "4.1 2.1. Tasas de error de la prueba\nCuando utilizamos el enfoque de Neyman-Pearson, nuestro objetivo es controlar las tasas de error a largo plazo.\nEl error Tipo I (\\(\\alpha\\)) es la probabilidad de rechazar la hipótesis nula (\\(H_0\\)) cuando \\(H_0\\) es verdadera. La tasa de error Tipo I se controla al establecer el nivel \\(\\alpha\\) para nuestra prueba (típicamente \\(\\alpha = 0.05\\)).\nEl error Tipo II (\\(\\beta\\)) es la probabilidad de no rechazar la hipótesis nula (\\(H_0\\)) cuando la hipótesis alternativa (\\(H_1\\)) es verdadera. La probabilidad de evitar un error Tipo II se llama potencia estadística (\\(1 - \\beta\\)).\nEn los diseños de investigación, buscamos un equilibrio entre controlar el error Tipo I y maximizar la potencia (es decir, minimizar el error Tipo II).\n\n\n\n\n\n\n\n\nDecisión\n\\(H_0\\) es Verdadera\n\\(H_0\\) es Falsa (\\(H_1\\) es Verdadera)\n\n\n\n\nRechazar \\(H_0\\)\nError Tipo I (\\(\\alpha\\)) (Falso Positivo)\nDecisión Correcta (Potencia \\(1-\\beta\\))\n\n\nMantener \\(H_0\\)\nDecisión Correcta\nError Tipo II (\\(\\beta\\)) (Falso Negativo)",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>2. Control de errores</span>"
+    ]
+  },
+  {
+    "objectID": "02-control-de-errores.html#error-por-experimento-error-per-experiment",
+    "href": "02-control-de-errores.html#error-por-experimento-error-per-experiment",
+    "title": "3  2. Control de errores",
+    "section": "4.2 2.2. Error por experimento (Error-per-experiment)",
+    "text": "4.2 2.2. Error por experimento (Error-per-experiment)\nEn la mayoría de los estudios, realizamos solo una prueba de hipótesis estadística para tomar una decisión clave (por ejemplo, comparar dos grupos de tratamiento). Si establecemos \\(\\alpha = 0.05\\), controlamos la tasa de error Tipo I en el \\(5\\%\\) para ese experimento o prueba individual. Esto se denomina tasa de error por experimento.\nSi el investigador realiza múltiples pruebas en un solo estudio, el control de errores se vuelve más complicado.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>2. Control de errores</span>"
+    ]
+  },
+  {
+    "objectID": "02-control-de-errores.html#error-familiar-family-wise-error",
+    "href": "02-control-de-errores.html#error-familiar-family-wise-error",
+    "title": "3  2. Control de errores",
+    "section": "4.3 2.3. Error familiar (Family-wise error)",
+    "text": "4.3 2.3. Error familiar (Family-wise error)\nEl error familiar (Family-wise Error Rate, FWER) es la probabilidad de cometer al menos un error Tipo I en una familia (o conjunto) de pruebas de hipótesis relacionadas.\nSi realizas \\(k\\) pruebas independientes, cada una con un \\(\\alpha = 0.05\\), la probabilidad de no cometer un error Tipo I en ninguna de ellas es \\((1 - \\alpha)^k\\).\nPor lo tanto, la FWER es:\n\\[FWER = 1 - (1 - \\alpha)^k\\]\nSi se realizan 5 pruebas independientes (donde \\(k=5\\)), la probabilidad de cometer al menos un error Tipo I es: \\(1 - (1 - 0.05)^5 \\approx 0.226\\) Esto significa que la probabilidad de un falso positivo se dispara al \\(22.6\\%\\), que es mucho más alta que el \\(\\alpha = 0.05\\) deseado.\nPara controlar la FWER en \\(\\alpha\\) (típicamente \\(0.05\\)), se deben aplicar correcciones al nivel \\(\\alpha\\) para cada prueba individual.\n\n4.3.1 2.3.1. Corrección de Bonferroni\nEl método más común para controlar la FWER es la Corrección de Bonferroni.\nLa corrección ajusta el \\(\\alpha\\) por prueba (\\(\\alpha_{ajustado}\\)) dividiendo el nivel de significancia deseado (\\(\\alpha_{FWER}\\)) por el número de pruebas (\\(k\\)):\n\\[\\alpha_{ajustado} = \\frac{\\alpha_{FWER}}{k}\\]\nSi realizamos 5 pruebas y queremos una FWER de \\(0.05\\):\n\\[\\alpha_{ajustado} = \\frac{0.05}{5} = 0.01\\]\nAhora, solo rechazaríamos \\(H_0\\) para cualquier prueba individual si \\(p &lt; 0.01\\).\n\nVentajas: Es simple y muy conservador.\nDesventajas: Puede ser demasiado conservador, reduciendo la potencia para detectar efectos reales.\n\n\n\n4.3.2 2.3.2. Otros métodos de control de FWER\nExisten otros métodos más sofisticados que pueden ofrecer un mejor equilibrio entre el control del Tipo I y la potencia, especialmente cuando las pruebas son dependientes o están correlacionadas:\n\nProcedimiento de Holm: Un procedimiento secuencial paso a paso que mantiene la FWER y es uniformemente más potente que Bonferroni.\nCorrección de Tukey’s HSD: Comúnmente utilizado para comparaciones por pares post hoc después de un ANOVA.\nCorrección de Scheffé: Útil para controlar todas las comparaciones posibles, pero muy conservador.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>2. Control de errores</span>"
+    ]
+  },
+  {
+    "objectID": "02-control-de-errores.html#tasa-de-falso-descubrimiento-false-discovery-rate-fdr",
+    "href": "02-control-de-errores.html#tasa-de-falso-descubrimiento-false-discovery-rate-fdr",
+    "title": "3  2. Control de errores",
+    "section": "4.4 2.4. Tasa de Falso Descubrimiento (False Discovery Rate, FDR)",
+    "text": "4.4 2.4. Tasa de Falso Descubrimiento (False Discovery Rate, FDR)\nControlar la FWER es crucial cuando no se toleran errores Tipo I, por ejemplo, en ensayos clínicos donde un falso positivo podría llevar a tratamientos ineficaces o dañinos.\nSin embargo, en la investigación exploratoria o en campos con muchas pruebas (como la Genética), los investigadores a menudo controlan la Tasa de Falso Descubrimiento (FDR).\nLa FDR es la proporción esperada de falsos positivos (descubrimientos incorrectos) entre el total de descubrimientos (pruebas significativas).\n\\[FDR = E \\left[ \\frac{V}{R} \\right]\\]\nDonde: * \\(V\\) es el número de falsos positivos (pruebas significativas donde \\(H_0\\) es verdadera). * \\(R\\) es el número total de resultados rechazados (pruebas significativas).\nControlar la FDR es un enfoque más permisivo que controlar la FWER, ya que permite más errores Tipo I a cambio de una mayor potencia. El procedimiento más popular para controlar la FDR es el de Benjamini-Hochberg (BH).",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>2. Control de errores</span>"
+    ]
+  },
+  {
+    "objectID": "02-control-de-errores.html#recomendaciones-para-el-control-de-errores",
+    "href": "02-control-de-errores.html#recomendaciones-para-el-control-de-errores",
+    "title": "3  2. Control de errores",
+    "section": "4.5 2.5. Recomendaciones para el control de errores",
+    "text": "4.5 2.5. Recomendaciones para el control de errores\nLa elección de la tasa de error a controlar depende de los objetivos de la investigación:\n\nPara estudios confirmatorios con un número limitado de hipótesis primarias: Se recomienda el control FWER (usando Holm o Bonferroni) para asegurar un alto nivel de confianza en cada conclusión individual.\nPara estudios exploratorios donde el objetivo es generar nuevas hipótesis o identificar un gran número de posibles efectos: El control FDR (usando BH) es a menudo más apropiado para maximizar el descubrimiento sin abrumarse por falsos positivos.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>2. Control de errores</span>"
+    ]
+  },
+  {
+    "objectID": "03-verosimilitudes.html",
+    "href": "03-verosimilitudes.html",
+    "title": "4  3. Verosimilitudes",
+    "section": "",
+    "text": "5 3. Verosimilitudes",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>3. Verosimilitudes</span>"
+    ]
+  },
+  {
+    "objectID": "03-verosimilitudes.html#introducción-a-la-verosimilitud",
+    "href": "03-verosimilitudes.html#introducción-a-la-verosimilitud",
+    "title": "4  3. Verosimilitudes",
+    "section": "5.1 3.1. Introducción a la verosimilitud",
+    "text": "5.1 3.1. Introducción a la verosimilitud\nEl enfoque del valor \\(p\\) y el de Neyman-Pearson se centran en la probabilidad de los datos dada la hipótesis nula (\\(P(\\text{Datos} | H_0)\\)). Un enfoque alternativo que se centra en cuán probables son los datos bajo diferentes hipótesis es el enfoque de la verosimilitud.\nLa función de verosimilitud (\\(\\mathcal{L}\\)) mide la plausibilidad de un valor de parámetro dado, una vez que se han observado los datos.\nUna idea clave de la verosimilitud es el Principio de Verosimilitud: Todos los resultados de la inferencia estadística sobre un parámetro deben basarse únicamente en la función de verosimilitud.\nLa verosimilitud de una hipótesis o parámetro (\\(\\theta\\)), dados los datos observados (\\(D\\)), se define como la probabilidad de observar esos datos, dada la hipótesis:\n\\[\\mathcal{L}(\\theta | D) = P(D | \\theta)\\]\nImportante: La verosimilitud (\\(\\mathcal{L}\\)) no es una probabilidad de la hipótesis. Las probabilidades suman 1; la verosimilitud solo es una medida relativa de cuán bien un parámetro predice los datos observados.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>3. Verosimilitudes</span>"
+    ]
+  },
+  {
+    "objectID": "03-verosimilitudes.html#razón-de-verosimilitud-likelihood-ratio",
+    "href": "03-verosimilitudes.html#razón-de-verosimilitud-likelihood-ratio",
+    "title": "4  3. Verosimilitudes",
+    "section": "5.2 3.2. Razón de Verosimilitud (Likelihood Ratio)",
+    "text": "5.2 3.2. Razón de Verosimilitud (Likelihood Ratio)\nDado que la verosimilitud absoluta es difícil de interpretar, a menudo utilizamos la Razón de Verosimilitud (Likelihood Ratio, \\(LR\\)) para comparar dos hipótesis (o parámetros) diferentes:\n\\[LR = \\frac{\\mathcal{L}(\\theta_1 | D)}{\\mathcal{L}(\\theta_2 | D)} = \\frac{P(D | \\theta_1)}{P(D | \\theta_2)}\\]\n\nSi \\(LR = 5\\), los datos observados son 5 veces más probables si \\(\\theta_1\\) es verdadera que si \\(\\theta_2\\) es verdadera.\nSi \\(LR = 0.2\\), los datos observados son 5 veces más probables si \\(\\theta_2\\) es verdadera que si \\(\\theta_1\\) es verdadera (\\(1/0.2 = 5\\)).\n\nLa razón de verosimilitud proporciona una medida de la fuerza relativa de la evidencia que los datos aportan en favor de una hipótesis sobre otra.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>3. Verosimilitudes</span>"
+    ]
+  },
+  {
+    "objectID": "03-verosimilitudes.html#estimación-de-máxima-verosimilitud-maximum-likelihood-estimation-mle",
+    "href": "03-verosimilitudes.html#estimación-de-máxima-verosimilitud-maximum-likelihood-estimation-mle",
+    "title": "4  3. Verosimilitudes",
+    "section": "5.3 3.3. Estimación de Máxima Verosimilitud (Maximum Likelihood Estimation, MLE)",
+    "text": "5.3 3.3. Estimación de Máxima Verosimilitud (Maximum Likelihood Estimation, MLE)\nUna aplicación fundamental de la verosimilitud es la Estimación de Máxima Verosimilitud (MLE).\nEl estimador de máxima verosimilitud (\\(\\hat{\\theta}_{MLE}\\)) es el valor del parámetro (\\(\\theta\\)) que hace que los datos observados sean más probables (es decir, el que maximiza la función de verosimilitud).\n\\[\\hat{\\theta}_{MLE} = \\text{arg} \\max_{\\theta} \\mathcal{L}(\\theta | D)\\]\nLos estimadores de MLE son deseables porque tienen varias propiedades asintóticas (cuando el tamaño de la muestra es grande): son consistentes, eficientes y están distribuidos normalmente. Muchos métodos estadísticos (incluyendo la regresión lineal y logística) utilizan MLE para encontrar los mejores ajustes para sus modelos.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>3. Verosimilitudes</span>"
+    ]
+  },
+  {
+    "objectID": "03-verosimilitudes.html#el-teorema-de-la-razón-de-verosimilitud-likelihood-ratio-test",
+    "href": "03-verosimilitudes.html#el-teorema-de-la-razón-de-verosimilitud-likelihood-ratio-test",
+    "title": "4  3. Verosimilitudes",
+    "section": "5.4 3.4. El Teorema de la Razón de Verosimilitud (Likelihood Ratio Test)",
+    "text": "5.4 3.4. El Teorema de la Razón de Verosimilitud (Likelihood Ratio Test)\nLa razón de verosimilitud también se utiliza para realizar pruebas de hipótesis, conocidas como Pruebas de Razón de Verosimilitud (LRT).\nLa LRT compara la verosimilitud de un modelo restringido (generalmente correspondiente a \\(H_0\\)) con la verosimilitud de un modelo menos restringido o más complejo (generalmente correspondiente a \\(H_1\\)).\nEl estadístico de prueba (a menudo denotado como \\(G^2\\) o \\(\\Lambda\\)) a menudo se calcula como:\n\\[\\Lambda = -2 \\ln \\left( \\frac{\\mathcal{L}(\\text{Modelo restringido} | D)}{\\mathcal{L}(\\text{Modelo no restringido} | D)} \\right)\\]\nBajo \\(H_0\\), este estadístico de prueba se distribuye aproximadamente como una distribución chi-cuadrado (\\(\\chi^2\\)), con grados de libertad iguales a la diferencia en el número de parámetros entre los dos modelos. Esto permite calcular un valor \\(p\\) y tomar una decisión en el marco de Neyman-Pearson.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>3. Verosimilitudes</span>"
+    ]
+  },
+  {
+    "objectID": "03-verosimilitudes.html#comparación-de-verosimilitud-y-el-valor-p",
+    "href": "03-verosimilitudes.html#comparación-de-verosimilitud-y-el-valor-p",
+    "title": "4  3. Verosimilitudes",
+    "section": "5.5 3.5. Comparación de Verosimilitud y el valor \\(p\\)",
+    "text": "5.5 3.5. Comparación de Verosimilitud y el valor \\(p\\)\n\n\n\n\n\n\n\n\nCaracterística\nEnfoque del valor \\(p\\) (NP)\nEnfoque de la Razón de Verosimilitud (LR)\n\n\n\n\nPregunta principal\n¿Son los datos compatibles con \\(H_0\\)?\n¿Qué hipótesis predice mejor los datos?\n\n\nMedida\nProbabilidad de los datos bajo \\(H_0\\) (\\(P(\\text{Datos} | H_0)\\))\nRazón de la probabilidad de los datos bajo \\(H_1\\) y \\(H_0\\) (\\(\\frac{P(D | H_1)}{P(D | H_0)}\\))\n\n\nConclusión\nDecisión binaria (Rechazar/Mantener \\(H_0\\))\nEvidencia relativa continua a favor de una hipótesis sobre otra\n\n\nControl de errores\nControl de \\(\\alpha\\) y \\(\\beta\\) a largo plazo\nNo controla directamente las tasas de error Tipo I o Tipo II\n\n\n\nLa verosimilitud ofrece una forma intuitiva de cuantificar la evidencia sin necesidad de un umbral fijo como \\(\\alpha\\). Proporciona una medida de evidencia relativa que, a diferencia del valor \\(p\\), se interpreta de la misma manera independientemente de la intención de muestreo o la regla de parada.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>3. Verosimilitudes</span>"
+    ]
+  },
+  {
+    "objectID": "04-estadistica-bayesiana.html",
+    "href": "04-estadistica-bayesiana.html",
+    "title": "5  4. Estadística Bayesiana",
+    "section": "",
+    "text": "6 4. Estadística Bayesiana\nLa estadística Bayesiana ofrece un marco alternativo a los enfoques de Neyman-Pearson y del valor \\(p\\). La inferencia Bayesiana se centra en la probabilidad de las hipótesis o de los parámetros, en lugar de la probabilidad de los datos.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>4. Estadística Bayesiana</span>"
+    ]
+  },
+  {
+    "objectID": "04-estadistica-bayesiana.html#el-teorema-de-bayes",
+    "href": "04-estadistica-bayesiana.html#el-teorema-de-bayes",
+    "title": "5  4. Estadística Bayesiana",
+    "section": "6.1 4.1. El Teorema de Bayes",
+    "text": "6.1 4.1. El Teorema de Bayes\nEl corazón de la estadística Bayesiana es el Teorema de Bayes. Este teorema proporciona una manera de actualizar nuestras creencias sobre una hipótesis (o un parámetro) a la luz de los nuevos datos.\nLa probabilidad de una hipótesis (\\(H\\)) dados los datos (\\(D\\)), la probabilidad a posteriori, es proporcional a la probabilidad de los datos dada la hipótesis, multiplicada por la probabilidad de la hipótesis antes de ver los datos:\n\\[P(H | D) = \\frac{P(D | H) P(H)}{P(D)}\\]\nDonde:\n\n\\(P(H | D)\\) es la Probabilidad a Posteriori (la probabilidad de la hipótesis después de ver los datos).\n\\(P(D | H)\\) es la Verosimilitud (la probabilidad de observar los datos dada la hipótesis \\(H\\)).\n\\(P(H)\\) es la Probabilidad a Priori (nuestra creencia inicial en la hipótesis antes de ver los datos).\n\\(P(D)\\) es la probabilidad marginal de los datos (una constante de normalización).",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>4. Estadística Bayesiana</span>"
+    ]
+  },
+  {
+    "objectID": "04-estadistica-bayesiana.html#pasos-en-la-inferencia-bayesiana",
+    "href": "04-estadistica-bayesiana.html#pasos-en-la-inferencia-bayesiana",
+    "title": "5  4. Estadística Bayesiana",
+    "section": "6.2 4.2. Pasos en la Inferencia Bayesiana",
+    "text": "6.2 4.2. Pasos en la Inferencia Bayesiana\nLa inferencia Bayesiana se puede resumir en un proceso de tres pasos:\n\nEstablecer la Priori (\\(P(H)\\)): El investigador debe especificar una distribución de probabilidad que represente sus creencias sobre la hipótesis o el parámetro antes de que se recojan los datos. Esta priori puede ser informativa (basada en conocimientos previos) o no informativa (que expresa incertidumbre).\nCalcular la Verosimilitud (\\(P(D | H)\\)): Esto es idéntico a la función de verosimilitud utilizada en el Capítulo 3. Mide qué tan bien la hipótesis predice los datos observados.\nCalcular la Posteriori (\\(P(H | D)\\)): Se combina la priori y la verosimilitud usando el Teorema de Bayes para producir la distribución de probabilidad a posteriori, la cual representa las creencias actualizadas después de ver los datos.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>4. Estadística Bayesiana</span>"
+    ]
+  },
+  {
+    "objectID": "04-estadistica-bayesiana.html#el-factor-de-bayes-bayes-factor-bf",
+    "href": "04-estadistica-bayesiana.html#el-factor-de-bayes-bayes-factor-bf",
+    "title": "5  4. Estadística Bayesiana",
+    "section": "6.3 4.3. El Factor de Bayes (Bayes Factor, \\(BF\\))",
+    "text": "6.3 4.3. El Factor de Bayes (Bayes Factor, \\(BF\\))\nEn el enfoque Bayesiano, para comparar dos hipótesis, a menudo se utiliza el Factor de Bayes (\\(BF\\)).\nEl \\(BF\\) es la razón de la verosimilitud marginal de la hipótesis alternativa (\\(H_1\\)) frente a la hipótesis nula (\\(H_0\\)):\n\\[BF_{10} = \\frac{P(D | H_1)}{P(D | H_0)}\\]\nEl Factor de Bayes representa la medida en que los datos cambian la razón de probabilidades a priori de \\(H_1\\) frente a \\(H_0\\) a la razón de probabilidades a posteriori.\n\\[\\frac{P(H_1 | D)}{P(H_0 | D)} = \\frac{P(D | H_1)}{P(D | H_0)} \\times \\frac{P(H_1)}{P(H_0)}\\]\n\\[(\\text{Razón a Posteriori}) = (\\text{Factor de Bayes}) \\times (\\text{Razón a Priori})\\]\nInterpretación del \\(BF_{10}\\):\n\n\\(BF_{10} = 1\\): Los datos son igualmente probables bajo ambas hipótesis.\n\\(BF_{10} = 10\\): Los datos son 10 veces más probables bajo \\(H_1\\) que bajo \\(H_0\\). Esto proporciona evidencia fuerte a favor de \\(H_1\\).\n\\(BF_{10} = 0.10\\): Los datos son 10 veces más probables bajo \\(H_0\\) que bajo \\(H_1\\). Esto proporciona evidencia fuerte a favor de \\(H_0\\).\n\nEl Factor de Bayes puede cuantificar la evidencia a favor de la \\(H_0\\), algo que el enfoque del valor \\(p\\) no puede hacer directamente.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>4. Estadística Bayesiana</span>"
+    ]
+  },
+  {
+    "objectID": "04-estadistica-bayesiana.html#ventajas-de-la-estadística-bayesiana",
+    "href": "04-estadistica-bayesiana.html#ventajas-de-la-estadística-bayesiana",
+    "title": "5  4. Estadística Bayesiana",
+    "section": "6.4 4.4. Ventajas de la Estadística Bayesiana",
+    "text": "6.4 4.4. Ventajas de la Estadística Bayesiana\n\nEvidencia a favor de \\(H_0\\): Permite cuantificar la evidencia a favor de la hipótesis nula (\\(H_0\\)), no solo evidencia contra ella.\nInclusión de Conocimiento Previo: Incorpora explícitamente el conocimiento previo a través de la distribución a priori.\nInferencia directa: Proporciona inferencias directas sobre la probabilidad de los parámetros o hipótesis. Por ejemplo, se puede afirmar: “Existe una probabilidad del 95% de que el tamaño del efecto se encuentre entre X e Y” (Intervalo de Credibilidad).\nMonitoreo de datos flexible: Los análisis pueden monitorearse continuamente (análisis secuencial) sin que esto infle la tasa de error Tipo I, ya que el Teorema de Bayes no se ve afectado por la intención de parada o el plan de muestreo. (Esto se aborda en el Capítulo 10).",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>4. Estadística Bayesiana</span>"
+    ]
+  },
+  {
+    "objectID": "04-estadistica-bayesiana.html#intervalos-de-credibilidad-credible-intervals",
+    "href": "04-estadistica-bayesiana.html#intervalos-de-credibilidad-credible-intervals",
+    "title": "5  4. Estadística Bayesiana",
+    "section": "6.5 4.5. Intervalos de Credibilidad (Credible Intervals)",
+    "text": "6.5 4.5. Intervalos de Credibilidad (Credible Intervals)\nEn el enfoque Bayesiano, el equivalente al Intervalo de Confianza (Capítulo 7) es el Intervalo de Credibilidad (Credible Interval, CI).\nMientras que un Intervalo de Confianza del 95% establece que, si repitiéramos el experimento muchas veces, el \\(95\\%\\) de los intervalos resultantes contendrían el verdadero valor del parámetro, un Intervalo de Credibilidad del 95% es una afirmación directa: existe una probabilidad del 95% de que el valor real del parámetro se encuentre dentro de este intervalo.\nEl Intervalo de Credibilidad se deriva directamente de la distribución a posteriori y tiene una interpretación mucho más intuitiva.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>4. Estadística Bayesiana</span>"
+    ]
+  },
+  {
+    "objectID": "05-formulando-preguntas-estadisticas.html",
+    "href": "05-formulando-preguntas-estadisticas.html",
+    "title": "6  5. Formulando Preguntas Estadísticas",
+    "section": "",
+    "text": "7 5. Formulando Preguntas Estadísticas",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>5. Formulando Preguntas Estadísticas</span>"
+    ]
+  },
+  {
+    "objectID": "05-formulando-preguntas-estadisticas.html#tres-tipos-de-preguntas-estadísticas",
+    "href": "05-formulando-preguntas-estadisticas.html#tres-tipos-de-preguntas-estadísticas",
+    "title": "6  5. Formulando Preguntas Estadísticas",
+    "section": "7.1 5.1. Tres tipos de preguntas estadísticas",
+    "text": "7.1 5.1. Tres tipos de preguntas estadísticas\nUna investigación sólida comienza con la formulación clara de la pregunta. En estadística, las preguntas de investigación suelen caer en una de estas tres categorías:\n\n¿Existe un efecto? (Énfasis en la significancia)\n¿Cuál es el tamaño del efecto? (Énfasis en la estimación)\n¿Qué hipótesis es más probable a la luz de los datos? (Énfasis en la comparación de modelos o evidencia)\n\n\n7.1.1 5.1.1. Pregunta 1: ¿Existe un efecto? (Prueba de Significación)\nEste es el enfoque tradicional de la Prueba de Hipótesis de Significación Nula (NHST), que se centra en rechazar la hipótesis nula (\\(H_0\\)).\n\nEjemplo: ¿La nueva droga mejora el tiempo de reacción?\nHipótesis: \\(H_0: \\mu_1 = \\mu_2\\) (No hay diferencia) vs. \\(H_1: \\mu_1 \\neq \\mu_2\\) (Hay diferencia).\nHerramienta: El valor \\(p\\) y el control del error Tipo I (\\(\\alpha\\)).\n\nEste enfoque tiene una limitación clave: la hipótesis nula de cero es casi siempre falsa en el mundo real, lo que hace que la pregunta de si existe un efecto sea trivialmente respondida con una muestra lo suficientemente grande. Sin embargo, sigue siendo útil para tomar decisiones binarias (sí/no) con errores controlados.\n\n\n7.1.2 5.1.2. Pregunta 2: ¿Cuál es el tamaño del efecto? (Estimación)\nEste enfoque se centra en la precisión de la medición y en estimar el valor del parámetro (por ejemplo, la media, la diferencia de medias, la correlación).\n\nEjemplo: ¿Cuál es el rango de beneficios que podemos esperar de la nueva droga con un 95% de confianza?\nHerramienta: Intervalos de Confianza (Capítulo 7) o Intervalos de Credibilidad (Capítulo 4).\nObjetivo: Proporcionar el mejor estimado puntual (por ejemplo, \\(d = 0.50\\)) junto con un intervalo que refleje la incertidumbre (por ejemplo, \\([0.20, 0.80]\\)).\n\n\n\n7.1.3 5.1.3. Pregunta 3: ¿Qué hipótesis es más probable? (Evidencia)\nEste enfoque se centra en la fuerza de la evidencia que los datos proporcionan para dos modelos alternativos, no solo en un solo modelo nulo.\n\nEjemplo: ¿Los datos proporcionan más apoyo para la hipótesis de un efecto moderado (\\(H_1\\)) o para la hipótesis nula de ningún efecto (\\(H_0\\))?\nHerramienta: El Factor de Bayes (\\(BF\\)) (Capítulo 4) o la Razón de Verosimilitud (Capítulo 3).\nObjetivo: Cuantificar la evidencia relativa para un modelo sobre otro, sin forzar una decisión binaria.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>5. Formulando Preguntas Estadísticas</span>"
+    ]
+  },
+  {
+    "objectID": "05-formulando-preguntas-estadisticas.html#el-problema-de-la-dicotomía-de-la-significación",
+    "href": "05-formulando-preguntas-estadisticas.html#el-problema-de-la-dicotomía-de-la-significación",
+    "title": "6  5. Formulando Preguntas Estadísticas",
+    "section": "7.2 5.2. El problema de la “Dicotomía de la Significación”",
+    "text": "7.2 5.2. El problema de la “Dicotomía de la Significación”\nUno de los principales problemas al formular preguntas estadísticas es caer en la Dicotomía de la Significación, donde se trata la significación estadística (\\(p &lt; \\alpha\\)) como la única medida de interés. Esto lleva a:\n\nInterpretar erróneamente un resultado no significativo (\\(p \\geq \\alpha\\)) como evidencia de la ausencia de efecto, ignorando la posibilidad de error Tipo II (falta de potencia).\nInterpretar erróneamente un resultado significativo (\\(p &lt; \\alpha\\)) como un efecto grande o importante, ignorando la importancia práctica (tamaño del efecto).",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>5. Formulando Preguntas Estadísticas</span>"
+    ]
+  },
+  {
+    "objectID": "05-formulando-preguntas-estadisticas.html#preguntas-de-intervalo-e-hipótesis-de-equivalencia",
+    "href": "05-formulando-preguntas-estadisticas.html#preguntas-de-intervalo-e-hipótesis-de-equivalencia",
+    "title": "6  5. Formulando Preguntas Estadísticas",
+    "section": "7.3 5.3. Preguntas de intervalo e hipótesis de equivalencia",
+    "text": "7.3 5.3. Preguntas de intervalo e hipótesis de equivalencia\nPara ir más allá de la pregunta simple “¿Existe un efecto?”, los investigadores pueden formular preguntas sobre un rango o intervalo de valores.\n\n7.3.1 5.3.1. Pruebas de Equivalencia (Equivalence Testing)\nLas pruebas de equivalencia invierten la \\(H_0\\). En lugar de asumir que no hay efecto (\\(H_0: \\delta = 0\\)), asumen que hay un efecto que es demasiado grande para considerarse equivalente al cero.\n\nHipótesis: \\(H_0: |\\delta| \\geq \\Delta\\) (El efecto es mayor o igual a \\(\\Delta\\), es decir, no es equivalente a cero) vs. \\(H_1: |\\delta| &lt; \\Delta\\) (El efecto está dentro del margen \\(\\pm\\Delta\\), es decir, es equivalente a cero).\nPropósito: Demostrar que un efecto, si existe, es tan pequeño que no tiene importancia práctica (o es equivalente a un control o estándar).\n\nLas pruebas de equivalencia permiten responder a la pregunta: “¿El efecto es suficientemente pequeño para ser ignorado?” o “¿Mi nuevo tratamiento es equivalente al tratamiento estándar?” (Esto se discute en profundidad en el Capítulo 9).\n\n\n7.3.2 5.3.2. Hipótesis de Intervalo\nLas hipótesis de intervalo se utilizan para probar si el verdadero valor del parámetro se encuentra dentro de un rango específico de interés. Permiten al investigador probar su hipótesis de que el tamaño del efecto no es exactamente cero, sino que se encuentra dentro de un rango significativo específico (por ejemplo, \\(\\delta \\in [0.20, 0.50]\\)).",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>5. Formulando Preguntas Estadísticas</span>"
+    ]
+  },
+  {
+    "objectID": "05-formulando-preguntas-estadisticas.html#conclusión",
+    "href": "05-formulando-preguntas-estadisticas.html#conclusión",
+    "title": "6  5. Formulando Preguntas Estadísticas",
+    "section": "7.4 5.4. Conclusión",
+    "text": "7.4 5.4. Conclusión\nPara mejorar la inferencia, es crucial que los investigadores formulen preguntas más allá de la dicotomía de la significación:\n\nEn lugar de solo “¿El \\(p\\) es menor que \\(0.05\\)?”, pregunte: “¿Qué tan grande es el efecto?” (Estimación).\nEn lugar de solo rechazar \\(H_0\\), pregunte: “¿Los datos apoyan más la hipótesis nula o la alternativa?” (Evidencia Bayesiana).\nPara demostrar la ausencia de un efecto importante, pregunte: “¿El efecto es menor que el umbral de importancia práctica?” (Prueba de Equivalencia).\n\nEstas preguntas requieren herramientas más avanzadas (Capítulos 6, 7 y 9), pero conducen a conclusiones científicas más robustas.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>5. Formulando Preguntas Estadísticas</span>"
+    ]
+  },
+  {
+    "objectID": "06-tamaños-del-efecto.html",
+    "href": "06-tamaños-del-efecto.html",
+    "title": "7  6. Tamaños del Efecto",
+    "section": "",
+    "text": "8 6. Tamaños del Efecto",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>6. Tamaños del Efecto</span>"
+    ]
+  },
+  {
+    "objectID": "06-tamaños-del-efecto.html#la-importancia-del-tamaño-del-efecto-effect-size-es",
+    "href": "06-tamaños-del-efecto.html#la-importancia-del-tamaño-del-efecto-effect-size-es",
+    "title": "7  6. Tamaños del Efecto",
+    "section": "8.1 6.1. La Importancia del Tamaño del Efecto (Effect Size, ES)",
+    "text": "8.1 6.1. La Importancia del Tamaño del Efecto (Effect Size, ES)\nUn error común en la investigación es centrarse únicamente en la significación estadística (el valor \\(p\\)) e ignorar la magnitud o el tamaño del efecto (ES).\nEl tamaño del efecto es una medida estandarizada o no estandarizada de la magnitud de un fenómeno de interés. Mientras que el valor \\(p\\) informa sobre si un efecto es probable que sea distinto de cero, el ES informa sobre qué tan grande es ese efecto.\n\n8.1.1 6.1.1. Significancia Estadística vs. Significación Práctica\n\nSignificancia Estadística: Se refiere a si el efecto es improbable bajo la hipótesis nula (\\(p &lt; \\alpha\\)).\nSignificancia Práctica: Se refiere a si el efecto es lo suficientemente grande como para ser importante, relevante o útil en el mundo real.\n\nUn efecto puede ser estadísticamente significativo (\\(p\\) muy pequeño) pero prácticamente insignificante (ES muy pequeño), especialmente con muestras muy grandes.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>6. Tamaños del Efecto</span>"
+    ]
+  },
+  {
+    "objectID": "06-tamaños-del-efecto.html#tipos-de-tamaños-del-efecto",
+    "href": "06-tamaños-del-efecto.html#tipos-de-tamaños-del-efecto",
+    "title": "7  6. Tamaños del Efecto",
+    "section": "8.2 6.2. Tipos de Tamaños del Efecto",
+    "text": "8.2 6.2. Tipos de Tamaños del Efecto\nLos tamaños del efecto se dividen generalmente en dos categorías:\n\n8.2.1 6.2.1. ES Estandarizados (Basados en la Varianza)\nEstos tamaños del efecto expresan la magnitud del efecto en unidades de desviación estándar, lo que permite la comparación entre estudios que utilizan diferentes escalas de medición.\n\n\\(d\\) de Cohen (para diferencias de medias): Mide la diferencia entre dos medias dividida por la desviación estándar combinada (o agrupada). Un \\(d\\) de Cohen de 0.50 significa que las medias difieren en media desviación estándar. \\[d = \\frac{\\mu_1 - \\mu_2}{\\sigma_{\\text{pooled}}}\\]\n\nPautas de Cohen (Interpretación Común, aunque simplista):\n\n\\(d = 0.20\\): Efecto Pequeño\n\\(d = 0.50\\): Efecto Medio\n\\(d = 0.80\\): Efecto Grande\n\n\nEta Cuadrada (\\(\\eta^2\\)) y Omega Cuadrada (\\(\\omega^2\\)) (para ANOVA): Miden la proporción de la varianza total que es atribuible al efecto. La \\(\\omega^2\\) es preferible porque es un estimador de ES menos sesgado que \\(\\eta^2\\).\n\\(r\\) (Coeficiente de Correlación): Mide la fuerza y dirección de la relación lineal entre dos variables.\n\n\n\n8.2.2 6.2.2. ES No Estandarizados (Basados en la Métrica Original)\nEstos tamaños del efecto se expresan en las unidades originales de la variable de resultado, lo que a menudo facilita la interpretación práctica.\n\nDiferencia de Medias no estandarizada (\\(\\mu_1 - \\mu_2\\)): Útil cuando las unidades de medida son significativas (por ejemplo, kilogramos, segundos, ingresos).\nCoeficientes de Regresión no estandarizados (\\(b\\)): Muestra el cambio en la variable dependiente por un cambio de una unidad en la variable predictora.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>6. Tamaños del Efecto</span>"
+    ]
+  },
+  {
+    "objectID": "06-tamaños-del-efecto.html#justificación-del-tamaño-del-efecto-de-interés",
+    "href": "06-tamaños-del-efecto.html#justificación-del-tamaño-del-efecto-de-interés",
+    "title": "7  6. Tamaños del Efecto",
+    "section": "8.3 6.3. Justificación del Tamaño del Efecto de Interés",
+    "text": "8.3 6.3. Justificación del Tamaño del Efecto de Interés\nPara realizar inferencias significativas, el investigador debe especificar un Tamaño del Efecto de Interés (ESOI) antes de recopilar los datos. Este ESOI se utiliza para:\n\nJustificar el Tamaño de la Muestra (Capítulo 8): Calcular cuántos participantes se necesitan para detectar el ESOI con suficiente potencia.\nFormular Hipótesis de Intervalo (Capítulo 9): Definir los umbrales de importancia práctica para realizar Pruebas de Equivalencia.\n\nEl ESOI debe basarse en:\n\nValores Mínimos de Importancia Práctica: El efecto más pequeño que sería relevante en el mundo real (por ejemplo, la reducción mínima en la presión arterial que justificaría el costo de un medicamento).\nConocimiento Previo/Literatura: El tamaño del efecto encontrado en estudios previos (Meta-análisis, Capítulo 11).\nRestricciones de Recursos: El efecto más grande que se puede detectar dadas las limitaciones presupuestarias o de tiempo.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>6. Tamaños del Efecto</span>"
+    ]
+  },
+  {
+    "objectID": "06-tamaños-del-efecto.html#intervalos-de-confianza-para-el-es",
+    "href": "06-tamaños-del-efecto.html#intervalos-de-confianza-para-el-es",
+    "title": "7  6. Tamaños del Efecto",
+    "section": "8.4 6.4. Intervalos de Confianza para el ES",
+    "text": "8.4 6.4. Intervalos de Confianza para el ES\nSiempre se debe informar un tamaño del efecto junto con una medida de su precisión, como un Intervalo de Confianza (IC).\nEl IC para el ES cuantifica la incertidumbre de la estimación. Un IC estrecho indica una estimación precisa del tamaño del efecto real.\nSi el Intervalo de Confianza: * Excluye el cero: El resultado es estadísticamente significativo al nivel \\(\\alpha\\). * Incluye el cero: El resultado no es estadísticamente significativo.\nLa estimación del ES y su IC proporcionan una imagen mucho más informativa que el solo valor \\(p\\). Esto permite al lector juzgar tanto la magnitud del efecto como la precisión de la estimación.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>6. Tamaños del Efecto</span>"
+    ]
+  },
+  {
+    "objectID": "06-tamaños-del-efecto.html#recomendaciones-de-reporte",
+    "href": "06-tamaños-del-efecto.html#recomendaciones-de-reporte",
+    "title": "7  6. Tamaños del Efecto",
+    "section": "8.5 6.5. Recomendaciones de Reporte",
+    "text": "8.5 6.5. Recomendaciones de Reporte\nAl reportar los resultados, es una mejor práctica:\n\nReportar y discutir siempre los tamaños del efecto junto con los valores \\(p\\).\nIncluir el Intervalo de Confianza (o Intervalo de Credibilidad) para el tamaño del efecto.\nUtilizar tamaños del efecto no estandarizados siempre que las unidades de medida originales sean significativas para la interpretación.\nUtilizar estimadores de ES menos sesgados (como \\(\\omega^2\\) en lugar de \\(\\eta^2\\)).",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>6. Tamaños del Efecto</span>"
+    ]
+  },
+  {
+    "objectID": "07-intervalos-de-confianza.html",
+    "href": "07-intervalos-de-confianza.html",
+    "title": "8  7. Intervalos de Confianza",
+    "section": "",
+    "text": "9 7. Intervalos de Confianza",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>7. Intervalos de Confianza</span>"
+    ]
+  },
+  {
+    "objectID": "07-intervalos-de-confianza.html#la-naturaleza-de-la-estimación-por-intervalo",
+    "href": "07-intervalos-de-confianza.html#la-naturaleza-de-la-estimación-por-intervalo",
+    "title": "8  7. Intervalos de Confianza",
+    "section": "9.1 7.1. La naturaleza de la estimación por intervalo",
+    "text": "9.1 7.1. La naturaleza de la estimación por intervalo\nMientras que la prueba de hipótesis se centra en una decisión binaria (rechazar/mantener \\(H_0\\)), la estimación se centra en cuantificar el parámetro de interés (por ejemplo, la media, la diferencia o el tamaño del efecto). La estimación por intervalo, a través de los Intervalos de Confianza (IC), nos proporciona una medida de la precisión de nuestra estimación.\nUn Intervalo de Confianza (IC) es un rango de valores plausibles para el verdadero parámetro poblacional, basado en los datos de la muestra.",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>7. Intervalos de Confianza</span>"
+    ]
+  },
+  {
+    "objectID": "07-intervalos-de-confianza.html#interpretación-de-los-intervalos-de-confianza",
+    "href": "07-intervalos-de-confianza.html#interpretación-de-los-intervalos-de-confianza",
+    "title": "8  7. Intervalos de Confianza",
+    "section": "9.2 7.2. Interpretación de los Intervalos de Confianza",
+    "text": "9.2 7.2. Interpretación de los Intervalos de Confianza\nLa interpretación de un IC es a menudo malentendida. Para un IC del 95%:\n\nSi repitiéramos el muestreo y el análisis de datos un número infinito de veces, el 95% de los intervalos construidos de esta manera contendrían el verdadero valor del parámetro poblacional.\n\nLo que el IC NO es: Un IC del 95% no significa que hay un 95% de probabilidad de que el verdadero parámetro se encuentre dentro del intervalo calculado a partir de una única muestra. (Esa es la interpretación del Intervalo de Credibilidad Bayesiano, como se vio en el Capítulo 4).",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>7. Intervalos de Confianza</span>"
+    ]
+  },
+  {
+    "objectID": "07-intervalos-de-confianza.html#la-relación-entre-ic-y-el-valor-p",
+    "href": "07-intervalos-de-confianza.html#la-relación-entre-ic-y-el-valor-p",
+    "title": "8  7. Intervalos de Confianza",
+    "section": "9.3 7.3. La relación entre IC y el valor \\(p\\)",
+    "text": "9.3 7.3. La relación entre IC y el valor \\(p\\)\nExiste una relación directa entre los Intervalos de Confianza y los valores \\(p\\) dentro del marco de la Prueba de Hipótesis de Significación Nula (NHST):\n\nSi un IC del \\(100(1-\\alpha)\\%\\) (por ejemplo, 95%) para un parámetro (como la diferencia de medias \\(\\mu_1 - \\mu_2\\)) no contiene el valor nulo (por ejemplo, 0), entonces la prueba de hipótesis correspondiente con un nivel de significancia \\(\\alpha\\) será estadísticamente significativa (\\(p &lt; \\alpha\\)).\nSi el IC sí contiene el valor nulo, entonces la prueba no será estadísticamente significativa (\\(p \\geq \\alpha\\)).\n\nPor lo tanto, los IC proporcionan la misma información de decisión que el valor \\(p\\), pero con la ventaja añadida de la estimación de la magnitud y la precisión.",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>7. Intervalos de Confianza</span>"
+    ]
+  },
+  {
+    "objectID": "07-intervalos-de-confianza.html#factores-que-afectan-la-anchura-del-ic",
+    "href": "07-intervalos-de-confianza.html#factores-que-afectan-la-anchura-del-ic",
+    "title": "8  7. Intervalos de Confianza",
+    "section": "9.4 7.4. Factores que afectan la anchura del IC",
+    "text": "9.4 7.4. Factores que afectan la anchura del IC\nLa anchura del IC (es decir, la precisión de la estimación) se ve influenciada por dos factores principales:\n\nTamaño de la muestra (\\(N\\)): A medida que el tamaño de la muestra aumenta, el error estándar disminuye y el IC se vuelve más estrecho (más preciso).\nNivel de Confianza (por ejemplo, 90%, 95%, 99%): Un nivel de confianza más alto (por ejemplo, 99% en lugar de 95%) requiere capturar una mayor proporción del muestreo hipotético, lo que da lugar a un IC más ancho (más incierto).",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>7. Intervalos de Confianza</span>"
+    ]
+  },
+  {
+    "objectID": "07-intervalos-de-confianza.html#ics-informativos-y-el-valor-de-la-precisión",
+    "href": "07-intervalos-de-confianza.html#ics-informativos-y-el-valor-de-la-precisión",
+    "title": "8  7. Intervalos de Confianza",
+    "section": "9.5 7.5. ICs Informativos y el Valor de la Precisión",
+    "text": "9.5 7.5. ICs Informativos y el Valor de la Precisión\nReportar un IC es a menudo más informativo que reportar solo el valor \\(p\\). Un IC nos ayuda a distinguir entre:\n\nUn resultado significativo y preciso: IC estrecho que excluye el cero.\nUn resultado significativo pero impreciso: IC ancho que excluye el cero.\nUn resultado no significativo y preciso: IC estrecho que incluye el cero, lo que proporciona evidencia sólida de que el efecto es pequeño (similar a una prueba de equivalencia).\nUn resultado no significativo e impreciso: IC ancho que incluye el cero, lo que significa que el verdadero efecto podría ser pequeño, moderado o incluso grande, pero los datos no son lo suficientemente informativos para distinguirlo.",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>7. Intervalos de Confianza</span>"
+    ]
+  },
+  {
+    "objectID": "07-intervalos-de-confianza.html#ics-y-planificación-del-estudio",
+    "href": "07-intervalos-de-confianza.html#ics-y-planificación-del-estudio",
+    "title": "8  7. Intervalos de Confianza",
+    "section": "9.6 7.6. ICs y Planificación del Estudio",
+    "text": "9.6 7.6. ICs y Planificación del Estudio\nLa planificación de la precisión (Accuracy in Parameter Estimation, AIPE) es un enfoque para la justificación del tamaño de la muestra (Capítulo 8) que se centra en lograr una anchura de IC deseada.\nEn lugar de planificar para la potencia (la capacidad de rechazar \\(H_0\\)), AIPE planifica para la precisión (la capacidad de tener un IC que no sea más ancho que un valor específico). Esto cambia el enfoque del estudio, de la simple detección a la estimación precisa.",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>7. Intervalos de Confianza</span>"
+    ]
+  },
+  {
+    "objectID": "07-intervalos-de-confianza.html#intervalos-de-confianza-para-tamaños-del-efecto",
+    "href": "07-intervalos-de-confianza.html#intervalos-de-confianza-para-tamaños-del-efecto",
+    "title": "8  7. Intervalos de Confianza",
+    "section": "9.7 7.7. Intervalos de Confianza para Tamaños del Efecto",
+    "text": "9.7 7.7. Intervalos de Confianza para Tamaños del Efecto\nComo se mencionó en el Capítulo 6, es una buena práctica informar el IC no solo para las medias sin procesar, sino también para los tamaños del efecto estandarizados (como el \\(d\\) de Cohen o \\(r\\)). Un IC sobre un \\(ES\\) estandarizado facilita la comparación de la precisión de los hallazgos entre diferentes estudios.",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>7. Intervalos de Confianza</span>"
+    ]
+  },
+  {
+    "objectID": "08-justificacion-del-tamaño-de-la-muestra.html",
+    "href": "08-justificacion-del-tamaño-de-la-muestra.html",
+    "title": "9  8. Justificación del Tamaño de la Muestra",
+    "section": "",
+    "text": "10 8. Justificación del Tamaño de la Muestra",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>8. Justificación del Tamaño de la Muestra</span>"
+    ]
+  },
+  {
+    "objectID": "08-justificacion-del-tamaño-de-la-muestra.html#por-qué-justificar-el-tamaño-de-la-muestra",
+    "href": "08-justificacion-del-tamaño-de-la-muestra.html#por-qué-justificar-el-tamaño-de-la-muestra",
+    "title": "9  8. Justificación del Tamaño de la Muestra",
+    "section": "10.1 8.1. ¿Por qué justificar el tamaño de la muestra?",
+    "text": "10.1 8.1. ¿Por qué justificar el tamaño de la muestra?\nLa justificación del tamaño de la muestra es el paso en el que un investigador explica por qué decidió utilizar un número particular de observaciones (\\(N\\)). No se trata simplemente de un requisito ético o de publicación, sino de una parte crucial para lograr la informatividad del estudio.\nUn estudio es informativo solo si tiene la capacidad de distinguir resultados de interés de resultados que no lo son. Un tamaño de muestra debe garantizar que:\n\nSe minimiza el riesgo de errores Tipo II (Potencia adecuada) para detectar un efecto de interés.\nEl intervalo de estimación del parámetro (IC o ICred) es lo suficientemente estrecho para ser útil (Precisión adecuada).",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>8. Justificación del Tamaño de la Muestra</span>"
+    ]
+  },
+  {
+    "objectID": "08-justificacion-del-tamaño-de-la-muestra.html#enfoques-para-la-justificación-del-tamaño-de-la-muestra",
+    "href": "08-justificacion-del-tamaño-de-la-muestra.html#enfoques-para-la-justificación-del-tamaño-de-la-muestra",
+    "title": "9  8. Justificación del Tamaño de la Muestra",
+    "section": "10.2 8.2. Enfoques para la Justificación del Tamaño de la Muestra",
+    "text": "10.2 8.2. Enfoques para la Justificación del Tamaño de la Muestra\nExisten seis enfoques principales para justificar el tamaño de la muestra:\n\n10.2.1 8.2.1. Planificación basada en el Control de Errores (Análisis de Potencia)\nEste es el enfoque más común y se alinea con el marco de Neyman-Pearson (Capítulo 1). Se planifica el tamaño de la muestra para lograr una potencia estadística específica (típicamente \\(1 - \\beta = 0.80\\) o \\(0.90\\)) para detectar un Tamaño del Efecto de Interés (ESOI) previamente especificado.\n\nRequisitos:\n\nNivel de significancia (\\(\\alpha\\), generalmente \\(0.05\\)).\nPotencia deseada (\\(1 - \\beta\\), generalmente \\(0.80\\)).\nEl ESOI (el tamaño del efecto más pequeño que se considera importante y que se desea detectar).\n\n\nSi el estudio tiene la potencia adecuada para detectar el ESOI, entonces un resultado no significativo es más informativo que si el estudio tuviera baja potencia.\n\n\n10.2.2 8.2.2. Planificación basada en la Precisión (AIPE)\nEl enfoque Accuracy in Parameter Estimation (AIPE) planifica el tamaño de la muestra para que el Intervalo de Confianza (IC) resultante sea de una anchura preespecificada.\n\nRequisitos:\n\nNivel de confianza (\\(1 - \\alpha\\), generalmente \\(0.95\\)).\nAnchura deseada del IC.\n\n\nAIPE es ideal cuando el objetivo principal del estudio es la estimación precisa del tamaño del efecto, en lugar de la simple prueba de hipótesis nula.\n\n\n10.2.3 8.2.3. Uso de Recursos o Restricciones\nA veces, el tamaño de la muestra está limitado por recursos prácticos (tiempo, dinero, disponibilidad de población). En este caso, la justificación consiste en mostrar el ESOI más pequeño que el estudio tiene potencia para detectar con el \\(N\\) disponible, o la precisión que se puede lograr.\n\nConclusión: Si el ESOI que se puede detectar es demasiado grande para ser práctico, el estudio es inherentemente poco informativo.\n\n\n\n10.2.4 8.2.4. Justificación Basada en la Adición de un Participante\nEste enfoque es común en los estudios que añaden datos a colecciones existentes (por ejemplo, grandes bases de datos). La justificación es que el muestreo se detiene una vez que se han recogido todos los datos disponibles.\n\n\n10.2.5 8.2.5. Análisis Secuencial\nEl muestreo se detiene cuando la evidencia es lo suficientemente fuerte para tomar una decisión (ya sea rechazar \\(H_0\\) o aceptar \\(H_0\\)). Este enfoque es eficiente porque el muestreo no continúa más allá de lo necesario. (Ver Capítulo 10).\n\n\n10.2.6 8.2.6. No hay justificación explícita\nEn algunos casos, el investigador puede no tener una justificación formal. Es crucial ser transparente sobre esto y discutir las implicaciones de la falta de potencia o precisión del estudio.",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>8. Justificación del Tamaño de la Muestra</span>"
+    ]
+  },
+  {
+    "objectID": "08-justificacion-del-tamaño-de-la-muestra.html#especificación-del-tamaño-del-efecto-de-interés-esoi",
+    "href": "08-justificacion-del-tamaño-de-la-muestra.html#especificación-del-tamaño-del-efecto-de-interés-esoi",
+    "title": "9  8. Justificación del Tamaño de la Muestra",
+    "section": "10.3 8.3. Especificación del Tamaño del Efecto de Interés (ESOI)",
+    "text": "10.3 8.3. Especificación del Tamaño del Efecto de Interés (ESOI)\nEl paso más crítico en la justificación del tamaño de la muestra es la elección del ESOI para el análisis de potencia. Las opciones para seleccionar el ESOI incluyen:\n\nEl efecto más pequeño de interés práctico (MPE): Basado en el costo, beneficio o importancia clínica.\nEl efecto esperado (o meta-analítico): Basado en la literatura existente, preferiblemente de un meta-análisis (Capítulo 11).\nEl efecto de Convención (Ejemplo: \\(d = 0.50\\) de Cohen): Este es el método menos deseable, ya que las convenciones de Cohen suelen ignorar el contexto y el campo de estudio.\n\nUna justificación sólida debe demostrar que el tamaño de la muestra es adecuado para el ESOI más pequeño que el investigador considera importante.",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>8. Justificación del Tamaño de la Muestra</span>"
+    ]
+  },
+  {
+    "objectID": "08-justificacion-del-tamaño-de-la-muestra.html#realizar-la-justificación-y-reportarla",
+    "href": "08-justificacion-del-tamaño-de-la-muestra.html#realizar-la-justificación-y-reportarla",
+    "title": "9  8. Justificación del Tamaño de la Muestra",
+    "section": "10.4 8.4. Realizar la Justificación y Reportarla",
+    "text": "10.4 8.4. Realizar la Justificación y Reportarla\nLa justificación de la muestra debe ser un informe detallado que explique:\n\nEl enfoque utilizado (Potencia, AIPE, o Recursos).\nLa razón para el nivel \\(\\alpha\\) y la potencia (\\(1 - \\beta\\)) elegida.\nLa base empírica y teórica para el ESOI elegido.\nEl cálculo exacto que llevó al \\(N\\) final.\n\nUna justificación de la muestra que se basa en recursos limitados solo es informativa si el investigador también realiza un análisis de sensibilidad para mostrar qué ES puede detectar el estudio con esa limitación de recursos.",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>8. Justificación del Tamaño de la Muestra</span>"
+    ]
+  },
+  {
+    "objectID": "09-pruebas-de-equivalencia.html",
+    "href": "09-pruebas-de-equivalencia.html",
+    "title": "10  9. Pruebas de Equivalencia e Hipótesis de Intervalo",
+    "section": "",
+    "text": "11 9. Pruebas de Equivalencia e Hipótesis de Intervalo",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>9. Pruebas de Equivalencia e Hipótesis de Intervalo</span>"
+    ]
+  },
+  {
+    "objectID": "09-pruebas-de-equivalencia.html#el-problema-de-la-ausencia-de-efecto",
+    "href": "09-pruebas-de-equivalencia.html#el-problema-de-la-ausencia-de-efecto",
+    "title": "10  9. Pruebas de Equivalencia e Hipótesis de Intervalo",
+    "section": "11.1 9.1. El problema de la ausencia de efecto",
+    "text": "11.1 9.1. El problema de la ausencia de efecto\nCuando un valor \\(p\\) es no significativo (\\(p \\geq 0.05\\)), la conclusión formal en el marco de Neyman-Pearson es “no rechazar \\(H_0\\)”. Esto no es evidencia de la ausencia de efecto. Un resultado no significativo puede deberse a:\n\nEl efecto es verdaderamente cero (o muy pequeño).\nEl estudio tuvo baja potencia (error Tipo II) y no pudo detectar un efecto existente.\n\nPara demostrar que un efecto es lo suficientemente pequeño como para ser irrelevante, necesitamos un enfoque estadístico que invierta el papel de las hipótesis nula y alternativa: la Prueba de Equivalencia.",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>9. Pruebas de Equivalencia e Hipótesis de Intervalo</span>"
+    ]
+  },
+  {
+    "objectID": "09-pruebas-de-equivalencia.html#el-principio-de-la-prueba-de-equivalencia-tost",
+    "href": "09-pruebas-de-equivalencia.html#el-principio-de-la-prueba-de-equivalencia-tost",
+    "title": "10  9. Pruebas de Equivalencia e Hipótesis de Intervalo",
+    "section": "11.2 9.2. El principio de la Prueba de Equivalencia (TOST)",
+    "text": "11.2 9.2. El principio de la Prueba de Equivalencia (TOST)\nLa Prueba de Equivalencia más común es la prueba de Two One-Sided Tests (TOST) (Pruebas de Dos Unilaterales).\nEn la prueba TOST, el investigador define un margen de equivalencia (\\(\\Delta\\)), que representa el Tamaño del Efecto más Pequeño de Interés Práctico (MPE). El \\(\\Delta\\) puede ser positivo (\\(\\Delta_U\\)) o negativo (\\(\\Delta_L\\)).\nEl principio TOST invierte la hipótesis nula tradicional:\n\nHipótesis Nula de Equivalencia (\\(H_{0E}\\)): El verdadero efecto está fuera del margen de equivalencia (es decir, el efecto es tan grande que no es equivalente al cero). \\(H_{0E}: \\delta \\leq \\Delta_L \\text{ o } \\delta \\geq \\Delta_U\\).\nHipótesis Alternativa de Equivalencia (\\(H_{1E}\\)): El verdadero efecto está dentro del margen de equivalencia (es decir, el efecto es equivalente al cero). \\(H_{1E}: \\Delta_L &lt; \\delta &lt; \\Delta_U\\).",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>9. Pruebas de Equivalencia e Hipótesis de Intervalo</span>"
+    ]
+  },
+  {
+    "objectID": "09-pruebas-de-equivalencia.html#la-regla-de-decisión-tost",
+    "href": "09-pruebas-de-equivalencia.html#la-regla-de-decisión-tost",
+    "title": "10  9. Pruebas de Equivalencia e Hipótesis de Intervalo",
+    "section": "11.3 9.3. La Regla de Decisión TOST",
+    "text": "11.3 9.3. La Regla de Decisión TOST\nPara concluir la equivalencia, el investigador debe rechazar ambas las hipótesis unilaterales nulas. Esto se logra realizando dos pruebas de hipótesis \\(t\\) separadas, cada una con un nivel \\(\\alpha\\) de significancia (típicamente \\(\\alpha = 0.05\\)):\n\nPrueba 1: Prueba si el efecto es significativamente mayor que el límite superior (\\(\\Delta_U\\)). Rechazamos si \\(p &lt; \\alpha\\).\nPrueba 2: Prueba si el efecto es significativamente menor que el límite inferior (\\(\\Delta_L\\)). Rechazamos si \\(p &lt; \\alpha\\).\n\nSi ambas pruebas son rechazadas, se puede concluir que el efecto observado es estadísticamente equivalente a cero (o el valor de referencia), dentro del margen \\(\\Delta\\).",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>9. Pruebas de Equivalencia e Hipótesis de Intervalo</span>"
+    ]
+  },
+  {
+    "objectID": "09-pruebas-de-equivalencia.html#ic-y-equivalencia",
+    "href": "09-pruebas-de-equivalencia.html#ic-y-equivalencia",
+    "title": "10  9. Pruebas de Equivalencia e Hipótesis de Intervalo",
+    "section": "11.4 9.4. IC y Equivalencia",
+    "text": "11.4 9.4. IC y Equivalencia\nLa prueba TOST es conceptualmente equivalente a verificar si el Intervalo de Confianza (IC) del \\(100(1-2\\alpha)\\%\\) (es decir, un IC del 90% para \\(\\alpha=0.05\\)) cae completamente dentro del margen de equivalencia (\\(\\Delta_L\\) a \\(\\Delta_U\\)).\n\nSi el IC del 90% está completamente dentro del margen de equivalencia: Se concluye la equivalencia.\nSi el IC toca o se extiende más allá de cualquiera de los límites: No se puede concluir la equivalencia.",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>9. Pruebas de Equivalencia e Hipótesis de Intervalo</span>"
+    ]
+  },
+  {
+    "objectID": "09-pruebas-de-equivalencia.html#la-justificación-del-margen-de-equivalencia-delta",
+    "href": "09-pruebas-de-equivalencia.html#la-justificación-del-margen-de-equivalencia-delta",
+    "title": "10  9. Pruebas de Equivalencia e Hipótesis de Intervalo",
+    "section": "11.5 9.5. La Justificación del Margen de Equivalencia (\\(\\Delta\\))",
+    "text": "11.5 9.5. La Justificación del Margen de Equivalencia (\\(\\Delta\\))\nEl paso más crítico de una prueba TOST es la justificación del margen \\(\\Delta\\). Este margen debe basarse en un argumento sustantivo, no estadístico. Las justificaciones comunes incluyen:\n\nMínima Importancia Práctica (MPE): El efecto más grande que aún se consideraría clínicamente o prácticamente trivial.\nBasado en Costos/Beneficios: El punto en el que el costo del tratamiento supera el beneficio marginal.\nBasado en la Literatura/Estimación: Basado en la variabilidad o el error de medición del resultado (el “ruido”).",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>9. Pruebas de Equivalencia e Hipótesis de Intervalo</span>"
+    ]
+  },
+  {
+    "objectID": "09-pruebas-de-equivalencia.html#hipótesis-de-intervalo",
+    "href": "09-pruebas-de-equivalencia.html#hipótesis-de-intervalo",
+    "title": "10  9. Pruebas de Equivalencia e Hipótesis de Intervalo",
+    "section": "11.6 9.6. Hipótesis de Intervalo",
+    "text": "11.6 9.6. Hipótesis de Intervalo\nLas pruebas TOST son un tipo de Hipótesis de Intervalo, que es cualquier prueba de hipótesis donde la \\(H_0\\) o la \\(H_1\\) definen un rango de valores en lugar de un único valor puntual (como \\(\\delta=0\\)).\nOtro tipo de prueba de intervalo es la prueba de Superioridad con Margen (Superiority by a Margin). Aquí, el investigador prueba que un efecto es no solo diferente de cero, sino que es mejor que un margen específico (\\(H_0: \\delta \\leq \\Delta\\)).",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>9. Pruebas de Equivalencia e Hipótesis de Intervalo</span>"
+    ]
+  },
+  {
+    "objectID": "09-pruebas-de-equivalencia.html#resumen-de-pruebas-de-decisión",
+    "href": "09-pruebas-de-equivalencia.html#resumen-de-pruebas-de-decisión",
+    "title": "10  9. Pruebas de Equivalencia e Hipótesis de Intervalo",
+    "section": "11.7 9.7. Resumen de Pruebas de Decisión",
+    "text": "11.7 9.7. Resumen de Pruebas de Decisión\n\n\n\n\n\n\n\n\n\nObjetivo\nHipótesis Nula (\\(H_0\\))\nConclusión de Interés\nHerramienta\n\n\n\n\nDetección\n\\(\\delta = 0\\) (No hay efecto)\nRechazar \\(H_0\\) (\\(p &lt; \\alpha\\))\nNHST (Valor \\(p\\))\n\n\nEquivalencia\n\\(|\\delta| \\geq \\Delta\\) (Efecto no trivial)\nRechazar \\(H_0\\) (Ambas pruebas TOST son significativas)\nTOST (Prueba de Equivalencia)\n\n\nSuperioridad con Margen\n\\(\\delta \\leq \\Delta\\) (No es mejor que \\(\\Delta\\))\nRechazar \\(H_0\\) (El efecto es &gt; \\(\\Delta\\))\nPrueba de una cola ajustada",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>9. Pruebas de Equivalencia e Hipótesis de Intervalo</span>"
+    ]
+  },
+  {
+    "objectID": "10-analisis-secuencial.html",
+    "href": "10-analisis-secuencial.html",
+    "title": "11  10. Análisis Secuencial",
+    "section": "",
+    "text": "12 10. Análisis Secuencial",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>10. Análisis Secuencial</span>"
+    ]
+  },
+  {
+    "objectID": "10-analisis-secuencial.html#el-problema-del-muestreo-opcional",
+    "href": "10-analisis-secuencial.html#el-problema-del-muestreo-opcional",
+    "title": "11  10. Análisis Secuencial",
+    "section": "12.1 10.1. El Problema del Muestreo Opcional",
+    "text": "12.1 10.1. El Problema del Muestreo Opcional\nEn la estadística frecuentista tradicional (Neyman-Pearson), la tasa de error Tipo I (\\(\\alpha\\)) se garantiza solo si el tamaño de la muestra (\\(N\\)) se fija antes de observar cualquier dato.\nEl muestreo opcional (o detenerse cuando el valor \\(p\\) es significativo) ocurre cuando el investigador monitorea los datos y detiene la recolección tan pronto como se alcanza la significación. Este procedimiento infla artificialmente la tasa de error Tipo I (\\(\\alpha\\)), lo que lleva a un mayor riesgo de falsos positivos.\nEl análisis secuencial es una familia de métodos que permiten al investigador monitorear los datos y detener la recolección de manera planificada sin inflar el \\(\\alpha\\).",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>10. Análisis Secuencial</span>"
+    ]
+  },
+  {
+    "objectID": "10-analisis-secuencial.html#análisis-secuencial-frecuentista-sequential-analysis-sa",
+    "href": "10-analisis-secuencial.html#análisis-secuencial-frecuentista-sequential-analysis-sa",
+    "title": "11  10. Análisis Secuencial",
+    "section": "12.2 10.2. Análisis Secuencial Frecuentista (Sequential Analysis, SA)",
+    "text": "12.2 10.2. Análisis Secuencial Frecuentista (Sequential Analysis, SA)\nEl análisis secuencial frecuentista divide la recolección de datos en etapas planificadas, con reglas de parada predefinidas para cada etapa.\n\n12.2.1 10.2.1. El Procedimiento de Pocock\nEl procedimiento de Pocock utiliza un umbral de significancia más estricto (\\(\\alpha_{ajustado}\\)) que es el mismo en cada etapa de análisis. Esto asegura que la tasa de error Tipo I general (FWER) se mantenga en el nivel deseado (ej., \\(\\alpha = 0.05\\)).\n\n\n12.2.2 10.2.2. El Procedimiento de O’Brien-Fleming\nEl procedimiento de O’Brien-Fleming es más conservador en las etapas iniciales y se vuelve menos estricto en las etapas posteriores. Esto es útil porque la mayoría de los estudios grandes tienen un buen conocimiento de la potencia en las etapas posteriores.\nLa esencia de los enfoques SA es establecer los límites de parada (stopping boundaries) en un gráfico de diseño secuencial , que definen cuándo la evidencia es suficientemente fuerte para detenerse (ya sea para rechazar \\(H_0\\) o, en diseños más complejos, para mantener \\(H_0\\)).\nVentaja del SA Frecuentista: Es muy eficiente, ya que el tamaño esperado de la muestra es a menudo mucho menor que el de un estudio de tamaño fijo con la misma potencia.",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>10. Análisis Secuencial</span>"
+    ]
+  },
+  {
+    "objectID": "10-analisis-secuencial.html#análisis-secuencial-bayesiano",
+    "href": "10-analisis-secuencial.html#análisis-secuencial-bayesiano",
+    "title": "11  10. Análisis Secuencial",
+    "section": "12.3 10.3. Análisis Secuencial Bayesiano",
+    "text": "12.3 10.3. Análisis Secuencial Bayesiano\nEl enfoque Bayesiano ofrece la solución más elegante y flexible al problema del muestreo opcional. Como se mencionó en el Capítulo 4, el Factor de Bayes (\\(BF\\)) y la distribución a posteriori no se ven afectados por la regla de parada o la intención de muestreo.\nEsto significa que un investigador puede monitorear el \\(BF\\) o el Intervalo de Credibilidad continuamente y detenerse en cualquier momento, una vez que la evidencia alcance un umbral preespecificado (por ejemplo, \\(BF_{10} \\geq 10\\) o \\(BF_{01} \\geq 10\\)).\n\n12.3.1 10.3.1. Reglas de Parada Bayesianas\nLos investigadores pueden establecer reglas de parada claras, como:\n\nEvidencia a favor de \\(H_1\\): Detenerse si \\(BF_{10}\\) es mayor que un umbral alto (ej., 10).\nEvidencia a favor de \\(H_0\\): Detenerse si \\(BF_{01}\\) es mayor que un umbral alto (ej., 10), lo que permite concluir la evidencia a favor de la ausencia de efecto, de forma similar a TOST.\n\nEl monitoreo Bayesiano permite al investigador detener la recolección tan pronto como se resuelve la pregunta, lo que es eficiente y ético.",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>10. Análisis Secuencial</span>"
+    ]
+  },
+  {
+    "objectID": "10-analisis-secuencial.html#análisis-secuencial-para-pruebas-de-equivalencia-tost",
+    "href": "10-analisis-secuencial.html#análisis-secuencial-para-pruebas-de-equivalencia-tost",
+    "title": "11  10. Análisis Secuencial",
+    "section": "12.4 10.4. Análisis Secuencial para Pruebas de Equivalencia (TOST)",
+    "text": "12.4 10.4. Análisis Secuencial para Pruebas de Equivalencia (TOST)\nEl análisis secuencial también se puede aplicar a las Pruebas de Equivalencia (Capítulo 9). El investigador puede monitorear los datos y detenerse cuando el Intervalo de Confianza (generalmente el IC del \\(90\\%\\)) cae completamente dentro del margen de equivalencia preespecificado (\\(\\Delta\\)).",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>10. Análisis Secuencial</span>"
+    ]
+  },
+  {
+    "objectID": "10-analisis-secuencial.html#importancia-de-la-planificación",
+    "href": "10-analisis-secuencial.html#importancia-de-la-planificación",
+    "title": "11  10. Análisis Secuencial",
+    "section": "12.5 10.5. Importancia de la Planificación",
+    "text": "12.5 10.5. Importancia de la Planificación\nTanto el SA frecuentista como el bayesiano son poderosos, pero ambos requieren un plan de análisis preespecificado.\nPara el SA frecuentista, se deben preespecificar las etapas y los límites de \\(\\alpha\\). Para el enfoque Bayesiano, se deben preespecificar los umbrales de \\(BF\\) (o precisión) para la parada.\nLa belleza del análisis secuencial es que permite tomar una decisión informada lo antes posible, maximizando la eficiencia de la investigación y el uso ético de los recursos, siempre que la regla de parada sea parte del plan de registro (Capítulo 13).",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>10. Análisis Secuencial</span>"
+    ]
+  },
+  {
+    "objectID": "11-meta-analisis.html",
+    "href": "11-meta-analisis.html",
+    "title": "12  11. Meta-análisis",
+    "section": "",
+    "text": "13 11. Meta-análisis",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>11. Meta-análisis</span>"
+    ]
+  },
+  {
+    "objectID": "11-meta-analisis.html#definición-y-propósito",
+    "href": "11-meta-analisis.html#definición-y-propósito",
+    "title": "12  11. Meta-análisis",
+    "section": "13.1 11.1. Definición y Propósito",
+    "text": "13.1 11.1. Definición y Propósito\nEl Meta-análisis es el análisis estadístico de una colección de resultados de múltiples estudios individuales, con el propósito de integrar los hallazgos. Es una herramienta esencial para la inferencia estadística, ya que permite obtener una estimación del tamaño del efecto que es más precisa y potente que la estimación de cualquier estudio individual.\n\n13.1.1 11.1.1. Ventajas del Meta-análisis\n\nMayor Precisión: Un estudio combinado con una muestra efectiva mucho mayor reduce el error estándar y produce un Intervalo de Confianza más estrecho (Capítulo 7).\nMayor Potencia: La mayor precisión aumenta la capacidad de detectar efectos reales (reduce el error Tipo II, Capítulo 8).\nResolución de Controversias: Puede ayudar a resolver resultados contradictorios entre estudios.\nEstimación del ESOI: Proporciona la mejor estimación del Tamaño del Efecto de Interés (ESOI), crucial para la justificación del tamaño de la muestra de futuros estudios (Capítulo 8).",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>11. Meta-análisis</span>"
+    ]
+  },
+  {
+    "objectID": "11-meta-analisis.html#pasos-en-un-meta-análisis",
+    "href": "11-meta-analisis.html#pasos-en-un-meta-análisis",
+    "title": "12  11. Meta-análisis",
+    "section": "13.2 11.2. Pasos en un Meta-análisis",
+    "text": "13.2 11.2. Pasos en un Meta-análisis\nUn meta-análisis bien ejecutado implica varios pasos clave:\n\nFormulación de la Pregunta: Definir claramente el efecto de interés, la población y los diseños de estudio que se incluirán.\nBúsqueda Sistemática de Literatura: Identificar todos los estudios relevantes (publicados y no publicados) para minimizar el sesgo.\nExtracción de Datos: Recopilar el tamaño del efecto (\\(ES\\)) y el error estándar de cada estudio.\nSelección del Modelo: Elegir entre un modelo de efectos fijos o un modelo de efectos aleatorios.\nCálculo del ES Promedio: Estimar el tamaño del efecto combinado.\nAnálisis de Heterogeneidad y Sesgo: Evaluar la variabilidad entre estudios y el posible sesgo de publicación (Capítulo 12).",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>11. Meta-análisis</span>"
+    ]
+  },
+  {
+    "objectID": "11-meta-analisis.html#modelos-de-meta-análisis",
+    "href": "11-meta-analisis.html#modelos-de-meta-análisis",
+    "title": "12  11. Meta-análisis",
+    "section": "13.3 11.3. Modelos de Meta-análisis",
+    "text": "13.3 11.3. Modelos de Meta-análisis\nLos dos modelos principales para combinar tamaños del efecto son:\n\n13.3.1 11.3.1. Modelo de Efectos Fijos (Fixed-Effect Model)\nEste modelo asume que todos los estudios incluidos están midiendo el mismo verdadero tamaño del efecto en la población. Las diferencias observadas entre los resultados de los estudios se deben únicamente al error de muestreo.\n\n\n13.3.2 11.3.2. Modelo de Efectos Aleatorios (Random-Effects Model)\nEste modelo es más conservador y realista. Asume que el verdadero tamaño del efecto varía entre los estudios (heterogeneidad). Las diferencias observadas se deben tanto al error de muestreo como a la variación real en los tamaños del efecto (por ejemplo, debido a diferencias en poblaciones, métodos o contextos).",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>11. Meta-análisis</span>"
+    ]
+  },
+  {
+    "objectID": "11-meta-analisis.html#heterogeneidad",
+    "href": "11-meta-analisis.html#heterogeneidad",
+    "title": "12  11. Meta-análisis",
+    "section": "13.4 11.4. Heterogeneidad",
+    "text": "13.4 11.4. Heterogeneidad\nLa Heterogeneidad se refiere a la variación real en los tamaños del efecto entre los estudios. Si la heterogeneidad es alta, un modelo de efectos aleatorios es más apropiado.\nLa heterogeneidad se evalúa a menudo utilizando el estadístico \\(I^2\\):\n\n\\(I^2\\): Mide la proporción de la varianza total observada en los tamaños del efecto que es atribuible a la heterogeneidad real, en lugar del error de muestreo.\nValores altos de \\(I^2\\) (ej., &gt; 50%) sugieren que la variación no se explica solo por el azar, lo que indica la necesidad de explorar moderadores (variables que explican las diferencias).",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>11. Meta-análisis</span>"
+    ]
+  },
+  {
+    "objectID": "11-meta-analisis.html#visualización-el-diagrama-de-bosque-forest-plot",
+    "href": "11-meta-analisis.html#visualización-el-diagrama-de-bosque-forest-plot",
+    "title": "12  11. Meta-análisis",
+    "section": "13.5 11.5. Visualización: El Diagrama de Bosque (Forest Plot)",
+    "text": "13.5 11.5. Visualización: El Diagrama de Bosque (Forest Plot)\nUn Diagrama de Bosque es la forma estándar de visualizar los resultados de un meta-análisis. Muestra:\n\nEl tamaño del efecto y el Intervalo de Confianza para cada estudio individual (representado por una caja y una línea horizontal).\nEl tamaño del efecto combinado (la estimación agrupada), típicamente representado por un diamante en la parte inferior.",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>11. Meta-análisis</span>"
+    ]
+  },
+  {
+    "objectID": "11-meta-analisis.html#meta-análisis-acumulativo",
+    "href": "11-meta-analisis.html#meta-análisis-acumulativo",
+    "title": "12  11. Meta-análisis",
+    "section": "13.6 11.6. Meta-análisis Acumulativo",
+    "text": "13.6 11.6. Meta-análisis Acumulativo\nEn un meta-análisis acumulativo, los estudios se combinan secuencialmente en orden cronológico o por tamaño de muestra. Esto muestra cómo la estimación combinada y su precisión evolucionan a medida que se agregan más datos. Este enfoque puede ser útil para determinar cuándo la evidencia se ha vuelto suficientemente concluyente (similar a los objetivos del análisis secuencial, Capítulo 10).",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>11. Meta-análisis</span>"
+    ]
+  },
+  {
+    "objectID": "11-meta-analisis.html#uso-del-meta-análisis-para-la-planificación",
+    "href": "11-meta-analisis.html#uso-del-meta-análisis-para-la-planificación",
+    "title": "12  11. Meta-análisis",
+    "section": "13.7 11.7. Uso del Meta-análisis para la Planificación",
+    "text": "13.7 11.7. Uso del Meta-análisis para la Planificación\nEl meta-análisis no es solo una herramienta de revisión; es una herramienta de planificación:\n\nLa estimación del tamaño del efecto combinado (el punto central del diamante) debe utilizarse como el mejor ESOI para calcular la potencia de los futuros estudios primarios.\nLa varianza observada en los tamaños del efecto (la heterogeneidad) puede informar la selección de variables moderadoras para futuras investigaciones.",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>11. Meta-análisis</span>"
+    ]
+  },
+  {
+    "objectID": "12-deteccion-de-sesgos.html",
+    "href": "12-deteccion-de-sesgos.html",
+    "title": "13  12. Detección de Sesgos",
+    "section": "",
+    "text": "14 12. Detección de Sesgos\nLa validez de la inferencia estadística depende de la calidad de los datos y de los procedimientos utilizados para obtenerlos. El sesgo en la investigación se refiere a cualquier desviación sistemática de la verdad en la recopilación, análisis, interpretación o publicación de los resultados.",
+    "crumbs": [
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>12. Detección de Sesgos</span>"
+    ]
+  },
+  {
+    "objectID": "12-deteccion-de-sesgos.html#sesgo-de-publicación-publication-bias",
+    "href": "12-deteccion-de-sesgos.html#sesgo-de-publicación-publication-bias",
+    "title": "13  12. Detección de Sesgos",
+    "section": "14.1 12.1. Sesgo de Publicación (Publication Bias)",
+    "text": "14.1 12.1. Sesgo de Publicación (Publication Bias)\nEl sesgo de publicación es quizás el sesgo más conocido y sistemático que afecta a la literatura científica, especialmente en campos que dependen en gran medida del valor \\(p\\).\n\nDefinición: Ocurre cuando la probabilidad de que un estudio sea publicado depende de la naturaleza y la dirección de sus hallazgos (por ejemplo, los estudios con resultados estadísticamente significativos (\\(p &lt; 0.05\\)) y en la dirección esperada tienen más probabilidades de ser publicados que los estudios con resultados no significativos).\nEfecto: El sesgo de publicación hace que las estimaciones publicadas del tamaño del efecto sean sistemáticamente sobreestimadas y sesgadas positivamente.\n\n\n14.1.1 12.1.1. Herramientas para la Detección del Sesgo de Publicación\n\nDiagrama de Embudo (Funnel Plot): Es la herramienta gráfica más utilizada en el meta-análisis (Capítulo 11) para evaluar el sesgo. Un diagrama de embudo traza el tamaño del efecto (eje X) frente a la precisión o el error estándar (eje Y) de los estudios.\n\nAusencia de Sesgo: Los estudios se distribuyen simétricamente alrededor del tamaño del efecto combinado, formando un embudo invertido.\nPresencia de Sesgo: Si faltan estudios no significativos de baja potencia (los que estarían en la parte inferior izquierda o derecha del embudo), el gráfico parece asimétrico, sugiriendo sesgo de publicación.\n\nPruebas de Egger y Begg: Pruebas estadísticas formales que evalúan la asimetría del diagrama de embudo.",
+    "crumbs": [
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>12. Detección de Sesgos</span>"
+    ]
+  },
+  {
+    "objectID": "12-deteccion-de-sesgos.html#p-hacking-data-dependent-analysis",
+    "href": "12-deteccion-de-sesgos.html#p-hacking-data-dependent-analysis",
+    "title": "13  12. Detección de Sesgos",
+    "section": "14.2 12.2. \\(p\\)-Hacking (Data-dependent analysis)",
+    "text": "14.2 12.2. \\(p\\)-Hacking (Data-dependent analysis)\nEl \\(p\\)-hacking es una forma de sesgo que ocurre cuando los investigadores ajustan de manera flexible los procedimientos de recolección o análisis de datos hasta que se alcanza el umbral de significación estadística (\\(p &lt; 0.05\\)).\nEjemplos de \\(p\\)-hacking incluyen: * Excluir puntos de datos después de mirar los resultados. * Recolectar más datos después de un análisis inicial no significativo (muestreo opcional no planificado). * Probar múltiples variables dependientes y reportar solo las significativas. * Usar diferentes análisis estadísticos hasta que uno sea significativo.\nEl \\(p\\)-hacking infla la tasa de error Tipo I (\\(\\alpha\\)) del estudio.\n\n14.2.1 12.2.1. Herramientas para la Detección de \\(p\\)-Hacking\n\nDistribución de \\(p\\)-valores (p-curve): Bajo la hipótesis nula, los valores \\(p\\) están distribuidos uniformemente (Capítulo 1). Si hay un efecto real, la distribución de los \\(p\\)-valores debe estar sesgada hacia valores pequeños. El p-curve analiza la forma de la distribución de los \\(p\\)-valores en un conjunto de estudios.\n\nUna acumulación inusual de \\(p\\)-valores justo por debajo de \\(0.05\\) (ej., entre \\(0.04\\) y \\(0.05\\)) es una señal de advertencia de posible \\(p\\)-hacking.\n\nAnálisis de Sensibilidad de Muestreo Opcional: Evaluar si la significación depende de la regla de parada o si el efecto se mantiene estable a medida que se añaden más datos.",
+    "crumbs": [
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>12. Detección de Sesgos</span>"
+    ]
+  },
+  {
+    "objectID": "12-deteccion-de-sesgos.html#harking-hypothesizing-after-the-results-are-known",
+    "href": "12-deteccion-de-sesgos.html#harking-hypothesizing-after-the-results-are-known",
+    "title": "13  12. Detección de Sesgos",
+    "section": "14.3 12.3. HARKing (Hypothesizing After the Results are Known)",
+    "text": "14.3 12.3. HARKing (Hypothesizing After the Results are Known)\nHARKing (Formular Hipótesis Después de Conocer los Resultados) es el sesgo de presentar una hipótesis exploratoria (descubierta después del análisis de datos) como si fuera una hipótesis confirmatoria (establecida antes del análisis de datos).\n\nEfecto: Distorsiona el proceso científico y la confianza que se le debe dar al hallazgo, ya que infla la probabilidad de que los resultados significativos sean simplemente coincidencias.",
+    "crumbs": [
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>12. Detección de Sesgos</span>"
+    ]
+  },
+  {
+    "objectID": "12-deteccion-de-sesgos.html#estrategias-de-mitigación",
+    "href": "12-deteccion-de-sesgos.html#estrategias-de-mitigación",
+    "title": "13  12. Detección de Sesgos",
+    "section": "14.4 12.4. Estrategias de Mitigación",
+    "text": "14.4 12.4. Estrategias de Mitigación\nLa mejor defensa contra la mayoría de las formas de sesgo (especialmente el \\(p\\)-hacking y el HARKing) es la Transparencia y el Prerregistro del estudio (Capítulo 13).\n\nPrerregistro: Al preespecificar el plan de análisis, el \\(N\\) de la muestra y las hipótesis antes de la recolección de datos, se convierte en imposible el \\(p\\)-hacking.\nInformar Todos los Resultados: Publicar estudios nulos (que a menudo se logran al hacer la investigación con alta potencia, como se discute en el Capítulo 8) mitiga el sesgo de publicación.\nDatos Abiertos: Compartir el conjunto de datos y el código (Capítulo 14) permite que otros investigadores evalúen la flexibilidad en los análisis y confirmen la validez de los procedimientos.",
+    "crumbs": [
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>12. Detección de Sesgos</span>"
+    ]
+  },
+  {
+    "objectID": "13-prerregistro-y-transparencia.html",
+    "href": "13-prerregistro-y-transparencia.html",
+    "title": "14  13. Prerregistro y Transparencia",
+    "section": "",
+    "text": "15 13. Prerregistro y Transparencia\nDurante el tiempo que se han utilizado los datos para respaldar afirmaciones científicas, la gente ha intentado presentar datos de manera selectiva en línea con lo que desean que sea cierto. Un ejemplo de un científico que hizo esto es Daryl Bem, un parapsicólogo que estudia si las personas tienen percepción extrasensorial que les permite predecir el futuro. Al utilizar informes selectivos y publicar 9 estudios en una revista de primer nivel afirmando que la gente podía predecir el futuro, Bem desencadenó la crisis de replicación en psicología en 2011.\nEn un estudio que realizó (Bem, 2011), los participantes presionaron un botón izquierdo o derecho para predecir si una imagen estaba oculta detrás de una cortina izquierda o derecha. Hay 5 pruebas contra el promedio de adivinación (para imágenes eróticas, neutrales, negativas, positivas y ‘románticas pero no eróticas’). Una corrección de Bonferroni requeriría usar un nivel alfa de 0.01 (un alfa de 0.05 / 5 pruebas). El resultado principal, que los participantes adivinaron la posición futura de las imágenes eróticas por encima del promedio de adivinación, con un p-valor de 0.013, no le habría permitido a Bem rechazar la hipótesis nula, dado un nivel alfa preespecificado y corregido.\n¿Cree usted que Bem predijo un efecto solo para las imágenes eróticas antes de haber visto los datos? Podría desconfiar de que Bem predijo un efecto solo para este grupo específico de estímulos, y que estaba ‘cocinando’—haciendo multitud de observaciones y seleccionando el resultado significativo, solo para HARK (Hypothesizing After the Results are Known, o Formular Hipótesis Después de Conocer los Resultados) en la introducción del estudio. ¿Deberían otros investigadores dudar de que pueden tomar las afirmaciones en el artículo de Bem al pie de la letra?",
+    "crumbs": [
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>13. Prerregistro y Transparencia</span>"
+    ]
+  },
+  {
+    "objectID": "13-prerregistro-y-transparencia.html#prerregistro-del-plan-de-análisis-estadístico",
+    "href": "13-prerregistro-y-transparencia.html#prerregistro-del-plan-de-análisis-estadístico",
+    "title": "14  13. Prerregistro y Transparencia",
+    "section": "15.1 13.1. Prerregistro del Plan de Análisis Estadístico",
+    "text": "15.1 13.1. Prerregistro del Plan de Análisis Estadístico\nEn el pasado, los investigadores propusieron soluciones para prevenir el sesgo en la literatura debido a las tasas de error Tipo I infladas como resultado de la presentación selectiva de informes.\n\nBakan (1966) discutió lo problemático de elegir si realizar o no una prueba de hipótesis direccional después de mirar los datos. Si un investigador elige realizar una prueba de hipótesis direccional solo cuando la prueba de hipótesis bilateral produce un p-valor entre 0.05 y 0.10 (es decir, el investigador decide después de ver el resultado que una prueba unilateral también estaba justificada y reporta el p-valor como 0.04, unilateral), entonces, en la práctica, la tasa de error Tipo I se duplica (es decir, es 0.10 en lugar de 0.05). Bakan (p. 431) preguntó si debería haber un registro central para registrar la decisión de ejecutar una prueba de una o dos colas antes de la recolección de datos.\nDe Groot (1969) ya señaló la importancia de “elaborar de antemano el procedimiento de investigación (o diseño experimental) en papel en la mayor medida posible”, lo que debe incluir “una declaración de los criterios de confirmación, incluyendo la formulación de hipótesis nulas, si las hay, la elección de la(s) prueba(s) estadística(s), el nivel de significancia y los intervalos de confirmación resultantes”.\n\nEl auge de internet ha hecho posible crear registros en línea que permiten a los investigadores especificar el diseño de su estudio, el plan de muestreo y el plan de análisis estadístico antes de la recolección de datos. Una marca de tiempo, y a veces incluso un Identificador de Objeto Digital (DOI) dedicado, comunica de manera transparente a los pares que la pregunta de investigación y el plan de análisis fueron especificados antes de mirar los datos. Esto es importante, porque no se puede probar una hipótesis con los datos que se utilizan para generarla.\nEn campos como la medicina, ahora se requiere el registro de ciertos estudios, como los ensayos clínicos. El requisito de registrar el resultado primario de interés en ClinicalTrials.gov se correlacionó con una caída sustancial en el número de estudios que observaron resultados estadísticamente significativos, lo que podría indicar que la eliminación de la flexibilidad en cómo se analizaron los datos evitó que se informaran resultados falsos positivos.\nUn paso más allá del registro de estudios es el formato de publicación conocido como Informes Registrados (Registered Reports). Las revistas que los publican evalúan los estudios basándose en la introducción, el método y los análisis estadísticos, pero no en los resultados. Los Informes Registrados tienen una probabilidad sustancialmente mayor de informar hallazgos que no respaldan las hipótesis, en comparación con la literatura científica tradicional.",
+    "crumbs": [
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>13. Prerregistro y Transparencia</span>"
+    ]
+  },
+  {
+    "objectID": "13-prerregistro-y-transparencia.html#el-valor-del-prerregistro",
+    "href": "13-prerregistro-y-transparencia.html#el-valor-del-prerregistro",
+    "title": "14  13. Prerregistro y Transparencia",
+    "section": "15.2 13.2. El valor del prerregistro",
+    "text": "15.2 13.2. El valor del prerregistro\nLos prerregistros son documentos con marca de tiempo que describen los análisis que los investigadores planean realizar, al tiempo que comunican de manera transparente que los análisis no han sido seleccionados basándose en información en los datos que determina el resultado.\nEl objetivo principal es permitir que otros evalúen de manera transparente la capacidad de una prueba para falsificar una predicción, o cuán severamente se ha probado una hipótesis. La severidad de una prueba está determinada por cuán probable es que una predicción sea probada errónea cuando es errónea, y probada correcta cuando es correcta.\nEl prerregistro tiene el objetivo de evitar que los investigadores reduzcan de manera no transparente la capacidad de la prueba para falsificar una predicción, al permitir a los lectores ver cómo planearon probar su predicción antes de tener acceso a los datos.",
+    "crumbs": [
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>13. Prerregistro y Transparencia</span>"
+    ]
+  },
+  {
+    "objectID": "13-prerregistro-y-transparencia.html#cómo-prerregistrar",
+    "href": "13-prerregistro-y-transparencia.html#cómo-prerregistrar",
+    "title": "14  13. Prerregistro y Transparencia",
+    "section": "15.3 13.3. Cómo prerregistrar",
+    "text": "15.3 13.3. Cómo prerregistrar\n(Ver sección 13.8 para plataformas y pasos prácticos)",
+    "crumbs": [
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>13. Prerregistro y Transparencia</span>"
+    ]
+  },
+  {
+    "objectID": "13-prerregistro-y-transparencia.html#estándares-de-reporte-de-artículos-de-revistas-journal-article-reporting-standards-jars",
+    "href": "13-prerregistro-y-transparencia.html#estándares-de-reporte-de-artículos-de-revistas-journal-article-reporting-standards-jars",
+    "title": "14  13. Prerregistro y Transparencia",
+    "section": "15.4 13.4. Estándares de Reporte de Artículos de Revistas (Journal Article Reporting Standards, JARS)",
+    "text": "15.4 13.4. Estándares de Reporte de Artículos de Revistas (Journal Article Reporting Standards, JARS)",
+    "crumbs": [
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>13. Prerregistro y Transparencia</span>"
+    ]
+  },
+  {
+    "objectID": "13-prerregistro-y-transparencia.html#desviación-de-un-prerregistro",
+    "href": "13-prerregistro-y-transparencia.html#desviación-de-un-prerregistro",
+    "title": "14  13. Prerregistro y Transparencia",
+    "section": "15.5 13.5. Desviación de un Prerregistro",
+    "text": "15.5 13.5. Desviación de un Prerregistro\nSe puede justificar desviarse de un prerregistro si esto aumenta la validez de la inferencia. Por ejemplo, si el prerregistro falló en considerar que algunos participantes estarían demasiado ebrios para responder o si se olvidó especificar qué hacer si los datos no se distribuían normalmente, cambiar el plan de análisis original sería visto como una prueba más severa.\nLas desviaciones pueden incluir:\n\nEventos imprevistos.\nErrores en el prerregistro.\nInformación faltante.\nViolaciones de supuestos no probados.\nFalsificación de hipótesis auxiliares.\n\nPara cada desviación, se debe especificar claramente cuándo, dónde y por qué ocurrió la desviación del prerregistro, seguido de una evaluación del impacto de la desviación en la severidad de la prueba (y, cuando sea relevante, la validez de la inferencia).",
+    "crumbs": [
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>13. Prerregistro y Transparencia</span>"
+    ]
+  },
+  {
+    "objectID": "13-prerregistro-y-transparencia.html#qué-aspecto-tiene-una-estrategia-analítica-formalizada",
+    "href": "13-prerregistro-y-transparencia.html#qué-aspecto-tiene-una-estrategia-analítica-formalizada",
+    "title": "14  13. Prerregistro y Transparencia",
+    "section": "15.6 13.6. ¿Qué aspecto tiene una Estrategia Analítica Formalizada?",
+    "text": "15.6 13.6. ¿Qué aspecto tiene una Estrategia Analítica Formalizada?\nUna prueba de hipótesis evalúa una predicción que puede describirse en un:\n\nNivel Conceptual: (p. ej., “Aprender a prerregistrar mejora tu investigación”).\nNivel Operacionalizado: (p. ej., “Los investigadores que han leído este texto controlarán su nivel alfa más cuidadosamente”).\nNivel Estadístico: (p. ej., “Una prueba t independiente mostrará un número estadísticamente menor de formas en que la hipótesis podría probarse”).\n\nEn un documento de prerregistro, el objetivo debe ser especificar la hipótesis en detalle en el nivel estadístico. Es importante reconocer que no todos los prerregistros tienen suficiente detalle para ser tratados como pruebas confirmatorias de predicciones.",
+    "crumbs": [
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>13. Prerregistro y Transparencia</span>"
+    ]
+  },
+  {
+    "objectID": "13-prerregistro-y-transparencia.html#estás-listo-para-prerregistrar-una-prueba-de-hipótesis",
+    "href": "13-prerregistro-y-transparencia.html#estás-listo-para-prerregistrar-una-prueba-de-hipótesis",
+    "title": "14  13. Prerregistro y Transparencia",
+    "section": "15.7 13.7. ¿Estás listo para prerregistrar una prueba de hipótesis?",
+    "text": "15.7 13.7. ¿Estás listo para prerregistrar una prueba de hipótesis?\nNo es suficiente simplemente prerregistrar. El prerregistro debe tener suficiente detalle para tratarlo como una prueba confirmatoria de predicciones.",
+    "crumbs": [
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>13. Prerregistro y Transparencia</span>"
+    ]
+  },
+  {
+    "objectID": "13-prerregistro-y-transparencia.html#evalúate-y-aspectos-prácticos",
+    "href": "13-prerregistro-y-transparencia.html#evalúate-y-aspectos-prácticos",
+    "title": "14  13. Prerregistro y Transparencia",
+    "section": "15.8 13.8. Evalúate y Aspectos Prácticos",
+    "text": "15.8 13.8. Evalúate y Aspectos Prácticos\n\n15.8.1 13.8.1. Aspectos Prácticos de un Prerregistro en Línea\nSolo se deben prerregistrar estudios reales.\n\n\n15.8.2 13.8.2. Prerregistro en PsychArchives por ZPID\nPsychArchives (https://pasa.psycharchives.org) recomienda enviar el prerregistro en un archivo PDF/A, que es un formato que no permite ciertas restricciones que obstaculizan el archivado a largo plazo. Este servicio requiere especificar metadatos para los archivos, lo que facilita que sean encontrados.\n\n\n15.8.3 13.8.3. Prerregistro en el Open Science Framework\nTodos los prerregistros en el OSF se harán públicos después de cuatro años.\nPara compartir con los revisores, el OSF permite crear un enlace de solo lectura (‘view-only link’) sin revelar la identidad del autor.\n\n\n15.8.4 13.8.4. Prerregistro en AsPredicted\nAsPredicted se centra en la simplicidad y tiene un límite de palabras. Esto se logra eliminando las justificaciones para las elecciones del análisis. Si el límite de palabras restringe la capacidad de evaluar la severidad de la prueba, se puede usar la plantilla de AsPredicted en el OSF. AsPredicted permite descargar un PDF anónimo para fines de revisión por pares.",
+    "crumbs": [
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>13. Prerregistro y Transparencia</span>"
+    ]
+  },
+  {
+    "objectID": "14-reproducibilidad-computacional.html",
+    "href": "14-reproducibilidad-computacional.html",
+    "title": "15  14. Reproducibilidad como elemento fundamental de la ciencia",
+    "section": "",
+    "text": "16 14. Reproducibilidad como elemento fundamental de la ciencia",
+    "crumbs": [
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>14. Reproducibilidad como elemento fundamental de la ciencia</span>"
+    ]
+  },
+  {
+    "objectID": "14-reproducibilidad-computacional.html#definiciones-de-reproducibilidad",
+    "href": "14-reproducibilidad-computacional.html#definiciones-de-reproducibilidad",
+    "title": "15  14. Reproducibilidad como elemento fundamental de la ciencia",
+    "section": "16.1 14.1. Definiciones de Reproducibilidad",
+    "text": "16.1 14.1. Definiciones de Reproducibilidad\nLa reproducibilidad es un paso esencial para lograr la verdad y la confianza en los hallazgos científicos. El término se utiliza de diferentes maneras:\n\nReplicación (Replication): Un estudio independiente utiliza un nuevo conjunto de datos para intentar confirmar el hallazgo original (Capítulo 17).\nReproducibilidad Computacional (Computational Reproducibility): También conocida como Reproducibilidad del Análisis o Re-análisis. Ocurre cuando un investigador utiliza los mismos datos, código y procedimientos del estudio original y llega al mismo resultado numérico.\nReproducibilidad Metodológica (Metodological Reproducibility): La capacidad de un investigador para seguir los métodos descritos en la publicación y recopilar datos en un nuevo estudio.\n\nLa reproducibilidad computacional es la base de la transparencia. Si no se puede recrear el análisis, no podemos verificar la exactitud de los resultados reportados.",
+    "crumbs": [
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>14. Reproducibilidad como elemento fundamental de la ciencia</span>"
+    ]
+  },
+  {
+    "objectID": "14-reproducibilidad-computacional.html#por-qué-es-baja-la-reproducibilidad-computacional",
+    "href": "14-reproducibilidad-computacional.html#por-qué-es-baja-la-reproducibilidad-computacional",
+    "title": "15  14. Reproducibilidad como elemento fundamental de la ciencia",
+    "section": "16.2 14.2. ¿Por qué es baja la Reproducibilidad Computacional?",
+    "text": "16.2 14.2. ¿Por qué es baja la Reproducibilidad Computacional?\nLa incapacidad de replicar un análisis se debe a menudo a la falta de tres componentes clave:\n\nFalta de Datos Abiertos: El conjunto de datos original no se comparte o es inaccesible.\nFalta de Código Abierto: El código utilizado para limpiar, procesar y analizar los datos no se comparte.\nFalta de Entorno de Computación Documentado: El software, la versión de los paquetes y el sistema operativo no se especifican, lo que dificulta la ejecución del código.",
+    "crumbs": [
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>14. Reproducibilidad como elemento fundamental de la ciencia</span>"
+    ]
+  },
+  {
+    "objectID": "14-reproducibilidad-computacional.html#herramientas-para-la-reproducibilidad-computacional",
+    "href": "14-reproducibilidad-computacional.html#herramientas-para-la-reproducibilidad-computacional",
+    "title": "15  14. Reproducibilidad como elemento fundamental de la ciencia",
+    "section": "16.3 14.3. Herramientas para la Reproducibilidad Computacional",
+    "text": "16.3 14.3. Herramientas para la Reproducibilidad Computacional\nPara lograr la reproducibilidad, los investigadores deben proporcionar tanto el código como los datos, y utilizar herramientas que vinculen explícitamente el texto del informe con el código que lo generó.\n\n16.3.1 14.3.1. Literate Programming (Programación Literaria)\nEste enfoque, ejemplificado por herramientas como R Markdown o Jupyter Notebooks, combina prosa (el informe o el manuscrito) con bloques de código ejecutable. Esto garantiza que cualquier número, gráfico o tabla en el informe se derive directamente del código proporcionado.\n\nVentaja: Permite que los revisores o lectores ejecuten el código línea por línea y verifiquen que el código genera el resultado reportado.\n\n\n\n16.3.2 14.3.2. Contenedores y Entornos Virtuales\nPara abordar el problema del entorno de computación (es decir, las diferencias en las versiones de software entre ordenadores), los investigadores pueden utilizar herramientas de contenedorización como Docker o virtualización.\n\nEstas herramientas empaquetan la versión exacta del sistema operativo, el software estadístico y todas las bibliotecas dependientes. Esto permite que cualquiera ejecute el código exactamente en el mismo entorno utilizado por el autor original.\n\n\n\n16.3.3 14.3.3. Repositorios de Código y Datos\n\nDatos Abiertos: Los datos deben alojarse en un repositorio persistente con un Identificador de Objeto Digital (DOI), como el Open Science Framework (OSF), Zenodo o Dryad.\nCódigo Abierto: El código del análisis debe alojarse en repositorios con control de versiones, como GitHub o GitLab.",
+    "crumbs": [
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>14. Reproducibilidad como elemento fundamental de la ciencia</span>"
+    ]
+  },
+  {
+    "objectID": "14-reproducibilidad-computacional.html#buenas-prácticas-de-codificación",
+    "href": "14-reproducibilidad-computacional.html#buenas-prácticas-de-codificación",
+    "title": "15  14. Reproducibilidad como elemento fundamental de la ciencia",
+    "section": "16.4 14.4. Buenas Prácticas de Codificación",
+    "text": "16.4 14.4. Buenas Prácticas de Codificación\nIncluso con código y datos abiertos, el análisis solo es reproducible si el código es comprensible. Las buenas prácticas de codificación incluyen:\n\nComentarios: Usar comentarios extensos para explicar los pasos del análisis.\nConvenciones de Nomenclatura: Usar nombres de variables y archivos que sean claros y consistentes.\nNo Codificación Manual (Manual Coding): Minimizar los pasos manuales (como copiar y pegar de una hoja de cálculo a un documento) y, en su lugar, automatizar todo el proceso.",
+    "crumbs": [
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>14. Reproducibilidad como elemento fundamental de la ciencia</span>"
+    ]
+  },
+  {
+    "objectID": "14-reproducibilidad-computacional.html#la-reproducibilidad-como-mínimo",
+    "href": "14-reproducibilidad-computacional.html#la-reproducibilidad-como-mínimo",
+    "title": "15  14. Reproducibilidad como elemento fundamental de la ciencia",
+    "section": "16.5 14.5. La Reproducibilidad como Mínimo",
+    "text": "16.5 14.5. La Reproducibilidad como Mínimo\nLa reproducibilidad computacional debe considerarse el estándar mínimo de la investigación. Un análisis no reproducible es equivalente a un análisis que no ha sido verificado.\nLa reproducibilidad reduce los errores inocentes, previene el sesgo de p-hacking al exponer la flexibilidad en el análisis, y acelera la ciencia al permitir que otros investigadores utilicen el código para extender o verificar los hallazgos.",
+    "crumbs": [
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>14. Reproducibilidad como elemento fundamental de la ciencia</span>"
+    ]
+  },
+  {
+    "objectID": "15-integridad-de-la-investigacion.html",
+    "href": "15-integridad-de-la-investigacion.html",
+    "title": "16  15. Integridad de la Investigación",
+    "section": "",
+    "text": "17 15. Integridad de la Investigación",
+    "crumbs": [
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>15. Integridad de la Investigación</span>"
+    ]
+  },
+  {
+    "objectID": "15-integridad-de-la-investigacion.html#definición-de-mala-conducta-científica",
+    "href": "15-integridad-de-la-investigacion.html#definición-de-mala-conducta-científica",
+    "title": "16  15. Integridad de la Investigación",
+    "section": "17.1 15.1. Definición de Mala Conducta Científica",
+    "text": "17.1 15.1. Definición de Mala Conducta Científica\nLa Integridad de la Investigación se refiere a las prácticas y principios éticos que guían la investigación, desde la concepción de la pregunta hasta el informe final.\nLa Mala Conducta Científica (Research Misconduct) se define generalmente como la fabricación, falsificación o plagio (FFP) al proponer, realizar o revisar investigaciones, o al informar los resultados de la investigación.\n\nFabricación: Inventar datos o resultados y registrarlos o informarlos.\nFalsificación: Manipular materiales, equipos o procesos de investigación, o cambiar u omitir datos o resultados, de modo que la investigación no se represente con precisión en el registro de la investigación.\nPlagio: La apropiación de las ideas, procesos, resultados o palabras de otra persona sin dar el debido crédito.\n\nEs crucial distinguir la mala conducta intencional (FFP) de los errores honestos o las diferencias de opinión.",
+    "crumbs": [
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>15. Integridad de la Investigación</span>"
+    ]
+  },
+  {
+    "objectID": "15-integridad-de-la-investigacion.html#prácticas-de-investigación-cuestionables-questionable-research-practices-qrps",
+    "href": "15-integridad-de-la-investigacion.html#prácticas-de-investigación-cuestionables-questionable-research-practices-qrps",
+    "title": "16  15. Integridad de la Investigación",
+    "section": "17.2 15.2. Prácticas de Investigación Cuestionables (Questionable Research Practices, QRPs)",
+    "text": "17.2 15.2. Prácticas de Investigación Cuestionables (Questionable Research Practices, QRPs)\nLas Prácticas de Investigación Cuestionables (QRPs) son acciones que no cumplen con la definición de mala conducta científica, pero que son antiéticas porque distorsionan la evidencia científica y pueden inflar la tasa de error Tipo I.\nLas QRPs son la causa de gran parte del sesgo de la literatura (Capítulo 12) y a menudo se denominan los “pecados menores” de la ciencia. Ejemplos comunes incluyen:\n\n\\(p\\)-Hacking: Ajustar los análisis para obtener un valor \\(p\\) significativo (Capítulo 12).\nHARKing: Presentar hipótesis exploratorias como si fueran confirmatorias (Capítulo 12).\nPresentación Selectiva de Informes: Omitir resultados que no son estadísticamente significativos o que no se ajustan a la narrativa deseada.\nMuestreo Opcional no Planificado: Detener la recolección de datos tan pronto como el valor \\(p\\) es significativo, inflando el \\(\\alpha\\) (Capítulo 10).",
+    "crumbs": [
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>15. Integridad de la Investigación</span>"
+    ]
+  },
+  {
+    "objectID": "15-integridad-de-la-investigacion.html#el-papel-de-las-instituciones-y-los-códigos-de-conducta",
+    "href": "15-integridad-de-la-investigacion.html#el-papel-de-las-instituciones-y-los-códigos-de-conducta",
+    "title": "16  15. Integridad de la Investigación",
+    "section": "17.3 15.3. El Papel de las Instituciones y los Códigos de Conducta",
+    "text": "17.3 15.3. El Papel de las Instituciones y los Códigos de Conducta\nLas instituciones de investigación y los organismos de financiación tienen la responsabilidad de promover la integridad a través de:\n\nEducación: Proporcionar formación sobre ética e integridad de la investigación.\nSupervisión: Implementar mecanismos para investigar las acusaciones de mala conducta (Comités de Ética).\nCódigos de Conducta: Establecer reglas claras sobre lo que constituye una conducta de investigación aceptable y lo que no lo es.",
+    "crumbs": [
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>15. Integridad de la Investigación</span>"
+    ]
+  },
+  {
+    "objectID": "15-integridad-de-la-investigacion.html#integridad-y-replicación",
+    "href": "15-integridad-de-la-investigacion.html#integridad-y-replicación",
+    "title": "16  15. Integridad de la Investigación",
+    "section": "17.4 15.4. Integridad y Replicación",
+    "text": "17.4 15.4. Integridad y Replicación\nLa falta de integridad, ya sea por FFP o por QRPs, tiene un impacto directo en la crisis de replicación (Capítulo 17). Los hallazgos basados en malas prácticas tienen menos probabilidades de replicarse:\n\nLa Fabricación o Falsificación de datos crea resultados que son artificiales y, por lo tanto, no se encontrarán en estudios posteriores.\nLas QRPs inflan la tasa de falsos positivos (\\(\\alpha\\)), lo que significa que el resultado publicado es más probable que sea un error Tipo I.",
+    "crumbs": [
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>15. Integridad de la Investigación</span>"
+    ]
+  },
+  {
+    "objectID": "15-integridad-de-la-investigacion.html#fomentar-una-cultura-de-integridad",
+    "href": "15-integridad-de-la-investigacion.html#fomentar-una-cultura-de-integridad",
+    "title": "16  15. Integridad de la Investigación",
+    "section": "17.5 15.5. Fomentar una Cultura de Integridad",
+    "text": "17.5 15.5. Fomentar una Cultura de Integridad\nUna cultura de integridad se fomenta a través de la transparencia y las prácticas de Ciencia Abierta:\n\nPrerregistro: Elimina la flexibilidad que permite el \\(p\\)-hacking (Capítulo 13).\nDatos y Código Abiertos: Permite la reproducibilidad computacional y el escrutinio de los análisis (Capítulo 14).\nInformes Registrados: Cambian el incentivo de “encontrar un resultado significativo” a “hacer ciencia sólida” al basar la aceptación en el método, no en el resultado.\nCitación Adecuada: Reconocer el trabajo de otros (prevención del plagio).\n\nLa mejor manera de proteger la integridad de la investigación es crear estructuras y flujos de trabajo que hagan que las QRPs sean más difíciles de ejecutar y más fáciles de detectar.",
+    "crumbs": [
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>15. Integridad de la Investigación</span>"
+    ]
+  },
+  {
+    "objectID": "15-integridad-de-la-investigacion.html#abordar-el-impacto-de-las-malas-prácticas",
+    "href": "15-integridad-de-la-investigacion.html#abordar-el-impacto-de-las-malas-prácticas",
+    "title": "16  15. Integridad de la Investigación",
+    "section": "17.6 15.6. Abordar el Impacto de las Malas Prácticas",
+    "text": "17.6 15.6. Abordar el Impacto de las Malas Prácticas\nCuando se identifica una mala práctica, el objetivo no es solo la sanción, sino proteger el registro científico. Esto puede implicar:\n\nRetracciones: Retirar publicaciones cuando se encuentra FFP o QRPs graves.\nCorrecciones: Emitir correcciones formales para errores honestos que afectan las conclusiones.\n\nLa autocorrección de la ciencia depende de que los investigadores informen de manera honesta y completa, incluso cuando los resultados son inconvenientes o no significativos.",
+    "crumbs": [
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>15. Integridad de la Investigación</span>"
+    ]
+  },
+  {
+    "objectID": "16-sesgo-y-escepticismo.html",
+    "href": "16-sesgo-y-escepticismo.html",
+    "title": "17  16. Sesgo de Confirmación y Escepticismo Organizado",
+    "section": "",
+    "text": "18 16. Sesgo de Confirmación y Escepticismo Organizado\nNo puedo dar a ningún científico, de cualquier edad, un mejor consejo que este: la intensidad de la convicción de que una hipótesis es verdadera no tiene relación con si realmente lo es. La importancia de la fuerza de nuestra convicción es únicamente proporcionar un incentivo proporcionalmente fuerte para averiguar si la hipótesis resistirá una evaluación crítica. — Medawar, 1979, Advice to a Young Scientist\nSer científico es una carrera gratificante pero desafiante. Hacer ciencia puede conducir a la satisfacción intelectual de hacer descubrimientos o aumentar nuestra comprensión sobre cuestiones importantes, a la sensación gratificante de contribuir a soluciones para problemas relevantes que enfrenta la sociedad, a interactuar con colegas estimulantes, al reconocimiento de pares y del público en general, así como a la posibilidad de obtener un ingreso decente si te conviertes en un experto internacionalmente solicitado en tu campo. Al mismo tiempo, puede ser una carrera difícil que requiere mucho trabajo, incertidumbre sobre tu futuro profesional, momentos en los que se logra poco avance en el conocimiento, competitividad o incluso animosidad hacia otros científicos, y una sensación constante de presión por alcanzar metas (National Academy of Sciences et al., 2009).\nAunque la ciencia es un esfuerzo colectivo, los científicos a menudo tienen un fuerte compromiso personal con su trabajo. Están motivados para tener éxito, y se sienten decepcionados si su trabajo no lo logra.\nEn su libro “La ciencia moderna y la naturaleza de la vida”, William Beck (1957) escribe: Cada paso sucesivo en el método científico exige una mayor inversión emocional y añade dificultad a mantenerse objetivo. Cuando el ego está implicado, la autocrítica puede ser difícil (¿quién ha oído hablar de dos científicos compitiendo para demostrar que el otro tiene razón?). Siempre se tiene un interés personal en que el resultado sea exitoso y, nos guste admitirlo o no, cada uno de nosotros siente la presión de tener éxito, de abrir ‘nuevos caminos’ quizás antes de haber dominado los anteriores. Es evidente, por tanto, cómo las tendencias neuróticas latentes pueden influir y distorsionar los mandatos puros del método científico, y generar error, valores poco realistas, ansiedad y —seamos sinceros, dado que la ciencia se realiza a puerta cerrada— deshonestidad. Como los científicos son humanos y la ciencia no lo es, como en todos los campos, el fino hilo de la integridad a veces se tensa hasta el punto de romperse.\nEl reconocimiento de que la ciencia es una actividad humana no ha pasado desapercibido. En 1620, Francis Bacon escribió el libro Novum Organum (o Nuevo Método), que proporcionó una primera descripción de un método científico moderno, centrado en el empirismo y el razonamiento inductivo. Bacon ya comprendía, hace más de 400 años, que las personas no son observadoras pasivas, y ofrece una descripción muy temprana de lo que hoy llamaríamos sesgo de confirmación: El entendimiento humano, una vez que se ha planteado una proposición (ya sea por aceptación general y creencia, o por el placer que proporciona), fuerza todo lo demás a añadir apoyo y confirmación; y aunque puedan existir ejemplos abundantes y convincentes en sentido contrario, no los observa o los desprecia, o los descarta con alguna distinción, con prejuicio violento e injusto, antes que sacrificar la autoridad de sus primeras conclusiones. Bien respondió quien, al ser mostrado en un templo las tablillas votivas colgadas por quienes escaparon del naufragio, preguntó si entonces se debía reconocer el poder de los dioses, inquiriendo: “¿Y dónde están los retratos de quienes perecieron a pesar de sus votos?”. Toda superstición es bastante similar, ya se trate de astrología, sueños, presagios, juicios retributivos o cosas parecidas, en todas las cuales los creyentes engañados observan los eventos que se cumplen, pero descuidan y omiten los fallos, aunque sean mucho más comunes. Pero este mal se insinúa aún más astutamente en la filosofía y las ciencias, en las cuales una máxima establecida vicia y gobierna todas las demás circunstancias, aunque estas últimas sean mucho más dignas de confianza. Además, incluso sin esa prisa y falta de reflexión (que ya hemos mencionado), es el error peculiar y perpetuo del entendimiento humano el sentirse más movido y excitado por afirmaciones que por negaciones, cuando en realidad debería ser imparcial. De hecho, para establecer un verdadero axioma, la instancia negativa es la más poderosa.\nEn un artículo clásico sobre el sesgo de confirmación, Nickerson (1998) lo define como: La búsqueda o interpretación de evidencia de maneras que favorecen las creencias existentes, expectativas o una hipótesis mantenida.\nLos factores humanos que influyen (o sesgan) la generación del conocimiento científico han recibido relativamente poca atención por parte de los filósofos de la ciencia, aunque sería ingenuo creer que los científicos persiguen objetivamente la verdad. Como escribe el filósofo de la ciencia Chang (2022): Existe una tendencia en la filosofía de la ciencia a presentar al científico como un ser fantasmal que simplemente tiene grados de creencia en varias afirmaciones descriptivas, las cuales se ajustan según ciertas reglas del pensamiento racional (por ejemplo, el teorema de Bayes), eliminando así cualquier necesidad de juicio real. Todo lo que no encaja en esta visión extraña y empobrecida, tendemos a denigrarlo como asuntos de ‘mera’ psicología o sociología.\nEl sociólogo de la ciencia Robert Merton (1942) creía que cuatro conjuntos de imperativos institucionales —universalismo, comunismo, desinterés y escepticismo organizado— conforman el ethos de la ciencia moderna.\nComo ocurre con cualquier norma, no todos los individuos la suscriben completamente y, más importante aún, no todos se comportan de acuerdo con ellas (al menos no todo el tiempo). Este es el patrón que Anderson y colegas (2007) encontraron en una encuesta realizada a científicos de EE. UU.. Los científicos suscriben las normas mertonianas (la puntuación máxima posible es 12). También admiten que no siempre siguen estas normas en su propio comportamiento, y creen que otras personas aún las siguen menos. El patrón es opuesto en el caso de las contranormas (por ejemplo, el secretismo, el interés personal, etc.).\nFigura 1: Promedios de adhesión normativa y contranormativa, y comportamiento según Anderson et al. (2007).\nCuando se les pregunta, los científicos no consideran que los miembros de su propia profesión sean completamente objetivos. En una interesante serie de entrevistas a científicos involucrados en el alunizaje del Apolo, Mitroff (1974) concluyó: Cada uno de los científicos entrevistados en la primera ronda de entrevistas indicó que pensaba que la noción del científico objetivo y emocionalmente desinteresado era ingenua. Su artículo está lleno de citas excelentes que ilustran esta conclusión, como por ejemplo: Científico B: El científico no implicado y sin emociones es tan ficticio como el científico loco que destruirá el mundo por conocimiento. La mayoría de los científicos que conozco tienen teorías y están buscando datos que las respalden; no están examinando los datos de forma impersonal en busca de una teoría que se ajuste a ellos. Hay que hacer una clara distinción entre no ser objetivo y hacer trampa. Un buen científico no se negará a cambiar su teoría si encuentra una gran cantidad de evidencia que no la apoya, pero en esencia, está intentando defenderla. Sin compromiso [emocional], uno no tendría la energía ni el impulso para seguir adelante, a veces contra obstáculos extremadamente difíciles. No falsificas conscientemente la evidencia en ciencia, pero le das menos importancia a un dato que te contradice. Ningún científico respetable hace esto conscientemente, pero sí lo haces de forma subconsciente. Científico G: Cada idea científica necesita un representante personal que la defienda y la nutra, para que no sufra una muerte prematura.\nEstas entrevistas revelan que los científicos creen que el compromiso con una idea o teoría específica es necesario si se quiere tener la motivación para seguir explorándola. En otras palabras, el sesgo de confirmación incluso podría tener un papel positivo que desempeñar.\nInvestigadoras e investigadores en campos como la psicología de la ciencia, la sociología de la ciencia y la metaciencia intentan describir las formas en que quienes investigan caen víctimas del sesgo de confirmación. Por ejemplo, Mahoney (1979) concluyó que: El científico no es inmune a los sesgos perceptivos y con frecuencia reacciona con bastante emotividad ante cuestiones técnicas y epistemológicas. Aún está por demostrarse que los científicos sean más lógicos que quienes no lo son en la realización e interpretación de su trabajo. El científico puede, a veces, mostrarse poco receptivo a datos relevantes y —particularmente en el caso de quienes desarrollan teorías— propenso a especulaciones apresuradas y a una tenacidad dogmática. Informes sobre fabricación de datos y sesgo del experimentador sugieren que tales fenómenos no son ni raros ni triviales. Los científicos tienden a ser reservados y desconfiados hasta que logran establecer públicamente la prioridad de sus hallazgos.\nEntonces, ¿por qué la ciencia parece seguir funcionando, a pesar de todas estas limitaciones tan humanas? Una manera de entenderlo es considerar la ciencia como un método que usan los grupos de personas para hacer afirmaciones, aplicando procedimientos destinados a reducir el rol del sesgo de confirmación. Aunque la ciencia abarca mucho más que un conjunto de reglas para evitar este sesgo, muchas prácticas —como la revisión por pares, la realización de estudios de replicación independientes o la especificación del nivel alfa antes de observar los datos— solo se entienden desde esta perspectiva.\nAlgunas y algunos científicos consideran los esfuerzos activos por resistir el sesgo de confirmación como una característica esencial de una buena práctica científica. Como dijo Feynman: El primer principio es que no debes engañarte a ti mismo —y tú eres la persona más fácil de engañar. — Feynman (1974)",
+    "crumbs": [
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>16. Sesgo de Confirmación y Escepticismo Organizado</span>"
+    ]
+  },
+  {
+    "objectID": "16-sesgo-y-escepticismo.html#sesgo-de-confirmación-en-la-ciencia",
+    "href": "16-sesgo-y-escepticismo.html#sesgo-de-confirmación-en-la-ciencia",
+    "title": "17  16. Sesgo de Confirmación y Escepticismo Organizado",
+    "section": "18.1 16.1. Sesgo de confirmación en la Ciencia",
+    "text": "18.1 16.1. Sesgo de confirmación en la Ciencia\nWason (1960) creó una tarea sencilla para examinar cómo las personas ponen a prueba hipótesis. En la tarea, se recibe una serie de tres números (ej., 2, 4, 8) y la tarea es desarrollar una hipótesis sobre la regla subyacente que ha generado esos tres números. Para probar la hipótesis, se sugiere un nuevo conjunto de tres números, y se informa si sigue o no la regla.\nSi se proponen los números 3, 6, 12, se sigue la regla “el primer número se duplica, y luego se vuelve a duplicar”. Sin embargo, la regla real que había que descubrir era: “tres números en orden creciente de magnitud”.\nComo la mayoría de personas que realizan esta tarea, probablemente se probó un conjunto de tres números que confirmaban la regla que se tenía en mente. Que la regla sea confirmada te dice que puede ser correcta, pero no descarta que muchas otras reglas también lo sean. En cambio, si se prueba un conjunto de números que crees que no seguirán la regla, como por ejemplo 1, 2, 3, y descubres que sí la siguen, eso te indica con certeza que tu regla original era incorrecta.\nConfirmar y refutar predicciones es igualmente importante, pero en general las personas tienden menos a intentar demostrarse que están equivocadas. Este conocimiento sobre la psicología humana es útil, porque nos permite desarrollar métodos y procedimientos que contrarresten los efectos negativos de nuestra inclinación a querer confirmar nuestras hipótesis.\nEn su artículo titulado “Ciencia Patológica”, Langmuir (1989) discute ejemplos de sesgo de confirmación en física, como el efecto Davis-Barnes y el caso de los rayos N. En ambos casos, el escepticismo llevó a inspecciones presenciales de los experimentos, concluyendo que los resultados se debían a errores del observador. “Estos son casos donde no hay deshonestidad, pero donde las personas se dejan engañar por una falta de comprensión sobre lo que los seres humanos pueden hacerse a sí mismos: ser conducidos al error por efectos subjetivos, pensamiento ilusorio o interacciones en el umbral perceptual”.\nA veces, las y los científicos cometen fraude científico deliberado y fabrican datos. Pero no siempre está claro dónde trazar la línea entre el sesgo intencional y el no intencional. Por ejemplo, en el caso del genetista Gregor Mendel, reanálisis posteriores de sus datos por Ronald Fisher revelaron que sus resultados eran sospechosamente cercanos a los resultados esperados (Fisher, 1936). Aunque se coincide en que los resultados son estadísticamente inverosímiles, la causa exacta es difícil de identificar. Una de las razones para adoptar prácticas de ciencia abierta es que la comunidad científica se beneficiaría de una mayor transparencia sobre lo que ocurrió en situaciones donde surgen dudas sobre la validez de los resultados.\nNo solo las y los científicos fabrican datos: el alumnado también lo hace. En intentos de replicar un estudio como tarea de clase, Azrin y colegas (1961) encontraron que muchas y muchos estudiantes fabricaron total o parcialmente los datos porque seguir el procedimiento experimental era demasiado difícil. En un caso, 12 de 19 estudiantes admitieron inmediatamente haber fabricado datos. Podemos imaginar muchas razones por las que el alumnado fabricaría datos: no querer admitir que fallaron o simplemente para evitar hacer el trabajo real.\nEl código de conducta para la integridad en la investigación se aplica tanto al profesorado como al alumnado. Siempre que sientas presión y te veas tentado a violar este código (por ejemplo, fabricando datos), ¡no lo hagas! En su lugar, informa del problema a una o un docente, o a una persona asesora confidencial si te resulta más cómodo.\nA menudo no está claro en qué medida son conscientes de lo problemático del uso oportunista de la flexibilidad de los métodos para aumentar la probabilidad de encontrar apoyo a sus hipótesis. Kish (1959) ya había mencionado uno de los usos incorrectos de las pruebas estadísticas: “Primero, está el ‘disparo con escopeta’ en busca de diferencias significativas”. Estas preocupaciones solo recibieron una atención amplia en psicología al comienzo de la crisis de replicación, por ejemplo, a través del artículo “False-Positive Psychology: Undisclosed Flexibility in Data Collection and Analysis Allows Presenting Anything as Significant” (Simmons et al., 2011).\nUn mecanismo final mediante el cual opera el sesgo de confirmación es el conocido como sesgo de citación, donde las autoras y autores seleccionan investigaciones que respaldan sus afirmaciones, mientras ignoran evidencia que las contradice. El sesgo de citación puede prevenirse adoptando prácticas como:\n\nLeer siempre los artículos que se citan.\nBuscar de forma sistemática en la literatura, en lugar de confiar únicamente en los artículos más citados que aparecen en los primeros resultados de Google Scholar.\n\nEl sesgo de citación también puede usarse de forma activa para hacer que un artículo científico parezca más convincente para quienes lo leen. Corneille et al. (2023) mencionan este truco junto a una lista de otras estrategias que algunas personas investigadoras utilizan para que sus afirmaciones suenen más sólidas de lo que realmente son. Esto incluye:\n\nCitar trabajos débiles o que ya se sabe que son erróneos.\nHacer afirmaciones no respaldadas por evidencia.\nGeneralizar más allá de lo que los datos realmente permiten.\nSeleccionar citas de forma parcial o sacarlas de contexto.\nMinimizar las limitaciones del estudio.",
+    "crumbs": [
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>16. Sesgo de Confirmación y Escepticismo Organizado</span>"
+    ]
+  },
+  {
+    "objectID": "16-sesgo-y-escepticismo.html#escepticismo-organizado",
+    "href": "16-sesgo-y-escepticismo.html#escepticismo-organizado",
+    "title": "17  16. Sesgo de Confirmación y Escepticismo Organizado",
+    "section": "18.2 16.2. Escepticismo Organizado",
+    "text": "18.2 16.2. Escepticismo Organizado\nExisten diversas prácticas en la ciencia cuyo propósito es contrarrestar, en la medida de lo posible, los sesgos, permitiendo que las afirmaciones sean sometidas a un escrutinio crítico.\n\n18.2.1 16.2.1 Control de errores\nWilliam Gosset (Student, del test t de Student) reconocía que era útil especificar de forma objetiva la tasa de error que se va a utilizar para sacar conclusiones, dado que: “…es generalmente aceptado que dejar el rechazo de experimentos totalmente a discreción de quien los realiza es peligroso, ya que puede estar sesgado. Por ello, se ha propuesto adoptar un criterio que dependa de la probabilidad de que ocurra un error tan amplio en el número de observaciones dado.”\nEl uso de un nivel alfa fijo (por ejemplo, 0.05 en muchos campos) es un ejemplo claro de escepticismo organizado. Las afirmaciones deben pasar un criterio que controle las conclusiones erróneas antes de tomarse en serio.\n\n\n18.2.2 16.2.2 Prerregistro\nUna persona investigadora puede usar un nivel alfa fijo antes de observar los datos, pero eso no es suficiente para controlar conclusiones erróneas si, posteriormente, elige el test que desea aplicar tras haber identificado patrones interesantes. La solución a este problema es el prerregistro del plan de análisis.\nEl prerregistro es una forma de escepticismo organizado. En lugar de confiar ciegamente en que las personas reporten de forma imparcial sus análisis planificados, se les pide que usen un método de evaluación de hipótesis en el que sus pares puedan verificar si esos análisis fueron efectivamente definidos antes de tener acceso a los datos.\n\n\n18.2.3 16.2.3 Estudios de replicación independiente\nDespués de que se ha realizado un estudio y se ha alcanzado una conclusión, el siguiente paso crítico es que otras personas intenten replicar de forma independiente ese hallazgo. La replicación independiente proporciona un método para explorar hasta qué punto errores o sesgos del estudio original causaron un efecto.\nSi un hallazgo puede ser replicado de forma independiente por otras personas, es menos probable que la afirmación original esté influida por:\n\nCaracterísticas sutiles del estudio inicial.\nProblemas más graves, como fraude o una tasa inflada de errores tipo I debido a flexibilidad en el análisis de datos.\n\n\n\n18.2.4 16.2.4 Revisión por pares\nEl ejemplo prototípico de escepticismo organizado en la ciencia es el proceso de revisión por pares. La crítica desde puntos de vista alternativos es necesaria para la objetividad y es lo que limita la intrusión de preferencias subjetivas individuales en el conocimiento científico.\n\nLa revisión por pares suele ser anónima. Los investigadores a menudo afirman que firmar las revisiones dificultaría ser honestos cuando creen que un manuscrito es de baja calidad.\nEl anonimato tiene inconvenientes, ya que es posible que las personas revisoras hagan todo lo posible para evitar que ciertos resultados lleguen a publicarse.\nEl proceso determina si un artículo se publica o no, pero la calidad de la revisión por pares es tan buena como quienes revisan.\n\nLa revisión por pares cumple un papel importante, pero no se puede asumir que todos los manuscritos revisados por pares estén libres de errores o afirmaciones incorrectas. La revisión por pares post-publicación, como en plataformas como PubPeer, ha revelado con frecuencia errores que las revisiones originales pasaron por alto.\n\n\n18.2.5 16.2.5 Revisión de errores\nLos errores en la investigación ocurren, y son más probables cuando respaldan lo que esperábamos encontrar. Rosenthal (1966) ofrece una revisión de varios estudios donde se cometieron errores al registrar las respuestas de participantes, y esos errores iban en la dirección esperada por las hipótesis.\n\n\n18.2.6 16.2.6 El método de las hipótesis múltiples\nT. C. Chamberlin observaba cómo las personas científicas tienden a desarrollar afecto hacia sus propias teorías, lo que lleva a una selección y ensalzamiento inconscientes de los fenómenos que armonizan con la teoría.\nPara evitar este sesgo afectivo, Chamberlin propuso el método de las hipótesis múltiples:\n\nSe deben desarrollar varias hipótesis plausibles para explicar un fenómeno, sin otorgar a ninguna un estatus preferente.\nDe esta manera, se puede examinar con más objetividad cuál de ellas está mejor sustentada por los datos.\nQuien investiga se convierte en “madre o padre de una familia de hipótesis: y, por su relación parental con todas ellas, se le prohíbe encariñarse demasiado con ninguna en particular”.\n\n\n\n18.2.7 16.2.6 La persona abogada del diablo\nLa persona abogada del diablo es quien asume el papel de escéptica y argumenta contra la posición aceptada o deseada. La idea es asignar explícitamente ese rol dentro de un grupo para expresar críticas activamente, contrarrestando la presión por conformarse.",
+    "crumbs": [
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>16. Sesgo de Confirmación y Escepticismo Organizado</span>"
+    ]
+  },
+  {
+    "objectID": "16-sesgo-y-escepticismo.html#conclusión",
+    "href": "16-sesgo-y-escepticismo.html#conclusión",
+    "title": "17  16. Sesgo de Confirmación y Escepticismo Organizado",
+    "section": "18.3 16.3. Conclusión",
+    "text": "18.3 16.3. Conclusión\nLa ciencia es una empresa profundamente humana. Quienes investigan tienen motivaciones y deseos que pueden sesgar las afirmaciones que hacen. Sin embargo, existen prácticas a nivel individual e institucional que permiten limitar la influencia de estos sesgos.\nEs crucial estar atentas y atentos al papel que juega el sesgo de confirmación en la ciencia, y aplicar las estrategias descritas en este capítulo para no caer en sus trampas. El primer principio es que no debes engañarte a ti mismo —y tú eres la persona más fácil de engañar (Feynman, 1974).\n\nEl trabajo en colaboración dentro de un equipo de investigación puede actuar como una capa de protección.\nLos errores también pueden prevenirse con herramientas como los manuscritos computacionalmente reproducibles, que evitan errores de copiar y pegar (Rouder et al., 2019; Strand, 2023).",
+    "crumbs": [
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>16. Sesgo de Confirmación y Escepticismo Organizado</span>"
+    ]
+  },
+  {
+    "objectID": "17-estudios-de-replicacion.html",
+    "href": "17-estudios-de-replicacion.html",
+    "title": "18  17. Estudios de Replicación",
+    "section": "",
+    "text": "19 17. Estudios de Replicación",
+    "crumbs": [
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>17. Estudios de Replicación</span>"
+    ]
+  },
+  {
+    "objectID": "17-estudios-de-replicacion.html#la-importancia-de-la-replicación",
+    "href": "17-estudios-de-replicacion.html#la-importancia-de-la-replicación",
+    "title": "18  17. Estudios de Replicación",
+    "section": "19.1 17.1. La Importancia de la Replicación",
+    "text": "19.1 17.1. La Importancia de la Replicación\nLa Replicación es la piedra angular del método científico. Una replicación ocurre cuando un investigador diferente, o el mismo investigador en un estudio posterior, intenta reproducir el hallazgo de un estudio anterior. Solo si los hallazgos pueden ser replicados de forma independiente, la comunidad científica comienza a tener confianza en ellos.\nEl propósito de la replicación es doble:\n\nVerificación: Confirmar que el hallazgo original no fue un falso positivo (error Tipo I), un error de análisis (Capítulo 14) o el resultado de una Práctica de Investigación Cuestionable (QRP, Capítulo 15).\nGeneralización: Determinar si el hallazgo se mantiene en diferentes contextos, poblaciones o configuraciones (Validez Externa).",
+    "crumbs": [
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>17. Estudios de Replicación</span>"
+    ]
+  },
+  {
+    "objectID": "17-estudios-de-replicacion.html#tipos-de-replicación",
+    "href": "17-estudios-de-replicacion.html#tipos-de-replicación",
+    "title": "18  17. Estudios de Replicación",
+    "section": "19.2 17.2. Tipos de Replicación",
+    "text": "19.2 17.2. Tipos de Replicación\nExisten varios tipos de estudios de replicación, cada uno con diferentes propósitos:\n\n19.2.1 17.2.1. Replicación Directa (Close Replication)\nLa replicación directa intenta reproducir el estudio original lo más fielmente posible, utilizando el mismo método, materiales, procedimientos y población.\n\nPropósito: Proporciona la prueba más estricta de la fiabilidad del hallazgo original.\nLimitación: Si la replicación falla, puede ser difícil distinguir si la falla se debe a que el hallazgo es falso o a que la replicación no fue suficientemente idéntica.\n\n\n\n19.2.2 17.2.2. Replicación Conceptual (Conceptual Replication)\nLa replicación conceptual prueba la misma hipótesis teórica que el estudio original, pero utiliza diferentes manipulaciones de variables y/o diferentes medidas del resultado.\n\nPropósito: Probar la generalidad del hallazgo. Si la teoría se mantiene utilizando diferentes operacionalizaciones, esto aumenta la confianza en la teoría subyacente.\nLimitación: Si la replicación falla, puede ser difícil determinar si la falla se debe a la replicación o a la diferencia en las operacionalizaciones.",
+    "crumbs": [
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>17. Estudios de Replicación</span>"
+    ]
+  },
+  {
+    "objectID": "17-estudios-de-replicacion.html#la-crisis-de-replicación",
+    "href": "17-estudios-de-replicacion.html#la-crisis-de-replicación",
+    "title": "18  17. Estudios de Replicación",
+    "section": "19.3 17.3. La Crisis de Replicación",
+    "text": "19.3 17.3. La Crisis de Replicación\nDesde principios de la década de 2010, muchos campos (notablemente la psicología y la medicina) han experimentado una “crisis de replicación”, impulsada por la realización de grandes proyectos de replicación que encontraron que muchos hallazgos publicados no podían ser replicados:\n\nUn alto porcentaje de estudios (a menudo más del 50%) de la literatura publicada, incluso en revistas de alto impacto, no se replicó.\nCausas subyacentes: El énfasis en el valor \\(p\\) para la publicación, las QRPs (como el p-hacking) y el sesgo de publicación, lo que llevó a que el registro científico se llenara de falsos positivos (Capítulo 12).",
+    "crumbs": [
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>17. Estudios de Replicación</span>"
+    ]
+  },
+  {
+    "objectID": "17-estudios-de-replicacion.html#interpretación-de-los-resultados-de-la-replicación",
+    "href": "17-estudios-de-replicacion.html#interpretación-de-los-resultados-de-la-replicación",
+    "title": "18  17. Estudios de Replicación",
+    "section": "19.4 17.4. Interpretación de los Resultados de la Replicación",
+    "text": "19.4 17.4. Interpretación de los Resultados de la Replicación\nLa interpretación de una replicación no es binaria (éxito/fracaso), sino que depende del tamaño del efecto (ES) y el Intervalo de Confianza (IC) de ambos estudios (Capítulo 6 y 7).\n\n19.4.1 17.4.1. Criterios de Éxito Frecuentista\nTradicionalmente, el éxito se evalúa si:\n\nEl estudio de replicación también es estadísticamente significativo (\\(p &lt; \\alpha\\)).\nEl tamaño del efecto del estudio de replicación es consistente con el del estudio original.\n\nSin embargo, estos criterios pueden ser engañosos, ya que un estudio de replicación de baja potencia podría fallar incluso si el efecto es real. Una comparación más rigurosa utiliza el Intervalo de Predicción (Prediction Interval) del estudio original.\n\n\n19.4.2 17.4.2. Criterios de Éxito Bayesianos\nEl enfoque Bayesiano (Capítulo 4) ofrece métricas más directas:\n\nFactor de Bayes (BF): Se puede calcular el Factor de Bayes para el estudio de replicación. Un \\(BF_{10}\\) alto (&gt;10) proporciona evidencia sólida a favor del efecto. Un \\(BF_{01}\\) alto (&gt;10) proporciona evidencia sólida a favor de la Hipótesis Nula (es decir, el fracaso de la replicación).",
+    "crumbs": [
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>17. Estudios de Replicación</span>"
+    ]
+  },
+  {
+    "objectID": "17-estudios-de-replicacion.html#replicación-en-el-marco-de-la-ciencia-abierta",
+    "href": "17-estudios-de-replicacion.html#replicación-en-el-marco-de-la-ciencia-abierta",
+    "title": "18  17. Estudios de Replicación",
+    "section": "19.5 17.5. Replicación en el Marco de la Ciencia Abierta",
+    "text": "19.5 17.5. Replicación en el Marco de la Ciencia Abierta\nLa replicación se ha revitalizado gracias a los movimientos de Ciencia Abierta:\n\nPrerregistro (Capítulo 13): Permite que los estudios de replicación sean diseñados con la potencia adecuada (Capítulo 8) para detectar el tamaño del efecto original y elimina el riesgo de p-hacking en el estudio de replicación.\nInformes Registrados (Registered Reports): Son una forma de replicación que garantiza la publicación, independientemente del resultado, mitigando el sesgo de publicación para los estudios nulos.\nDatos y Materiales Abiertos: Si el estudio original proporciona el código y los materiales (Capítulo 14), la replicación directa se vuelve mucho más factible y precisa.",
+    "crumbs": [
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>17. Estudios de Replicación</span>"
+    ]
+  },
+  {
+    "objectID": "17-estudios-de-replicacion.html#el-efecto-y-la-variabilidad",
+    "href": "17-estudios-de-replicacion.html#el-efecto-y-la-variabilidad",
+    "title": "18  17. Estudios de Replicación",
+    "section": "19.6 17.6. El Efecto y la Variabilidad",
+    "text": "19.6 17.6. El Efecto y la Variabilidad\nLos estudios de replicación también arrojan luz sobre la variabilidad de los efectos:\n\nLa variación entre el ES original y el ES de replicación puede deberse a la Heterogeneidad (Capítulo 11) real en las poblaciones o contextos, lo que lleva a nuevas preguntas de investigación sobre los Moderadores (factores que influyen en el tamaño del efecto).\nLos proyectos de replicación a gran escala son un aporte invaluable para el Meta-análisis (Capítulo 11), al proporcionar mejores estimaciones del tamaño del efecto verdadero.",
+    "crumbs": [
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>17. Estudios de Replicación</span>"
+    ]
+  },
+  {
+    "objectID": "17-estudios-de-replicacion.html#conclusión",
+    "href": "17-estudios-de-replicacion.html#conclusión",
+    "title": "18  17. Estudios de Replicación",
+    "section": "19.7 17.7. Conclusión",
+    "text": "19.7 17.7. Conclusión\nLa replicación es un paso esencial en el Escepticismo Organizado (Capítulo 16) de la ciencia. El objetivo de la ciencia no es simplemente publicar un resultado, sino generar hallazgos que sean fiables y generalizables. Si un hallazgo no se replica de forma independiente, debe ser tratado con escepticismo, independientemente de cuán bajo haya sido su valor \\(p\\) original.",
+    "crumbs": [
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>17. Estudios de Replicación</span>"
+    ]
+  }
+]

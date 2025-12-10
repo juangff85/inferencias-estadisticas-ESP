@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.33">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>14&nbsp; 13. Prerregistro y Transparencia – Mejora de tus Inferencias Estadísticas</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./14-reproducibilidad-computacional.html" rel="next">
+<link href="./12-deteccion-de-sesgos.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-485d01fc63b59abcd3ee1bf1e8e2748d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Sin resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./13-prerregistro-y-transparencia.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">13. Prerregistro y Transparencia</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Mejora de tus Inferencias Estadísticas</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Inicio</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-usando-valores-p.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">1. Usando valores p para probar una hipótesis</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-control-de-errores.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">2. Control de errores</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-verosimilitudes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">3. Verosimilitudes</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-estadistica-bayesiana.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">4. Estadística Bayesiana</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-formulando-preguntas-estadisticas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">5. Formulando Preguntas Estadísticas</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-tamaños-del-efecto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">6. Tamaños del Efecto</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-intervalos-de-confianza.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">7. Intervalos de Confianza</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-justificacion-del-tamaño-de-la-muestra.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">8. Justificación del Tamaño de la Muestra</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-pruebas-de-equivalencia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">9. Pruebas de Equivalencia e Hipótesis de Intervalo</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-analisis-secuencial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">10. Análisis Secuencial</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11-meta-analisis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">11. Meta-análisis</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12-deteccion-de-sesgos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">12. Detección de Sesgos</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13-prerregistro-y-transparencia.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">13. Prerregistro y Transparencia</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./14-reproducibilidad-computacional.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">14. Reproducibilidad como elemento fundamental de la ciencia</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./15-integridad-de-la-investigacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">15. Integridad de la Investigación</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./16-sesgo-y-escepticismo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">16. Sesgo de Confirmación y Escepticismo Organizado</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./17-estudios-de-replicacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">17. Estudios de Replicación</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de contenidos</h2>
+   
+  <ul>
+  <li><a href="#prerregistro-y-transparencia" id="toc-prerregistro-y-transparencia" class="nav-link active" data-scroll-target="#prerregistro-y-transparencia"><span class="header-section-number">15</span> 13. Prerregistro y Transparencia</a>
+  <ul class="collapse">
+  <li><a href="#prerregistro-del-plan-de-análisis-estadístico" id="toc-prerregistro-del-plan-de-análisis-estadístico" class="nav-link" data-scroll-target="#prerregistro-del-plan-de-análisis-estadístico"><span class="header-section-number">15.1</span> 13.1. Prerregistro del Plan de Análisis Estadístico</a></li>
+  <li><a href="#el-valor-del-prerregistro" id="toc-el-valor-del-prerregistro" class="nav-link" data-scroll-target="#el-valor-del-prerregistro"><span class="header-section-number">15.2</span> 13.2. El valor del prerregistro</a></li>
+  <li><a href="#cómo-prerregistrar" id="toc-cómo-prerregistrar" class="nav-link" data-scroll-target="#cómo-prerregistrar"><span class="header-section-number">15.3</span> 13.3. Cómo prerregistrar</a></li>
+  <li><a href="#estándares-de-reporte-de-artículos-de-revistas-journal-article-reporting-standards-jars" id="toc-estándares-de-reporte-de-artículos-de-revistas-journal-article-reporting-standards-jars" class="nav-link" data-scroll-target="#estándares-de-reporte-de-artículos-de-revistas-journal-article-reporting-standards-jars"><span class="header-section-number">15.4</span> 13.4. Estándares de Reporte de Artículos de Revistas (Journal Article Reporting Standards, JARS)</a></li>
+  <li><a href="#desviación-de-un-prerregistro" id="toc-desviación-de-un-prerregistro" class="nav-link" data-scroll-target="#desviación-de-un-prerregistro"><span class="header-section-number">15.5</span> 13.5. Desviación de un Prerregistro</a></li>
+  <li><a href="#qué-aspecto-tiene-una-estrategia-analítica-formalizada" id="toc-qué-aspecto-tiene-una-estrategia-analítica-formalizada" class="nav-link" data-scroll-target="#qué-aspecto-tiene-una-estrategia-analítica-formalizada"><span class="header-section-number">15.6</span> 13.6. ¿Qué aspecto tiene una Estrategia Analítica Formalizada?</a></li>
+  <li><a href="#estás-listo-para-prerregistrar-una-prueba-de-hipótesis" id="toc-estás-listo-para-prerregistrar-una-prueba-de-hipótesis" class="nav-link" data-scroll-target="#estás-listo-para-prerregistrar-una-prueba-de-hipótesis"><span class="header-section-number">15.7</span> 13.7. ¿Estás listo para prerregistrar una prueba de hipótesis?</a></li>
+  <li><a href="#evalúate-y-aspectos-prácticos" id="toc-evalúate-y-aspectos-prácticos" class="nav-link" data-scroll-target="#evalúate-y-aspectos-prácticos"><span class="header-section-number">15.8</span> 13.8. Evalúate y Aspectos Prácticos</a>
+  <ul class="collapse">
+  <li><a href="#aspectos-prácticos-de-un-prerregistro-en-línea" id="toc-aspectos-prácticos-de-un-prerregistro-en-línea" class="nav-link" data-scroll-target="#aspectos-prácticos-de-un-prerregistro-en-línea"><span class="header-section-number">15.8.1</span> 13.8.1. Aspectos Prácticos de un Prerregistro en Línea</a></li>
+  <li><a href="#prerregistro-en-psycharchives-por-zpid" id="toc-prerregistro-en-psycharchives-por-zpid" class="nav-link" data-scroll-target="#prerregistro-en-psycharchives-por-zpid"><span class="header-section-number">15.8.2</span> 13.8.2. Prerregistro en PsychArchives por ZPID</a></li>
+  <li><a href="#prerregistro-en-el-open-science-framework" id="toc-prerregistro-en-el-open-science-framework" class="nav-link" data-scroll-target="#prerregistro-en-el-open-science-framework"><span class="header-section-number">15.8.3</span> 13.8.3. Prerregistro en el Open Science Framework</a></li>
+  <li><a href="#prerregistro-en-aspredicted" id="toc-prerregistro-en-aspredicted" class="nav-link" data-scroll-target="#prerregistro-en-aspredicted"><span class="header-section-number">15.8.4</span> 13.8.4. Prerregistro en AsPredicted</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">13. Prerregistro y Transparencia</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="prerregistro-y-transparencia" class="level1" data-number="15">
+<h1 data-number="15"><span class="header-section-number">15</span> 13. Prerregistro y Transparencia</h1>
+<p>Durante el tiempo que se han utilizado los datos para respaldar afirmaciones científicas, la gente ha intentado presentar datos de manera selectiva en línea con lo que desean que sea cierto. Un ejemplo de un científico que hizo esto es Daryl Bem, un parapsicólogo que estudia si las personas tienen percepción extrasensorial que les permite predecir el futuro. Al utilizar informes selectivos y publicar 9 estudios en una revista de primer nivel afirmando que la gente podía predecir el futuro, Bem desencadenó la crisis de replicación en psicología en 2011.</p>
+<p>En un estudio que realizó (Bem, 2011), los participantes presionaron un botón izquierdo o derecho para predecir si una imagen estaba oculta detrás de una cortina izquierda o derecha. Hay 5 pruebas contra el promedio de adivinación (para imágenes eróticas, neutrales, negativas, positivas y ‘románticas pero no eróticas’). Una corrección de Bonferroni requeriría usar un nivel alfa de 0.01 (un alfa de 0.05 / 5 pruebas). El resultado principal, que los participantes adivinaron la posición futura de las imágenes eróticas por encima del promedio de adivinación, con un <em>p</em>-valor de 0.013, no le habría permitido a Bem rechazar la hipótesis nula, dado un nivel alfa preespecificado y corregido.</p>
+<p>¿Cree usted que Bem predijo un efecto solo para las imágenes eróticas antes de haber visto los datos? Podría desconfiar de que Bem predijo un efecto solo para este grupo específico de estímulos, y que estaba ‘cocinando’—haciendo multitud de observaciones y seleccionando el resultado significativo, solo para <strong>HARK</strong> (Hypothesizing After the Results are Known, o Formular Hipótesis Después de Conocer los Resultados) en la introducción del estudio. ¿Deberían otros investigadores dudar de que pueden tomar las afirmaciones en el artículo de Bem al pie de la letra?</p>
+<section id="prerregistro-del-plan-de-análisis-estadístico" class="level2" data-number="15.1">
+<h2 data-number="15.1" class="anchored" data-anchor-id="prerregistro-del-plan-de-análisis-estadístico"><span class="header-section-number">15.1</span> 13.1. Prerregistro del Plan de Análisis Estadístico</h2>
+<p>En el pasado, los investigadores propusieron soluciones para prevenir el sesgo en la literatura debido a las tasas de error Tipo I infladas como resultado de la presentación selectiva de informes.</p>
+<ul>
+<li>Bakan (1966) discutió lo problemático de elegir si realizar o no una prueba de hipótesis direccional después de mirar los datos. Si un investigador elige realizar una prueba de hipótesis direccional solo cuando la prueba de hipótesis bilateral produce un <em>p</em>-valor entre 0.05 y 0.10 (es decir, el investigador decide después de ver el resultado que una prueba unilateral también estaba justificada y reporta el <em>p</em>-valor como 0.04, unilateral), entonces, en la práctica, la tasa de error Tipo I se duplica (es decir, es 0.10 en lugar de 0.05). Bakan (p.&nbsp;431) preguntó si debería haber un registro central para registrar la decisión de ejecutar una prueba de una o dos colas antes de la recolección de datos.</li>
+<li>De Groot (1969) ya señaló la importancia de “elaborar de antemano el procedimiento de investigación (o diseño experimental) en papel en la mayor medida posible”, lo que debe incluir “una declaración de los criterios de confirmación, incluyendo la formulación de hipótesis nulas, si las hay, la elección de la(s) prueba(s) estadística(s), el nivel de significancia y los intervalos de confirmación resultantes”.</li>
+</ul>
+<p>El auge de internet ha hecho posible crear <strong>registros en línea</strong> que permiten a los investigadores especificar el diseño de su estudio, el plan de muestreo y el plan de análisis estadístico antes de la recolección de datos. Una marca de tiempo, y a veces incluso un Identificador de Objeto Digital (DOI) dedicado, comunica de manera transparente a los pares que la pregunta de investigación y el plan de análisis fueron especificados antes de mirar los datos. Esto es importante, porque <strong>no se puede probar una hipótesis con los datos que se utilizan para generarla</strong>.</p>
+<p>En campos como la medicina, ahora se requiere el registro de ciertos estudios, como los ensayos clínicos. El requisito de registrar el resultado primario de interés en ClinicalTrials.gov se correlacionó con una caída sustancial en el número de estudios que observaron resultados estadísticamente significativos, lo que podría indicar que la eliminación de la flexibilidad en cómo se analizaron los datos evitó que se informaran resultados falsos positivos.</p>
+<p>Un paso más allá del registro de estudios es el formato de publicación conocido como <strong>Informes Registrados (Registered Reports)</strong>. Las revistas que los publican evalúan los estudios basándose en la introducción, el método y los análisis estadísticos, pero no en los resultados. Los Informes Registrados tienen una probabilidad sustancialmente mayor de informar hallazgos que no respaldan las hipótesis, en comparación con la literatura científica tradicional.</p>
+</section>
+<section id="el-valor-del-prerregistro" class="level2" data-number="15.2">
+<h2 data-number="15.2" class="anchored" data-anchor-id="el-valor-del-prerregistro"><span class="header-section-number">15.2</span> 13.2. El valor del prerregistro</h2>
+<p>Los prerregistros son documentos con marca de tiempo que describen los análisis que los investigadores planean realizar, al tiempo que comunican de manera transparente que los análisis no han sido seleccionados basándose en información en los datos que determina el resultado.</p>
+<p>El objetivo principal es permitir que otros evalúen de manera transparente la capacidad de una prueba para falsificar una predicción, o <strong>cuán severamente se ha probado una hipótesis</strong>. La severidad de una prueba está determinada por cuán probable es que una predicción sea probada errónea cuando es errónea, y probada correcta cuando es correcta.</p>
+<p>El prerregistro tiene el objetivo de evitar que los investigadores reduzcan de manera no transparente la capacidad de la prueba para falsificar una predicción, al permitir a los lectores ver cómo planearon probar su predicción antes de tener acceso a los datos.</p>
+</section>
+<section id="cómo-prerregistrar" class="level2" data-number="15.3">
+<h2 data-number="15.3" class="anchored" data-anchor-id="cómo-prerregistrar"><span class="header-section-number">15.3</span> 13.3. Cómo prerregistrar</h2>
+<p>(Ver sección 13.8 para plataformas y pasos prácticos)</p>
+</section>
+<section id="estándares-de-reporte-de-artículos-de-revistas-journal-article-reporting-standards-jars" class="level2" data-number="15.4">
+<h2 data-number="15.4" class="anchored" data-anchor-id="estándares-de-reporte-de-artículos-de-revistas-journal-article-reporting-standards-jars"><span class="header-section-number">15.4</span> 13.4. Estándares de Reporte de Artículos de Revistas (Journal Article Reporting Standards, JARS)</h2>
+</section>
+<section id="desviación-de-un-prerregistro" class="level2" data-number="15.5">
+<h2 data-number="15.5" class="anchored" data-anchor-id="desviación-de-un-prerregistro"><span class="header-section-number">15.5</span> 13.5. Desviación de un Prerregistro</h2>
+<p>Se puede justificar desviarse de un prerregistro si esto aumenta la validez de la inferencia. Por ejemplo, si el prerregistro falló en considerar que algunos participantes estarían demasiado ebrios para responder o si se olvidó especificar qué hacer si los datos no se distribuían normalmente, cambiar el plan de análisis original sería visto como una prueba más severa.</p>
+<p>Las desviaciones pueden incluir:</p>
+<ol type="1">
+<li>Eventos imprevistos.</li>
+<li>Errores en el prerregistro.</li>
+<li>Información faltante.</li>
+<li>Violaciones de supuestos no probados.</li>
+<li>Falsificación de hipótesis auxiliares.</li>
+</ol>
+<p>Para cada desviación, se debe especificar claramente <strong>cuándo, dónde y por qué</strong> ocurrió la desviación del prerregistro, seguido de una evaluación del impacto de la desviación en la severidad de la prueba (y, cuando sea relevante, la validez de la inferencia).</p>
+</section>
+<section id="qué-aspecto-tiene-una-estrategia-analítica-formalizada" class="level2" data-number="15.6">
+<h2 data-number="15.6" class="anchored" data-anchor-id="qué-aspecto-tiene-una-estrategia-analítica-formalizada"><span class="header-section-number">15.6</span> 13.6. ¿Qué aspecto tiene una Estrategia Analítica Formalizada?</h2>
+<p>Una prueba de hipótesis evalúa una predicción que puede describirse en un:</p>
+<ul>
+<li><strong>Nivel Conceptual:</strong> (p.&nbsp;ej., “Aprender a prerregistrar mejora tu investigación”).</li>
+<li><strong>Nivel Operacionalizado:</strong> (p.&nbsp;ej., “Los investigadores que han leído este texto controlarán su nivel alfa más cuidadosamente”).</li>
+<li><strong>Nivel Estadístico:</strong> (p.&nbsp;ej., “Una prueba <em>t</em> independiente mostrará un número estadísticamente menor de formas en que la hipótesis podría probarse”).</li>
+</ul>
+<p>En un documento de prerregistro, el objetivo debe ser especificar la hipótesis en detalle en el <strong>nivel estadístico</strong>. Es importante reconocer que no todos los prerregistros tienen suficiente detalle para ser tratados como pruebas confirmatorias de predicciones.</p>
+</section>
+<section id="estás-listo-para-prerregistrar-una-prueba-de-hipótesis" class="level2" data-number="15.7">
+<h2 data-number="15.7" class="anchored" data-anchor-id="estás-listo-para-prerregistrar-una-prueba-de-hipótesis"><span class="header-section-number">15.7</span> 13.7. ¿Estás listo para prerregistrar una prueba de hipótesis?</h2>
+<p>No es suficiente simplemente prerregistrar. El prerregistro debe tener suficiente detalle para tratarlo como una prueba confirmatoria de predicciones.</p>
+</section>
+<section id="evalúate-y-aspectos-prácticos" class="level2" data-number="15.8">
+<h2 data-number="15.8" class="anchored" data-anchor-id="evalúate-y-aspectos-prácticos"><span class="header-section-number">15.8</span> 13.8. Evalúate y Aspectos Prácticos</h2>
+<section id="aspectos-prácticos-de-un-prerregistro-en-línea" class="level3" data-number="15.8.1">
+<h3 data-number="15.8.1" class="anchored" data-anchor-id="aspectos-prácticos-de-un-prerregistro-en-línea"><span class="header-section-number">15.8.1</span> 13.8.1. Aspectos Prácticos de un Prerregistro en Línea</h3>
+<p>Solo se deben prerregistrar estudios reales.</p>
+</section>
+<section id="prerregistro-en-psycharchives-por-zpid" class="level3" data-number="15.8.2">
+<h3 data-number="15.8.2" class="anchored" data-anchor-id="prerregistro-en-psycharchives-por-zpid"><span class="header-section-number">15.8.2</span> 13.8.2. Prerregistro en PsychArchives por ZPID</h3>
+<p>PsychArchives (https://pasa.psycharchives.org) recomienda enviar el prerregistro en un archivo <strong>PDF/A</strong>, que es un formato que no permite ciertas restricciones que obstaculizan el archivado a largo plazo. Este servicio requiere especificar <strong>metadatos</strong> para los archivos, lo que facilita que sean encontrados.</p>
+</section>
+<section id="prerregistro-en-el-open-science-framework" class="level3" data-number="15.8.3">
+<h3 data-number="15.8.3" class="anchored" data-anchor-id="prerregistro-en-el-open-science-framework"><span class="header-section-number">15.8.3</span> 13.8.3. Prerregistro en el Open Science Framework</h3>
+<p>Todos los prerregistros en el OSF se harán <strong>públicos después de cuatro años</strong>.</p>
+<p>Para compartir con los revisores, el OSF permite crear un <strong>enlace de solo lectura</strong> (‘view-only link’) sin revelar la identidad del autor.</p>
+</section>
+<section id="prerregistro-en-aspredicted" class="level3" data-number="15.8.4">
+<h3 data-number="15.8.4" class="anchored" data-anchor-id="prerregistro-en-aspredicted"><span class="header-section-number">15.8.4</span> 13.8.4. Prerregistro en AsPredicted</h3>
+<p>AsPredicted se centra en la <strong>simplicidad</strong> y tiene un límite de palabras. Esto se logra eliminando las justificaciones para las elecciones del análisis. Si el límite de palabras restringe la capacidad de evaluar la severidad de la prueba, se puede usar la plantilla de AsPredicted en el OSF. AsPredicted permite descargar un PDF anónimo para fines de revisión por pares.</p>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./12-deteccion-de-sesgos.html" class="pagination-link" aria-label="12. Detección de Sesgos">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">12. Detección de Sesgos</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./14-reproducibilidad-computacional.html" class="pagination-link" aria-label="14. Reproducibilidad como elemento fundamental de la ciencia">
+        <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">14. Reproducibilidad como elemento fundamental de la ciencia</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.33">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>6&nbsp; 5. Formulando Preguntas Estadísticas – Mejora de tus Inferencias Estadísticas</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./06-tamaños-del-efecto.html" rel="next">
+<link href="./04-estadistica-bayesiana.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-485d01fc63b59abcd3ee1bf1e8e2748d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Sin resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./05-formulando-preguntas-estadisticas.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">5. Formulando Preguntas Estadísticas</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Mejora de tus Inferencias Estadísticas</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Inicio</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-usando-valores-p.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">1. Usando valores p para probar una hipótesis</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-control-de-errores.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">2. Control de errores</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-verosimilitudes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">3. Verosimilitudes</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-estadistica-bayesiana.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">4. Estadística Bayesiana</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-formulando-preguntas-estadisticas.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">5. Formulando Preguntas Estadísticas</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-tamaños-del-efecto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">6. Tamaños del Efecto</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-intervalos-de-confianza.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">7. Intervalos de Confianza</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-justificacion-del-tamaño-de-la-muestra.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">8. Justificación del Tamaño de la Muestra</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-pruebas-de-equivalencia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">9. Pruebas de Equivalencia e Hipótesis de Intervalo</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-analisis-secuencial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">10. Análisis Secuencial</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11-meta-analisis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">11. Meta-análisis</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12-deteccion-de-sesgos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">12. Detección de Sesgos</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13-prerregistro-y-transparencia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">13. Prerregistro y Transparencia</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./14-reproducibilidad-computacional.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">14. Reproducibilidad como elemento fundamental de la ciencia</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./15-integridad-de-la-investigacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">15. Integridad de la Investigación</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./16-sesgo-y-escepticismo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">16. Sesgo de Confirmación y Escepticismo Organizado</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./17-estudios-de-replicacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">17. Estudios de Replicación</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de contenidos</h2>
+   
+  <ul>
+  <li><a href="#formulando-preguntas-estadísticas" id="toc-formulando-preguntas-estadísticas" class="nav-link active" data-scroll-target="#formulando-preguntas-estadísticas"><span class="header-section-number">7</span> 5. Formulando Preguntas Estadísticas</a>
+  <ul class="collapse">
+  <li><a href="#tres-tipos-de-preguntas-estadísticas" id="toc-tres-tipos-de-preguntas-estadísticas" class="nav-link" data-scroll-target="#tres-tipos-de-preguntas-estadísticas"><span class="header-section-number">7.1</span> 5.1. Tres tipos de preguntas estadísticas</a>
+  <ul class="collapse">
+  <li><a href="#pregunta-1-existe-un-efecto-prueba-de-significación" id="toc-pregunta-1-existe-un-efecto-prueba-de-significación" class="nav-link" data-scroll-target="#pregunta-1-existe-un-efecto-prueba-de-significación"><span class="header-section-number">7.1.1</span> 5.1.1. Pregunta 1: ¿Existe un efecto? (Prueba de Significación)</a></li>
+  <li><a href="#pregunta-2-cuál-es-el-tamaño-del-efecto-estimación" id="toc-pregunta-2-cuál-es-el-tamaño-del-efecto-estimación" class="nav-link" data-scroll-target="#pregunta-2-cuál-es-el-tamaño-del-efecto-estimación"><span class="header-section-number">7.1.2</span> 5.1.2. Pregunta 2: ¿Cuál es el tamaño del efecto? (Estimación)</a></li>
+  <li><a href="#pregunta-3-qué-hipótesis-es-más-probable-evidencia" id="toc-pregunta-3-qué-hipótesis-es-más-probable-evidencia" class="nav-link" data-scroll-target="#pregunta-3-qué-hipótesis-es-más-probable-evidencia"><span class="header-section-number">7.1.3</span> 5.1.3. Pregunta 3: ¿Qué hipótesis es más probable? (Evidencia)</a></li>
+  </ul></li>
+  <li><a href="#el-problema-de-la-dicotomía-de-la-significación" id="toc-el-problema-de-la-dicotomía-de-la-significación" class="nav-link" data-scroll-target="#el-problema-de-la-dicotomía-de-la-significación"><span class="header-section-number">7.2</span> 5.2. El problema de la “Dicotomía de la Significación”</a></li>
+  <li><a href="#preguntas-de-intervalo-e-hipótesis-de-equivalencia" id="toc-preguntas-de-intervalo-e-hipótesis-de-equivalencia" class="nav-link" data-scroll-target="#preguntas-de-intervalo-e-hipótesis-de-equivalencia"><span class="header-section-number">7.3</span> 5.3. Preguntas de intervalo e hipótesis de equivalencia</a>
+  <ul class="collapse">
+  <li><a href="#pruebas-de-equivalencia-equivalence-testing" id="toc-pruebas-de-equivalencia-equivalence-testing" class="nav-link" data-scroll-target="#pruebas-de-equivalencia-equivalence-testing"><span class="header-section-number">7.3.1</span> 5.3.1. Pruebas de Equivalencia (Equivalence Testing)</a></li>
+  <li><a href="#hipótesis-de-intervalo" id="toc-hipótesis-de-intervalo" class="nav-link" data-scroll-target="#hipótesis-de-intervalo"><span class="header-section-number">7.3.2</span> 5.3.2. Hipótesis de Intervalo</a></li>
+  </ul></li>
+  <li><a href="#conclusión" id="toc-conclusión" class="nav-link" data-scroll-target="#conclusión"><span class="header-section-number">7.4</span> 5.4. Conclusión</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">5. Formulando Preguntas Estadísticas</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="formulando-preguntas-estadísticas" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> 5. Formulando Preguntas Estadísticas</h1>
+<section id="tres-tipos-de-preguntas-estadísticas" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="tres-tipos-de-preguntas-estadísticas"><span class="header-section-number">7.1</span> 5.1. Tres tipos de preguntas estadísticas</h2>
+<p>Una investigación sólida comienza con la formulación clara de la pregunta. En estadística, las preguntas de investigación suelen caer en una de estas tres categorías:</p>
+<ol type="1">
+<li><strong>¿Existe un efecto?</strong> (Énfasis en la significancia)</li>
+<li><strong>¿Cuál es el tamaño del efecto?</strong> (Énfasis en la estimación)</li>
+<li><strong>¿Qué hipótesis es más probable a la luz de los datos?</strong> (Énfasis en la comparación de modelos o evidencia)</li>
+</ol>
+<section id="pregunta-1-existe-un-efecto-prueba-de-significación" class="level3" data-number="7.1.1">
+<h3 data-number="7.1.1" class="anchored" data-anchor-id="pregunta-1-existe-un-efecto-prueba-de-significación"><span class="header-section-number">7.1.1</span> 5.1.1. Pregunta 1: ¿Existe un efecto? (Prueba de Significación)</h3>
+<p>Este es el enfoque tradicional de la <strong>Prueba de Hipótesis de Significación Nula (NHST)</strong>, que se centra en rechazar la hipótesis nula (<span class="math inline">\(H_0\)</span>).</p>
+<ul>
+<li><strong>Ejemplo:</strong> ¿La nueva droga mejora el tiempo de reacción?</li>
+<li><strong>Hipótesis:</strong> <span class="math inline">\(H_0: \mu_1 = \mu_2\)</span> (No hay diferencia) vs.&nbsp;<span class="math inline">\(H_1: \mu_1 \neq \mu_2\)</span> (Hay diferencia).</li>
+<li><strong>Herramienta:</strong> El valor <span class="math inline">\(p\)</span> y el control del error Tipo I (<span class="math inline">\(\alpha\)</span>).</li>
+</ul>
+<p>Este enfoque tiene una limitación clave: la hipótesis nula de cero es casi siempre falsa en el mundo real, lo que hace que la pregunta de si <em>existe</em> un efecto sea trivialmente respondida con una muestra lo suficientemente grande. Sin embargo, sigue siendo útil para tomar decisiones binarias (sí/no) con errores controlados.</p>
+</section>
+<section id="pregunta-2-cuál-es-el-tamaño-del-efecto-estimación" class="level3" data-number="7.1.2">
+<h3 data-number="7.1.2" class="anchored" data-anchor-id="pregunta-2-cuál-es-el-tamaño-del-efecto-estimación"><span class="header-section-number">7.1.2</span> 5.1.2. Pregunta 2: ¿Cuál es el tamaño del efecto? (Estimación)</h3>
+<p>Este enfoque se centra en la precisión de la medición y en estimar el valor del parámetro (por ejemplo, la media, la diferencia de medias, la correlación).</p>
+<ul>
+<li><strong>Ejemplo:</strong> ¿Cuál es el rango de beneficios que podemos esperar de la nueva droga con un 95% de confianza?</li>
+<li><strong>Herramienta:</strong> Intervalos de Confianza (Capítulo 7) o Intervalos de Credibilidad (Capítulo 4).</li>
+<li><strong>Objetivo:</strong> Proporcionar el mejor estimado puntual (por ejemplo, <span class="math inline">\(d = 0.50\)</span>) junto con un intervalo que refleje la incertidumbre (por ejemplo, <span class="math inline">\([0.20, 0.80]\)</span>).</li>
+</ul>
+</section>
+<section id="pregunta-3-qué-hipótesis-es-más-probable-evidencia" class="level3" data-number="7.1.3">
+<h3 data-number="7.1.3" class="anchored" data-anchor-id="pregunta-3-qué-hipótesis-es-más-probable-evidencia"><span class="header-section-number">7.1.3</span> 5.1.3. Pregunta 3: ¿Qué hipótesis es más probable? (Evidencia)</h3>
+<p>Este enfoque se centra en la fuerza de la evidencia que los datos proporcionan para dos modelos alternativos, no solo en un solo modelo nulo.</p>
+<ul>
+<li><strong>Ejemplo:</strong> ¿Los datos proporcionan más apoyo para la hipótesis de un efecto moderado (<span class="math inline">\(H_1\)</span>) o para la hipótesis nula de ningún efecto (<span class="math inline">\(H_0\)</span>)?</li>
+<li><strong>Herramienta:</strong> El Factor de Bayes (<span class="math inline">\(BF\)</span>) (Capítulo 4) o la Razón de Verosimilitud (Capítulo 3).</li>
+<li><strong>Objetivo:</strong> Cuantificar la evidencia relativa para un modelo sobre otro, sin forzar una decisión binaria.</li>
+</ul>
+</section>
+</section>
+<section id="el-problema-de-la-dicotomía-de-la-significación" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="el-problema-de-la-dicotomía-de-la-significación"><span class="header-section-number">7.2</span> 5.2. El problema de la “Dicotomía de la Significación”</h2>
+<p>Uno de los principales problemas al formular preguntas estadísticas es caer en la <strong>Dicotomía de la Significación</strong>, donde se trata la significación estadística (<span class="math inline">\(p &lt; \alpha\)</span>) como la única medida de interés. Esto lleva a:</p>
+<ul>
+<li><strong>Interpretar erróneamente un resultado no significativo (<span class="math inline">\(p \geq \alpha\)</span>)</strong> como evidencia de la ausencia de efecto, ignorando la posibilidad de error Tipo II (falta de potencia).</li>
+<li><strong>Interpretar erróneamente un resultado significativo (<span class="math inline">\(p &lt; \alpha\)</span>)</strong> como un efecto grande o importante, ignorando la importancia práctica (tamaño del efecto).</li>
+</ul>
+</section>
+<section id="preguntas-de-intervalo-e-hipótesis-de-equivalencia" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="preguntas-de-intervalo-e-hipótesis-de-equivalencia"><span class="header-section-number">7.3</span> 5.3. Preguntas de intervalo e hipótesis de equivalencia</h2>
+<p>Para ir más allá de la pregunta simple “¿Existe un efecto?”, los investigadores pueden formular preguntas sobre un rango o intervalo de valores.</p>
+<section id="pruebas-de-equivalencia-equivalence-testing" class="level3" data-number="7.3.1">
+<h3 data-number="7.3.1" class="anchored" data-anchor-id="pruebas-de-equivalencia-equivalence-testing"><span class="header-section-number">7.3.1</span> 5.3.1. Pruebas de Equivalencia (Equivalence Testing)</h3>
+<p>Las pruebas de equivalencia invierten la <span class="math inline">\(H_0\)</span>. En lugar de asumir que no hay efecto (<span class="math inline">\(H_0: \delta = 0\)</span>), asumen que hay un efecto que es <em>demasiado grande</em> para considerarse equivalente al cero.</p>
+<ul>
+<li><strong>Hipótesis:</strong> <span class="math inline">\(H_0: |\delta| \geq \Delta\)</span> (El efecto es mayor o igual a <span class="math inline">\(\Delta\)</span>, es decir, <em>no</em> es equivalente a cero) vs.&nbsp;<span class="math inline">\(H_1: |\delta| &lt; \Delta\)</span> (El efecto está dentro del margen <span class="math inline">\(\pm\Delta\)</span>, es decir, es equivalente a cero).</li>
+<li><strong>Propósito:</strong> Demostrar que un efecto, si existe, es tan pequeño que no tiene importancia práctica (o es equivalente a un control o estándar).</li>
+</ul>
+<p>Las pruebas de equivalencia permiten responder a la pregunta: <strong>“¿El efecto es suficientemente pequeño para ser ignorado?”</strong> o <strong>“¿Mi nuevo tratamiento es equivalente al tratamiento estándar?”</strong> (Esto se discute en profundidad en el Capítulo 9).</p>
+</section>
+<section id="hipótesis-de-intervalo" class="level3" data-number="7.3.2">
+<h3 data-number="7.3.2" class="anchored" data-anchor-id="hipótesis-de-intervalo"><span class="header-section-number">7.3.2</span> 5.3.2. Hipótesis de Intervalo</h3>
+<p>Las hipótesis de intervalo se utilizan para probar si el verdadero valor del parámetro se encuentra dentro de un rango específico de interés. Permiten al investigador probar su hipótesis de que el tamaño del efecto no es exactamente cero, sino que se encuentra dentro de un rango significativo específico (por ejemplo, <span class="math inline">\(\delta \in [0.20, 0.50]\)</span>).</p>
+</section>
+</section>
+<section id="conclusión" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="conclusión"><span class="header-section-number">7.4</span> 5.4. Conclusión</h2>
+<p>Para mejorar la inferencia, es crucial que los investigadores formulen preguntas más allá de la dicotomía de la significación:</p>
+<ul>
+<li>En lugar de solo “¿El <span class="math inline">\(p\)</span> es menor que <span class="math inline">\(0.05\)</span>?”, pregunte: <strong>“¿Qué tan grande es el efecto?”</strong> (Estimación).</li>
+<li>En lugar de solo rechazar <span class="math inline">\(H_0\)</span>, pregunte: <strong>“¿Los datos apoyan más la hipótesis nula o la alternativa?”</strong> (Evidencia Bayesiana).</li>
+<li>Para demostrar la ausencia de un efecto importante, pregunte: <strong>“¿El efecto es menor que el umbral de importancia práctica?”</strong> (Prueba de Equivalencia).</li>
+</ul>
+<p>Estas preguntas requieren herramientas más avanzadas (Capítulos 6, 7 y 9), pero conducen a conclusiones científicas más robustas.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./04-estadistica-bayesiana.html" class="pagination-link" aria-label="4. Estadística Bayesiana">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">4. Estadística Bayesiana</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./06-tamaños-del-efecto.html" class="pagination-link" aria-label="6. Tamaños del Efecto">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">6. Tamaños del Efecto</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
