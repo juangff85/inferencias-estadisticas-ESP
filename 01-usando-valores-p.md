@@ -1,9 +1,3 @@
-title: "1. Usando valores p para probar una hipótesis"
-# Se asume que este es el primer capítulo (order: 1)
-# Ajusta 'order' si la estructura del libro requiere una numeración específica
-order: 1
----
-
 # 1. Usando valores p para probar una hipótesis
 
 ## 1.1. Introducción al enfoque de prueba de hipótesis de Neyman-Pearson
