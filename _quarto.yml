@@ -1,0 +1,34 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  title: "Mejora de tus Inferencias Estadísticas"
+  subtitle: "Traducción al castellano de \"Improving Your Statistical Inferences\" de Daniël Lakens"
+  chapters:
+    - index.md
+    - 01-usando-valores-p.md
+    - 02-control-de-errores.md
+    - 03-verosimilitudes.md
+    - 04-estadistica-bayesiana.md
+    - 05-formulando-preguntas-estadisticas.md
+    - 06-tamaños-del-efecto.md
+    - 07-intervalos-de-confianza.md
+    - 08-justificacion-del-tamaño-de-la-muestra.md
+    - 09-pruebas-de-equivalencia.md
+    - 10-analisis-secuencial.md
+    - 11-meta-analisis.md
+    - 12-deteccion-de-sesgos.md
+    - 13-prerregistro-y-transparencia.md
+    - 14-reproducibilidad-computacional.md
+    - 15-integridad-de-la-investigacion.md
+    - 16-sesgo-y-escepticismo.md
+    - 17-estudios-de-replicacion.md
+
+format:
+  html:
+    theme: cosmo
+    lang: es
+    toc: true
+    number-sections: true
+    page-navigation: true

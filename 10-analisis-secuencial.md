@@ -1,8 +1,8 @@
 ---
-layout: default
-title: Análisis Secuencial
-nav_order: 11
+title: 10. Análisis Secuencial
 ---
+
+
 # 10. Análisis Secuencial
 
 ## 10.1. El Problema del Muestreo Opcional
