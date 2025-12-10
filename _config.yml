@@ -1,32 +1,24 @@
-# Configuración básica del sitio
+# Configuración básica del sitio (Mantener esta parte)
 title: Mejora de tus Inferencias Estadísticas
 description: >-
   Traducción al castellano por Juan G. Fernández del recurso abierto "Improving Your Statistical Inferences"
-  de Daniël Lakens. Contiene información para mejorar la inferencia estadística,
-  diseñar mejores experimentos e informar la investigación científica de forma más transparente.
-baseurl: "/inferencias-estadisticas-ESP" # Reemplaza "inferencias-estadisticas-es" con el nombre de tu repositorio
-url: "https://juangff85.github.io" # Reemplaza con tu usuario de GitHub
+  de Daniël Lakens.
+baseurl: "/inferencias-estadisticas-ESP"
+url: "https://juangff85.github.io" 
 
-# Configuración de Jekyll
+# Configuración de Jekyll y Tema (¡Copia este bloque!)
 markdown: kramdown
-remote_theme: just-the-docs/just-the-docs
+remote_theme: just-the-docs/just-the-docs # Tema principal
+
+# -- Plugins y configuraciones del Tema --
 plugins:
   - jekyll-remote-theme
-  # Configura el título que aparece en la barra superior
-title: Mejora de tus Inferencias Estadísticas
-
-# Oculta el enlace 'Edit this Page' si no quieres que aparezca
-gh_edit_link: false
-
-# Configura el color de la barra lateral (dark, light, o color)
-color_scheme: light
-
-# Excluir archivos innecesarios
-exclude:
-  - .sass-cache/
-  - .jekyll-cache/
-  - gemfiles/
-  - Gemfile
-  - Gemfile.lock
-  - node_modules/
-  - vendor/
+  - jekyll-feed # Sigue siendo útil
+  - jekyll-sitemap # Generalmente requerido
+  # (Si usas Just the Docs localmente, podrías necesitar más plugins aquí,
+  # pero con el remoto, 'jekyll-remote-theme' suele bastar si GitHub lo procesa bien)
+  
+just_the_docs:
+  # Estas variables están correctamente fuera del bloque 'plugins'
+  gh_edit_link: false
+  color_scheme: light
