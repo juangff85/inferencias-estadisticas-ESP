@@ -11,6 +11,18 @@ markdown: kramdown
 # IMPORTANTE: dejamos el theme sin definir para usar el que pone GitHub Pages por defecto
 # theme: just-the-docs  # <- NO lo descomentes, porque GitHub Pages no permite ese tema remoto
 
+# Indica a Jekyll dónde buscar los layouts e includes que están en la raíz del repositorio
+layouts_dir: .
+includes_dir: .
+
+# Make sure Jekyll processes the SCSS files that live alongside the HTML files
+# so that GitHub Pages generates the required CSS assets.
+sass:
+  # Los archivos SCSS con front matter viven en css/, y GitHub Pages
+  # necesita que sass_dir apunte a esa carpeta para generar los .css.
+  sass_dir: css
+  style: compressed
+
 # Plugins permitidos por GitHub Pages
 plugins:
   - jekyll-feed

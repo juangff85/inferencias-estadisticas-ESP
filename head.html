@@ -14,9 +14,9 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 
-  <link rel="stylesheet" href="{{ '/assets/css/just-the-docs-default.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/css/just-the-docs-default.css' | relative_url }}">
 
-  <link rel="stylesheet" href="{{ '/assets/css/just-the-docs-head-nav.css' | relative_url }}" id="jtd-head-nav-stylesheet">
+  <link rel="stylesheet" href="{{ '/css/just-the-docs-head-nav.css' | relative_url }}" id="jtd-head-nav-stylesheet">
 
   <style id="jtd-nav-activation">
   {% include css/activation.scss.liquid %}
@@ -37,14 +37,14 @@
   {% endif %}
 
   {% if site.search_enabled != false %}
-    <script src="{{ '/assets/js/vendor/lunr.min.js' | relative_url }}"></script>
+    <script src="{{ '/js/vendor/lunr.min.js' | relative_url }}"></script>
   {% endif %}
 
-  <script src="{{ '/assets/js/just-the-docs.js' | relative_url }}"></script>
+  <script src="{{ '/js/just-the-docs.js' | relative_url }}"></script>
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  {% include_cached favicon.html %}
+  {% include favicon.html %}
 
   {% seo %}
 
