@@ -1,24 +1,29 @@
-# Configuración básica del sitio (Mantener esta parte)
-title: Mejora de tus Inferencias Estadísticas
+# Configuración básica del sitio (mantener esta parte)
+title: "Mejora de tus Inferencias Estadísticas"
 description: >-
-  Traducción al castellano por Juan G. Fernández del recurso abierto "Improving Your Statistical Inferences"
-  de Daniël Lakens.
+  Traducción al castellano por Juan G. Fernández del recurso abierto
+  "Improving Your Statistical Inferences" de Daniël Lakens.
 baseurl: "/inferencias-estadisticas-ESP"
-url: "https://juangff85.github.io" 
+url: "https://juangff85.github.io"
 
-# Configuración de Jekyll y Tema (¡Copia este bloque!)
+# Configuración de Jekyll y tema
 markdown: kramdown
-# theme: just-the-docs  <-- ¡ESTA LÍNEA DEBE SER ELIMINADA O COMENTADA!
+# IMPORTANTE: dejamos el theme sin definir para usar el que pone GitHub Pages por defecto
+# theme: just-the-docs  # <- NO lo descomentes, porque GitHub Pages no permite ese tema remoto
 
-# 2. Añade los plugins que el tema Just the Docs requiere
+# Plugins permitidos por GitHub Pages
 plugins:
   - jekyll-feed
   - jekyll-sitemap
-# --------------------
 
-# Asegúrate de mantener estas líneas si las tenías antes:
+# Opciones adicionales del sitio (inofensivas aunque no uses just-the-docs)
 gh_edit_link: false
 color_scheme: light
 
-# Excluir archivos innecesarios
+# Excluir archivos innecesarios del build (puedes ajustar esta lista si quieres)
 exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/
