@@ -1,3 +1,8 @@
+---
+layout: default
+title: Formulando Preguntas Estadísticas
+nav_order: 6
+---
 # 5. Formulando Preguntas Estadísticas
 
 ## 5.1. Tres tipos de preguntas estadísticas
