@@ -8,17 +8,3 @@ url: "https://juangff85.github.io"
 
 # Configuración de Jekyll y Tema (¡Copia este bloque!)
 markdown: kramdown
-remote_theme: just-the-docs/just-the-docs # Tema principal
-
-# -- Plugins y configuraciones del Tema --
-plugins:
-  - jekyll-remote-theme
-  - jekyll-feed # Sigue siendo útil
-  - jekyll-sitemap # Generalmente requerido
-  # (Si usas Just the Docs localmente, podrías necesitar más plugins aquí,
-  # pero con el remoto, 'jekyll-remote-theme' suele bastar si GitHub lo procesa bien)
-  
-just_the_docs:
-  # Estas variables están correctamente fuera del bloque 'plugins'
-  gh_edit_link: false
-  color_scheme: light
