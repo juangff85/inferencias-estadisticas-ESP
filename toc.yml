@@ -1,0 +1,38 @@
+# Estructura del índice (Table of Contents)
+- title: Introducción
+  url: README.md # O el nombre del archivo de tu página principal
+- title: 1. Usando valores p para probar una hipótesis
+  url: 01-usando-valores-p.md
+- title: 2. Control de errores
+  url: 02-control-de-errores.md
+- title: 3. Verosimilitudes
+  url: 03-verosimilitudes.md
+- title: 4. Estadística Bayesiana
+  url: 04-estadistica-bayesiana.md
+- title: 5. Formulando Preguntas Estadísticas
+  url: 05-formulando-preguntas-estadisticas.md
+- title: 6. Tamaños del Efecto
+  url: 06-tamaños-del-efecto.md
+- title: 7. Intervalos de Confianza
+  url: 07-intervalos-de-confianza.md
+- title: 8. Justificación del Tamaño de la Muestra
+  url: 08-justificacion-del-tamaño-de-la-muestra.md
+- title: 9. Pruebas de Equivalencia e Hipótesis de Intervalo
+  url: 09-pruebas-de-equivalencia.md
+- title: 10. Análisis Secuencial
+  url: 10-analisis-secuencial.md
+- title: 11. Meta-análisis
+  url: 11-meta-analisis.md
+- title: 12. Detección de Sesgos
+  url: 12-deteccion-de-sesgos.md
+- title: 13. Prerregistro y Transparencia
+  url: 13-prerregistro-y-transparencia.md
+- title: 14. Reproducibilidad Computacional
+  url: 14-reproducibilidad-computacional.md
+- title: 15. Integridad de la Investigación
+  url: 15-integridad-de-la-investigacion.md
+- title: 16. Sesgo de Confirmación y Escepticismo Organizado
+  url: 16-sesgo-y-escepticismo.md
+- title: 17. Estudios de Replicación
+  url: 17-estudios-de-replicacion.md
+# Si tienes Referencias y Registro de Cambios, añádelos aquí.
