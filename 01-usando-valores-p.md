@@ -3,7 +3,9 @@ title: 1. Usando valores p para probar una hipótesis
 ---
 # 1. Usando valores p para probar una hipótesis
 Los científicos pueden intentar responder a una gran variedad de preguntas recogiendo datos. Una pregunta que interesa especialmente a los científicos es si las mediciones que han sido recogidas en condiciones distintas difieren o no. La respuesta a esa pregunta es una afirmación ordinal, en este caso, el investigador declararía si la media de mediciones es mayor, menor, o si son iguales.  
+
 Por ejemplo, un investigador puede estar interesado en la hipótesis que afirma que los estudiantes aprenden mejor si hacen exámenes, entonces el investigador tendría que recoger la información que han aprendido los alumnos (condición A) y compararla con la información si los alumnos no hacen exámenes, pero pasan todo el tiempo estudiando (condición B). Después de recoger los datos, y observar que la nota media de los alumnos es mayor para aquellos que invirtieron parte de su tiempo en hacer exámenes, el investigador podrá concluir que el rendimiento de los alumnos fue mejor en la condición A que en la condición B.  
+
 Las afirmaciones ordinales solamente se pueden usar para establecer que existe una diferencia entre las condiciones. No miden la magnitud de esa diferencia.
 
 ## 1.1. Introducción al enfoque de prueba de hipótesis de Neyman-Pearson
