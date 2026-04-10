@@ -32,4 +32,4 @@ Supongamos que realizamos **200 estudios** con un nivel alfa del **5%, 80% d
 |          |H₀ verdadera (50%)|H₁ verdadera (50%)|
 |----------|------------------|------------------|
 |Resultado significativo (positivo)|Falso positivo: 5% × 50% = 2.5% (5 estudios)|Verdadero positivo: 80% × 50% = 40% (80 estudios)|
-|
+|Resultado no significativo (negativo)|Verdadero negativo: 95% × 50% = 47.5% (95 estudios)|Falso negativo: 20% × 50% = 10% (20 estudios)
