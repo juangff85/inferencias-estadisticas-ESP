@@ -21,7 +21,7 @@ La probabilidad de observar un **verdadero positivo** cuando existe un efecto 
 
 *Figura 2.1: Diferencia entre errores Tipo I y Tipo II. Figura elaborada por Paul Ellis*.
 
-![Figura 2.1](https://github.com/Surprised-Kiwi/inferencias-estadisticas-ESP/blob/main/images/figura2-1.jpg?raw=true)
+![Figura 2.1](https://github.com/Surprised-Kiwi/inferencias-estadisticas-ESP/blob/main/images/02/figura2-1.jpg?raw=true)
 
 Entonces, para el próximo estudio que realices, ¿cuál de los cuatro resultados posibles es más probable? Primero, supongamos que has fijado el nivel alfa en **5%**. Además, supongamos que has diseñado un estudio de manera que tenga 80% de potencia (y para este ejemplo supongamos que **Omniscient Jones** sabe que realmente tienes exactamente **80% de potencia**). Lo último que hay que especificar es la **probabilidad de que la hipótesis nula sea verdadera**. Supongamos que para este próximo estudio no tienes idea de si la hipótesis nula es verdadera o no, y que es **igual de probable que la hipótesis nula sea verdadera o que la hipótesis alternativa sea verdadera** (ambas con una probabilidad del 50%). Ahora podemos calcular cuál es el resultado más probable de un estudio de este tipo.
 
@@ -50,8 +50,8 @@ Un ejemplo de la vida real donde es útil entender el concepto de valor predicti
 
 *Figura 2.2: El valor predictivo positivo puede usarse para explicar por qué hay más personas vacunadas en el hospital que no vacunadas.*
 
-![Figura 2.2](https://github.com/Surprised-Kiwi/inferencias-estadisticas-ESP/blob/main/images/figura2-2.jpg?raw=true)
+![Figura 2.2](https://github.com/Surprised-Kiwi/inferencias-estadisticas-ESP/blob/main/images/02/figura2-2.jpg?raw=true)
 
 Es útil entender cuál es la probabilidad de que, si has observado un resultado significativo en un experimento, el resultado sea realmente un verdadero positivo. En otras palabras, en el largo plazo, ¿cuántos verdaderos positivos podemos esperar, entre todos los resultados positivos (tanto verdaderos positivos como falsos positivos)? Esto se conoce como el Valor Predictivo Positivo (PPV). También podemos calcular cuántos falsos positivos podemos esperar, entre todos los resultados positivos (de nuevo, tanto verdaderos positivos como falsos positivos). Esto se conoce como la Probabilidad de Falso Positivo Reportado (Wacholder et al., 2004), a veces también denominada el Riesgo de Falso Positivo (Colquhoun, 2019).
 
-![Imagen 1](https://github.com/Surprised-Kiwi/inferencias-estadisticas-ESP/blob/main/images/img1.png?raw=true)
+![Imagen 1](https://github.com/Surprised-Kiwi/inferencias-estadisticas-ESP/blob/main/images/02/img1.png?raw=true)
