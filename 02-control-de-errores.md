@@ -21,7 +21,7 @@ La probabilidad de observar un **verdadero positivo** cuando existe un efecto 
 
 *Figura 2.1: Diferencia entre errores Tipo I y Tipo II. Figura elaborada por Paul Ellis*.
 
-![Figura 2.1](https://github.com/Surprised-Kiwi/inferencias-estadisticas-ESP/blob/main/images/02/figura2-1.jpg?raw=true)
+![Figura 2.1](https://github.com/juangff85/inferencias-estadisticas-ESP/blob/main/images/02/figura2-1.jpg?raw=true)
 
 Entonces, para el próximo estudio que realices, ¿cuál de los cuatro resultados posibles es más probable? Primero, supongamos que has fijado el nivel alfa en **5%**. Además, supongamos que has diseñado un estudio de manera que tenga 80% de potencia (y para este ejemplo supongamos que **Omniscient Jones** sabe que realmente tienes exactamente **80% de potencia**). Lo último que hay que especificar es la **probabilidad de que la hipótesis nula sea verdadera**. Supongamos que para este próximo estudio no tienes idea de si la hipótesis nula es verdadera o no, y que es **igual de probable que la hipótesis nula sea verdadera o que la hipótesis alternativa sea verdadera** (ambas con una probabilidad del 50%). Ahora podemos calcular cuál es el resultado más probable de un estudio de este tipo.
 
@@ -50,11 +50,11 @@ Un ejemplo de la vida real donde es útil entender el concepto de valor predicti
 
 *Figura 2.2: El valor predictivo positivo puede usarse para explicar por qué hay más personas vacunadas en el hospital que no vacunadas.*
 
-![Figura 2.2](https://github.com/Surprised-Kiwi/inferencias-estadisticas-ESP/blob/main/images/02/figura2-2.jpg?raw=true)
+![Figura 2.2](https://github.com/juangff85/inferencias-estadisticas-ESP/blob/main/images/02/figura2-2.jpg?raw=true)
 
 Es útil entender cuál es la probabilidad de que, si has observado un resultado significativo en un experimento, el resultado sea realmente un verdadero positivo. En otras palabras, en el largo plazo, ¿cuántos verdaderos positivos podemos esperar, entre todos los resultados positivos (tanto verdaderos positivos como falsos positivos)? Esto se conoce como el Valor Predictivo Positivo (PPV). También podemos calcular cuántos falsos positivos podemos esperar, entre todos los resultados positivos (de nuevo, tanto verdaderos positivos como falsos positivos). Esto se conoce como la Probabilidad de Falso Positivo Reportado (Wacholder et al., 2004), a veces también denominada el Riesgo de Falso Positivo (Colquhoun, 2019).
 
-![Imagen 1](https://github.com/Surprised-Kiwi/inferencias-estadisticas-ESP/blob/main/images/02/img1.png?raw=true)
+![Imagen 1](https://github.com/juangff85/inferencias-estadisticas-ESP/blob/main/images/02/img1.png?raw=true)
 
 El PPV y la FPRP combinan conceptos frecuentistas clásicos de potencia estadística y niveles alfa con probabilidades previas de que H₁ y H₀ sean verdaderas. Dependen de la proporción de estudios que ejecutas donde hay un efecto (H₁ es verdadera), y donde no hay un efecto (H₀ es verdadera), además de la potencia estadística y el nivel alfa. Al fin y al cabo, solo puedes observar un falso positivo si la hipótesis nula es verdadera, y solo puedes observar un verdadero positivo si la hipótesis alternativa es verdadera. Siempre que realizas un estudio, o bien estás operando en una realidad donde hay un efecto verdadero, o bien estás operando en una realidad donde no hay efecto —pero no sabes en qué realidad estás.
 
@@ -65,7 +65,7 @@ Si continuamos el ejemplo anterior, vemos que hay 85 resultados positivos (80 + 
 *Figura 2.3: Captura de pantalla de la salida de los resultados de la app Shiny de PPV de Michael Zehetleitner y Felix Schönbrodt.
 (Nota: FDR y FPRP son abreviaturas diferentes para lo mismo.)*
 
-![Figura 2.3](https://github.com/Surprised-Kiwi/inferencias-estadisticas-ESP/blob/main/images/02/figura2-3.png?raw=true)
+![Figura 2.3](https://github.com/juangff85/inferencias-estadisticas-ESP/blob/main/images/02/figura2-3.png?raw=true)
 
 La gente a menudo dice algo como: “Bueno, todos sabemos que 1 de cada 20 resultados en la literatura publicada son errores Tipo 1”. Deberías ser capaz de entender que esto no es cierto en la práctica, después de aprender sobre el valor predictivo positivo. Solo cuando en el 100% de los estudios que realizas la hipótesis nula es verdadera, y todos los estudios se publican, solo entonces 1 de cada 20 estudios, en el largo plazo, son falsos positivos (y el resto correctamente revela que no hay una diferencia estadísticamente significativa). También explica por qué la concepción errónea común sobre el p-valor “Si has observado un hallazgo significativo, la probabilidad de que hayas cometido un error Tipo 1 (un falso positivo) es 5%.” no es correcta, porque en la práctica la hipótesis nula no es verdadera en todas las pruebas que se realizan (a veces la hipótesis alternativa es verdadera). De manera importante, mientras haya sesgo de publicación (donde hallazgos con resultados deseados acaban en la literatura científica, y por ejemplo resultados no significativos no se comparten), entonces incluso si los investigadores usan un nivel alfa del 5%, es bastante razonable asumir que mucho más del 5% de los hallazgos significativos en la literatura publicada son falsos positivos. En la literatura científica, la probabilidad de falso positivo reportado puede ser bastante alta, y bajo circunstancias específicas, incluso podría ser tan alta que la mayoría de los hallazgos de investigación publicados sean falsos. Esto ocurrirá cuando los investigadores examinen sobre todo estudios donde 1) la hipótesis nula es verdadera, 2) con baja potencia, o 3) cuando la tasa de error Tipo 1 esté inflada debido a p-hacking u otros tipos de sesgo.
 
@@ -73,7 +73,7 @@ La gente a menudo dice algo como: “Bueno, todos sabemos que 1 de cada 20 resul
 
 *Figura 2.4: Cita del libro de 1830 de Babbage, “Reflections on the Decline of Science in England And on Some of Its Causes.”*
 
-![Figura 2.4](https://github.com/Surprised-Kiwi/inferencias-estadisticas-ESP/blob/main/images/02/figura2-4.jpg?raw=true)
+![Figura 2.4](https://github.com/juangff85/inferencias-estadisticas-ESP/blob/main/images/02/figura2-4.jpg?raw=true)
 
 Si realizas múltiples comparaciones, existe el riesgo de que la tasa de error Tipo 1 pueda inflarse. Cuando se planifican múltiples comparaciones, en algunos casos es posible controlar la tasa de error Tipo 1 reduciendo el nivel alfa para cada análisis individual. El enfoque más conocido para controlar comparaciones múltiples es la corrección de Bonferroni, donde el nivel alfa se divide por el número de pruebas que se realizan. Sin embargo, los investigadores también a menudo utilizan estrategias informales de análisis de datos que inflan la tasa de error Tipo 1. Babbage (1830) ya se quejaba de estas prácticas problemáticas en 1830, y dos siglos después, siguen siendo comunes. Barber (1976) ofrece una discusión en profundidad de una serie de enfoques, como mirar los datos para decidir qué hipótesis probar (a veces llamado “double dipping”); informar selectivamente solo aquellos análisis que confirman predicciones e ignorar resultados no significativos, recolectar muchas variables y realizar multitud de pruebas, o realizar análisis de subgrupos cuando el análisis planificado produce resultados no significativos; o tras una predicción no significativa, derivar una nueva hipótesis que esté apoyada por los datos y probar la hipótesis en los mismos datos de los que se derivó la hipótesis (a veces llamado HARKing, Hypothesizing After Results are Known (Kerr, 1998)). Muchos investigadores admiten haber usado prácticas que inflan las tasas de error (véase la sección sobre prácticas de investigación cuestionables en el Capítulo 15 sobre integridad de la investigación). Yo mismo he utilizado tales prácticas en el primer artículo científico que publiqué, antes de ser plenamente consciente de lo problemático que era esto; para un artículo que mis coautores y yo publicamos varios años después en el que reflexionamos sobre esto, véase Jostmann et al. (2016).
 
@@ -81,13 +81,13 @@ Para algunos paradigmas, los investigadores tienen mucha flexibilidad en cómo c
 
 *Figura 2.5: Gráfico de publicaciones que usan CRTT (azul) y cuantificaciones únicas de la medida (rojo). Figura de FlexibleMeasures.com por Malte Elson.*
 
-![Figura 2.5](https://github.com/Surprised-Kiwi/inferencias-estadisticas-ESP/blob/main/images/02/figura2-5.png?raw=true)
+![Figura 2.5](https://github.com/juangff85/inferencias-estadisticas-ESP/blob/main/images/02/figura2-5.png?raw=true)
 
 ## 2.4 Detención opcional (Optional stopping)
 
 *Figura 2.6: Captura de pantalla de un artículo científico que admite explícitamente haber utilizado optional stopping.*
 
-![Figura 2.6](https://github.com/Surprised-Kiwi/inferencias-estadisticas-ESP/blob/main/images/02/figura2-6.png?raw=true)
+![Figura 2.6](https://github.com/juangff85/inferencias-estadisticas-ESP/blob/main/images/02/figura2-6.png?raw=true)
 
 Una práctica que **infla la tasa de error Tipo 1* se conoce como **optional stopping**. En el optional stopping un investigador analiza repetidamente los datos, continúa la recogida de datos cuando el resultado de la prueba no es estadísticamente significativo, pero se detiene cuando se observa un efecto significativo. La cita de un artículo publicado en la Figura 2.6 es un ejemplo donde los investigadores informan de manera transparente que utilizaron optional stopping, pero más comúnmente las personas **no revelan el uso de optional stopping en sus secciones de métodos**. En los últimos años, muchos investigadores han aprendido que el optional stopping es problemático. Esto ha llevado a algunos a la idea general de que **nunca se deberían recoger datos, mirar si los resultados son significativos y detener la recogida de datos cuando el resultado es significativo o, si no lo es, continuar recogiendo datos**. Esa no es la conclusión correcta, y es un ejemplo de volverse demasiado inflexible. El enfoque correcto —recoger datos en bloques, lo que se denomina **análisis secuencial**— ha sido ampliamente desarrollado por estadísticos, y se utiliza en muchos ensayos médicos. Hablaremos de los análisis secuenciales en el **Capítulo 10**. La principal lección es que ciertas prácticas de investigación pueden **aumentar la flexibilidad y la eficiencia de los estudios** que realizas cuando se hacen correctamente, pero las mismas prácticas pueden **inflar la tasa de error Tipo 1** cuando se hacen incorrectamente. Intentemos, por tanto, comprender mejor **cuándo y cómo corremos el riesgo de inflar nuestra tasa de error Tipo 1 con optional stopping**, y cómo hacerlo correctamente utilizando análisis secuencial.
 
@@ -126,13 +126,13 @@ Por ejemplo, en la **Figura 2.7** ves el p-valor representado en el eje y (de 
 
 *Figura 2.7: p-valores simulados para cada observación adicional cuando la hipótesis nula es verdadera.*
 
-![Figura 2.7](https://github.com/Surprised-Kiwi/inferencias-estadisticas-ESP/blob/main/images/02/figura2-7.gif?raw=true)
+![Figura 2.7](https://github.com/juangff85/inferencias-estadisticas-ESP/blob/main/images/02/figura2-7.gif?raw=true)
 
 Cuando existe un efecto verdadero, vemos que los p-valores también varían, pero **eventualmente caerán por debajo del nivel alfa**. Simplemente no sabemos exactamente cuándo ocurrirá esto debido al **error de muestreo**. Cuando realizamos un **análisis de potencia a priori**, podemos calcular la probabilidad de que examinar un tamaño de muestra específico produzca un p-valor significativo. En la **Figura 2.8** vemos la misma simulación, pero ahora cuando existe un efecto verdadero pequeño de **d = 0.3**. Con **200 observaciones por condición**, un análisis de potencia de sensibilidad revela que tenemos **85% de potencia**. Si analizáramos los datos en un análisis intermedio (por ejemplo, después de **150 observaciones**) a menudo ya encontraríamos un efecto estadísticamente significativo (ya que tendríamos **74% de potencia**). Esto ilustra un beneficio de los **análisis secuenciales**, donde controlamos las tasas de error pero podemos **detenernos antes en un análisis intermedio**. Los análisis secuenciales son especialmente útiles en estudios grandes o costosos donde existe incertidumbre sobre el tamaño del efecto verdadero.
 
 *Figura 2.8: p-valores simulados para cada observación adicional cuando d = 0.3.*
 
-![Figura 2.8](https://github.com/Surprised-Kiwi/inferencias-estadisticas-ESP/blob/main/images/02/figura2-8.gif?raw=true)
+![Figura 2.8](https://github.com/juangff85/inferencias-estadisticas-ESP/blob/main/images/02/figura2-8.gif?raw=true)
 
 Examinemos ahora de forma más formal la **inflación de la tasa de error Tipo 1** mediante optional stopping en un estudio de simulación. Copia el código siguiente en **R** y ejecútalo. Ten en cuenta que las **50 000 simulaciones** (necesarias para obtener tasas de error razonablemente precisas) tardan algo de tiempo en ejecutarse.
 
@@ -187,7 +187,7 @@ Comienza ejecutando la simulación **sin cambiar ningún valor**, simulando **
 
 *Figura 2.9: Simulación de 500 000 estudios realizando 5 análisis intermedios con un nivel alfa del 5%*.
 
-![Figura 2.9](https://github.com/Surprised-Kiwi/inferencias-estadisticas-ESP/blob/main/images/02/figura2-9.png?raw=true)
+![Figura 2.9](https://github.com/juangff85/inferencias-estadisticas-ESP/blob/main/images/02/figura2-9.png?raw=true)
 
 Observamos **100 barras**, una para cada percentil (por ejemplo, todos los p-valores entre 0.00 y 0.01, entre 0.01 y 0.02, etc.). Hay una línea horizontal que indica dónde caerían todos los p-valores si estuvieran **distribuidos uniformemente**.
 
