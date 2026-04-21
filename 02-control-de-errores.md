@@ -127,3 +127,69 @@ Por ejemplo, en la **Figura 2.7** ves el p-valor representado en el eje y (de 
 *Figura 2.7: p-valores simulados para cada observación adicional cuando la hipótesis nula es verdadera.*
 
 ![Figura 2.7](https://github.com/Surprised-Kiwi/inferencias-estadisticas-ESP/blob/main/images/02/figura2-7.gif?raw=true)
+
+Cuando existe un efecto verdadero, vemos que los p-valores también varían, pero **eventualmente caerán por debajo del nivel alfa**. Simplemente no sabemos exactamente cuándo ocurrirá esto debido al **error de muestreo**. Cuando realizamos un **análisis de potencia a priori**, podemos calcular la probabilidad de que examinar un tamaño de muestra específico produzca un p-valor significativo. En la **Figura 2.8** vemos la misma simulación, pero ahora cuando existe un efecto verdadero pequeño de **d = 0.3**. Con **200 observaciones por condición**, un análisis de potencia de sensibilidad revela que tenemos **85% de potencia**. Si analizáramos los datos en un análisis intermedio (por ejemplo, después de **150 observaciones**) a menudo ya encontraríamos un efecto estadísticamente significativo (ya que tendríamos **74% de potencia**). Esto ilustra un beneficio de los **análisis secuenciales**, donde controlamos las tasas de error pero podemos **detenernos antes en un análisis intermedio**. Los análisis secuenciales son especialmente útiles en estudios grandes o costosos donde existe incertidumbre sobre el tamaño del efecto verdadero.
+
+*Figura 2.8: p-valores simulados para cada observación adicional cuando d = 0.3.*
+
+![Figura 2.8](https://github.com/Surprised-Kiwi/inferencias-estadisticas-ESP/blob/main/images/02/figura2-8.gif?raw=true)
+
+Examinemos ahora de forma más formal la **inflación de la tasa de error Tipo 1** mediante optional stopping en un estudio de simulación. Copia el código siguiente en **R** y ejecútalo. Ten en cuenta que las **50 000 simulaciones** (necesarias para obtener tasas de error razonablemente precisas) tardan algo de tiempo en ejecutarse.
+
+    N <- 100 # total datapoints (per condition)
+    looks <- 5 # set number of looks at the data
+    nsims <- 50000 # number of simulated studies
+    alphalevel <- 0.05 # set alphalevel
+
+    if(looks > 1){
+      look_at_n <- ceiling(seq(N / looks, N, (N - (N / looks)) / (looks - 1)))
+    }  else {
+      look_at_n <- N
+    }
+    look_at_n <- look_at_n[look_at_n > 2] # Remove looks at N of 1 or 2
+    looks<-length(look_at_n) # if looks are removed, update number of looks
+
+    matp <- matrix(NA, nrow = nsims, ncol = looks) # Matrix for p-values l tests
+    p <- numeric(nsims) # Variable to save pvalues
+
+    # Loop data generation for each study, then loop to perform a test for each N
+    for (i in 1:nsims) {
+      x <- rnorm(n = N, mean = 0, sd = 1)
+      y <- rnorm(n = N, mean = 0, sd = 1)
+      for (j in 1:looks) {
+        matp[i, j] <- t.test(x[1:look_at_n[j]], y[1:look_at_n[j]], 
+                             var.equal = TRUE)$p.value # perform the t-test, store
+      }
+      cat("Loop", i, "of", nsims, "\n")
+    }
+
+    # Save Type 1 error rate smallest p at all looks
+    for (i in 1:nsims) {
+      p[i] <- ifelse(length(matp[i,which(matp[i,] < alphalevel)]) == 0, 
+                     matp[i,looks], matp[i,which(matp[i,] < alphalevel)])
+    }
+
+    hist(p, breaks = 100, col = "grey") # create plot
+    abline(h = nsims / 100, col = "red", lty = 3)
+
+    cat("Type 1 error rates for look 1 to", looks, ":", 
+        colSums(matp < alphalevel) / nsims)
+    cat("Type 1 error rate when only the lowest p-value for all looks is reported:", 
+        sum(p < alphalevel) / nsims)
+
+(Este código realiza múltiples pruebas t independientes sobre datos simulados, examinando los datos varias veces hasta alcanzar el tamaño máximo de muestra).
+Cuando realizas **solo una prueba**, la tasa de error Tipo 1 es la probabilidad de encontrar un p-valor menor que tu nivel alfa cuando no hay efecto. En un escenario de optional stopping en el que miras los datos **dos veces**, la tasa de error Tipo 1 es la probabilidad de encontrar un p-valor menor que el nivel alfa en la primera mirada **más** la probabilidad de no encontrar un p-valor menor que el nivel alfa en la primera mirada pero encontrar uno en la segunda. Esto es una **probabilidad condicional**, lo que hace que el control del error sea un poco más complejo que cuando múltiples análisis son completamente independientes.
+Entonces, ¿cuánto **infla optional stopping la tasa de error Tipo 1**? ¿Y qué p-valores podemos esperar bajo optional stopping?
+Comienza ejecutando la simulación **sin cambiar ningún valor**, simulando **100 participantes en cada condición**, mirando los datos **5 veces**, con un alfa de **0.05**. Las **50 000 simulaciones** tardarán un rato. Deberías ver algo similar a la **Figura 2.9**.
+
+*Figura 2.9: Simulación de 500 000 estudios realizando 5 análisis intermedios con un nivel alfa del 5%*.
+
+![Figura 2.9](https://github.com/Surprised-Kiwi/inferencias-estadisticas-ESP/blob/main/images/02/figura2-9.png?raw=true)
+
+Observamos **100 barras**, una para cada percentil (por ejemplo, todos los p-valores entre 0.00 y 0.01, entre 0.01 y 0.02, etc.). Hay una línea horizontal que indica dónde caerían todos los p-valores si estuvieran **distribuidos uniformemente**.
+
+La distribución de p-valores es peculiar. Vemos que, en comparación con una distribución uniforme, **faltan muchos resultados justo por encima del umbral alfa de 0.05**, y parecen haberse desplazado **justo por debajo de 0.05**, donde hay una frecuencia mucho mayor de resultados que cuando los datos no se analizan repetidamente. Observa cómo p-valores relativamente altos (por ejemplo p = 0.04) son más comunes que p-valores más bajos (por ejemplo p = 0.01). En el **Capítulo 12 sobre detección de sesgos** veremos que técnicas estadísticas como **p-curve** pueden detectar este patrón.
+
+Cuando se utiliza un nivel alfa del **5% con 5 miradas a los datos**, la tasa global de error Tipo 1 se **infla hasta el 14%**. Si reducimos el nivel alfa en cada análisis intermedio, la tasa global de error Tipo 1 puede controlarse. La forma de la distribución de p-valores seguirá siendo peculiar, pero el número total de resultados significativos se mantendrá en el nivel alfa deseado. La conocida **corrección de Bonferroni** controla la tasa de error Tipo 1 dividiendo α por el número de análisis, pero la **corrección de Pocock** es ligeramente más eficiente. Para más información sobre cómo realizar análisis intermedios controlando las tasas de error, véase el **Capítulo 10 sobre análisis secuencial**.
+
+## 2.5 Justificación de las tasas de error
