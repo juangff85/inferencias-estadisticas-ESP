@@ -178,8 +178,11 @@ Examinemos ahora de forma más formal la **inflación de la tasa de error Tipo 
         sum(p < alphalevel) / nsims)
 
 (Este código realiza múltiples pruebas t independientes sobre datos simulados, examinando los datos varias veces hasta alcanzar el tamaño máximo de muestra).
+
 Cuando realizas **solo una prueba**, la tasa de error Tipo 1 es la probabilidad de encontrar un p-valor menor que tu nivel alfa cuando no hay efecto. En un escenario de optional stopping en el que miras los datos **dos veces**, la tasa de error Tipo 1 es la probabilidad de encontrar un p-valor menor que el nivel alfa en la primera mirada **más** la probabilidad de no encontrar un p-valor menor que el nivel alfa en la primera mirada pero encontrar uno en la segunda. Esto es una **probabilidad condicional**, lo que hace que el control del error sea un poco más complejo que cuando múltiples análisis son completamente independientes.
+
 Entonces, ¿cuánto **infla optional stopping la tasa de error Tipo 1**? ¿Y qué p-valores podemos esperar bajo optional stopping?
+
 Comienza ejecutando la simulación **sin cambiar ningún valor**, simulando **100 participantes en cada condición**, mirando los datos **5 veces**, con un alfa de **0.05**. Las **50 000 simulaciones** tardarán un rato. Deberías ver algo similar a la **Figura 2.9**.
 
 *Figura 2.9: Simulación de 500 000 estudios realizando 5 análisis intermedios con un nivel alfa del 5%*.
