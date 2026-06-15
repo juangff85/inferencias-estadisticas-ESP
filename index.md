@@ -1,16 +1,8 @@
----
-title: Inicio
-description: >-
-  Traducción al castellano del recurso educativo abierto
-  "Improving Your Statistical Inferences" de Daniël Lakens.
----
-
-# inferencias-estadisticas-ESP
+# Inicio {.unnumbered}
 
 Traducción al castellano de Improving Your Statistical Inferences de Daniël Lakens
 
-# Mejora de tus Inferencias Estadísticas
-
+## Mejora de tus Inferencias Estadísticas
 Este recurso educativo abierto contiene información para mejorar las inferencias estadísticas, diseñar mejores experimentos y reportar la investigación científica de manera más transparente.
 
 **Autor**  

@@ -1,9 +1,4 @@
----
-title: 16. Sesgo de Confirmación y Escepticismo Organizado
----
-
-
-# 16. Sesgo de Confirmación y Escepticismo Organizado
+# Sesgo de Confirmación y Escepticismo Organizado
 
 No puedo dar a ningún científico, de cualquier edad, un mejor consejo que este: la intensidad de la convicción de que una hipótesis es verdadera no tiene relación con si realmente lo es. La importancia de la fuerza de nuestra convicción es únicamente proporcionar un incentivo proporcionalmente fuerte para averiguar si la hipótesis resistirá una evaluación crítica.
 — Medawar, 1979, Advice to a Young Scientist
@@ -44,7 +39,7 @@ Entonces, ¿por qué la ciencia parece seguir funcionando, a pesar de todas esta
 Algunas y algunos científicos consideran los esfuerzos activos por resistir el sesgo de confirmación como una característica esencial de una buena práctica científica. Como dijo Feynman: El primer principio es que no debes engañarte a ti mismo —y tú eres la persona más fácil de engañar.
 — Feynman (1974)
 
-## 16.1. Sesgo de confirmación en la Ciencia
+## Sesgo de confirmación en la Ciencia
 
 Wason (1960) creó una tarea sencilla para examinar cómo las personas ponen a prueba hipótesis. En la tarea, se recibe una serie de tres números (ej., 2, 4, 8) y la tarea es desarrollar una hipótesis sobre la regla subyacente que ha generado esos tres números. Para probar la hipótesis, se sugiere un nuevo conjunto de tres números, y se informa si sigue o no la regla.
 
@@ -77,23 +72,23 @@ El sesgo de citación también puede usarse de forma activa para hacer que un ar
 * Seleccionar citas de forma parcial o sacarlas de contexto.
 * Minimizar las limitaciones del estudio.
 
-## 16.2. Escepticismo Organizado
+## Escepticismo Organizado
 
 Existen diversas prácticas en la ciencia cuyo propósito es contrarrestar, en la medida de lo posible, los sesgos, permitiendo que las afirmaciones sean sometidas a un escrutinio crítico.
 
-### 16.2.1 Control de errores
+### Control de errores
 
 William Gosset (Student, del test *t* de Student) reconocía que era útil especificar de forma objetiva la tasa de error que se va a utilizar para sacar conclusiones, dado que: “...es generalmente aceptado que dejar el rechazo de experimentos totalmente a discreción de quien los realiza es peligroso, ya que puede estar sesgado. Por ello, se ha propuesto adoptar un criterio que dependa de la probabilidad de que ocurra un error tan amplio en el número de observaciones dado.”
 
 El uso de un nivel alfa fijo (por ejemplo, 0.05 en muchos campos) es un ejemplo claro de escepticismo organizado. Las afirmaciones deben pasar un criterio que controle las conclusiones erróneas antes de tomarse en serio.
 
-### 16.2.2 Prerregistro
+### Prerregistro
 
 Una persona investigadora puede usar un nivel alfa fijo antes de observar los datos, pero eso no es suficiente para controlar conclusiones erróneas si, posteriormente, elige el test que desea aplicar tras haber identificado patrones interesantes. La solución a este problema es el prerregistro del plan de análisis.
 
 El prerregistro es una forma de escepticismo organizado. En lugar de confiar ciegamente en que las personas reporten de forma imparcial sus análisis planificados, se les pide que usen un método de evaluación de hipótesis en el que sus pares puedan verificar si esos análisis fueron efectivamente definidos antes de tener acceso a los datos.
 
-### 16.2.3 Estudios de replicación independiente
+### Estudios de replicación independiente
 
 Después de que se ha realizado un estudio y se ha alcanzado una conclusión, el siguiente paso crítico es que otras personas intenten replicar de forma independiente ese hallazgo. La replicación independiente proporciona un método para explorar hasta qué punto errores o sesgos del estudio original causaron un efecto.
 
@@ -102,7 +97,7 @@ Si un hallazgo puede ser replicado de forma independiente por otras personas, es
 * Características sutiles del estudio inicial.
 * Problemas más graves, como fraude o una tasa inflada de errores tipo I debido a flexibilidad en el análisis de datos.
 
-### 16.2.4 Revisión por pares
+### Revisión por pares
 
 El ejemplo prototípico de escepticismo organizado en la ciencia es el proceso de revisión por pares. La crítica desde puntos de vista alternativos es necesaria para la objetividad y es lo que limita la intrusión de preferencias subjetivas individuales en el conocimiento científico.
 
@@ -112,11 +107,11 @@ El ejemplo prototípico de escepticismo organizado en la ciencia es el proceso d
 
 La revisión por pares cumple un papel importante, pero no se puede asumir que todos los manuscritos revisados por pares estén libres de errores o afirmaciones incorrectas. La revisión por pares post-publicación, como en plataformas como PubPeer, ha revelado con frecuencia errores que las revisiones originales pasaron por alto.
 
-### 16.2.5 Revisión de errores
+### Revisión de errores
 
 Los errores en la investigación ocurren, y son más probables cuando respaldan lo que esperábamos encontrar. Rosenthal (1966) ofrece una revisión de varios estudios donde se cometieron errores al registrar las respuestas de participantes, y esos errores iban en la dirección esperada por las hipótesis.
 
-### 16.2.6 El método de las hipótesis múltiples
+### El método de las hipótesis múltiples
 
 T. C. Chamberlin observaba cómo las personas científicas tienden a desarrollar afecto hacia sus propias teorías, lo que lleva a una selección y ensalzamiento inconscientes de los fenómenos que armonizan con la teoría.
 
@@ -126,11 +121,11 @@ Para evitar este sesgo afectivo, Chamberlin propuso el **método de las hipótes
 * De esta manera, se puede examinar con más objetividad cuál de ellas está mejor sustentada por los datos.
 * Quien investiga se convierte en "madre o padre de una familia de hipótesis: y, por su relación parental con todas ellas, se le prohíbe encariñarse demasiado con ninguna en particular".
 
-### 16.2.6 La persona abogada del diablo
+### La persona abogada del diablo
 
 La **persona abogada del diablo** es quien asume el papel de escéptica y argumenta contra la posición aceptada o deseada. La idea es asignar explícitamente ese rol dentro de un grupo para expresar críticas activamente, contrarrestando la presión por conformarse.
 
-## 16.3. Conclusión
+## Conclusión
 
 La ciencia es una empresa profundamente humana. Quienes investigan tienen motivaciones y deseos que pueden sesgar las afirmaciones que hacen. Sin embargo, existen prácticas a nivel individual e institucional que permiten limitar la influencia de estos sesgos.
 

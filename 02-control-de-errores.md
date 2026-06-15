@@ -1,19 +1,18 @@
----
-title: 2. Control de errores
----
+# Control de errores
 
-# 2. Control de errores
-
-## 2.1. ¿Qué resultado puedes esperar si realizas un estudio?
+## ¿Qué resultado puedes esperar si realizas un estudio?
 
 Si realizas un estudio y planeas hacer una afirmación basada en la prueba estadística que vas a realizar, la probabilidad a largo plazo de hacer una afirmación correcta o errónea está determinada por *tres factores*: la **tasa de error Tip**, la **tasa de error Tipo II**, y la **probabilidad de que la hipótesis nula sea verdadera**. Hay **cuatro posibles resultados** de una prueba estadística, dependiendo de si el resultado es estadísticamente significativo o no, y de si la hipótesis nula es verdadera o no.
 
 ### Falso positivo (FP):
 Concluir que existe un efecto real cuando en realidad **no existe un efecto real** (H₀ es verdadera). Esto también se denomina **error Tipo I**, y se indica con **α**.
+
 ### Falso negativo (FN):
 Concluir que no existe un efecto real cuando en realidad **sí existe un efecto real** (H₁ es verdadera). Esto también se denomina **error Tipo II**, y se indica con **β**.
+
 ### Verdadero negativo (TN):
 Concluir que no existe un efecto real cuando realmente **no existe un efecto real** (H₀ es verdadera). Este es el complemento de un falso positivo y, por tanto, se indica por **1 − α**.
+
 ### Verdadero positivo (TP):
 Concluir que existe un efecto real cuando realmente **sí existe un efecto real** (H₁ es verdadera). Este es el complemento de un falso negativo y, por tanto, se indica por **1 − β**.
 
@@ -69,7 +68,7 @@ Si continuamos el ejemplo anterior, vemos que hay 85 resultados positivos (80 + 
 
 La gente a menudo dice algo como: “Bueno, todos sabemos que 1 de cada 20 resultados en la literatura publicada son errores Tipo 1”. Deberías ser capaz de entender que esto no es cierto en la práctica, después de aprender sobre el valor predictivo positivo. Solo cuando en el 100% de los estudios que realizas la hipótesis nula es verdadera, y todos los estudios se publican, solo entonces 1 de cada 20 estudios, en el largo plazo, son falsos positivos (y el resto correctamente revela que no hay una diferencia estadísticamente significativa). También explica por qué la concepción errónea común sobre el p-valor “Si has observado un hallazgo significativo, la probabilidad de que hayas cometido un error Tipo 1 (un falso positivo) es 5%.” no es correcta, porque en la práctica la hipótesis nula no es verdadera en todas las pruebas que se realizan (a veces la hipótesis alternativa es verdadera). De manera importante, mientras haya sesgo de publicación (donde hallazgos con resultados deseados acaban en la literatura científica, y por ejemplo resultados no significativos no se comparten), entonces incluso si los investigadores usan un nivel alfa del 5%, es bastante razonable asumir que mucho más del 5% de los hallazgos significativos en la literatura publicada son falsos positivos. En la literatura científica, la probabilidad de falso positivo reportado puede ser bastante alta, y bajo circunstancias específicas, incluso podría ser tan alta que la mayoría de los hallazgos de investigación publicados sean falsos. Esto ocurrirá cuando los investigadores examinen sobre todo estudios donde 1) la hipótesis nula es verdadera, 2) con baja potencia, o 3) cuando la tasa de error Tipo 1 esté inflada debido a p-hacking u otros tipos de sesgo.
 
-## 2.3 Inflación del error Tipo 1
+## Inflación del error Tipo 1
 
 *Figura 2.4: Cita del libro de 1830 de Babbage, “Reflections on the Decline of Science in England And on Some of Its Causes.”*
 
@@ -83,7 +82,7 @@ Para algunos paradigmas, los investigadores tienen mucha flexibilidad en cómo c
 
 ![Figura 2.5](https://github.com/juangff85/inferencias-estadisticas-ESP/blob/main/images/02/figura2-5.png?raw=true)
 
-## 2.4 Detención opcional (Optional stopping)
+## Detención opcional (Optional stopping)
 
 *Figura 2.6: Captura de pantalla de un artículo científico que admite explícitamente haber utilizado optional stopping.*
 
@@ -195,7 +194,7 @@ La distribución de p-valores es peculiar. Vemos que, en comparación con una di
 
 Cuando se utiliza un nivel alfa del **5% con 5 miradas a los datos**, la tasa global de error Tipo 1 se **infla hasta el 14%**. Si reducimos el nivel alfa en cada análisis intermedio, la tasa global de error Tipo 1 puede controlarse. La forma de la distribución de p-valores seguirá siendo peculiar, pero el número total de resultados significativos se mantendrá en el nivel alfa deseado. La conocida **corrección de Bonferroni** controla la tasa de error Tipo 1 dividiendo α por el número de análisis, pero la **corrección de Pocock** es ligeramente más eficiente. Para más información sobre cómo realizar análisis intermedios controlando las tasas de error, véase el **Capítulo 10 sobre análisis secuencial**.
 
-## 2.5 Justificación de las tasas de error
+## Justificación de las tasas de error
 
 Si rechazamos , podemos rechazarla cuando es verdadera; si aceptamos , podemos estar aceptándola cuando es falsa, es decir, cuando realmente alguna alternativa es verdadera. Estas dos fuentes de error rara vez pueden eliminarse completamente; en algunos casos será más importante evitar la primera, en otros la segunda. Se nos recuerda el viejo problema considerado por Laplace sobre el número de votos en un tribunal de jueces que debería ser necesario para condenar a un prisionero. ¿Es más grave condenar a un hombre inocente o absolver a un culpable? Eso dependerá de las consecuencias del error; de si el castigo es la muerte o una multa; de cuál es el peligro para la comunidad de los criminales liberados; y de cuáles son las opiniones éticas actuales sobre el castigo. Desde el punto de vista de la teoría matemática, todo lo que podemos hacer es mostrar cómo el riesgo de los errores puede ser controlado y minimizado. El uso de estas herramientas estadísticas en cualquier caso dado, al determinar exactamente cómo debe establecerse el equilibrio, debe dejarse al investigador.
 
@@ -229,7 +228,7 @@ Uno también debería reflexionar cuidadosamente sobre la elección del nivel al
 
 La segunda razón para hacer una elección específica del estudio del nivel alfa es más relevante para grandes conjuntos de datos, y está relacionada con la paradoja de Lindley. A medida que la potencia estadística aumenta, algunos p-valores por debajo de 0.05 (por ejemplo, p = 0.04) pueden ser más probables cuando no hay efecto que cuando hay un efecto. Para prevenir situaciones donde un frecuentista rechaza la hipótesis nula basándose en p < 0.05, cuando la evidencia en la prueba favorece la hipótesis nula sobre la alternativa, se recomienda reducir el nivel alfa como función del tamaño de muestra. La necesidad de hacerlo se discute por Leamer (1978), quien escribe “La regla general bastante popular ahora, es decir, fijar el nivel de significación arbitrariamente en .05, se muestra deficiente en el sentido de que desde todo punto de vista razonable el nivel de significación debería ser una función decreciente del tamaño de muestra.” La idea de este enfoque es reducir el nivel alfa de modo que un factor de Bayes o una verosimilitud calculada para un resultado significativo nunca sería evidencia para la hipótesis nula (para una aplicación Shiny en línea para realizar tales cálculos, véase aquí.
 
-## 2.6 Por qué no necesitas ajustar tu nivel alfa para todas las pruebas que harás en tu vida.
+## Por qué no necesitas ajustar tu nivel alfa para todas las pruebas que harás en tu vida.
 
 Algunos investigadores critican las correcciones por comparaciones múltiples porque también se podría corregir por todas las pruebas que harás en tu vida (Perneger, 1998). Si eliges usar un enfoque de Neyman-Pearson a la estadística, la única razón para corregir por todas las pruebas que realizas en tu vida es cuando todo el trabajo que has hecho en tu vida pone a prueba una sola teoría, y usarías tus últimas palabras para decidir aceptar o rechazar esta teoría, siempre que solo una de todas las pruebas individuales que has realizado haya producido un p < . Los investigadores rara vez trabajan así.
 
@@ -247,7 +246,7 @@ Podría parecer que los investigadores pueden librarse de realizar correcciones 
 
 Hay diferentes maneras de controlar las tasas de error, siendo la más fácil la corrección de Bonferroni y el procedimiento secuencial Holm-Bonferroni, apenas un poco menos conservador. Cuando el número de pruebas estadísticas se vuelve sustancial, a veces es preferible controlar lo que se conoce como la tasa de descubrimientos falsos (o la proporción esperada de descubrimientos falsos), en lugar de la tasa de error de falsos positivos (Benjamini & Hochberg, 1995).
 
-## 2.7 Análisis de potencia
+## Análisis de potencia
 
 Hasta ahora nos hemos centrado en gran medida en el control del error Tipo 1. Como quedó claro en la Figura 2.8, cuando hay un efecto verdadero los p-valores eventualmente se volverán más pequeños que cualquier nivel alfa dado a medida que el tamaño de muestra se vuelve lo suficientemente grande. Al diseñar un experimento, un objetivo podría ser elegir un tamaño de muestra que proporcione una tasa de error Tipo 2 deseada para un tamaño de efecto de interés. Esto puede lograrse realizando un análisis de potencia a priori. La potencia estadística de una prueba (y, por tanto, la tasa de error Tipo 2) depende del tamaño del efecto estandarizado (o el tamaño del efecto en bruto y la desviación estándar), el tamaño de muestra, y el nivel alfa. Manteniendo todo lo demás constante, cuanto mayores sean el tamaño del efecto, el tamaño de muestra, y el nivel alfa, mayor será la potencia estadística, y cuanto menores sean el tamaño del efecto, el tamaño de muestra, y el nivel alfa, menor será la potencia estadística.
 
