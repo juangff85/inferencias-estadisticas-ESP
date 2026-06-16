@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.33">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>2&nbsp; Control de errores – Mejora de tus Inferencias Estadísticas</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./03-verosimilitudes.html" rel="next">
+<link href="./01-usando-valores-p.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-485d01fc63b59abcd3ee1bf1e8e2748d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Sin resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02-control-de-errores.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Control de errores</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Mejora de tus Inferencias Estadísticas</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Inicio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-usando-valores-p.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Usando valores p para probar una hipótesis</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-control-de-errores.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Control de errores</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-verosimilitudes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Verosimilitudes</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-estadistica-bayesiana.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Estadística Bayesiana</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-formulando-preguntas-estadisticas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Formulando Preguntas Estadísticas</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-tamaños-del-efecto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Tamaños del Efecto</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-intervalos-de-confianza.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Intervalos de Confianza</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-justificacion-del-tamaño-de-la-muestra.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Justificación del Tamaño de la Muestra</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-pruebas-de-equivalencia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Pruebas de Equivalencia e Hipótesis de Intervalo</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-analisis-secuencial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Análisis Secuencial</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11-meta-analisis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Meta-análisis</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12-deteccion-de-sesgos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Detección de Sesgos</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13-prerregistro-y-transparencia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Prerregistro y Transparencia</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./14-reproducibilidad-computacional.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Reproducibilidad como elemento fundamental de la ciencia</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./15-integridad-de-la-investigacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Integridad de la Investigación</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./16-sesgo-y-escepticismo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Sesgo de Confirmación y Escepticismo Organizado</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./17-estudios-de-replicacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Estudios de Replicación</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de contenidos</h2>
+   
+  <ul>
+  <li><a href="#qué-resultado-puedes-esperar-si-realizas-un-estudio" id="toc-qué-resultado-puedes-esperar-si-realizas-un-estudio" class="nav-link active" data-scroll-target="#qué-resultado-puedes-esperar-si-realizas-un-estudio"><span class="header-section-number">2.1</span> ¿Qué resultado puedes esperar si realizas un estudio?</a>
+  <ul class="collapse">
+  <li><a href="#falso-positivo-fp" id="toc-falso-positivo-fp" class="nav-link" data-scroll-target="#falso-positivo-fp"><span class="header-section-number">2.1.1</span> Falso positivo (FP):</a></li>
+  <li><a href="#falso-negativo-fn" id="toc-falso-negativo-fn" class="nav-link" data-scroll-target="#falso-negativo-fn"><span class="header-section-number">2.1.2</span> Falso negativo (FN):</a></li>
+  <li><a href="#verdadero-negativo-tn" id="toc-verdadero-negativo-tn" class="nav-link" data-scroll-target="#verdadero-negativo-tn"><span class="header-section-number">2.1.3</span> Verdadero negativo (TN):</a></li>
+  <li><a href="#verdadero-positivo-tp" id="toc-verdadero-positivo-tp" class="nav-link" data-scroll-target="#verdadero-positivo-tp"><span class="header-section-number">2.1.4</span> Verdadero positivo (TP):</a></li>
+  </ul></li>
+  <li><a href="#valor-predictivo-positivo" id="toc-valor-predictivo-positivo" class="nav-link" data-scroll-target="#valor-predictivo-positivo"><span class="header-section-number">2.2</span> Valor predictivo positivo</a></li>
+  <li><a href="#inflación-del-error-tipo-1" id="toc-inflación-del-error-tipo-1" class="nav-link" data-scroll-target="#inflación-del-error-tipo-1"><span class="header-section-number">2.3</span> Inflación del error Tipo 1</a></li>
+  <li><a href="#detención-opcional-optional-stopping" id="toc-detención-opcional-optional-stopping" class="nav-link" data-scroll-target="#detención-opcional-optional-stopping"><span class="header-section-number">2.4</span> Detención opcional (Optional stopping)</a></li>
+  <li><a href="#justificación-de-las-tasas-de-error" id="toc-justificación-de-las-tasas-de-error" class="nav-link" data-scroll-target="#justificación-de-las-tasas-de-error"><span class="header-section-number">2.5</span> Justificación de las tasas de error</a></li>
+  <li><a href="#por-qué-no-necesitas-ajustar-tu-nivel-alfa-para-todas-las-pruebas-que-harás-en-tu-vida." id="toc-por-qué-no-necesitas-ajustar-tu-nivel-alfa-para-todas-las-pruebas-que-harás-en-tu-vida." class="nav-link" data-scroll-target="#por-qué-no-necesitas-ajustar-tu-nivel-alfa-para-todas-las-pruebas-que-harás-en-tu-vida."><span class="header-section-number">2.6</span> Por qué no necesitas ajustar tu nivel alfa para todas las pruebas que harás en tu vida.</a></li>
+  <li><a href="#análisis-de-potencia" id="toc-análisis-de-potencia" class="nav-link" data-scroll-target="#análisis-de-potencia"><span class="header-section-number">2.7</span> Análisis de potencia</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Control de errores</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="qué-resultado-puedes-esperar-si-realizas-un-estudio" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="qué-resultado-puedes-esperar-si-realizas-un-estudio"><span class="header-section-number">2.1</span> ¿Qué resultado puedes esperar si realizas un estudio?</h2>
+<p>Si realizas un estudio y planeas hacer una afirmación basada en la prueba estadística que vas a realizar, la probabilidad a largo plazo de hacer una afirmación correcta o errónea está determinada por&nbsp;<em>tres factores</em>: la&nbsp;<strong>tasa de error Tip</strong>, la&nbsp;<strong>tasa de error Tipo II</strong>, y la&nbsp;<strong>probabilidad de que la hipótesis nula sea verdadera</strong>. Hay&nbsp;<strong>cuatro posibles resultados</strong>&nbsp;de una prueba estadística, dependiendo de si el resultado es estadísticamente significativo o no, y de si la hipótesis nula es verdadera o no.</p>
+<section id="falso-positivo-fp" class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="falso-positivo-fp"><span class="header-section-number">2.1.1</span> Falso positivo (FP):</h3>
+<p>Concluir que existe un efecto real cuando en realidad&nbsp;<strong>no existe un efecto real</strong>&nbsp;(H₀ es verdadera). Esto también se denomina&nbsp;<strong>error Tipo I</strong>, y se indica con&nbsp;<strong>α</strong>.</p>
+</section>
+<section id="falso-negativo-fn" class="level3" data-number="2.1.2">
+<h3 data-number="2.1.2" class="anchored" data-anchor-id="falso-negativo-fn"><span class="header-section-number">2.1.2</span> Falso negativo (FN):</h3>
+<p>Concluir que&nbsp;no existe un efecto real&nbsp;cuando en realidad&nbsp;<strong>sí existe un efecto real</strong>&nbsp;(H₁ es verdadera). Esto también se denomina&nbsp;<strong>error Tipo II</strong>, y se indica con&nbsp;<strong>β</strong>.</p>
+</section>
+<section id="verdadero-negativo-tn" class="level3" data-number="2.1.3">
+<h3 data-number="2.1.3" class="anchored" data-anchor-id="verdadero-negativo-tn"><span class="header-section-number">2.1.3</span> Verdadero negativo (TN):</h3>
+<p>Concluir que&nbsp;no existe un efecto real&nbsp;cuando realmente&nbsp;<strong>no existe un efecto real</strong>&nbsp;(H₀ es verdadera). Este es el complemento de un falso positivo y, por tanto, se indica por&nbsp;<strong>1 − α</strong>.</p>
+</section>
+<section id="verdadero-positivo-tp" class="level3" data-number="2.1.4">
+<h3 data-number="2.1.4" class="anchored" data-anchor-id="verdadero-positivo-tp"><span class="header-section-number">2.1.4</span> Verdadero positivo (TP):</h3>
+<p>Concluir que&nbsp;existe un efecto real&nbsp;cuando realmente&nbsp;<strong>sí existe un efecto real</strong>&nbsp;(H₁ es verdadera). Este es el complemento de un falso negativo y, por tanto, se indica por&nbsp;<strong>1 − β</strong>.</p>
+<p>La probabilidad de observar un&nbsp;<strong>verdadero positivo</strong>&nbsp;cuando existe un efecto real es, a largo plazo, igual a la&nbsp;<strong>potencia estadística</strong>&nbsp;de tu estudio. La probabilidad de observar un&nbsp;<strong>falso positivo</strong>&nbsp;cuando la hipótesis nula es verdadera es, a largo plazo, igual al&nbsp;<strong>nivel alfa</strong>&nbsp;que hayas fijado, o a la&nbsp;<strong>tasa de error Tipo I</strong>.</p>
+<p><em>Figura 2.1: Diferencia entre errores Tipo I y Tipo II. Figura elaborada por Paul Ellis</em>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://github.com/juangff85/inferencias-estadisticas-ESP/blob/main/images/02/figura2-1.jpg?raw=true" class="img-fluid figure-img"></p>
+<figcaption>Figura 2.1</figcaption>
+</figure>
+</div>
+<p>Entonces, para el próximo estudio que realices, ¿cuál de los cuatro resultados posibles es más probable? Primero, supongamos que has fijado el nivel alfa en&nbsp;<strong>5%</strong>. Además, supongamos que has diseñado un estudio de manera que tenga&nbsp;80% de potencia&nbsp;(y para este ejemplo supongamos que&nbsp;<strong>Omniscient Jones</strong>&nbsp;sabe que realmente tienes exactamente <strong>80% de potencia</strong>). Lo último que hay que especificar es la&nbsp;<strong>probabilidad de que la hipótesis nula sea verdadera</strong>. Supongamos que para este próximo estudio no tienes idea de si la hipótesis nula es verdadera o no, y que es&nbsp;<strong>igual de probable que la hipótesis nula sea verdadera o que la hipótesis alternativa sea verdadera</strong>&nbsp;(ambas con una probabilidad del 50%). Ahora podemos calcular cuál es el resultado más probable de un estudio de este tipo.</p>
+<p>Antes de realizar este cálculo, tómate un momento para pensar si conoces la respuesta. Puede que hayas diseñado estudios con un nivel alfa del 5% y una potencia del 80%, donde creías que era igualmente probable que H₀ o H₁ fueran verdaderas. Sin duda, es útil tener&nbsp;<strong>expectativas razonables sobre qué resultado esperar</strong>&nbsp;cuando realizamos un estudio de este tipo. Sin embargo, según mi experiencia, muchos investigadores realizan estudios&nbsp;<strong>sin pensar en estas probabilidades en absoluto</strong>. A menudo esperan observar un&nbsp;<strong>verdadero positivo</strong>, incluso cuando, en la situación descrita anteriormente, el resultado más probable es un&nbsp;<strong>verdadero negativo</strong>. Calculemos ahora estas probabilidades.</p>
+<p>Supongamos que realizamos&nbsp;<strong>200 estudios</strong>&nbsp;con un nivel alfa del&nbsp;<strong>5%,&nbsp;80% de potencia</strong>, y una&nbsp;<strong>probabilidad del 50% de que H₀ sea verdadera</strong>. ¿Cuántos falsos positivos, verdaderos positivos, falsos negativos y verdaderos negativos deberíamos esperar en el largo plazo?</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 39%">
+<col style="width: 39%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>H₀ verdadera (50%)</th>
+<th>H₁ verdadera (50%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Resultado significativo (positivo)</td>
+<td>Falso positivo: 5% × 50% = 2.5% (5 estudios)</td>
+<td>Verdadero positivo: 80% × 50% = 40% (80 estudios)</td>
+</tr>
+<tr class="even">
+<td>Resultado no significativo (negativo)</td>
+<td>Verdadero negativo: 95% × 50% = 47.5% (95 estudios)</td>
+<td>Falso negativo: 20% × 50% = 10% (20 estudios)</td>
+</tr>
+</tbody>
+</table>
+<p>En la tabla anterior vemos que&nbsp;<strong>2.5% de todos los estudios serán falsos positivos</strong>&nbsp;(una tasa de error Tipo I del 5%, multiplicada por una probabilidad del 50% de que H₀ sea verdadera).&nbsp;El <strong>40% de todos los estudios serán verdaderos positivos</strong>&nbsp;(80% de potencia multiplicado por una probabilidad del 50% de que H₁ sea verdadera). La probabilidad de un&nbsp;<strong>falso negativo&nbsp;es&nbsp;10%</strong>&nbsp;(una tasa de error Tipo II del 20% multiplicada por una probabilidad del 50% de que H₁ sea verdadera). El resultado&nbsp;<strong>más probable</strong>&nbsp;es un&nbsp;<strong>verdadero negativo</strong>, con&nbsp;<strong>47.5%</strong>.</p>
+<p>Puedes comprobar que estos porcentajes suman&nbsp;<strong>100%</strong>, por lo que hemos cubierto todas las posibilidades.</p>
+<p>Puede que esta perspectiva no te entusiasme demasiado y que prefieras realizar estudios con una mayor probabilidad de observar un verdadero positivo. ¿Qué deberías hacer? Podemos&nbsp;<strong>reducir el nivel alfa</strong>,&nbsp;<strong>aumentar la potencia</strong>, o&nbsp;<strong>aumentar la probabilidad de que H₁ sea verdadera</strong>. Dado que la probabilidad de observar un verdadero positivo depende de la potencia multiplicada por la probabilidad de que H₁ sea verdadera, deberíamos diseñar estudios donde&nbsp;<strong>ambos valores sean altos</strong>. La potencia estadística puede aumentarse mediante cambios en el diseño del estudio (por ejemplo, aumentando el tamaño de muestra). La probabilidad de que H₁ sea verdadera depende de la hipótesis que estés poniendo a prueba.</p>
+<p>Si la probabilidad de que H₁ sea verdadera es muy alta desde el principio, corres el riesgo de poner a prueba una hipótesis que ya está suficientemente establecida. Una solución —que quizá no ocurra muy a menudo en tu carrera— es idear una prueba de una hipótesis que no sea trivial pero que, cuando se la expliques a tus colegas, tenga mucho sentido para ellos. En otras palabras, ellos no habrían tenido la idea por sí mismos, pero después de que se la expliques, les parece extremadamente plausible. Ideas de investigación creativas de este tipo probablemente serán&nbsp;<strong>muy raras en tu carrera académica</strong>, si es que llegas a tener alguna. No toda la investigación necesita ser tan innovadora. También es extremadamente valioso realizar&nbsp;<strong>estudios de replicación y extensión</strong>, donde sea relativamente probable que H₁ sea verdadera, pero donde la comunidad científica aún se beneficie de saber que los hallazgos&nbsp;<strong>se generalizan a diferentes circunstancias</strong>.</p>
+</section>
+</section>
+<section id="valor-predictivo-positivo" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="valor-predictivo-positivo"><span class="header-section-number">2.2</span> Valor predictivo positivo</h2>
+<p>John Ioannidis escribió un artículo muy conocido titulado “Why Most Published Research Findings Are False” (Ioannidis, 2005). Al mismo tiempo, hemos aprendido que si fijas tu alfa en 5%, la tasa de error Tipo 1 no será mayor que 5% (en el largo plazo). ¿Cómo se relacionan estas dos afirmaciones? ¿Por qué no son verdaderos el 95% de los hallazgos de investigación publicados? La clave para entender esta diferencia es que se calculan dos probabilidades diferentes. La tasa de error Tipo 1 es la probabilidad de decir que hay un efecto, cuando no hay efecto. Ioannidis calcula el valor predictivo positivo (PPV), que es la probabilidad condicional de que, si un estudio resulta mostrar un resultado estadísticamente significativo, realmente exista un efecto verdadero. Esta probabilidad es útil de entender, porque la gente a menudo se centra selectivamente en resultados significativos, y porque debido al sesgo de publicación, en algunas áreas de investigación solo se publican resultados significativos.</p>
+<p>Un ejemplo de la vida real donde es útil entender el concepto de valor predictivo positivo se refiere al número de personas vacunadas y no vacunadas ingresadas en el hospital con síntomas de COVID-19. En algunos lugares, las estadísticas oficiales mostraban que el 50% de las personas hospitalizadas con COVID-19 estaban vacunadas. Si no entiendes el concepto de valor predictivo positivo, podrías creer que esto revela que es igual de probable terminar en el hospital, estés vacunado o no. Esto es incorrecto. Como visualiza muy bien la Figura 2.2, la probabilidad de que una persona esté vacunada es muy alta, y la probabilidad de que una persona vacunada termine en el hospital es mucho menor que la probabilidad de que una persona no vacunada termine en el hospital. Sin embargo, si seleccionamos solo a aquellos individuos que terminan en el hospital, estamos calculando una probabilidad condicionada a estar en el hospital.</p>
+<p><em>Figura 2.2: El valor predictivo positivo puede usarse para explicar por qué hay más personas vacunadas en el hospital que no vacunadas.</em></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://github.com/juangff85/inferencias-estadisticas-ESP/blob/main/images/02/figura2-2.jpg?raw=true" class="img-fluid figure-img"></p>
+<figcaption>Figura 2.2</figcaption>
+</figure>
+</div>
+<p>Es útil entender cuál es la probabilidad de que, si has observado un resultado significativo en un experimento, el resultado sea realmente un verdadero positivo. En otras palabras, en el largo plazo, ¿cuántos verdaderos positivos podemos esperar, entre todos los resultados positivos (tanto verdaderos positivos como falsos positivos)? Esto se conoce como el Valor Predictivo Positivo (PPV). También podemos calcular cuántos falsos positivos podemos esperar, entre todos los resultados positivos (de nuevo, tanto verdaderos positivos como falsos positivos). Esto se conoce como la Probabilidad de Falso Positivo Reportado (Wacholder et al., 2004), a veces también denominada el Riesgo de Falso Positivo (Colquhoun, 2019).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://github.com/juangff85/inferencias-estadisticas-ESP/blob/main/images/02/img1.png?raw=true" class="img-fluid figure-img"></p>
+<figcaption>Imagen 1</figcaption>
+</figure>
+</div>
+<p>El PPV y la FPRP combinan conceptos frecuentistas clásicos de potencia estadística y niveles alfa con probabilidades previas de que H₁ y H₀ sean verdaderas. Dependen de la proporción de estudios que ejecutas donde hay un efecto (H₁ es verdadera), y donde no hay un efecto (H₀ es verdadera), además de la potencia estadística y el nivel alfa. Al fin y al cabo, solo puedes observar un falso positivo si la hipótesis nula es verdadera, y solo puedes observar un verdadero positivo si la hipótesis alternativa es verdadera. Siempre que realizas un estudio, o bien estás operando en una realidad donde hay un efecto verdadero, o bien estás operando en una realidad donde no hay efecto —pero no sabes en qué realidad estás.</p>
+<p>Cuando realizas estudios, serás consciente de todos los resultados de tus estudios (tanto los hallazgos significativos como los no significativos). En contraste, cuando lees la literatura, existe sesgo de publicación, y a menudo solo tienes acceso a resultados significativos. Aquí es donde pensar en el PPV (y la FPRP) se vuelve importante. Si fijamos el nivel alfa en 5%, en el largo plazo el 5% de los estudios donde H₀ es verdadera (FP + TN) serán significativos. Pero en una literatura con solo resultados significativos, no tenemos acceso a todos los verdaderos negativos, y por tanto es posible que la proporción de falsos positivos en la literatura sea mucho mayor que 5%.</p>
+<p>Si continuamos el ejemplo anterior, vemos que hay 85 resultados positivos (80 + 5) en los 200 estudios. La probabilidad de falso positivo reportado es 5/85 = 0.0588. Al mismo tiempo, el nivel alfa del 5% garantiza que (en el largo plazo) el 5% de los 100 estudios donde la hipótesis nula es verdadera serán errores Tipo 1: 5% × 100 = 5. Cuando hacemos 200 estudios, como máximo 5% × 200 = 10 podrían ser falsos positivos (si H₀ fuera verdadera en todos los experimentos). En los 200 estudios que realizamos (y donde H₀ era verdadera solo en el 50% de los estudios), la proporción de falsos positivos para todos los experimentos es solo 2.5%. Así, para todos los experimentos que realizas, la proporción de falsos positivos, en el largo plazo, nunca será mayor que la tasa de error Tipo I fijada por el investigador (por ejemplo, 5% cuando H₀ es verdadera en todos los experimentos), pero puede ser menor (cuando H₀ es verdadera en menos del 100% de los experimentos).</p>
+<p><em>Figura 2.3: Captura de pantalla de la salida de los resultados de la app Shiny de PPV de Michael Zehetleitner y Felix Schönbrodt. (Nota: FDR y FPRP son abreviaturas diferentes para lo mismo.)</em></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://github.com/juangff85/inferencias-estadisticas-ESP/blob/main/images/02/figura2-3.png?raw=true" class="img-fluid figure-img"></p>
+<figcaption>Figura 2.3</figcaption>
+</figure>
+</div>
+<p>La gente a menudo dice algo como: “Bueno, todos sabemos que 1 de cada 20 resultados en la literatura publicada son errores Tipo 1”. Deberías ser capaz de entender que esto no es cierto en la práctica, después de aprender sobre el valor predictivo positivo. Solo cuando en el 100% de los estudios que realizas la hipótesis nula es verdadera, y todos los estudios se publican, solo entonces 1 de cada 20 estudios, en el largo plazo, son falsos positivos (y el resto correctamente revela que no hay una diferencia estadísticamente significativa). También explica por qué la concepción errónea común sobre el p-valor “Si has observado un hallazgo significativo, la probabilidad de que hayas cometido un error Tipo 1 (un falso positivo) es 5%.” no es correcta, porque en la práctica la hipótesis nula no es verdadera en todas las pruebas que se realizan (a veces la hipótesis alternativa es verdadera). De manera importante, mientras haya sesgo de publicación (donde hallazgos con resultados deseados acaban en la literatura científica, y por ejemplo resultados no significativos no se comparten), entonces incluso si los investigadores usan un nivel alfa del 5%, es bastante razonable asumir que mucho más del 5% de los hallazgos significativos en la literatura publicada son falsos positivos. En la literatura científica, la probabilidad de falso positivo reportado puede ser bastante alta, y bajo circunstancias específicas, incluso podría ser tan alta que la mayoría de los hallazgos de investigación publicados sean falsos. Esto ocurrirá cuando los investigadores examinen sobre todo estudios donde 1) la hipótesis nula es verdadera, 2) con baja potencia, o 3) cuando la tasa de error Tipo 1 esté inflada debido a p-hacking u otros tipos de sesgo.</p>
+</section>
+<section id="inflación-del-error-tipo-1" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="inflación-del-error-tipo-1"><span class="header-section-number">2.3</span> Inflación del error Tipo 1</h2>
+<p><em>Figura 2.4: Cita del libro de 1830 de Babbage, “Reflections on the Decline of Science in England And on Some of Its Causes.”</em></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://github.com/juangff85/inferencias-estadisticas-ESP/blob/main/images/02/figura2-4.jpg?raw=true" class="img-fluid figure-img"></p>
+<figcaption>Figura 2.4</figcaption>
+</figure>
+</div>
+<p>Si realizas múltiples comparaciones, existe el riesgo de que la tasa de error Tipo 1 pueda inflarse. Cuando se planifican múltiples comparaciones, en algunos casos es posible controlar la tasa de error Tipo 1 reduciendo el nivel alfa para cada análisis individual. El enfoque más conocido para controlar comparaciones múltiples es la corrección de Bonferroni, donde el nivel alfa se divide por el número de pruebas que se realizan. Sin embargo, los investigadores también a menudo utilizan estrategias informales de análisis de datos que inflan la tasa de error Tipo 1. Babbage (1830) ya se quejaba de estas prácticas problemáticas en 1830, y dos siglos después, siguen siendo comunes. Barber (1976) ofrece una discusión en profundidad de una serie de enfoques, como mirar los datos para decidir qué hipótesis probar (a veces llamado “double dipping”); informar selectivamente solo aquellos análisis que confirman predicciones e ignorar resultados no significativos, recolectar muchas variables y realizar multitud de pruebas, o realizar análisis de subgrupos cuando el análisis planificado produce resultados no significativos; o tras una predicción no significativa, derivar una nueva hipótesis que esté apoyada por los datos y probar la hipótesis en los mismos datos de los que se derivó la hipótesis (a veces llamado HARKing, Hypothesizing After Results are Known (Kerr, 1998)). Muchos investigadores admiten haber usado prácticas que inflan las tasas de error (véase la sección sobre prácticas de investigación cuestionables en el Capítulo 15 sobre integridad de la investigación). Yo mismo he utilizado tales prácticas en el primer artículo científico que publiqué, antes de ser plenamente consciente de lo problemático que era esto; para un artículo que mis coautores y yo publicamos varios años después en el que reflexionamos sobre esto, véase Jostmann et al.&nbsp;(2016).</p>
+<p>Para algunos paradigmas, los investigadores tienen mucha flexibilidad en cómo computar la variable dependiente principal. Elson y colegas examinaron 130 publicaciones que usaban la Competitive Reaction Time Task, en la que los participantes seleccionan la duración y la intensidad de ráfagas de un ruido desagradable que se entregará a un competidor (Elson et al., 2014). La tarea se usa para medir “conducta agresiva” de una manera ética. Para computar la puntuación, los investigadores pueden usar la duración de una ráfaga de ruido, la intensidad, o una combinación de ambas, promediada sobre cualquier número de ensayos, con varias transformaciones posibles de los datos. Las 130 publicaciones examinadas informaron 157 estrategias diferentes de cuantificación en total, mostrando que la mayoría de los cálculos de la variable dependiente eran únicos, usados solo en un único artículo. Uno podría preguntarse por qué los mismos autores a veces usaron cómputos diferentes entre artículos. Una posible explicación es que usaron esta flexibilidad en el análisis de datos para encontrar resultados estadísticamente significativos.</p>
+<p><em>Figura 2.5: Gráfico de publicaciones que usan CRTT (azul) y cuantificaciones únicas de la medida (rojo). Figura de FlexibleMeasures.com por Malte Elson.</em></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://github.com/juangff85/inferencias-estadisticas-ESP/blob/main/images/02/figura2-5.png?raw=true" class="img-fluid figure-img"></p>
+<figcaption>Figura 2.5</figcaption>
+</figure>
+</div>
+</section>
+<section id="detención-opcional-optional-stopping" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="detención-opcional-optional-stopping"><span class="header-section-number">2.4</span> Detención opcional (Optional stopping)</h2>
+<p><em>Figura 2.6: Captura de pantalla de un artículo científico que admite explícitamente haber utilizado optional stopping.</em></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://github.com/juangff85/inferencias-estadisticas-ESP/blob/main/images/02/figura2-6.png?raw=true" class="img-fluid figure-img"></p>
+<figcaption>Figura 2.6</figcaption>
+</figure>
+</div>
+<p>Una práctica que&nbsp;**infla la tasa de error Tipo 1*&nbsp;se conoce como&nbsp;<strong>optional stopping</strong>. En el optional stopping un investigador analiza repetidamente los datos, continúa la recogida de datos cuando el resultado de la prueba no es estadísticamente significativo, pero se detiene cuando se observa un efecto significativo. La cita de un artículo publicado en la Figura 2.6 es un ejemplo donde los investigadores informan de manera transparente que utilizaron optional stopping, pero más comúnmente las personas&nbsp;<strong>no revelan el uso de optional stopping en sus secciones de métodos</strong>. En los últimos años, muchos investigadores han aprendido que el optional stopping es problemático. Esto ha llevado a algunos a la idea general de que&nbsp;<strong>nunca se deberían recoger datos, mirar si los resultados son significativos y detener la recogida de datos cuando el resultado es significativo o, si no lo es, continuar recogiendo datos</strong>. Esa no es la conclusión correcta, y es un ejemplo de volverse demasiado inflexible. El enfoque correcto —recoger datos en bloques, lo que se denomina&nbsp;<strong>análisis secuencial</strong>— ha sido ampliamente desarrollado por estadísticos, y se utiliza en muchos ensayos médicos. Hablaremos de los análisis secuenciales en el&nbsp;<strong>Capítulo 10</strong>. La principal lección es que ciertas prácticas de investigación pueden&nbsp;<strong>aumentar la flexibilidad y la eficiencia de los estudios</strong>&nbsp;que realizas cuando se hacen correctamente, pero las mismas prácticas pueden&nbsp;<strong>inflar la tasa de error Tipo 1</strong> cuando se hacen incorrectamente. Intentemos, por tanto, comprender mejor&nbsp;<strong>cuándo y cómo corremos el riesgo de inflar nuestra tasa de error Tipo 1 con optional stopping</strong>, y cómo hacerlo correctamente utilizando análisis secuencial.</p>
+<p>Copia el código siguiente en&nbsp;<strong>R</strong>&nbsp;y ejecútalo. Este script simulará una recogida de datos en curso. Tras&nbsp;<strong>10 participantes en cada condición</strong>, se calcula un p-valor realizando una&nbsp;<strong>prueba t independiente</strong>, y esta prueba t se repite después de cada participante adicional que se recoja. Después, todos estos p-valores se representan gráficamente en función del tamaño de muestra creciente.</p>
+<pre><code>n &lt;- 200 # total number of datapoints (per condition) after initial 10
+d &lt;- 0.0 # effect size d
+
+p &lt;- numeric(n) # store p-values
+x &lt;- numeric(n) # store x-values
+y &lt;- numeric(n) # store y-values
+
+n &lt;- n + 10 # add 10 to number of datapoints
+
+for (i in 10:n) { # for each simulated participants after the first 10
+  x[i] &lt;- rnorm(n = 1, mean = 0, sd = 1)
+  y[i] &lt;- rnorm(n = 1, mean = d, sd = 1)
+  p[i] &lt;- t.test(x[1:i], y[1:i], var.equal = TRUE)$p.value
+}
+
+p &lt;- p[10:n] # Remove first 10 empty p-values
+
+# Create the plot
+par(bg = "#fffafa")
+plot(0, col = "red", lty = 1, lwd = 3, ylim = c(0, 1), xlim = c(10, n), 
+     type = "l", xlab = "sample size", ylab = "p-value")
+lines(p, lwd = 2)
+abline(h = 0.05, col = "darkgrey", lty = 2, lwd = 2) # draw line at p = 0.05
+
+min(p) # Return lowest p-value from all looks
+cat("The lowest p-value was observed at sample size", which.min(p) + 10) 
+cat("The p-value dropped below 0.05 for the first time at sample size:", 
+    ifelse(is.na(which(p &lt; 0.05)[1] + 10), "NEVER", which(p &lt; 0.05)[1] + 10))</code></pre>
+<p>Por ejemplo, en la&nbsp;<strong>Figura 2.7</strong>&nbsp;ves el p-valor representado en el eje y (de 0 a 1) y el tamaño de muestra representado en el eje x (de 0 a 200). Para esta simulación, el tamaño del efecto verdadero era&nbsp;<strong>d = 0</strong>, lo que significa que&nbsp;<strong>no hay efecto real</strong>. Por tanto, solo podemos observar&nbsp;<strong>verdaderos negativos o falsos positivos</strong>. A medida que aumenta el tamaño de la muestra, el p-valor se mueve lentamente hacia arriba y hacia abajo (recuerda del&nbsp;<strong>Capítulo 1 sobre p-valores</strong>&nbsp;que cuando no hay efecto real, los p-valores están distribuidos uniformemente). En la&nbsp;<strong>Figura 2.7</strong>&nbsp;el p-valor cae por debajo de la línea gris (que indica un nivel alfa de 0.05) después de recoger&nbsp;<strong>83 participantes</strong> en cada condición, solo para volver después a valores de p mayores. A partir de esta figura queda claro que&nbsp;<strong>cuantas más veces miramos los datos, y cuanto mayor es el tamaño total de la muestra, mayor es la probabilidad de que uno de los análisis produzca un p &lt; α</strong>. Si los recursos fueran infinitos, la tasa de error Tipo 1 sería&nbsp;<strong>1</strong>, y un investigador siempre podría encontrar un resultado significativo mediante optional stopping.</p>
+<p><em>Figura 2.7: p-valores simulados para cada observación adicional cuando la hipótesis nula es verdadera.</em></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://github.com/juangff85/inferencias-estadisticas-ESP/blob/main/images/02/figura2-7.gif?raw=true" class="img-fluid figure-img"></p>
+<figcaption>Figura 2.7</figcaption>
+</figure>
+</div>
+<p>Cuando existe un efecto verdadero, vemos que los p-valores también varían, pero&nbsp;<strong>eventualmente caerán por debajo del nivel alfa</strong>. Simplemente no sabemos exactamente cuándo ocurrirá esto debido al&nbsp;<strong>error de muestreo</strong>. Cuando realizamos un&nbsp;<strong>análisis de potencia a priori</strong>, podemos calcular la probabilidad de que examinar un tamaño de muestra específico produzca un p-valor significativo. En la&nbsp;<strong>Figura 2.8</strong>&nbsp;vemos la misma simulación, pero ahora cuando existe un efecto verdadero pequeño de&nbsp;<strong>d = 0.3</strong>. Con&nbsp;<strong>200 observaciones por condición</strong>, un análisis de potencia de sensibilidad revela que tenemos&nbsp;<strong>85% de potencia</strong>. Si analizáramos los datos en un análisis intermedio (por ejemplo, después de&nbsp;<strong>150 observaciones</strong>) a menudo ya encontraríamos un efecto estadísticamente significativo (ya que tendríamos&nbsp;<strong>74% de potencia</strong>). Esto ilustra un beneficio de los&nbsp;<strong>análisis secuenciales</strong>, donde controlamos las tasas de error pero podemos&nbsp;<strong>detenernos antes en un análisis intermedio</strong>. Los análisis secuenciales son especialmente útiles en estudios grandes o costosos donde existe incertidumbre sobre el tamaño del efecto verdadero.</p>
+<p><em>Figura 2.8: p-valores simulados para cada observación adicional cuando d = 0.3.</em></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://github.com/juangff85/inferencias-estadisticas-ESP/blob/main/images/02/figura2-8.gif?raw=true" class="img-fluid figure-img"></p>
+<figcaption>Figura 2.8</figcaption>
+</figure>
+</div>
+<p>Examinemos ahora de forma más formal la&nbsp;<strong>inflación de la tasa de error Tipo 1</strong>&nbsp;mediante optional stopping en un estudio de simulación. Copia el código siguiente en&nbsp;<strong>R</strong>&nbsp;y ejecútalo. Ten en cuenta que las&nbsp;<strong>50 000 simulaciones</strong>&nbsp;(necesarias para obtener tasas de error razonablemente precisas) tardan algo de tiempo en ejecutarse.</p>
+<pre><code>N &lt;- 100 # total datapoints (per condition)
+looks &lt;- 5 # set number of looks at the data
+nsims &lt;- 50000 # number of simulated studies
+alphalevel &lt;- 0.05 # set alphalevel
+
+if(looks &gt; 1){
+  look_at_n &lt;- ceiling(seq(N / looks, N, (N - (N / looks)) / (looks - 1)))
+}  else {
+  look_at_n &lt;- N
+}
+look_at_n &lt;- look_at_n[look_at_n &gt; 2] # Remove looks at N of 1 or 2
+looks&lt;-length(look_at_n) # if looks are removed, update number of looks
+
+matp &lt;- matrix(NA, nrow = nsims, ncol = looks) # Matrix for p-values l tests
+p &lt;- numeric(nsims) # Variable to save pvalues
+
+# Loop data generation for each study, then loop to perform a test for each N
+for (i in 1:nsims) {
+  x &lt;- rnorm(n = N, mean = 0, sd = 1)
+  y &lt;- rnorm(n = N, mean = 0, sd = 1)
+  for (j in 1:looks) {
+    matp[i, j] &lt;- t.test(x[1:look_at_n[j]], y[1:look_at_n[j]], 
+                         var.equal = TRUE)$p.value # perform the t-test, store
+  }
+  cat("Loop", i, "of", nsims, "\n")
+}
+
+# Save Type 1 error rate smallest p at all looks
+for (i in 1:nsims) {
+  p[i] &lt;- ifelse(length(matp[i,which(matp[i,] &lt; alphalevel)]) == 0, 
+                 matp[i,looks], matp[i,which(matp[i,] &lt; alphalevel)])
+}
+
+hist(p, breaks = 100, col = "grey") # create plot
+abline(h = nsims / 100, col = "red", lty = 3)
+
+cat("Type 1 error rates for look 1 to", looks, ":", 
+    colSums(matp &lt; alphalevel) / nsims)
+cat("Type 1 error rate when only the lowest p-value for all looks is reported:", 
+    sum(p &lt; alphalevel) / nsims)</code></pre>
+<p>(Este código realiza múltiples pruebas t independientes sobre datos simulados, examinando los datos varias veces hasta alcanzar el tamaño máximo de muestra).</p>
+<p>Cuando realizas&nbsp;<strong>solo una prueba</strong>, la tasa de error Tipo 1 es la probabilidad de encontrar un p-valor menor que tu nivel alfa cuando no hay efecto. En un escenario de optional stopping en el que miras los datos&nbsp;<strong>dos veces</strong>, la tasa de error Tipo 1 es la probabilidad de encontrar un p-valor menor que el nivel alfa en la primera mirada&nbsp;<strong>más</strong>&nbsp;la probabilidad de no encontrar un p-valor menor que el nivel alfa en la primera mirada pero encontrar uno en la segunda. Esto es una&nbsp;<strong>probabilidad condicional</strong>, lo que hace que el control del error sea un poco más complejo que cuando múltiples análisis son completamente independientes.</p>
+<p>Entonces, ¿cuánto&nbsp;<strong>infla optional stopping la tasa de error Tipo 1</strong>? ¿Y qué p-valores podemos esperar bajo optional stopping?</p>
+<p>Comienza ejecutando la simulación&nbsp;<strong>sin cambiar ningún valor</strong>, simulando&nbsp;<strong>100 participantes en cada condición</strong>, mirando los datos&nbsp;<strong>5 veces</strong>, con un alfa de&nbsp;<strong>0.05</strong>. Las&nbsp;<strong>50 000 simulaciones</strong>&nbsp;tardarán un rato. Deberías ver algo similar a la&nbsp;<strong>Figura 2.9</strong>.</p>
+<p><em>Figura 2.9: Simulación de 500 000 estudios realizando 5 análisis intermedios con un nivel alfa del 5%</em>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://github.com/juangff85/inferencias-estadisticas-ESP/blob/main/images/02/figura2-9.png?raw=true" class="img-fluid figure-img"></p>
+<figcaption>Figura 2.9</figcaption>
+</figure>
+</div>
+<p>Observamos&nbsp;<strong>100 barras</strong>, una para cada percentil (por ejemplo, todos los p-valores entre 0.00 y 0.01, entre 0.01 y 0.02, etc.). Hay una línea horizontal que indica dónde caerían todos los p-valores si estuvieran&nbsp;<strong>distribuidos uniformemente</strong>.</p>
+<p>La distribución de p-valores es peculiar. Vemos que, en comparación con una distribución uniforme,&nbsp;<strong>faltan muchos resultados justo por encima del umbral alfa de 0.05</strong>, y parecen haberse desplazado&nbsp;<strong>justo por debajo de 0.05</strong>, donde hay una frecuencia mucho mayor de resultados que cuando los datos no se analizan repetidamente. Observa cómo p-valores relativamente altos (por ejemplo p = 0.04) son más comunes que p-valores más bajos (por ejemplo p = 0.01). En el&nbsp;<strong>Capítulo 12 sobre detección de sesgos</strong>&nbsp;veremos que técnicas estadísticas como&nbsp;<strong>p-curve</strong>&nbsp;pueden detectar este patrón.</p>
+<p>Cuando se utiliza un nivel alfa del&nbsp;<strong>5% con 5 miradas a los datos</strong>, la tasa global de error Tipo 1 se&nbsp;<strong>infla hasta el 14%</strong>. Si reducimos el nivel alfa en cada análisis intermedio, la tasa global de error Tipo 1 puede controlarse. La forma de la distribución de p-valores seguirá siendo peculiar, pero el número total de resultados significativos se mantendrá en el nivel alfa deseado. La conocida&nbsp;<strong>corrección de Bonferroni</strong>&nbsp;controla la tasa de error Tipo 1 dividiendo α por el número de análisis, pero la&nbsp;<strong>corrección de Pocock</strong>&nbsp;es ligeramente más eficiente. Para más información sobre cómo realizar análisis intermedios controlando las tasas de error, véase el&nbsp;<strong>Capítulo 10 sobre análisis secuencial</strong>.</p>
+</section>
+<section id="justificación-de-las-tasas-de-error" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="justificación-de-las-tasas-de-error"><span class="header-section-number">2.5</span> Justificación de las tasas de error</h2>
+<p>Si rechazamos , podemos rechazarla cuando es verdadera; si aceptamos , podemos estar aceptándola cuando es falsa, es decir, cuando realmente alguna alternativa es verdadera. Estas dos fuentes de error rara vez pueden eliminarse completamente; en algunos casos será más importante evitar la primera, en otros la segunda. Se nos recuerda el viejo problema considerado por Laplace sobre el número de votos en un tribunal de jueces que debería ser necesario para condenar a un prisionero. ¿Es más grave condenar a un hombre inocente o absolver a un culpable? Eso dependerá de las consecuencias del error; de si el castigo es la muerte o una multa; de cuál es el peligro para la comunidad de los criminales liberados; y de cuáles son las opiniones éticas actuales sobre el castigo. Desde el punto de vista de la teoría matemática, todo lo que podemos hacer es mostrar cómo el riesgo de los errores puede ser controlado y minimizado. El uso de estas herramientas estadísticas en cualquier caso dado, al determinar exactamente cómo debe establecerse el equilibrio, debe dejarse al investigador.</p>
+<p>Aunque en teoría la tasa de error Tipo 1 y Tipo 2 debería ser justificada por el investigador (como escriben Neyman y Pearson (1933) arriba), en la práctica los investigadores tienden a imitar a otros. El uso por defecto de un nivel alfa de 0.05 ya puede encontrarse en el trabajo de Gosset sobre la distribución t (Cowles &amp; Davis, 1982; Kennedy-Shaffer, 2019), quien creía que una diferencia de dos errores estándar (un valor z de 2) era suficientemente rara. El uso por defecto de 80% de potencia (o una tasa de error Tipo 2 del 20%) está igualmente basado en preferencias personales de Cohen (1988), quien escribe:</p>
+<p>Se propone aquí como convención que, cuando el investigador no tenga otra base para fijar el valor de potencia deseado, se utilice el valor .80. Esto significa que beta se fija en .20. Este valor se ofrece por varias razones (Cohen, 1965, pp.&nbsp;98-99). La principal de ellas toma en consideración la convención implícita para alfa de .05. El beta de .20 se elige con la idea de que la gravedad relativa general de estos dos tipos de errores es del orden de .20/.05, es decir, que los errores Tipo I son del orden de cuatro veces más graves que los errores Tipo II. Esta convención de potencia deseada de .80 se ofrece con la esperanza de que sea ignorada siempre que un investigador pueda encontrar una base en sus preocupaciones sustantivas sobre su investigación específica para elegir un valor ad hoc.</p>
+<p>Vemos que las convenciones se construyen sobre convenciones: la norma de aspirar a 80% de potencia está construida sobre la norma de fijar el nivel alfa en 5%. Aunque no hay nada especial en un nivel alfa del 5%, es interesante reflexionar sobre por qué se ha vuelto tan ampliamente establecido. Irwin Bross (1971) sostiene que el uso de un nivel alfa es funcional y eficiente cuando se ve como un aspecto de las redes de comunicación entre científicos, y escribe “Así, la especificación de los niveles críticos […] ha demostrado en la práctica ser un método eficaz para controlar el ruido en las redes de comunicación.” Bross cree que el umbral de 0.05 es algo, pero no completamente, arbitrario, y nos pide imaginar qué habría ocurrido si se hubiera propuesto un nivel alfa de 0.001, o un nivel alfa de 0.20. En ambos casos, cree que la convención no se habría difundido – en el primer caso porque en muchos campos no hay recursos suficientes para hacer afirmaciones con una tasa de error tan baja, y en el segundo caso porque pocos investigadores habrían encontrado que ese nivel alfa fuera una cuantificación satisfactoria de eventos ‘raros’. Uygun Tunç et al.&nbsp;(2023) argumentan que una posible razón es que, en lo que respecta a las convenciones, un nivel alfa del 5% podría ser lo suficientemente bajo como para que los colegas se tomen en serio cualquier afirmación hecha con esta tasa de error, mientras que al mismo tiempo sea lo suficientemente alto como para que los colegas estén motivados a realizar un estudio de replicación independiente para aumentar o disminuir nuestra confianza en la afirmación. Aunque tasas de error más bajas establecerían afirmaciones de forma más convincente, esto también requeriría más recursos. Uno podría especular que en áreas de investigación donde no toda afirmación es lo suficientemente importante como para justificar cuidadosamente costes y beneficios, el 5% tiene una función pragmática al facilitar conjeturas y refutaciones en campos que por lo demás carecen de un enfoque coordinado para la generación de conocimiento, pero se enfrentan a recursos limitados.</p>
+<p>No obstante, algunos investigadores han propuesto alejarse del uso por defecto de un nivel alfa del 5%. Por ejemplo, Johnson (2013) propone un nivel de significación por defecto de 0.005 o 0.001. Otros han advertido contra una recomendación tan general porque los recursos adicionales necesarios para reducir la tasa de error Tipo 1 podrían no merecer la pena en relación con los costes (Lakens et al., 2018). Un nivel alfa más bajo requiere un tamaño de muestra mayor para lograr la misma potencia estadística. Si el tamaño de muestra no puede aumentarse, un nivel alfa más bajo reduce la potencia estadística y aumenta la tasa de error Tipo 2. Que eso sea deseable debería evaluarse caso por caso.</p>
+<p>Hay dos razones principales para abandonar el uso universal de un nivel alfa del 5%. La primera es que la toma de decisiones se vuelve más eficiente (Gannon et al., 2019; Mudge et al., 2012). Si los investigadores usan contrastes de hipótesis para tomar decisiones dicotómicas desde un enfoque falsacionista metodológico de las inferencias estadísticas, y tienen un cierto tamaño máximo de muestra que están dispuestos o son capaces de recoger, típicamente es posible tomar decisiones de forma más eficiente eligiendo tasas de error de modo que el coste combinado de errores Tipo 1 y Tipo 2 se minimice. Si pretendemos o bien minimizar o bien equilibrar las tasas de error Tipo 1 y Tipo 2 para un tamaño de muestra y un tamaño de efecto dados, el nivel alfa debería fijarse no basándose en la convención, sino ponderando el coste relativo de ambos tipos de errores (Maier &amp; Lakens, 2022).</p>
+<p>Por ejemplo, imagina que un investigador planea recoger 64 participantes por condición para detectar un efecto de d = 0.5, y pondera el coste de los errores Tipo 1 cuatro veces más que el de los errores Tipo 2. Este es exactamente el escenario que Cohen (1988) describió, y con 64 participantes por condición el peso relativo de los errores Tipo 1 y Tipo 2 produce una tasa de error Tipo 1 del 5% y una tasa de error Tipo 2 del 20%. Ahora imagina que este investigador se da cuenta de que tiene recursos para recoger 80 observaciones en lugar de solo 64. Con un interés en un tamaño de efecto de d = 0.5, el peso relativo de los errores Tipo 1 y Tipo 2 de 4 (un como sugirió Cohen) se vería satisfecho si fijaran el nivel alfa en 0.037, ya que la tasa de error Tipo 2 sería 0.147. Alternativamente, el investigador podría haber decidido recoger 64 observaciones, pero en lugar de equilibrar las tasas de error, fijar el nivel alfa de tal manera que la tasa de error combinada ponderada se minimice, lo cual se logra cuando el nivel alfa se fija en 0.033, como se visualiza en la Figura 2.10 (para más información, véase Maier &amp; Lakens (2022)).</p>
+<p>Warning in ggplot2::geom_point(ggplot2::aes(x = res$minimum, y = (costT1T2 * : All aesthetics have length 1, but the data has 9999 rows. ℹ Please consider using&nbsp;annotate()&nbsp;or provide this layer with data containing a single row.</p>
+<p><em>Figura 2.10:&nbsp;Tasa de error combinada ponderada, minimizada en alfa = 0.037.</em></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://github.com/juangff85/inferencias-estadisticas-ESP/blob/main/images/02/figura2-10.png?raw=true" class="img-fluid figure-img"></p>
+<figcaption>Figura 2.10</figcaption>
+</figure>
+</div>
+<p>Justificar las tasas de error puede llevar a situaciones donde el nivel alfa se incrementa por encima de 0.05, porque esto conduce a una mejor toma de decisiones. Winer (1962) escribe:</p>
+<p>El uso frecuente de los niveles de significación .05 y .01 es una cuestión de convención con poca base científica o lógica. Cuando es probable que la potencia de las pruebas sea baja bajo estos niveles de significación, y cuando los errores Tipo 1 y Tipo 2 son de aproximadamente igual importancia, los niveles de significación .30 y .20 pueden ser más apropiados que .05 y .01.</p>
+<p>El razonamiento aquí es que un diseño que tiene 70% de potencia para el tamaño de efecto más pequeño de interés no equilibraría las tasas de error Tipo 1 y Tipo 2 de una manera sensata. Por supuesto, tal incremento del nivel alfa solo debería considerarse aceptable cuando los autores puedan justificar que el coste del incremento en la tasa de error Tipo 1 está suficientemente compensado por el beneficio de la disminución de la tasa de error Tipo 2. Esto abarcará casos donde (1) el estudio tendrá implicaciones prácticas que requieren toma de decisiones, (2) se proporciona un análisis coste-beneficio que da una justificación clara para los costes relativamente altos de un error Tipo 2, (3) la probabilidad de que sea falsa es relativamente baja, y (4) no es factible reducir las tasas de error globales recogiendo más datos.</p>
+<p>Uno también debería reflexionar cuidadosamente sobre la elección del nivel alfa cuando un experimento alcanza una potencia estadística muy alta para todos los tamaños de efecto que se consideran significativos. Si un estudio tiene 99% de potencia para tamaños de efecto de interés, y por tanto una tasa de error Tipo 2 del 1%, pero usa el nivel alfa por defecto del 5%, también sufre de una falta de equilibrio, y el uso de un nivel alfa más bajo conduciría a una decisión más equilibrada, y aumentaría la severidad de la prueba.</p>
+<p>La segunda razón para hacer una elección específica del estudio del nivel alfa es más relevante para grandes conjuntos de datos, y está relacionada con la paradoja de Lindley. A medida que la potencia estadística aumenta, algunos p-valores por debajo de 0.05 (por ejemplo, p = 0.04) pueden ser más probables cuando no hay efecto que cuando hay un efecto. Para prevenir situaciones donde un frecuentista rechaza la hipótesis nula basándose en p &lt; 0.05, cuando la evidencia en la prueba favorece la hipótesis nula sobre la alternativa, se recomienda reducir el nivel alfa como función del tamaño de muestra. La necesidad de hacerlo se discute por Leamer (1978), quien escribe “La regla general bastante popular ahora, es decir, fijar el nivel de significación arbitrariamente en .05, se muestra deficiente en el sentido de que desde todo punto de vista razonable el nivel de significación debería ser una función decreciente del tamaño de muestra.” La idea de este enfoque es reducir el nivel alfa de modo que un factor de Bayes o una verosimilitud calculada para un resultado significativo nunca sería evidencia para la hipótesis nula (para una aplicación Shiny en línea para realizar tales cálculos, véase aquí.</p>
+</section>
+<section id="por-qué-no-necesitas-ajustar-tu-nivel-alfa-para-todas-las-pruebas-que-harás-en-tu-vida." class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="por-qué-no-necesitas-ajustar-tu-nivel-alfa-para-todas-las-pruebas-que-harás-en-tu-vida."><span class="header-section-number">2.6</span> Por qué no necesitas ajustar tu nivel alfa para todas las pruebas que harás en tu vida.</h2>
+<p>Algunos investigadores critican las correcciones por comparaciones múltiples porque también se podría corregir por todas las pruebas que harás en tu vida (Perneger, 1998). Si eliges usar un enfoque de Neyman-Pearson a la estadística, la única razón para corregir por todas las pruebas que realizas en tu vida es cuando todo el trabajo que has hecho en tu vida pone a prueba una sola teoría, y usarías tus últimas palabras para decidir aceptar o rechazar esta teoría, siempre que solo una de todas las pruebas individuales que has realizado haya producido un p &lt; . Los investigadores rara vez trabajan así.</p>
+<p>En cambio, en un enfoque de Neyman-Pearson al contraste de hipótesis, el objetivo es usar datos para tomar decisiones sobre cómo actuar. Neyman (1957) llama a su enfoque conducta inductiva. El resultado de un experimento lleva a uno a tomar diferentes posibles acciones, que pueden ser prácticas (por ejemplo, implementar un nuevo procedimiento, abandonar una línea de investigación) o científicas (por ejemplo, afirmar que hay o no hay un efecto). Desde un enfoque error-estadístico (Mayo, 2018), tasas de error Tipo 1 infladas significan que se ha vuelto muy probable que puedas afirmar apoyo para tu hipótesis, incluso cuando la hipótesis está equivocada. Esto reduce la severidad de la prueba. Para prevenir esto, necesitamos controlar nuestra tasa de error al nivel de nuestra afirmación.</p>
+<p>Una distinción útil en la literatura sobre pruebas múltiples es un enfoque de prueba unión-intersección, y un enfoque de prueba intersección-unión (Dmitrienko &amp; D’Agostino Sr, 2013). En un enfoque unión-intersección, se hace una afirmación cuando al-menos-una prueba es significativa. En estos casos, se requiere una corrección por comparaciones múltiples para controlar la tasa de error. En un enfoque intersección-unión, se hace una afirmación cuando todas las pruebas realizadas son estadísticamente significativas, y no se requiere corrección por comparaciones múltiples (de hecho, bajo algunos supuestos los investigadores incluso podrían incrementar el nivel alfa en un enfoque intersección-unión).</p>
+<p>Supongamos que recogemos datos de 100 participantes en una condición de control y de tratamiento. Recogemos 3 variables dependientes (dv1, dv2, y dv3). En la población no hay diferencia entre grupos en ninguna de estas tres variables (el tamaño del efecto verdadero es 0). Analizaremos las tres dv en pruebas t independientes. Esto requiere especificar nuestro nivel alfa, y por tanto decidir si necesitamos corregir por comparaciones múltiples. Por alguna razón que no entiendo del todo, varios investigadores creen que es difícil decidir cuándo necesitas corregir por comparaciones múltiples. Como escriben Bretz, Hothorn, &amp; Westfall (2011) en su excelente libro “Multiple Comparisons Using R”: “La elección apropiada de las hipótesis nulas de interés primario es una cuestión controvertida. Es decir, no siempre está claro qué conjunto de hipótesis debería constituir la familia H1,…,Hm. Este tema a menudo ha estado en disputa y no hay consenso general.” En uno de los mejores artículos sobre controlar por comparaciones múltiples que existen, Bender &amp; Lange (2001) escriben: “Desafortunadamente, no hay una respuesta simple y única a cuándo es apropiado controlar qué tasa de error. Diferentes personas pueden tener opiniones diferentes pero no obstante razonables. Además del problema de decidir qué tasa de error debería estar bajo control, primero debe definirse qué pruebas de un estudio pertenecen a un experimento.”</p>
+<p>Nunca he entendido esta confusión, al menos no cuando se trabaja dentro de un enfoque de Neyman-Pearson al contraste de hipótesis, donde el objetivo es controlar las tasas de error al nivel de una afirmación estadística. Cómo controlamos las tasas de error depende de la(s) afirmación(es) que queremos hacer. Podríamos querer actuar como si (o afirmar que) nuestro tratamiento funciona si hay una diferencia entre las condiciones de tratamiento y control en cualquiera de las tres variables. Esto significa que consideramos la predicción corroborada cuando el p-valor de la primera prueba t es menor que el nivel alfa, el p-valor de la segunda prueba t es menor que el nivel alfa, o el p-valor de la tercera prueba t es menor que el nivel alfa. Esto cae bajo el enfoque unión-intersección, y un investigador debería corregir el nivel alfa por comparaciones múltiples.</p>
+<p>También podríamos querer hacer tres predicciones diferentes. En lugar de una hipótesis (“algo ocurrirá”) tenemos tres hipótesis diferentes, y predecimos que habrá un efecto en dv1, dv2, y dv3. Cada una de estas afirmaciones puede ser corroborada, o no. Como estas son tres pruebas, que informan tres afirmaciones, no hay comparaciones múltiples, y no se requiere corrección del nivel alfa.</p>
+<p>Podría parecer que los investigadores pueden librarse de realizar correcciones por comparaciones múltiples formulando una hipótesis para cada posible prueba que realizarán. De hecho, pueden. Para una matriz de correlaciones de 10, un investigador podría declarar que está probando 45 predicciones únicas, cada una con un nivel alfa no corregido. Sin embargo, los lectores podrían cuestionar razonablemente si estas 45 pruebas fueron todas predichas por una teoría sensata, o si el autor simplemente está inventando predicciones para no tener que corregir el nivel alfa. Distinguir entre estos dos escenarios no es una cuestión estadística, sino una cuestión teórica. Si solo unas pocas de las 45 pruebas corroboran la predicción, el pobre historial de las predicciones debería hacer que los lectores duden de si el cuerpo de trabajo que se usó para derivar las predicciones tiene algo a favor.</p>
+<p>Hay diferentes maneras de controlar las tasas de error, siendo la más fácil la corrección de Bonferroni y el procedimiento secuencial Holm-Bonferroni, apenas un poco menos conservador. Cuando el número de pruebas estadísticas se vuelve sustancial, a veces es preferible controlar lo que se conoce como la tasa de descubrimientos falsos (o la proporción esperada de descubrimientos falsos), en lugar de la tasa de error de falsos positivos (Benjamini &amp; Hochberg, 1995).</p>
+</section>
+<section id="análisis-de-potencia" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="análisis-de-potencia"><span class="header-section-number">2.7</span> Análisis de potencia</h2>
+<p>Hasta ahora nos hemos centrado en gran medida en el control del error Tipo 1. Como quedó claro en la Figura 2.8, cuando hay un efecto verdadero los p-valores eventualmente se volverán más pequeños que cualquier nivel alfa dado a medida que el tamaño de muestra se vuelve lo suficientemente grande. Al diseñar un experimento, un objetivo podría ser elegir un tamaño de muestra que proporcione una tasa de error Tipo 2 deseada para un tamaño de efecto de interés. Esto puede lograrse realizando un análisis de potencia a priori. La potencia estadística de una prueba (y, por tanto, la tasa de error Tipo 2) depende del tamaño del efecto estandarizado (o el tamaño del efecto en bruto y la desviación estándar), el tamaño de muestra, y el nivel alfa. Manteniendo todo lo demás constante, cuanto mayores sean el tamaño del efecto, el tamaño de muestra, y el nivel alfa, mayor será la potencia estadística, y cuanto menores sean el tamaño del efecto, el tamaño de muestra, y el nivel alfa, menor será la potencia estadística.</p>
+<p>Es importante destacar que el objetivo de un análisis de potencia a priori no es lograr suficiente potencia para el tamaño del efecto verdadero. El tamaño del efecto verdadero siempre es desconocido cuando se diseña un estudio. El objetivo de un análisis de potencia a priori es lograr suficiente potencia, dada una suposición específica del tamaño del efecto que un investigador quiere detectar. Del mismo modo que una tasa de error Tipo I es la probabilidad máxima de cometer un error Tipo I condicional al supuesto de que la hipótesis nula es verdadera, un análisis de potencia a priori se calcula bajo el supuesto de un tamaño de efecto específico. Se desconoce si este supuesto es correcto. Todo lo que un investigador puede hacer es asegurarse de que sus supuestos estén bien justificados. Las inferencias estadísticas basadas en una prueba donde el error Tipo II está controlado son condicionales al supuesto de un tamaño de efecto específico. Permiten la inferencia de que, suponiendo que el tamaño del efecto verdadero es al menos tan grande como el utilizado en el análisis de potencia a priori, la tasa máxima de error Tipo II en un estudio no es mayor que un valor deseado.</p>
+<p>En la Figura 2.11 vemos la distribución esperada de tamaños de efecto estandarizados observados (d de Cohen) para una prueba t independiente con 50 observaciones en cada condición. La curva en forma de campana de la izquierda representa las expectativas si la hipótesis nula es verdadera, y las áreas rojas en la cola representan errores Tipo 1. La curva en forma de campana de la derecha representa las expectativas si la hipótesis alternativa es verdadera, y un tamaño de efecto de d = 0.5. La línea vertical en d = 0.4 representa el tamaño de efecto crítico. Con este tamaño de muestra y un nivel alfa de 0.05, los tamaños de efecto observados menores que d = 0.4 no serán estadísticamente significativos. El tamaño de efecto crítico es independiente del tamaño del efecto verdadero (puedes cambiar d = 0.5 por cualquier otro valor). Si hay un efecto verdadero, estos resultados serán errores Tipo 2, ilustrados por el área sombreada azul. El resto de la curva refleja verdaderos positivos, cuando hay un efecto verdadero, y los tamaños de efecto observados son estadísticamente significativos. La potencia de la prueba es la proporción de la distribución de la derecha que es mayor que el valor crítico.</p>
+<p><em>Figura 2.11:&nbsp;Distribución de d = 0 y d = 0.5 para una prueba t independiente con n = 50.</em></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://github.com/juangff85/inferencias-estadisticas-ESP/blob/main/images/02/figura2-11.png?raw=true" class="img-fluid figure-img"></p>
+<figcaption>Figura 2.11</figcaption>
+</figure>
+</div>
+<p>La cuestión del control del error Tipo 2 se discutirá con más detalle en el Capítulo 8 sobre la justificación del tamaño de muestra. Aunque el tema del control del error Tipo 2 solo se discute brevemente aquí, es al menos tan importante como el control del error Tipo 1. Un estudio informativo debería tener una alta probabilidad de observar un efecto si hay un efecto. De hecho, la recomendación por defecto de aspirar a 80% de potencia deja una probabilidad sorprendentemente grande (20%) de un error Tipo 2. Si a un investigador solo le importa no cometer un error de decisión, pero al investigador no le importa si este error de decisión es un falso positivo o un falso negativo, podría argumentarse que los errores Tipo 1 y Tipo 2 se ponderan por igual. Por lo tanto, diseñar un estudio con tasas de error equilibradas (por ejemplo, una tasa de error Tipo 1 del 5% y 95% de potencia) tendría sentido.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./01-usando-valores-p.html" class="pagination-link" aria-label="Usando valores p para probar una hipótesis">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Usando valores p para probar una hipótesis</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./03-verosimilitudes.html" class="pagination-link" aria-label="Verosimilitudes">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Verosimilitudes</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
