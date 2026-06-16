@@ -243,3 +243,137 @@ Por ejemplo, considera los experimentos de Stroop (1935), donde palabras relacio
 | Mundo 4 | No más lento | No más lento |
 
 Meehl (1990b) discute un “marcador” (*box score*) del número de rasgos predichos con éxito, lo cual reconoce que es demasiado simplista. No se dispone de una medida formalizada ampliamente aceptada de verosimilitud para expresar la similitud entre los rasgos predichos con éxito por una teoría, aunque se han propuesto varias propuestas (Cevolani et al., 2011; Niiniluoto, 1998; Oddie, 2013). Sin embargo, incluso si no se disponen de medidas formales de verosimilitud, sigue siendo un concepto útil para describir teorías que se asume que están más cerca de la verdad porque hacen predicciones novedosas (Psillos, 1999).
+
+## Referencias
+
+Altoè, G., Bertoldo, G., Zandonella Callegher, C., Toffalini, E., Calcagnì, A., Finos, L., & Pastore, M. (2020). Enhancing statistical inference in psychological research via prospective and retrospective design analysis. *Frontiers in Psychology, 10*, Article 2893.
+
+Baguley, T. (2012). *Serious stats: A guide to advanced statistics for the behavioral sciences*. Palgrave Macmillan.
+
+Cevolani, G., Festa, R., & Kuipers, T. A. F. (2011). Verisimilitude and belief change for conjunctive theories. *Synthese, 182*, 183–202.
+
+Cho, H.-C., & Abe, S. (2013). Is two-tailed testing for directional research hypotheses tests legitimate? *Journal of Business Research, 66*(9), 1261–1266.
+
+Cohen, J. (1994). The earth is round (*p* < .05). *American Psychologist, 49*(12), 997–1003.
+
+Colling, L. J., et al. (2020). Registered replication report on the attentional SNARC effect.
+
+de Groot, A. D. (1969). *Methodology: Foundations of inference and research in the behavioral sciences*. Mouton.
+
+Dongen, N. N. N. van, et al. (2019). Multiple perspectives on inference for two simple statistical scenarios.
+
+Dubin, R. (1969). *Theory building: A practical guide to the construction and testing of theoretical models*. Free Press.
+
+Duhem, P. (1954). *The aim and structure of physical theory*. Princeton University Press.
+
+Ferguson, C. J., & Heene, M. (2021). Providing a lower-bound estimate for psychology’s “crud factor”: The case of aggression.
+
+Feyerabend, P. (1993). *Against method* (3rd ed.). Verso.
+
+Feynman, R. P. (1974). Cargo cult science. *Engineering and Science, 37*(7), 10–13.
+
+Fiedler, K. (2004). Tools, toys, truisms, and theories: Some thoughts on the creative cycle of theory formation. *Personality and Social Psychology Review, 8*(2), 123–131.
+
+Fraassen, B. C. van. (1980). *The scientific image*. Oxford University Press.
+
+Gelman, A., & Carlin, J. (2014). Beyond power calculations: Assessing Type S (sign) and Type M (magnitude) errors. *Perspectives on Psychological Science, 9*(6), 641–651.
+
+Gerring, J. (2012). *Social science methodology: A unified framework* (2nd ed.). Cambridge University Press.
+
+Hagger, M. S., Chatzisarantis, N. L. D., Alberts, H., Anggono, C. O., Batailler, C., Birt, A. R., ... Zwienenberg, M. (2016). A multilab preregistered replication of the ego-depletion effect. *Perspectives on Psychological Science, 11*(4), 546–573.
+
+Hand, D. J. (1994). Deconstructing statistical questions. *Journal of the Royal Statistical Society: Series A, 157*(3), 317–356.
+
+Hempel, C. G. (1966). *Philosophy of natural science*. Prentice-Hall.
+
+Jeffreys, H. (1939). *Theory of probability*. Oxford University Press.
+
+Jones, L. V. (1952). Tests of hypotheses: One-sided vs. two-sided alternatives.
+
+Kaiser, H. F. (1960). Directional statistical decisions. *Psychological Review, 67*(3), 160–167.
+
+Kenett, R. S., & Shmueli, G. (2016). *Information quality: The potential of data and analytics to generate knowledge*. Wiley.
+
+Kerr, N. L. (1998). HARKing: Hypothesizing after the results are known. *Personality and Social Psychology Review, 2*(3), 196–217.
+
+Kuhn, T. S. (1962). *The structure of scientific revolutions*. University of Chicago Press.
+
+Kuipers, T. A. F. (2016). *From instrumentalism to constructive realism: On some relations between confirmation, empirical progress, and truth approximation*. Springer.
+
+Lakatos, I. (1978). *The methodology of scientific research programmes: Philosophical papers, Volume 1*. Cambridge University Press.
+
+Lakens, D. (2019). The value of preregistration for psychological science: A conceptual analysis. *Japanese Psychological Review, 62*(3), 221–230.
+
+Lakens, D. (2021). The practical alternative to the *p* value is the correctly used *p* value. *Perspectives on Psychological Science, 16*(3), 639–648.
+
+Lakens, D., McLatchie, N., Isager, P. M., Scheel, A. M., & Dienes, Z. (2020). Improving inferences about null effects with Bayes factors and equivalence tests. *The Journals of Gerontology: Series B, 75*(1), 45–57.
+
+Laudan, L. (1981). A confutation of convergent realism. *Philosophy of Science, 48*(1), 19–49.
+
+Laudan, L. (1986). *Science and values: The aims of science and their role in scientific debate*. University of California Press.
+
+Luttrell, A., Petty, R. E., & Xu, M. (2017). Replicating and fixing failed replications: The case of need for cognition and argument quality. *Journal of Experimental Social Psychology, 69*, 178–183.
+
+Mayo, D. G. (2018). *Statistical inference as severe testing: How to get beyond the statistics wars*. Cambridge University Press.
+
+McCarthy, R. J., et al. (2018). Registered replication report on Srull and Wyer (1979).
+
+McGuire, W. J. (2004). A perspectivist looks at contextualism and the future of behavioral science.
+
+Meehl, P. E. (1967). Theory-testing in psychology and physics: A methodological paradox. *Philosophy of Science, 34*(2), 103–115.
+
+Meehl, P. E. (1978). Theoretical risks and tabular asterisks: Sir Karl, Sir Ronald, and the slow progress of soft psychology. *Journal of Consulting and Clinical Psychology, 46*(4), 806–834.
+
+Meehl, P. E. (1990a). Appraising and amending theories: The strategy of Lakatosian defense and two principles that warrant it. *Psychological Inquiry, 1*(2), 108–141.
+
+Meehl, P. E. (1990b). Why summaries of research on psychological theories are often uninterpretable. *Psychological Reports, 66*(1), 195–244.
+
+Meehl, P. E. (2004). *Clinical versus statistical prediction: A theoretical analysis and a review of the evidence*. Echo Point Books & Media.
+
+Melara, R. D., & Algom, D. (2003). Driven by information: A tectonic theory of Stroop effects. *Psychological Review, 110*(3), 422–471.
+
+Mellers, B., Hertwig, R., & Kahneman, D. (2001). Do frequency representations eliminate conjunction effects? An exercise in adversarial collaboration. *Psychological Science, 12*(4), 269–275.
+
+Morey, R. D., et al. (2021). A pre-registered, multi-lab non-replication of the action-sentence compatibility effect.
+
+Niiniluoto, I. (1998). Verisimilitude: The third period. *The British Journal for the Philosophy of Science, 49*(1), 1–29.
+
+Niiniluoto, I. (1999). *Critical scientific realism*. Oxford University Press.
+
+Oddie, G. (2013). Truthlikeness. En E. N. Zalta (Ed.), *The Stanford Encyclopedia of Philosophy*. Stanford University.
+
+Orben, A., & Lakens, D. (2020). Crud (re)defined. *Advances in Methods and Practices in Psychological Science, 3*(2), 238–247.
+
+O’Donnell, M., Nelson, L. D., Ackermann, E., Aczel, B., Akhtar, A., Aldrovandi, S., ... Zrubka, M. (2018). Registered replication report: Dijksterhuis and van Knippenberg (1998). *Perspectives on Psychological Science, 13*(2), 268–294.
+
+Platt, J. R. (1964). Strong inference. *Science, 146*(3642), 347–353.
+
+Popper, K. R. (2002). *The logic of scientific discovery*. Routledge.
+
+Psillos, S. (1999). *Scientific realism: How science tracks truth*. Routledge.
+
+Royall, R. (1997). *Statistical evidence: A likelihood paradigm*. Chapman & Hall/CRC.
+
+Scheel, A. M., Tiokhin, L., Isager, P. M., & Lakens, D. (2021). Why hypothesis testers should spend less time testing hypotheses. *Perspectives on Psychological Science, 16*(4), 744–755.
+
+Schulz, K. F., & Grimes, D. A. (2005). Multiplicity in randomised trials II: Subgroup and interim analyses. *The Lancet, 365*(9471), 1657–1661.
+
+Shmueli, G. (2010). To explain or to predict? *Statistical Science, 25*(3), 289–310.
+
+Stroebe, W., & Strack, F. (2014). The alleged crisis and the illusion of exact replication. *Perspectives on Psychological Science, 9*(1), 59–71.
+
+Stroop, J. R. (1935). Studies of interference in serial verbal reactions. *Journal of Experimental Psychology, 18*(6), 643–662.
+
+Tendeiro, J. N., & Kiers, H. A. L. (2019). A review of issues about null hypothesis Bayesian testing. *Psychological Methods, 24*(6), 774–795.
+
+Uygun Tunç, D., & Tunç, M. N. (2022). A falsificationist treatment of auxiliary hypotheses in social and behavioural sciences.
+
+Verschuere, B., Meijer, E., Jim, A., Hoogesteyn, K., Orthey, R., McCarthy, R. J., ... Yamaguchi, M. (2018). Registered replication report on Mazar, Amir, and Ariely (2008). *Advances in Methods and Practices in Psychological Science, 1*(3), 299–317.
+
+Wagenmakers, E.-J., Beek, T., Dijkhoff, L., Gronau, Q. F., Acosta, A., Adams, R. B., ... Zwaan, R. A. (2016). Registered replication report: Strack, Martin, & Stepper (1988). *Perspectives on Psychological Science, 11*(6), 917–928.
+
+Wynants, L., Van Calster, B., Collins, G. S., Riley, R. D., Heinze, G., Schuit, E., ... van Smeden, M. (2020). Prediction models for diagnosis and prognosis of COVID-19: Systematic review and critical appraisal. *BMJ, 369*, m1328.
+
+Yarkoni, T., & Westfall, J. (2017). Choosing prediction over explanation in psychology: Lessons from machine learning. *Perspectives on Psychological Science, 12*(6), 1100–1122.
+
+Desjardins, C. D., & Bulut, O. (2018). *Handbook of educational measurement and psychometrics using R*. CRC Press.
