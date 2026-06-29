@@ -1,6 +1,9 @@
 project:
   type: book
   output-dir: docs
+  resources:
+    - p_value_simulation_app_book.html
+    - pvalue_distribution_app_book.html
 
 book:
   title: "Mejora de tus Inferencias Estadísticas"
