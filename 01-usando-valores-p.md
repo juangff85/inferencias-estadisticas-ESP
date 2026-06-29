@@ -100,13 +100,69 @@ Qué valores *p* puedes esperar está completamente determinado por la potencia 
 
 La visualización interactiva de abajo ejecuta esta simulación. En cada experimento simulado, *n* = 49 tiempos de reacción se extraen de una distribución normal para cada grupo —por defecto: *M* = 100 ms y *M* = 130 ms, SD = 75 ms—, se realiza una prueba *t* independiente y se almacena el valor *p*. Una vez completadas todas las simulaciones, la distribución de valores *p* se representa como un histograma. Usa las entradas para cambiar las medias de los grupos, la desviación estándar, el tamaño muestral, el número de simulaciones y el nivel alfa, y después haz clic en **Run simulation**.
 
-*Una simulación interactiva de la distribución de valores p está disponible en la versión en línea de este libro.*
+::: {.content-visible when-format="html"}
+
+```{=html}
+<iframe id="pval-sim-iframe"
+        src="p_value_simulation_app_book.html"
+        width="100%"
+        height="580"
+        scrolling="no"
+        style="border:none;display:block;margin:1.5rem 0;overflow:hidden;"
+        title="Simulación de la distribución de valores p">
+</iframe>
+<script>
+window.addEventListener('message', function(e) {
+  if (e.data && typeof e.data.iframeHeight === 'number') {
+    var f = document.getElementById('pval-sim-iframe');
+    if (f && e.source === f.contentWindow) f.style.height = e.data.iframeHeight + 'px';
+  }
+});
+</script>
+```
+
+:::
+
+::: {.content-visible unless-format="html"}
+
+*Hay una simulación interactiva de la distribución de valores p disponible en la versión en línea de este libro.*
+
+:::
+
 
 En el eje x vemos valores *p* de 0 a 1 en 20 barras, y en el eje y vemos con qué frecuencia se observaron estos valores *p*. La línea horizontal roja punteada muestra la frecuencia esperada por barra si $H_0$ fuera verdadera: con 100000 simulaciones y 20 barras, eso son 5000 por barra. En el título de la simulación se da la potencia estadística alcanzada en los estudios simulados —asumiendo α = 0.05—. Con la configuración por defecto (*n* = 49, *M* = 100 ms frente a *M* = 130 ms, SD = 75 ms), los estudios tienen aproximadamente un 50% de potencia.
 
 El resultado de la simulación ilustra la **función de densidad de probabilidad** de los valores *p* para una prueba *t*. Una función de densidad de probabilidad proporciona la probabilidad de que una variable aleatoria tenga un valor específico —como la Figura 1.1 de la distribución *t*—. Como el valor *p* es una variable aleatoria, podemos usar su función de densidad de probabilidad para representar la distribución de valores *p*, como en la figura interactiva de abajo. La distribución de valores *p* es una función de la potencia estadística de la prueba —que es mayor si se incrementan el tamaño muestral, el tamaño del efecto o el nivel alfa de la prueba—. Puedes explorar esto aumentando o disminuyendo la potencia moviendo el control deslizante en la visualización interactiva de abajo.
 
-*Una aplicación interactiva de distribución de valores p está disponible en la versión en línea de este libro.*
+::: {.content-visible when-format="html"}
+
+```{=html}
+<iframe id="pval-dist-iframe"
+        src="pvalue_distribution_app_book.html"
+        width="100%"
+        height="500"
+        scrolling="no"
+        style="border:none;display:block;margin:1.5rem 0;overflow:hidden;"
+        title="Distribución de valores p">
+</iframe>
+<script>
+window.addEventListener('message', function(e) {
+  if (e.data && typeof e.data.iframeHeight === 'number') {
+    var f = document.getElementById('pval-dist-iframe');
+    if (f && e.source === f.contentWindow) f.style.height = e.data.iframeHeight + 'px';
+  }
+});
+</script>
+```
+
+:::
+
+::: {.content-visible unless-format="html"}
+
+*Hay una aplicación interactiva de distribución de valores p disponible en la versión en línea de este libro.*
+
+:::
+
 
 Cuando no hay un efecto verdadero y se cumplen los supuestos de la prueba, los valores *p* para una prueba *t* están **uniformemente distribuidos**. Esto significa que cada valor *p* es igualmente probable de observar cuando la hipótesis nula es verdadera. En otras palabras, cuando no hay un efecto verdadero, un valor *p* de 0.08 es tan probable como un valor *p* de 0.98. Recuerdo haber pensado que esto era muy contraintuitivo cuando aprendí por primera vez sobre las distribuciones uniformes de valores *p* —después de terminar mi doctorado—. Pero tiene sentido que los valores *p* estén uniformemente distribuidos cuando recordamos que, cuando $H_0$ es verdadera, un alpha % de los valores *p* debería caer por debajo del nivel alfa, sea cual sea el nivel alfa que fijemos. Por tanto, si fijamos alfa en 0.01, el 1% de los valores *p* observados debería caer por debajo de 0.01, y si fijamos alfa en 0.12, el 12% de los valores *p* observados debería caer por debajo de 0.12. Esto solo puede ocurrir si los valores *p* están uniformemente distribuidos cuando la hipótesis nula es verdadera. Nótese que la distribución uniforme de valores *p* solo aparece si la distribución del estadístico de prueba es continua —por ejemplo, como en la prueba *t*—, y no si la distribución del estadístico de prueba es discreta —por ejemplo, en el caso de la prueba chi-cuadrado, véase Wang et al.—. Puedes examinar este comportamiento fijando las medias de ambos grupos en el mismo valor, o la potencia en el 5%, en las simulaciones interactivas anteriores.
 
