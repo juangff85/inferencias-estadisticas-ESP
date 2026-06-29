@@ -88,7 +88,7 @@ mean in group Friends of Daniel   mean in group Friends of Kyra
 
 Podemos representar la distribución *t* —para df = 18— y resaltar las dos áreas de cola que empiezan en los valores *t* de 2.5175 y -2.5175.
 
-**Figura 1.1. Una distribución *t* con 18 grados de libertad.**
+![Una distribución *t* con 18 grados de libertad.](images/fig-tdist-1.png){#fig-tdist}
 
 ## ¿Qué valores *p* puedes esperar?
 
@@ -116,7 +116,7 @@ A medida que aumenta la potencia estadística, algunos valores *p* por debajo de
 
 Sin embargo, quizá sorprendentemente, observar un valor *p* de 0.04 es más probable cuando la hipótesis nula ($H_0$) es verdadera que cuando la hipótesis alternativa ($H_1$) es verdadera y tenemos una potencia muy alta, como ilustra el hecho de que en la Figura 1.2 la densidad de la distribución de valores *p* en *p* = 0.04 es mayor si la hipótesis nula es verdadera que cuando la hipótesis alternativa es verdadera y una prueba tiene un 99% de potencia. La paradoja de Lindley muestra que un valor *p*, por ejemplo 0.04, puede ser estadísticamente significativo, pero al mismo tiempo proporcionar evidencia para la hipótesis nula. Desde un enfoque de Neyman-Pearson hemos hecho una afirmación que tiene una tasa máxima de error del 5%, pero desde un enfoque de verosimilitud o bayesiano deberíamos concluir que nuestros datos proporcionan evidencia a favor de la hipótesis nula, en relación con la hipótesis alternativa. La paradoja de Lindley ilustra cuándo diferentes filosofías estadísticas llegarían a conclusiones diferentes, y por qué un valor *p* no puede interpretarse directamente como una medida de evidencia sin tener en cuenta la potencia de la prueba. Aunque una aplicación estricta del enfoque de Neyman-Pearson no lo requiere, los investigadores podrían desear prevenir situaciones en las que un frecuentista rechaza la hipótesis nula basándose en *p* < 0.05, cuando la evidencia en la prueba favorece la hipótesis nula sobre la hipótesis alternativa. Esto puede lograrse reduciendo el nivel alfa como función del tamaño muestral, como se explica en el capítulo sobre control de errores.
 
-**Figura 1.2. Distribución de valores *p* para 0 —línea horizontal gris—, 50 por ciento de potencia —curva negra continua— y 99 por ciento de potencia —curva negra punteada, donde los valores *p* justo por debajo de 0.05 son más probables cuando $H_0$ es verdadera que cuando $H_1$ es verdadera—.**
+![Distribución de valores *p* para 0 —línea horizontal gris—, 50 por ciento de potencia —curva negra continua— y 99 por ciento de potencia —curva negra punteada, donde los valores *p* justo por debajo de 0.05 son más probables cuando $H_0$ es verdadera que cuando $H_1$ es verdadera—.](images/fig-paradox-1.png){#fig-paradox}
 
 ## Informar e interpretar correctamente los valores *p*
 
@@ -148,7 +148,7 @@ Es útil distinguir la hipótesis nula —la predicción de que la diferencia me
 
 Personalmente encuentro que las cosas se vuelven mucho más claras si representas el modelo nulo como diferencias medias en lugar de valores *t*, como en la Figura 1.3. Esta gráfica muestra un modelo nulo para las diferencias medias que podemos esperar al comparar dos grupos de 50 observaciones donde la diferencia verdadera entre los dos grupos es 0, y la desviación estándar en cada grupo es 1. Como la desviación estándar es 1, también puedes interpretar las diferencias medias como un tamaño del efecto *d* de Cohen. Así que esta es también la distribución que puedes esperar para una *d* de Cohen de 0 al recoger 50 observaciones por grupo en una prueba *t* independiente.
 
-**Figura 1.3. Distribución de tamaños del efecto *d* de Cohen observados al recoger 50 observaciones por grupo en una prueba *t* independiente.**
+![Distribución de tamaños del efecto *d* de Cohen observados al recoger 50 observaciones por grupo en una prueba *t* independiente.](images/fig-fig131-1.png){#fig-fig131}
 
 Lo primero que hay que notar es que esperamos que la media del modelo nulo sea 0. Mirando el eje x, vemos que la distribución representada está centrada en 0. Pero incluso si la diferencia media en la población es 0, eso no implica que cada par de muestras que extraigamos de la población produzca una diferencia media exactamente igual a cero. Hay variación alrededor del valor poblacional, como función de la desviación estándar y el tamaño muestral.
 
@@ -158,7 +158,7 @@ Supongamos que el modelo nulo de la Figura 1.3 anterior es verdadero, y que obse
 
 Una razón por la que prefiero representar el modelo nulo en puntuaciones brutas en lugar de valores *t* es que puedes ver cómo cambia el modelo nulo cuando aumenta el tamaño muestral. Cuando recogemos 5000 observaciones en lugar de 50, vemos que el modelo nulo sigue centrado en 0, pero en nuestro modelo nulo ahora esperamos que la mayoría de los valores caigan muy cerca de 0 —véase la Figura 1.4—.
 
-**Figura 1.4. Distribución de tamaños del efecto *d* de Cohen observados al recoger 5000 observaciones por grupo en una prueba *t* independiente cuando *d* = 0.**
+![Distribución de tamaños del efecto *d* de Cohen observados al recoger 5000 observaciones por grupo en una prueba *t* independiente cuando *d* = 0.](images/fig-fig132-1.png){#fig-fig132}
 
 La distribución es mucho más estrecha porque la distribución de diferencias medias se basa en el error estándar de la diferencia entre medias. El error estándar se calcula basándose en la desviación estándar y el tamaño muestral, como sigue:
 
@@ -172,11 +172,11 @@ El error estándar de las diferencias entre medias es, por tanto, 0.2 para n = 5
 
 Estamos casi listos para abordar los malentendidos comunes sobre los valores *p*, pero antes de poder hacerlo, necesitamos introducir un modelo de los datos cuando la nula no es verdadera. Si no estamos muestreando datos de un modelo donde la verdadera diferencia media es 0, ¿cómo es nuestro modelo alternativo? Algunos programas —como G*Power— visualizarán en su salida tanto el modelo nulo —curva roja— como el modelo alternativo —curva azul—.
 
-**Figura 1.5. Captura de pantalla del software G*Power que visualiza las distribuciones de valores *t* del modelo nulo —en rojo— y del modelo alternativo —en azul— y el valor *t* crítico (1.66055), es decir, el umbral que distingue resultados significativos de no significativos.**
+![Captura de pantalla del software G\*Power que visualiza las distribuciones de valores *t* del modelo nulo —en rojo— y del modelo alternativo —en azul— y el valor *t* crítico (1.66055), es decir, el umbral que distingue resultados significativos de no significativos.](images/1.3.3.png){#fig-gpowerscreenshot}
 
 Cuando hacemos un estudio, rara vez sabemos de antemano cuál es la verdadera diferencia media —si ya lo supiéramos, ¿por qué haríamos el estudio?—. Pero supongamos que existe una entidad omnisciente. Siguiendo a Paul Meehl, llamaremos a esta entidad omnisciente “Jones Omnisciente”. Antes de recoger nuestra muestra de 50 observaciones, Jones Omnisciente ya sabe que la verdadera diferencia media en la población es 0.5. De nuevo, esperamos cierta variación alrededor de 0.5 en este modelo alternativo. La figura de abajo muestra el patrón de datos esperado cuando la hipótesis nula es verdadera —ahora indicada por una línea gris— y muestra un modelo alternativo, asumiendo que existe una verdadera diferencia media de 0.5 en la población —indicada por una línea negra—.
 
-**Figura 1.6. Distribución de tamaños del efecto *d* de Cohen observados al recoger 50 observaciones por grupo en una prueba *t* independiente cuando *d* = 0 —modelo nulo, izquierda— o *d* = 0.5 —modelo alternativo, derecha—.**
+![Distribución de tamaños del efecto *d* de Cohen observados al recoger 50 observaciones por grupo en una prueba *t* independiente cuando *d* = 0 —modelo nulo, izquierda— o *d* = 0.5 —modelo alternativo, derecha—.](images/fig-fig134-1.png){#fig-fig134}
 
 Pero Jones Omnisciente podría haber revelado que la diferencia verdadera era mucho mayor. Supongamos que hacemos otro estudio, pero ahora, antes de recoger nuestras 50 observaciones, Jones Omnisciente nos dice que la verdadera diferencia media es 1.5. El modelo nulo no cambia, pero el modelo alternativo ahora se desplaza hacia la derecha.
 
@@ -202,7 +202,7 @@ Tomemos un ejemplo concreto que ilustrará por qué un resultado no significativ
 
 No obstante, vemos que observar una diferencia media de 0.35 no solo es bastante probable dado que la verdadera diferencia media es 0.5, sino que observar una diferencia media de 0.35 es mucho más probable bajo el modelo alternativo que bajo el modelo nulo. Puedes ver esto comparando la altura de la curva de densidad en una diferencia de 0.35 para el modelo nulo, que es aproximadamente 0.5, y la altura de la curva de densidad para el modelo alternativo, que es aproximadamente 1.5. Véase el capítulo sobre verosimilitudes para más detalles.
 
-**Figura 1.7. Distribución de tamaños del efecto *d* de Cohen observados al recoger 50 observaciones por grupo en una prueba *t* independiente para *d* = 0 y *d* = 0.5 al observar *d* = 0.35.**
+![Distribución de tamaños del efecto *d* de Cohen observados al recoger 50 observaciones por grupo en una prueba *t* independiente para *d* = 0 y *d* = 0.5 al observar *d* = 0.35.](images/fig-fig136-1.png){#fig-fig136}
 
 Todo lo que el valor *p* nos dice es que una diferencia media de 0.35 no es extremadamente sorprendente si asumimos que la hipótesis nula es verdadera. Puede haber muchas razones para esto. En el mundo real, donde no tenemos a Jones Omnisciente para decirnos cuál es la verdadera diferencia media, es posible que haya un efecto verdadero, como se ilustra en la figura anterior.
 
@@ -236,7 +236,7 @@ rnorm(n = 50, mean = 0, sd = 1)
 
 Este comando genera 50 observaciones aleatorias de una distribución con una media de 0 y una desviación estándar de 1 —a largo plazo; la media y la desviación estándar variarán en cada muestra generada—. Imagina que ejecutamos este comando una vez y observamos una media de 0.5. La figura de abajo visualiza este escenario. Podemos realizar una prueba *t* de una muestra contra 0, y esta prueba nos dice, con *p* < .05, que los datos que hemos observado son sorprendentemente diferentes de 0, asumiendo que el generador de números aleatorios en R funciona como debe y genera datos con una verdadera media de 0.
 
-**Figura 1.8. Distribución de tamaños del efecto *d* de Cohen observados al recoger 50 observaciones por grupo en una prueba *t* independiente cuando *d* = 0 y se observa *d* = 0.5.**
+![Distribución de tamaños del efecto *d* de Cohen observados al recoger 50 observaciones por grupo en una prueba *t* independiente cuando *d* = 0 y se observa *d* = 0.5.](images/fig-fig137-1.png){#fig-fig137}
 
 El valor *p* significativo no nos permite concluir que la hipótesis nula —“el generador de números aleatorios funciona”— sea falsa. Es cierto que la media de las 50 muestras que generamos fue sorprendentemente extrema. Pero un valor *p* bajo simplemente nos dice que una observación es sorprendente. Deberíamos observar tales observaciones sorprendentes con una probabilidad baja cuando la hipótesis nula es verdadera: cuando la nula es verdadera, siguen ocurriendo. Por tanto, un resultado significativo no significa que una hipótesis alternativa sea verdadera: el resultado también puede ser un error Tipo 1, y en el ejemplo anterior Jones Omnisciente sabe que este es el caso.
 
@@ -262,7 +262,7 @@ Nótese que nada de esto es un problema con la interpretación de un valor *p* e
 
 Esta mala interpretación es una posible explicación de la afirmación incorrecta de que un valor *p* es “la probabilidad de que los datos se observen por azar”. Supongamos que recogemos 20 observaciones, y Jones Omnisciente nos dice que la hipótesis nula es verdadera —como en el ejemplo anterior, donde generamos números aleatorios en R—. Esto significa que estamos muestreando de la distribución en la Figura 1.9.
 
-**Figura 1.9. Distribución de tamaños del efecto *d* de Cohen observados al recoger 20 observaciones por grupo en una prueba *t* independiente cuando *d* = 0.**
+![Distribución de tamaños del efecto *d* de Cohen observados al recoger 20 observaciones por grupo en una prueba *t* independiente cuando *d* = 0.](images/fig-fig138-1.png){#fig-fig138}
 
 Si esta es nuestra realidad, significa que el 100% de las veces que observamos un resultado significativo, es un falso positivo —o error Tipo I—. Por tanto, el 100% de nuestros resultados significativos son errores Tipo 1.
 
