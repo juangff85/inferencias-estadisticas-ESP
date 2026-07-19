@@ -12,4 +12,4 @@ El sitio web Retraction Watch mantiene [una base de datos](https://retractiondat
 
 **Figura 12.1**: Escena de The Dropout sobre la empresa Theranos, que afirmó falsamente tener dispositivos capaces de realizar análisis de sangre con cantidades muy pequeñas de sangre. En la escena, dos denunciantes confrontan a sus jefes cuando se les presiona para eliminar puntos de datos que no muestran los resultados deseados.
 
-![Figura 12.1](https://github.com/juangff85/inferencias-estadisticas-ESP/blob/main/images/12/figura12-1.gif)
+![Figura 12.1](https://github.com/juangff85/inferencias-estadisticas-ESP/blob/main/images/12/figura12-1.gif?raw=true)
