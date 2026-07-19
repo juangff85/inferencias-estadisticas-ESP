@@ -223,8 +223,16 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de contenidos</h2>
+   
+  <ul>
+  <li><a href="#sesgo-de-publicación" id="toc-sesgo-de-publicación" class="nav-link active" data-scroll-target="#sesgo-de-publicación"><span class="header-section-number">12.1</span> Sesgo de publicación</a></li>
+  <li><a href="#detección-de-sesgos-en-metaanálisis" id="toc-detección-de-sesgos-en-metaanálisis" class="nav-link" data-scroll-target="#detección-de-sesgos-en-metaanálisis"><span class="header-section-number">12.2</span> 12.2 Detección de sesgos en metaanálisis</a></li>
+  <li><a href="#trim-and-fill" id="toc-trim-and-fill" class="nav-link" data-scroll-target="#trim-and-fill"><span class="header-section-number">13</span> 12.3 Trim and Fill</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -255,15 +263,187 @@ ul.task-list li input[type="checkbox"] {
 <p>En el extremo más extremo de las prácticas que introducen sesgo en la investigación científica está la mala conducta en la investigación: inventar datos o resultados, o cambiar u omitir datos o resultados de tal manera que la investigación no esté representada con precisión en el registro de investigación. Por ejemplo, <a href="https://es.wikipedia.org/wiki/Andrew_Wakefield">Andrew Wakefield</a> fue autor de un artículo fraudulento en 1998 que afirmaba un vínculo entre la vacuna contra el sarampión, las paperas y la rubéola (MMR) y el autismo. Fue retractado en 2010, pero solo después de que causara daño a la confianza en las vacunas entre algunas partes de la población general.</p>
 <p>Otro ejemplo de la psicología se refería a un estudio de <a href="https://es.wikipedia.org/wiki/James_Vicary">James Vicary</a> sobre el priming subliminal. Afirmó haber encontrado que al proyectar rápidamente ‘EAT POPCORN’ y ‘DRINK COCA-COLA’ de forma subliminal durante una película en un cine, las ventas de palomitas y Coca-Cola habían aumentado en un 57,5% y un 18,1%, respectivamente. Sin embargo, más tarde se descubrió que Vicary muy probablemente cometió fraude científico, ya que no había evidencia de que el estudio se hubiera realizado alguna vez [(Rogers, 1992-1993)](.</p>
 <p>El sitio web Retraction Watch mantiene <a href="https://retractiondatabase.org/RetractionSearch.aspx?">una base de datos</a> que rastrea las razones por las que los artículos científicos son retractados, incluyendo la fabricación de datos. Se desconoce con qué frecuencia ocurre la fabricación de datos en la práctica, pero como se discutió en el capítulo sobre integridad de la investigación, deberíamos esperar que al menos un pequeño porcentaje de científicos haya fabricado, falsificado o modificado datos o resultados al menos una vez.</p>
-<p><strong>Figura 12.1</strong>:&nbsp;Escena de&nbsp;The Dropout&nbsp;sobre la empresa Theranos, que afirmó falsamente tener dispositivos capaces de realizar análisis de sangre con cantidades muy pequeñas de sangre. En la escena, dos denunciantes confrontan a sus jefes cuando se les presiona para eliminar puntos de datos que no muestran los resultados deseados.</p>
+<p><strong>Figura 12.1:</strong> Escena de&nbsp;The Dropout&nbsp;sobre la empresa Theranos, que afirmó falsamente tener dispositivos capaces de realizar análisis de sangre con cantidades muy pequeñas de sangre. En la escena, dos denunciantes confrontan a sus jefes cuando se les presiona para eliminar puntos de datos que no muestran los resultados deseados.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://github.com/juangff85/inferencias-estadisticas-ESP/blob/main/images/12/figura12-1.gif" class="img-fluid figure-img"></p>
+<p><img src="https://raw.githubusercontent.com/juangff85/inferencias-estadisticas-ESP/main/images/12/figura12-1.gif" class="img-fluid figure-img"></p>
 <figcaption>Figura 12.1</figcaption>
 </figure>
 </div>
+<p>Otra categoría diferente de errores son los errores de reporte estadístico, que van desde informar grados de libertad incorrectos hasta reportar p = 0.056 como p &lt; 0.05 (Nuijten et al., 2015). Aunque debemos hacer todo lo posible por prevenir errores, todo el mundo los comete, y a medida que compartir datos y código se vuelve más común, será más fácil detectar errores en el trabajo de otros investigadores. Como escribe Dorothy Bishop (2018): “A medida que la ciencia abierta se convierta cada vez más en la norma, descubriremos que todos somos falibles. La reputación de los científicos dependerá no de si hay errores en su investigación, sino de cómo respondan cuando esos errores sean señalados”.</p>
+<p><a href="http://statcheck.io/">Statcheck</a> es un software que extrae automáticamente estadísticas de artículos y recalcula sus valores p, siempre que las estadísticas se informen siguiendo las directrices de la American Psychological Association (APA). Comprueba si las estadísticas informadas son internamente consistentes: dados el estadístico de prueba y los grados de libertad, ¿es correcto el valor p informado? Si lo es, es menos probable que hayas cometido un error (aunque no evita errores coherentes). Si no lo es, deberías comprobar si toda la información de tu prueba estadística es correcta. Statcheck no es perfecto y puede cometer errores de Tipo 1, señalando algo como error cuando en realidad no lo es, pero es una herramienta fácil de usar para comprobar tus artículos antes de enviarlos a publicación, y trabajos metacientíficos iniciales sugieren que puede reducir errores de reporte estadístico (Nuijten &amp; Wicherts, 2023).</p>
+<p>Algunas inconsistencias en los datos son más difíciles de detectar automáticamente, pero pueden identificarse manualmente. Por ejemplo, Brown y Heathers (2017) muestran que muchos artículos informan medias que no son posibles dados el tamaño de la muestra (lo que se conoce como la prueba GRIM). Por ejemplo, Matti Heino observó en una entrada de blog que tres de las medias informadas en la tabla de un estudio clásico de Festinger y Carlsmith son matemáticamente imposibles. Con 20 observaciones por condición y una escala de −5 a 5, todas las medias deberían terminar en un múltiplo de 1/20, es decir, 0,05. Las tres medias que terminan en X.X8 o X.X2 no son consistentes con el tamaño muestral y la escala informados. Por supuesto, tales inconsistencias pueden deberse a que no se informó de que faltaban datos para algunas preguntas, pero la prueba GRIM también se ha utilizado para descubrir mala conducta científica.</p>
+<p><strong>Figura 12.2:</strong> Captura de pantalla de la tabla que informa los resultados principales del estudio de Festinger y Carlsmith (1959).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://raw.githubusercontent.com/juangff85/inferencias-estadisticas-ESP/main/images/12/figura12-2.png" class="img-fluid figure-img"></p>
+<figcaption>Figura 12.2</figcaption>
+</figure>
+</div>
+<section id="sesgo-de-publicación" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="sesgo-de-publicación"><span class="header-section-number">12.1</span> Sesgo de publicación</h2>
+<p>El sesgo de publicación es uno de los mayores desafíos a los que se enfrenta la ciencia. El sesgo de publicación es la práctica de enviar y publicar selectivamente investigación científica, a menudo en función de si los resultados son “estadísticamente significativos” o no. La literatura científica está dominada por estos resultados estadísticamente significativos. En 1959, Sterling (1959) contó cuántas pruebas de hipótesis en cuatro revistas de psicología producían resultados significativos y encontró que 286 de 294 artículos examinados (es decir, el 97 %) rechazaban la hipótesis nula con un resultado estadísticamente significativo. Una replicación de Bozarth y Roberts (1972) obtuvo una estimación del 94 %. Al mismo tiempo, sabemos que muchos estudios que realizan los investigadores no producen resultados significativos. Cuando los científicos solo tienen acceso a resultados significativos, pero no a todos los resultados, carecen de una visión completa de la evidencia sobre una hipótesis (Smart, 1964). En casos extremos, el informe selectivo puede conducir a una situación en la que haya cientos de resultados estadísticamente significativos en la literatura publicada, pero ningún efecto real, porque existen aún más estudios no significativos que no se comparten. Esto se conoce como el&nbsp;problema del cajón de archivo (file-drawer problem), cuando los resultados no significativos quedan ocultos en cajones (o hoy en día en carpetas del ordenador) y no están disponibles para la comunidad científica. Este sesgo probablemente afecte sobre todo a la prueba principal de hipótesis que un investigador informa, ya que tener una historia interesante que contar a menudo depende del resultado de esa prueba. El sesgo es menos probable en artículos que no tienen una hipótesis principal que deba ser significativa para sostener la narrativa del manuscrito, por ejemplo cuando los investigadores simplemente describen tamaños del efecto en una gran tabla de correlaciones de múltiples pruebas realizadas. Todo científico debería trabajar para resolver el sesgo de publicación, porque es extremadamente difícil aprender qué es probablemente verdadero mientras los científicos no compartan todos sus resultados. Greenwald (1975) incluso considera que informar selectivamente solo resultados significativos constituye una violación ética.</p>
+<p><strong>Figura 12.3:</strong>&nbsp;Captura de las frases finales de Greenwald (1975).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://raw.githubusercontent.com/juangff85/inferencias-estadisticas-ESP/main/images/12/figura12-3.png" class="img-fluid figure-img"></p>
+<figcaption>Figura 12.3</figcaption>
+</figure>
+</div>
+<p>El sesgo de publicación solo puede solucionarse haciendo disponibles todos los resultados de investigación a otros científicos, independientemente del valor p de la prueba principal de hipótesis. Los&nbsp;<strong>Registered Reports</strong>&nbsp;son una forma de combatir el sesgo de publicación, ya que este tipo de artículo científico se revisa basándose en la introducción, el método y el plan de análisis estadístico antes de recoger los datos (Chambers &amp; Tzavella, 2022; Nosek &amp; Lakens, 2014). Tras la revisión por expertos, el artículo puede recibir una “aceptación en principio”, lo que significa que, siempre que se siga el plan de investigación, el artículo se publicará independientemente de los resultados. Esto debería facilitar la publicación de resultados nulos.</p>
+<p>Por ejemplo, un análisis de los primeros Registered Reports publicados en psicología reveló que 31 de 71 (44 %) observaron resultados positivos, en comparación con 146 de 152 (96 %) artículos científicos estándar comparables publicados en el mismo periodo (Scheel et al., 2021).</p>
+<p><strong>Figura 12.4:</strong>&nbsp;Tasas de resultados positivos para informes estándar y Registered Reports.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://raw.githubusercontent.com/juangff85/inferencias-estadisticas-ESP/main/images/12/figura12-4.png" class="img-fluid figure-img"></p>
+<figcaption>Figura 12.4</figcaption>
+</figure>
+</div>
+<p>En el pasado, los Registered Reports no existían y los científicos no compartían todos los resultados (Franco et al., 2014; Greenwald, 1975; Sterling, 1959). Como consecuencia, debemos intentar detectar hasta qué punto el sesgo de publicación afecta a nuestra capacidad para evaluar correctamente la literatura.</p>
+<p>Los metaanálisis deberían examinar cuidadosamente el impacto del sesgo de publicación sobre la estimación del tamaño del efecto metaanalítico, aunque solo un 57 % de los metaanálisis publicados en&nbsp;Psychological Bulletin&nbsp;entre 1990 y 2017 informan haber evaluado el sesgo de publicación (Polanin et al., 2020). En metaanálisis más recientes en investigación educativa, el 82 % utilizó pruebas de detección de sesgo, pero los métodos empleados estaban a menudo lejos del estado del arte (Ropovik et al., 2021).</p>
+<p>Se han desarrollado varias técnicas para detectar el sesgo de publicación, y este sigue siendo un campo de investigación muy activo. Todas las técnicas se basan en supuestos específicos que deben considerarse antes de aplicar una prueba (Carter et al., 2019). No existe una solución milagrosa: ninguna de estas técnicas puede corregir el sesgo de publicación. Ninguna puede decir con certeza cuál es el verdadero tamaño del efecto corregido por sesgo de publicación. Lo máximo que pueden hacer es detectar el sesgo causado por mecanismos específicos bajo condiciones específicas. El sesgo de publicación puede detectarse, pero no corregirse.</p>
+<p>En el capítulo sobre verosimilitudes vimos que es esperable encontrar resultados mixtos y que pueden constituir evidencia fuerte para la hipótesis alternativa. No solo es esperable encontrar resultados mixtos, sino que observar exclusivamente resultados estadísticamente significativos —especialmente cuando la potencia estadística es baja— resulta muy sorprendente. Con el límite inferior habitual de potencia estadística del 80 %, podemos esperar un resultado no significativo en uno de cada cinco estudios cuando existe un efecto real.</p>
+<p>Algunos investigadores han señalado que no encontrar resultados mixtos puede ser muy improbable o “demasiado bueno para ser verdad” en un conjunto de estudios (Francis, 2014; Schimmack, 2012). No tenemos una buena intuición sobre cómo se ven realmente los patrones de resultados en los estudios, porque estamos continuamente expuestos a una literatura científica que no refleja la realidad. Casi todos los artículos con múltiples estudios en la literatura científica presentan únicamente resultados estadísticamente significativos, aunque esto sea poco probable.</p>
+<p>La <a href="http://shiny.ieis.tue.nl/mixed_results_likelihood/">aplicación Shiny en línea</a> que utilizamos para calcular verosimilitudes binomiales muestra, si te desplazas hasta la parte inferior de la página, las probabilidades binomiales de encontrar múltiples resultados significativos dado un supuesto específico sobre la potencia de las pruebas. Francis (2014) utilizó estas verosimilitudes binomiales para calcular la&nbsp;prueba de significación excesiva&nbsp;(Ioannidis &amp; Trikalinos, 2007) en 44 artículos publicados en la revista&nbsp;Psychological Science&nbsp;entre 2009 y 2012 que contenían cuatro estudios o más. Encontró que, para 36 de estos artículos, la probabilidad de observar cuatro resultados significativos, dada la potencia media calculada a partir de los tamaños del efecto observados, era inferior al 10 %. 12.2 Detección de sesgos en metaanálisis Dado que eligió un nivel alfa de 0.10, esta probabilidad binomial constituye una prueba de hipótesis y permite afirmar (con un nivel alfa del 10 %) que siempre que la probabilidad binomial del número de resultados estadísticamente significativos sea inferior al 10 %, los datos resultan sorprendentes y podemos rechazar la hipótesis de que se trata de un conjunto de estudios no sesgado. En otras palabras, es poco probable observar tantos resultados significativos, lo que sugiere que el&nbsp;sesgo de publicación u otros efectos de selección&nbsp;han desempeñado un papel en estos artículos.</p>
+<p>Uno de estos 44 artículos había sido coescrito por mí mismo (Jostmann et al., 2009). En ese momento sabía muy poco sobre potencia estadística y sesgo de publicación, y ser acusado de conducta científica inapropiada resultó estresante. Sin embargo, las acusaciones eran correctas: habíamos informado selectivamente los resultados e informado selectivamente los análisis que funcionaban. Como prácticamente no habíamos recibido formación sobre este tema, nos formamos por nuestra cuenta y subimos un estudio no publicado al sitio web&nbsp;psychfiledrawer.org&nbsp;(que ya no existe) para compartir nuestro “cajón de archivos”.</p>
+<p>Algunos años más tarde colaboramos cuando&nbsp;Many Labs 3&nbsp;incluyó uno de los estudios que habíamos publicado en el conjunto de estudios que estaban replicando (Ebersole et al., 2016), y cuando se observó un resultado nulo escribimos: “Hemos tenido que concluir que en realidad no existe evidencia fiable del efecto” (Jostmann et al., 2016). Espero que este material educativo evite que otros hagan el ridículo como nosotros lo hicimos.</p>
+</section>
+<section id="detección-de-sesgos-en-metaanálisis" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="detección-de-sesgos-en-metaanálisis"><span class="header-section-number">12.2</span> 12.2 Detección de sesgos en metaanálisis</h2>
+<p>Se desarrollan continuamente nuevos métodos para detectar el sesgo de publicación, y los métodos antiguos se vuelven obsoletos (aunque todavía pueden verse en algunos metaanálisis). Un método ya obsoleto se conoce como&nbsp;fail-safe N. La idea consistía en calcular cuántos resultados no significativos tendrían que estar ocultos en cajones antes de que la estimación del tamaño del efecto metaanalítico observado dejara de ser estadísticamente distinta de 0.</p>
+<p>Este método ya no se recomienda. Becker (2005) escribe:</p>
+<p>“Dado que ahora existen otros enfoques para tratar el sesgo de publicación, el fail-safe N debería abandonarse en favor de otros análisis más informativos”.</p>
+<p>Actualmente, el único uso del fail-safe N es como indicador de metaanálisis que&nbsp;<strong>no</strong> están al día metodológicamente.</p>
+<p>Antes de explicar un segundo método (trim-and-fill), conviene explicar una forma común de visualizar metaanálisis conocida como&nbsp;funnel plot&nbsp;(gráfico en embudo). En un funnel plot, el eje x representa el tamaño del efecto de cada estudio y el eje y representa la&nbsp;precisión&nbsp;de cada estimación del tamaño del efecto (normalmente el error estándar). Cuanto mayor es el número de observaciones en un estudio, más precisa es la estimación del tamaño del efecto, menor es el error estándar y, por tanto, más arriba aparece el estudio en el gráfico. Un estudio infinitamente preciso (con error estándar igual a 0) estaría en la parte superior del eje y.</p>
+<p>El siguiente script simula metaanálisis para&nbsp;nsims&nbsp;estudios y guarda todos los resultados necesarios para examinar la detección de sesgos. En la primera sección del script se simulan resultados estadísticamente significativos en la dirección esperada y, en la segunda parte, se generan resultados nulos. El script genera un porcentaje de resultados significativos indicado por&nbsp;pub.bias: cuando se establece en 1, todos los resultados son significativos. En el código siguiente,&nbsp;pub.biasse establece en 0.05.</p>
+<pre><code>library(metafor)
+library(truncnorm)
+nsims &lt;- 100 # number of simulated experiments
+pub.bias &lt;- 0.05 # set percentage of significant results in the literature
+m1 &lt;- 0 # too large effects will make non-significant results extremely rare
+sd1 &lt;- 1
+m2 &lt;- 0
+sd2 &lt;- 1
+metadata.sig &lt;- data.frame(m1 = NA, m2 = NA, sd1 = NA, sd2 = NA, 
+                           n1 = NA, n2 = NA, pvalues = NA, pcurve = NA)
+metadata.nonsig &lt;- data.frame(m1 = NA, m2 = NA, sd1 = NA, sd2 = NA, 
+                          n1 = NA, n2 = NA, pvalues = NA, pcurve = NA)
+# simulate significant effects in the expected direction
+if(pub.bias &gt; 0){
+for (i in 1:nsims*pub.bias) { # for each simulated experiment
+  p &lt;- 1 # reset p to 1
+  n &lt;- round(truncnorm::rtruncnorm(1, 20, 1000, 100, 100)) # n based on truncated normal
+  while (p &gt; 0.025) { # continue simulating as along as p is not significant
+    x &lt;- rnorm(n = n, mean = m1, sd = sd1) 
+    y &lt;- rnorm(n = n, mean = m2, sd = sd2) 
+    p &lt;- t.test(x, y, alternative = "greater", var.equal = TRUE)$p.value
+  }
+
+  metadata.sig[i, 1] &lt;- mean(x)
+  metadata.sig[i, 2] &lt;- mean(y)
+  metadata.sig[i, 3] &lt;- sd(x)
+  metadata.sig[i, 4] &lt;- sd(y)
+  metadata.sig[i, 5] &lt;- n
+  metadata.sig[i, 6] &lt;- n
+  out &lt;- t.test(x, y, var.equal = TRUE)
+  metadata.sig[i, 7] &lt;- out$p.value
+  metadata.sig[i, 8] &lt;- paste0("t(", out$parameter, ")=", out$statistic)
+}}
+
+# simulate non-significant effects (two-sided)
+if(pub.bias &lt; 1){
+for (i in 1:nsims*(1-pub.bias)) { # for each simulated experiment
+  p &lt;- 0 # reset p to 1
+  n &lt;- round(truncnorm::rtruncnorm(1, 20, 1000, 100, 100))
+  while (p &lt; 0.05) { # continue simulating as along as p is significant
+    x &lt;- rnorm(n = n, mean = m1, sd = sd1) # produce simulated participants
+    y &lt;- rnorm(n = n, mean = m2, sd = sd2) # produce simulated participants
+    p &lt;- t.test(x, y, var.equal = TRUE)$p.value
+  }
+  metadata.nonsig[i, 1] &lt;- mean(x)
+  metadata.nonsig[i, 2] &lt;- mean(y)
+  metadata.nonsig[i, 3] &lt;- sd(x)
+  metadata.nonsig[i, 4] &lt;- sd(y)
+  metadata.nonsig[i, 5] &lt;- n
+  metadata.nonsig[i, 6] &lt;- n
+  out &lt;- t.test(x, y, var.equal = TRUE)
+  metadata.nonsig[i, 7] &lt;- out$p.value
+  metadata.nonsig[i, 8] &lt;- paste0("t(", out$parameter, ")=", out$statistic)
+}}
+
+# Combine significant and non-significant effects
+metadata &lt;- rbind(metadata.nonsig, metadata.sig)
+# Use escalc to compute effect sizes
+metadata &lt;- escalc(n1i = n1, n2i = n2, m1i = m1, m2i = m2, sd1i = sd1, 
+  sd2i = sd2, measure = "SMD", data = metadata[complete.cases(metadata),])
+# add se for PET-PEESE analysis
+metadata$sei &lt;- sqrt(metadata$vi)
+#Perform meta-analysis
+result &lt;- metafor::rma(yi, vi, data = metadata)
+result
+# Print a Funnel Plot
+metafor::funnel(result, level = 0.95, refline = 0)
+abline(v = result$b[1], lty = "dashed") # vertical line at meta-analytic ES
+points(x = result$b[1], y = 0, cex = 1.5, pch = 17) # add point</code></pre>
+<p>Como en la simulación no existe un efecto real (m1 y m2 son iguales, por lo que no hay diferencia entre los grupos), los únicos resultados significativos que deberían observarse son el&nbsp;5 % de falsos positivos. Finalmente, se realiza el metaanálisis, se imprimen los resultados y se crea un funnel plot.</p>
+<p>Comencemos observando cómo se ve una investigación&nbsp;no sesgada, ejecutando el código con&nbsp;pub.bias = 0.05, de modo que solo el 5 % de errores de Tipo I entren en la literatura científica.</p>
+<pre><code>Random-Effects Model (k = 100; tau^2 estimator: REML) tau^2 (estimated amount of total heterogeneity): 0.0000 (SE = 0.0018) tau (square root of estimated tau^2 value): 0.0006 I^2 (total heterogeneity / total variability): 0.00% H^2 (total variability / sampling variability): 1.00 Test for Heterogeneity: Q(df = 99) = 91.7310, p-val = 0.6851 Model Results: estimate se zval pval ci.lb ci.ub -0.0021 0.0121 -0.1775 0.8591 -0.0258 0.0215 --- Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+<p>Cuando examinamos los resultados del metaanálisis vemos que hay&nbsp;100 estudios&nbsp;en el metaanálisis (k = 100) y que&nbsp;no hay heterogeneidad estadísticamente significativa&nbsp;(p = 0.69). Esto no resulta sorprendente, ya que programamos la simulación con un tamaño del efecto verdadero igual a 0 y sin heterogeneidad entre tamaños del efecto.</p>
+<p>La estimación metaanalítica es&nbsp;d = −0.002, muy cercana a 0 (como debería ser, dado que el efecto verdadero es 0). El error estándar de esta estimación es 0.012. Con 100 estudios tenemos una estimación muy precisa del tamaño del efecto verdadero. El valor Z para la prueba frente a&nbsp;d = 0&nbsp;es −0.177 y el valor p es 0.86, por lo que&nbsp;no podemos rechazar la hipótesis de que el tamaño del efecto verdadero sea 0. El intervalo de confianza alrededor de la estimación (−0.026, 0.021) incluye 0.</p>
+<p>Si examinamos el&nbsp;funnel plot&nbsp;(Figura 12.5) vemos cada estudio representado como un punto. Cuanto mayor es el tamaño muestral, más arriba aparece el punto; cuanto menor es el tamaño muestral, más abajo aparece. La pirámide blanca representa el área dentro de la cual un estudio no es estadísticamente significativo, porque el tamaño del efecto observado (eje x) no está lo suficientemente alejado de 0 como para que el intervalo de confianza excluya 0.</p>
+<p>Cuanto menor es el error estándar, más estrecho es el intervalo de confianza y menor debe ser el tamaño del efecto para resultar estadísticamente significativo. Al mismo tiempo, cuanto menor es el error estándar, más cerca estará el tamaño del efecto del verdadero valor poblacional, por lo que es menos probable observar efectos muy alejados de 0.</p>
+<p>Deberíamos esperar que&nbsp;el 95 % de las estimaciones de tamaño del efecto&nbsp;caigan dentro del embudo si está centrado en el tamaño del efecto verdadero. Observamos que solo unos pocos estudios (cinco, exactamente) caen fuera de la pirámide blanca en el lado derecho del gráfico. Estos son los&nbsp;5 % de resultados significativos&nbsp;que programamos en la simulación. Obsérvese que&nbsp;los cinco son falsos positivos, ya que no existe un efecto real.</p>
+<p>Si hubiera un efecto real (puedes volver a ejecutar la simulación estableciendo&nbsp;d = 0.5&nbsp;cambiando&nbsp;m1 &lt;- 0&nbsp;por&nbsp;m1 &lt;- 0.5), la nube de puntos se desplazaría hacia la derecha y se centraría en 0.5 en lugar de 0.</p>
+<p><strong>Figura 12.5:</strong>&nbsp;Funnel plot de resultados nulos no sesgados.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://raw.githubusercontent.com/juangff85/inferencias-estadisticas-ESP/main/images/12/figura12-5.png" class="img-fluid figure-img"></p>
+<figcaption>Figura 12.5</figcaption>
+</figure>
+</div>
+<p>Ahora podemos comparar el metaanálisis no sesgado anterior con un&nbsp;metaanálisis sesgado. Podemos simular una situación de&nbsp;sesgo de publicación extremo. Basándonos en la estimación de Scheel et al.&nbsp;(2021), supongamos que&nbsp;el 96 % de los estudios muestran resultados positivos. Para ello establecemos&nbsp;pub.bias &lt;- 0.96&nbsp;en el código.</p>
+<p>Mantenemos ambas medias en 0, por lo que sigue sin existir un efecto real, pero terminaremos con principalmente&nbsp;errores de Tipo I en la dirección predicha&nbsp;en el conjunto final de estudios. Tras simular resultados sesgados, podemos realizar el metaanálisis para ver si la inferencia estadística basada en él resulta engañosa.</p>
+<pre><code>Random-Effects Model (k = 100; tau^2 estimator: REML) tau^2 (estimated amount of total heterogeneity): 0 (SE = 0.0019) tau (square root of estimated tau^2 value): 0 I^2 (total heterogeneity / total variability): 0.00% H^2 (total variability / sampling variability): 1.00 Test for Heterogeneity: Q(df = 99) = 77.6540, p-val = 0.9445 Model Results: estimate se zval pval ci.lb ci.ub 0.2701 0.0125 21.6075 &lt;.0001 0.2456 0.2946 *** --- Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+<p>La naturaleza sesgada del conjunto de estudios se vuelve evidente al examinar el&nbsp;funnel plot. El patrón es bastante peculiar. Observamos cuatro resultados nulos no sesgados (tal como programamos en la simulación), pero los&nbsp;96 estudios restantes son estadísticamente significativos, aunque la hipótesis nula sea verdadera.</p>
+<p>La mayoría de los estudios se sitúan justo en el borde de la pirámide blanca. Como los valores p se distribuyen uniformemente bajo la hipótesis nula, los errores de Tipo I que observamos suelen tener valores p entre&nbsp;0.02 y 0.05, a diferencia de lo que esperaríamos si existiera un efecto real.</p>
+<p>Cuanto mayor es el estudio, menor es el tamaño del efecto necesario para resultar significativo. El hecho de que los tamaños del efecto&nbsp;no varíen alrededor de un único valor verdadero, sino que&nbsp;disminuyan a medida que aumenta el tamaño muestral, es un fuerte indicador de sesgo.</p>
+<p>La línea vertical discontinua y el triángulo negro en la parte superior del gráfico ilustran la&nbsp;estimación metaanalítica observada (sesgada al alza).</p>
+<p><strong>Figura 12.6:</strong>&nbsp;Funnel plot de resultados nulos sesgados con mayoría de resultados significativos.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://raw.githubusercontent.com/juangff85/inferencias-estadisticas-ESP/main/images/12/figura12-6.png" class="img-fluid figure-img"></p>
+<figcaption>Figura 12.6</figcaption>
+</figure>
+</div>
+<p>Podría pensarse que un sesgo tan extremo rara vez aparece en la investigación científica. Sin embargo,&nbsp;sí ocurre. En la Figura 12.7 se muestra un funnel plot de Carter y McCullough (2014), quienes examinaron el sesgo en&nbsp;198 estudios publicados sobre el efecto de agotamiento del ego (ego-depletion), la idea de que el autocontrol depende de un recurso limitado.</p>
+<p>Utilizando técnicas de detección de sesgo como la meta-regresión&nbsp;PET-PEESE, concluyeron que el tamaño del efecto no sesgado estimado por PET era&nbsp;d = −0.1, estadísticamente indistinguible de 0, lo que sugiere que el verdadero efecto podría ser&nbsp;d = 0, aunque el tamaño del efecto metaanalítico sin corrección por sesgo era&nbsp;d = 0.62.</p>
+<p>No resulta sorprendente que, aunque antes de 2015 los investigadores pensaban que existía una literatura sólida que demostraba el efecto de ego-depletion, un&nbsp;<strong>Registered Replication Report</strong>&nbsp;encontró un efecto no significativo (Hagger et al., 2016), y posteriormente los propios autores originales tampoco lograron replicar el efecto (Vohs et al., 2021).</p>
+<p>Imagina la enorme cantidad de&nbsp;tiempo, esfuerzo y dinero desperdiciados&nbsp;en una literatura basada en sesgos de investigación. Este desperdicio tiene implicaciones éticas evidentes, y los investigadores deben asumir la responsabilidad de prevenirlo en el futuro.</p>
+<p><strong>Figura 12.7:</strong>&nbsp;Funnel plot de Carter y McCullough (2014) que visualiza el sesgo en 198 estudios sobre ego-depletion, incluyendo estimaciones PET-PEESE corregidas por sesgo.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://raw.githubusercontent.com/juangff85/inferencias-estadisticas-ESP/main/images/12/figura12-7.png" class="img-fluid figure-img"></p>
+<figcaption>Figura 12.7</figcaption>
+</figure>
+</div>
+<p>También podemos observar señales de sesgo en un&nbsp;forest plot&nbsp;de un metaanálisis. En la Figura 12.8 se muestran dos forest plots. El de la izquierda se basa en datos no sesgados y el de la derecha en datos sesgados.</p>
+<p>En el forest plot de la izquierda los efectos varían aleatoriamente alrededor de 0, como cabría esperar. En el de la derecha, a partir del cuarto estudio,&nbsp;todos los intervalos de confianza excluyen milagrosamente el valor 0.</p>
+<p><strong>Figura 12.8:</strong>&nbsp;Forest plot de un metaanálisis no sesgado (izquierda) y sesgado (derecha).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://raw.githubusercontent.com/juangff85/inferencias-estadisticas-ESP/main/images/12/figura12-8.png" class="img-fluid figure-img"></p>
+<figcaption>Figura 12.8</figcaption>
+</figure>
+</div>
+<p>Cuando existe sesgo de publicación porque los investigadores solo publican resultados estadísticamente significativos, la&nbsp;estimación metaanalítica del tamaño del efecto será mayor&nbsp;que en ausencia de sesgo. Esto ocurre porque el sesgo de publicación&nbsp;elimina los tamaños del efecto pequeños (no significativos), que por tanto no se incluyen en el cálculo del tamaño del efecto metaanalítico.</p>
+<p>Esto conduce a una estimación metaanalítica&nbsp;inflada respecto al verdadero tamaño del efecto poblacional. Con un sesgo de publicación fuerte sabemos que la estimación está inflada, pero&nbsp;no sabemos cuánto. El efecto real podría ser solo un poco menor, o incluso&nbsp;ser cero, como en el caso de la literatura sobre ego-depletion.</p>
+</section>
+<section id="trim-and-fill" class="level1" data-number="13">
+<h1 data-number="13"><span class="header-section-number">13</span> 12.3 Trim and Fill</h1>
+<p>El&nbsp;trim and fill&nbsp;es una técnica que pretende ampliar un conjunto de datos añadiendo estudios hipotéticos “faltantes” (que podrían estar en el “cajón de archivo”). El procedimiento comienza eliminando (“trimming”) los estudios pequeños que sesgan el tamaño del efecto metaanalítico, luego estima el verdadero tamaño del efecto y termina “rellenando” un funnel plot con estudios que se supone que faltan debido al sesgo de publicación. En la&nbsp;Figura 12.9&nbsp;puedes ver el mismo funnel plot de antes, pero ahora con estudios hipotéticos añadidos (los círculos sin rellenar, que representan estudios “imputados”). Si te fijas bien, verás que cada uno de estos puntos tiene una imagen especular en el lado opuesto de la estimación del tamaño del efecto metaanalítico (esto se aprecia con mayor claridad en la mitad inferior del funnel plot). Si examinamos el resultado del metaanálisis que incluye estos estudios imputados, vemos que&nbsp;trim and fill&nbsp;logra advertirnos de que el metaanálisis está sesgado (si no, no añadiría estudios imputados), pero fracasa estrepitosamente al corregir la estimación del tamaño del efecto. En el funnel plot vemos la estimación original (sesgada) del tamaño del efecto indicada por el triángulo, y la estimación del tamaño del efecto metaanalítico ajustada con el método trim-and-fill (indicada por el círculo negro). Vemos que la estimación metaanalítica del tamaño del efecto es algo menor, pero dado que el verdadero tamaño del efecto en la simulación era 0, el ajuste es claramente insuficiente.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
