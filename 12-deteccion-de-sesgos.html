@@ -73,35 +73,6 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -252,23 +223,8 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Tabla de contenidos</h2>
-   
-  <ul>
-  <li><a href="#sesgo-de-publicación-publication-bias" id="toc-sesgo-de-publicación-publication-bias" class="nav-link active" data-scroll-target="#sesgo-de-publicación-publication-bias"><span class="header-section-number">12.1</span> Sesgo de Publicación (Publication Bias)</a>
-  <ul class="collapse">
-  <li><a href="#herramientas-para-la-detección-del-sesgo-de-publicación" id="toc-herramientas-para-la-detección-del-sesgo-de-publicación" class="nav-link" data-scroll-target="#herramientas-para-la-detección-del-sesgo-de-publicación"><span class="header-section-number">12.1.1</span> Herramientas para la Detección del Sesgo de Publicación</a></li>
-  </ul></li>
-  <li><a href="#p-hacking-data-dependent-analysis" id="toc-p-hacking-data-dependent-analysis" class="nav-link" data-scroll-target="#p-hacking-data-dependent-analysis"><span class="header-section-number">12.2</span> <span class="math inline">\(p\)</span>-Hacking (Data-dependent analysis)</a>
-  <ul class="collapse">
-  <li><a href="#herramientas-para-la-detección-de-p-hacking" id="toc-herramientas-para-la-detección-de-p-hacking" class="nav-link" data-scroll-target="#herramientas-para-la-detección-de-p-hacking"><span class="header-section-number">12.2.1</span> Herramientas para la Detección de <span class="math inline">\(p\)</span>-Hacking</a></li>
-  </ul></li>
-  <li><a href="#harking-hypothesizing-after-the-results-are-known" id="toc-harking-hypothesizing-after-the-results-are-known" class="nav-link" data-scroll-target="#harking-hypothesizing-after-the-results-are-known"><span class="header-section-number">12.3</span> HARKing (Hypothesizing After the Results are Known)</a></li>
-  <li><a href="#estrategias-de-mitigación" id="toc-estrategias-de-mitigación" class="nav-link" data-scroll-target="#estrategias-de-mitigación"><span class="header-section-number">12.4</span> Estrategias de Mitigación</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -292,60 +248,15 @@ window.Quarto = {
 </header>
 
 
-<p>La validez de la inferencia estadística depende de la calidad de los datos y de los procedimientos utilizados para obtenerlos. El <strong>sesgo</strong> en la investigación se refiere a cualquier desviación sistemática de la verdad en la recopilación, análisis, interpretación o publicación de los resultados.</p>
-<section id="sesgo-de-publicación-publication-bias" class="level2" data-number="12.1">
-<h2 data-number="12.1" class="anchored" data-anchor-id="sesgo-de-publicación-publication-bias"><span class="header-section-number">12.1</span> Sesgo de Publicación (Publication Bias)</h2>
-<p>El sesgo de publicación es quizás el sesgo más conocido y sistemático que afecta a la literatura científica, especialmente en campos que dependen en gran medida del valor <span class="math inline">\(p\)</span>.</p>
-<ul>
-<li><strong>Definición:</strong> Ocurre cuando la probabilidad de que un estudio sea publicado depende de la naturaleza y la dirección de sus hallazgos (por ejemplo, los estudios con resultados estadísticamente significativos (<span class="math inline">\(p &lt; 0.05\)</span>) y en la dirección esperada tienen más probabilidades de ser publicados que los estudios con resultados no significativos).</li>
-<li><strong>Efecto:</strong> El sesgo de publicación hace que las estimaciones publicadas del tamaño del efecto sean sistemáticamente <strong>sobreestimadas</strong> y sesgadas positivamente.</li>
-</ul>
-<section id="herramientas-para-la-detección-del-sesgo-de-publicación" class="level3" data-number="12.1.1">
-<h3 data-number="12.1.1" class="anchored" data-anchor-id="herramientas-para-la-detección-del-sesgo-de-publicación"><span class="header-section-number">12.1.1</span> Herramientas para la Detección del Sesgo de Publicación</h3>
-<ol type="1">
-<li><strong>Diagrama de Embudo (Funnel Plot):</strong> Es la herramienta gráfica más utilizada en el meta-análisis (Capítulo 11) para evaluar el sesgo. Un diagrama de embudo traza el tamaño del efecto (eje X) frente a la precisión o el error estándar (eje Y) de los estudios.
-<ul>
-<li><strong>Ausencia de Sesgo:</strong> Los estudios se distribuyen simétricamente alrededor del tamaño del efecto combinado, formando un embudo invertido.</li>
-<li><strong>Presencia de Sesgo:</strong> Si faltan estudios no significativos de baja potencia (los que estarían en la parte inferior izquierda o derecha del embudo), el gráfico parece asimétrico, sugiriendo sesgo de publicación.</li>
-</ul></li>
-<li><strong>Pruebas de Egger y Begg:</strong> Pruebas estadísticas formales que evalúan la asimetría del diagrama de embudo.</li>
-</ol>
-</section>
-</section>
-<section id="p-hacking-data-dependent-analysis" class="level2" data-number="12.2">
-<h2 data-number="12.2" class="anchored" data-anchor-id="p-hacking-data-dependent-analysis"><span class="header-section-number">12.2</span> <span class="math inline">\(p\)</span>-Hacking (Data-dependent analysis)</h2>
-<p>El <strong><span class="math inline">\(p\)</span>-hacking</strong> es una forma de sesgo que ocurre cuando los investigadores ajustan de manera flexible los procedimientos de recolección o análisis de datos hasta que se alcanza el umbral de significación estadística (<span class="math inline">\(p &lt; 0.05\)</span>).</p>
-<p>Ejemplos de <span class="math inline">\(p\)</span>-hacking incluyen: * Excluir puntos de datos después de mirar los resultados. * Recolectar más datos después de un análisis inicial no significativo (muestreo opcional no planificado). * Probar múltiples variables dependientes y reportar solo las significativas. * Usar diferentes análisis estadísticos hasta que uno sea significativo.</p>
-<p>El <span class="math inline">\(p\)</span>-hacking infla la tasa de error Tipo I (<span class="math inline">\(\alpha\)</span>) del estudio.</p>
-<section id="herramientas-para-la-detección-de-p-hacking" class="level3" data-number="12.2.1">
-<h3 data-number="12.2.1" class="anchored" data-anchor-id="herramientas-para-la-detección-de-p-hacking"><span class="header-section-number">12.2.1</span> Herramientas para la Detección de <span class="math inline">\(p\)</span>-Hacking</h3>
-<ol type="1">
-<li><strong>Distribución de <span class="math inline">\(p\)</span>-valores (p-curve):</strong> Bajo la hipótesis nula, los valores <span class="math inline">\(p\)</span> están distribuidos uniformemente (Capítulo 1). Si hay un efecto real, la distribución de los <span class="math inline">\(p\)</span>-valores debe estar sesgada hacia valores pequeños. El <em>p-curve</em> analiza la forma de la distribución de los <span class="math inline">\(p\)</span>-valores en un conjunto de estudios.
-<ul>
-<li>Una acumulación inusual de <span class="math inline">\(p\)</span>-valores justo por debajo de <span class="math inline">\(0.05\)</span> (ej., entre <span class="math inline">\(0.04\)</span> y <span class="math inline">\(0.05\)</span>) es una señal de advertencia de posible <span class="math inline">\(p\)</span>-hacking.</li>
-</ul></li>
-<li><strong>Análisis de Sensibilidad de Muestreo Opcional:</strong> Evaluar si la significación depende de la regla de parada o si el efecto se mantiene estable a medida que se añaden más datos.</li>
-</ol>
-</section>
-</section>
-<section id="harking-hypothesizing-after-the-results-are-known" class="level2" data-number="12.3">
-<h2 data-number="12.3" class="anchored" data-anchor-id="harking-hypothesizing-after-the-results-are-known"><span class="header-section-number">12.3</span> HARKing (Hypothesizing After the Results are Known)</h2>
-<p><strong>HARKing</strong> (Formular Hipótesis Después de Conocer los Resultados) es el sesgo de presentar una hipótesis <em>exploratoria</em> (descubierta después del análisis de datos) como si fuera una hipótesis <em>confirmatoria</em> (establecida antes del análisis de datos).</p>
-<ul>
-<li><strong>Efecto:</strong> Distorsiona el proceso científico y la confianza que se le debe dar al hallazgo, ya que infla la probabilidad de que los resultados significativos sean simplemente coincidencias.</li>
-</ul>
-</section>
-<section id="estrategias-de-mitigación" class="level2" data-number="12.4">
-<h2 data-number="12.4" class="anchored" data-anchor-id="estrategias-de-mitigación"><span class="header-section-number">12.4</span> Estrategias de Mitigación</h2>
-<p>La mejor defensa contra la mayoría de las formas de sesgo (especialmente el <span class="math inline">\(p\)</span>-hacking y el HARKing) es la <strong>Transparencia</strong> y el <strong>Prerregistro</strong> del estudio (Capítulo 13).</p>
-<ul>
-<li><strong>Prerregistro:</strong> Al preespecificar el plan de análisis, el <span class="math inline">\(N\)</span> de la muestra y las hipótesis antes de la recolección de datos, se convierte en imposible el <span class="math inline">\(p\)</span>-hacking.</li>
-<li><strong>Informar Todos los Resultados:</strong> Publicar estudios nulos (que a menudo se logran al hacer la investigación con alta potencia, como se discute en el Capítulo 8) mitiga el sesgo de publicación.</li>
-<li><strong>Datos Abiertos:</strong> Compartir el conjunto de datos y el código (Capítulo 14) permite que otros investigadores evalúen la flexibilidad en los análisis y confirmen la validez de los procedimientos.</li>
-</ul>
+<blockquote class="blockquote">
+<p>Diagoras, llamado el ateo, estando en Samotracia, uno de sus amigos le mostró varias pinturas de personas que habían soportado tormentas muy peligrosas; “Mira”, dijo, “tú que niegas la providencia, cuántos han sido salvados por sus oraciones a los dioses”. “Sí”, dijo Diágoras, “veo a los que se salvaron, pero ¿dónde están pintados los que naufragaron?” — Tusculanae Disputationes, Cicerón, 45 a. C.</p>
+</blockquote>
+<p>El sesgo puede introducirse a lo largo de todo el proceso de investigación. Es útil prevenirlo o detectarlo. Algunos investigadores recomiendan adoptar una actitud escéptica ante cualquier afirmación que leas en la literatura científica. Por ejemplo, la filósofa de la ciencia Deborah Mayo (2018) escribe: “Ante la noticia estadística del día, tu primera pregunta debería ser: ¿los resultados se deben al informe selectivo, al cherry picking, o a alguno de los muchos trucos similares?”. Puede que no te hagas muy popular si esa es la primera pregunta que haces a un ponente en el próximo congreso científico al que asistas, pero al mismo tiempo sería ingenuo ignorar el hecho de que los investigadores introducen, de forma más o menos intencionada, sesgos en sus afirmaciones.</p>
+<p>En el extremo más extremo de las prácticas que introducen sesgo en la investigación científica está la mala conducta en la investigación: inventar datos o resultados, o cambiar u omitir datos o resultados de tal manera que la investigación no esté representada con precisión en el registro de investigación. Por ejemplo, <a href="https://es.wikipedia.org/wiki/Andrew_Wakefield">Andrew Wakefield</a> fue autor de un artículo fraudulento en 1998 que afirmaba un vínculo entre la vacuna contra el sarampión, las paperas y la rubéola (MMR) y el autismo. Fue retractado en 2010, pero solo después de que causara daño a la confianza en las vacunas entre algunas partes de la población general.</p>
+<p>Otro ejemplo de la psicología se refería a un estudio de <a href="https://es.wikipedia.org/wiki/James_Vicary">James Vicary</a> sobre el priming subliminal. Afirmó haber encontrado que al proyectar rápidamente ‘EAT POPCORN’ y ‘DRINK COCA-COLA’ de forma subliminal durante una película en un cine, las ventas de palomitas y Coca-Cola habían aumentado en un 57,5% y un 18,1%, respectivamente. Sin embargo, más tarde se descubrió que Vicary muy probablemente cometió fraude científico, ya que no había evidencia de que el estudio se hubiera realizado alguna vez [(Rogers, 1992-1993)](.</p>
+<p>El sitio web Retraction Watch mantiene <a href="https://retractiondatabase.org/RetractionSearch.aspx?">una base de datos</a> que rastrea las razones por las que los artículos científicos son retractados, incluyendo la fabricación de datos. Se desconoce con qué frecuencia ocurre la fabricación de datos en la práctica, pero como se discutió en el capítulo sobre integridad de la investigación, deberíamos esperar que al menos un pequeño porcentaje de científicos haya fabricado, falsificado o modificado datos o resultados al menos una vez.</p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
