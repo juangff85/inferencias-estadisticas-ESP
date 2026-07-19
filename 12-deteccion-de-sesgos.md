@@ -1,49 +1,11 @@
 # Detección de Sesgos
+> Diagoras, llamado el ateo, estando en Samotracia, uno de sus amigos le mostró varias pinturas de personas que habían soportado tormentas muy peligrosas; “Mira”, dijo, “tú que niegas la providencia, cuántos han sido salvados por sus oraciones a los dioses”. “Sí”, dijo Diágoras, “veo a los que se salvaron, pero ¿dónde están pintados los que naufragaron?”
+> — Tusculanae Disputationes, Cicerón, 45 a. C.
 
-La validez de la inferencia estadística depende de la calidad de los datos y de los procedimientos utilizados para obtenerlos. El **sesgo** en la investigación se refiere a cualquier desviación sistemática de la verdad en la recopilación, análisis, interpretación o publicación de los resultados.
+El sesgo puede introducirse a lo largo de todo el proceso de investigación. Es útil prevenirlo o detectarlo. Algunos investigadores recomiendan adoptar una actitud escéptica ante cualquier afirmación que leas en la literatura científica. Por ejemplo, la filósofa de la ciencia Deborah Mayo (2018) escribe: “Ante la noticia estadística del día, tu primera pregunta debería ser: ¿los resultados se deben al informe selectivo, al cherry picking, o a alguno de los muchos trucos similares?”. Puede que no te hagas muy popular si esa es la primera pregunta que haces a un ponente en el próximo congreso científico al que asistas, pero al mismo tiempo sería ingenuo ignorar el hecho de que los investigadores introducen, de forma más o menos intencionada, sesgos en sus afirmaciones.
 
-## Sesgo de Publicación (Publication Bias)
+En el extremo más extremo de las prácticas que introducen sesgo en la investigación científica está la mala conducta en la investigación: inventar datos o resultados, o cambiar u omitir datos o resultados de tal manera que la investigación no esté representada con precisión en el registro de investigación. Por ejemplo, [Andrew Wakefield](https://es.wikipedia.org/wiki/Andrew_Wakefield) fue autor de un artículo fraudulento en 1998 que afirmaba un vínculo entre la vacuna contra el sarampión, las paperas y la rubéola (MMR) y el autismo. Fue retractado en 2010, pero solo después de que causara daño a la confianza en las vacunas entre algunas partes de la población general.
 
-El sesgo de publicación es quizás el sesgo más conocido y sistemático que afecta a la literatura científica, especialmente en campos que dependen en gran medida del valor $p$.
+Otro ejemplo de la psicología se refería a un estudio de [James Vicary](https://es.wikipedia.org/wiki/James_Vicary) sobre el priming subliminal. Afirmó haber encontrado que al proyectar rápidamente 'EAT POPCORN' y 'DRINK COCA-COLA' de forma subliminal durante una película en un cine, las ventas de palomitas y Coca-Cola habían aumentado en un 57,5% y un 18,1%, respectivamente. Sin embargo, más tarde se descubrió que Vicary muy probablemente cometió fraude científico, ya que no había evidencia de que el estudio se hubiera realizado alguna vez [(Rogers, 1992-1993)](.
 
-* **Definición:** Ocurre cuando la probabilidad de que un estudio sea publicado depende de la naturaleza y la dirección de sus hallazgos (por ejemplo, los estudios con resultados estadísticamente significativos ($p < 0.05$) y en la dirección esperada tienen más probabilidades de ser publicados que los estudios con resultados no significativos).
-* **Efecto:** El sesgo de publicación hace que las estimaciones publicadas del tamaño del efecto sean sistemáticamente **sobreestimadas** y sesgadas positivamente.
-
-### Herramientas para la Detección del Sesgo de Publicación
-
-1.  **Diagrama de Embudo (Funnel Plot):** Es la herramienta gráfica más utilizada en el meta-análisis (Capítulo 11) para evaluar el sesgo. Un diagrama de embudo traza el tamaño del efecto (eje X) frente a la precisión o el error estándar (eje Y) de los estudios.
-    * **Ausencia de Sesgo:** Los estudios se distribuyen simétricamente alrededor del tamaño del efecto combinado, formando un embudo invertido. 
-    * **Presencia de Sesgo:** Si faltan estudios no significativos de baja potencia (los que estarían en la parte inferior izquierda o derecha del embudo), el gráfico parece asimétrico, sugiriendo sesgo de publicación.
-2.  **Pruebas de Egger y Begg:** Pruebas estadísticas formales que evalúan la asimetría del diagrama de embudo.
-
-## $p$-Hacking (Data-dependent analysis)
-
-El **$p$-hacking** es una forma de sesgo que ocurre cuando los investigadores ajustan de manera flexible los procedimientos de recolección o análisis de datos hasta que se alcanza el umbral de significación estadística ($p < 0.05$).
-
-Ejemplos de $p$-hacking incluyen:
-* Excluir puntos de datos después de mirar los resultados.
-* Recolectar más datos después de un análisis inicial no significativo (muestreo opcional no planificado).
-* Probar múltiples variables dependientes y reportar solo las significativas.
-* Usar diferentes análisis estadísticos hasta que uno sea significativo.
-
-El $p$-hacking infla la tasa de error Tipo I ($\alpha$) del estudio.
-
-### Herramientas para la Detección de $p$-Hacking
-
-1.  **Distribución de $p$-valores (p-curve):** Bajo la hipótesis nula, los valores $p$ están distribuidos uniformemente (Capítulo 1). Si hay un efecto real, la distribución de los $p$-valores debe estar sesgada hacia valores pequeños. El *p-curve* analiza la forma de la distribución de los $p$-valores en un conjunto de estudios. 
-    * Una acumulación inusual de $p$-valores justo por debajo de $0.05$ (ej., entre $0.04$ y $0.05$) es una señal de advertencia de posible $p$-hacking.
-2.  **Análisis de Sensibilidad de Muestreo Opcional:** Evaluar si la significación depende de la regla de parada o si el efecto se mantiene estable a medida que se añaden más datos.
-
-## HARKing (Hypothesizing After the Results are Known)
-
-**HARKing** (Formular Hipótesis Después de Conocer los Resultados) es el sesgo de presentar una hipótesis *exploratoria* (descubierta después del análisis de datos) como si fuera una hipótesis *confirmatoria* (establecida antes del análisis de datos).
-
-* **Efecto:** Distorsiona el proceso científico y la confianza que se le debe dar al hallazgo, ya que infla la probabilidad de que los resultados significativos sean simplemente coincidencias.
-
-## Estrategias de Mitigación
-
-La mejor defensa contra la mayoría de las formas de sesgo (especialmente el $p$-hacking y el HARKing) es la **Transparencia** y el **Prerregistro** del estudio (Capítulo 13).
-
-* **Prerregistro:** Al preespecificar el plan de análisis, el $N$ de la muestra y las hipótesis antes de la recolección de datos, se convierte en imposible el $p$-hacking.
-* **Informar Todos los Resultados:** Publicar estudios nulos (que a menudo se logran al hacer la investigación con alta potencia, como se discute en el Capítulo 8) mitiga el sesgo de publicación.
-* **Datos Abiertos:** Compartir el conjunto de datos y el código (Capítulo 14) permite que otros investigadores evalúen la flexibilidad en los análisis y confirmen la validez de los procedimientos.
+El sitio web Retraction Watch mantiene [una base de datos](https://retractiondatabase.org/RetractionSearch.aspx?) que rastrea las razones por las que los artículos científicos son retractados, incluyendo la fabricación de datos. Se desconoce con qué frecuencia ocurre la fabricación de datos en la práctica, pero como se discutió en el capítulo sobre integridad de la investigación, deberíamos esperar que al menos un pequeño porcentaje de científicos haya fabricado, falsificado o modificado datos o resultados al menos una vez.
