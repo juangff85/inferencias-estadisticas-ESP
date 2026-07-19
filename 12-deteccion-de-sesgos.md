@@ -165,3 +165,50 @@ Si hubiera un efecto real (puedes volver a ejecutar la simulación estableciendo
 **Figura 12.5:** Funnel plot de resultados nulos no sesgados.
 
 ![Figura 12.5](https://raw.githubusercontent.com/juangff85/inferencias-estadisticas-ESP/main/images/12/figura12-5.png)
+
+Ahora podemos comparar el metaanálisis no sesgado anterior con un metaanálisis sesgado. Podemos simular una situación de sesgo de publicación extremo. Basándonos en la estimación de Scheel et al. (2021), supongamos que el 96 % de los estudios muestran resultados positivos. Para ello establecemos pub.bias <- 0.96 en el código.
+
+Mantenemos ambas medias en 0, por lo que sigue sin existir un efecto real, pero terminaremos con principalmente errores de Tipo I en la dirección predicha en el conjunto final de estudios. Tras simular resultados sesgados, podemos realizar el metaanálisis para ver si la inferencia estadística basada en él resulta engañosa.
+
+    Random-Effects Model (k = 100; tau^2 estimator: REML) tau^2 (estimated amount of total heterogeneity): 0 (SE = 0.0019) tau (square root of estimated tau^2 value): 0 I^2 (total heterogeneity / total variability): 0.00% H^2 (total variability / sampling variability): 1.00 Test for Heterogeneity: Q(df = 99) = 77.6540, p-val = 0.9445 Model Results: estimate se zval pval ci.lb ci.ub 0.2701 0.0125 21.6075 <.0001 0.2456 0.2946 *** --- Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+La naturaleza sesgada del conjunto de estudios se vuelve evidente al examinar el funnel plot. El patrón es bastante peculiar. Observamos cuatro resultados nulos no sesgados (tal como programamos en la simulación), pero los 96 estudios restantes son estadísticamente significativos, aunque la hipótesis nula sea verdadera.
+
+La mayoría de los estudios se sitúan justo en el borde de la pirámide blanca. Como los valores p se distribuyen uniformemente bajo la hipótesis nula, los errores de Tipo I que observamos suelen tener valores p entre 0.02 y 0.05, a diferencia de lo que esperaríamos si existiera un efecto real.
+
+Cuanto mayor es el estudio, menor es el tamaño del efecto necesario para resultar significativo. El hecho de que los tamaños del efecto no varíen alrededor de un único valor verdadero, sino que disminuyan a medida que aumenta el tamaño muestral, es un fuerte indicador de sesgo.
+
+La línea vertical discontinua y el triángulo negro en la parte superior del gráfico ilustran la estimación metaanalítica observada (sesgada al alza).
+
+**Figura 12.6:** Funnel plot de resultados nulos sesgados con mayoría de resultados significativos.
+
+![Figura 12.6](https://raw.githubusercontent.com/juangff85/inferencias-estadisticas-ESP/main/images/12/figura12-6.png)
+
+Podría pensarse que un sesgo tan extremo rara vez aparece en la investigación científica. Sin embargo, sí ocurre. En la Figura 12.7 se muestra un funnel plot de Carter y McCullough (2014), quienes examinaron el sesgo en 198 estudios publicados sobre el efecto de agotamiento del ego (ego-depletion), la idea de que el autocontrol depende de un recurso limitado.
+
+Utilizando técnicas de detección de sesgo como la meta-regresión PET-PEESE, concluyeron que el tamaño del efecto no sesgado estimado por PET era d = −0.1, estadísticamente indistinguible de 0, lo que sugiere que el verdadero efecto podría ser d = 0, aunque el tamaño del efecto metaanalítico sin corrección por sesgo era d = 0.62.
+
+No resulta sorprendente que, aunque antes de 2015 los investigadores pensaban que existía una literatura sólida que demostraba el efecto de ego-depletion, un **Registered Replication Report** encontró un efecto no significativo (Hagger et al., 2016), y posteriormente los propios autores originales tampoco lograron replicar el efecto (Vohs et al., 2021).
+
+Imagina la enorme cantidad de tiempo, esfuerzo y dinero desperdiciados en una literatura basada en sesgos de investigación. Este desperdicio tiene implicaciones éticas evidentes, y los investigadores deben asumir la responsabilidad de prevenirlo en el futuro.
+
+**Figura 12.7:** Funnel plot de Carter y McCullough (2014) que visualiza el sesgo en 198 estudios sobre ego-depletion, incluyendo estimaciones PET-PEESE corregidas por sesgo.
+
+![Figura 12.7](https://raw.githubusercontent.com/juangff85/inferencias-estadisticas-ESP/main/images/12/figura12-7.png)
+
+También podemos observar señales de sesgo en un forest plot de un metaanálisis. En la Figura 12.8 se muestran dos forest plots. El de la izquierda se basa en datos no sesgados y el de la derecha en datos sesgados.
+
+En el forest plot de la izquierda los efectos varían aleatoriamente alrededor de 0, como cabría esperar. En el de la derecha, a partir del cuarto estudio, todos los intervalos de confianza excluyen milagrosamente el valor 0.
+
+**Figura 12.8:** Forest plot de un metaanálisis no sesgado (izquierda) y sesgado (derecha).
+
+![Figura 12.8](https://raw.githubusercontent.com/juangff85/inferencias-estadisticas-ESP/main/images/12/figura12-8.png)
+
+Cuando existe sesgo de publicación porque los investigadores solo publican resultados estadísticamente significativos, la estimación metaanalítica del tamaño del efecto será mayor que en ausencia de sesgo. Esto ocurre porque el sesgo de publicación elimina los tamaños del efecto pequeños (no significativos), que por tanto no se incluyen en el cálculo del tamaño del efecto metaanalítico.
+
+Esto conduce a una estimación metaanalítica inflada respecto al verdadero tamaño del efecto poblacional. Con un sesgo de publicación fuerte sabemos que la estimación está inflada, pero no sabemos cuánto. El efecto real podría ser solo un poco menor, o incluso ser cero, como en el caso de la literatura sobre ego-depletion.
+
+# 12.3 Trim and Fill
+
+El trim and fill es una técnica que pretende ampliar un conjunto de datos añadiendo estudios hipotéticos “faltantes” (que podrían estar en el “cajón de archivo”). El procedimiento comienza eliminando (“trimming”) los estudios pequeños que sesgan el tamaño del efecto metaanalítico, luego estima el verdadero tamaño del efecto y termina “rellenando” un funnel plot con estudios que se supone que faltan debido al sesgo de publicación. En la Figura 12.9 puedes ver el mismo funnel plot de antes, pero ahora con estudios hipotéticos añadidos (los círculos sin rellenar, que representan estudios “imputados”). Si te fijas bien, verás que cada uno de estos puntos tiene una imagen especular en el lado opuesto de la estimación del tamaño del efecto metaanalítico (esto se aprecia con mayor claridad en la mitad inferior del funnel plot). Si examinamos el resultado del metaanálisis que incluye estos estudios imputados, vemos que trim and fill logra advertirnos de que el metaanálisis está sesgado (si no, no añadiría estudios imputados), pero fracasa estrepitosamente al corregir la estimación del tamaño del efecto. En el funnel plot vemos la estimación original (sesgada) del tamaño del efecto indicada por el triángulo, y la estimación del tamaño del efecto metaanalítico ajustada con el método trim-and-fill (indicada por el círculo negro). Vemos que la estimación metaanalítica del tamaño del efecto es algo menor, pero dado que el verdadero tamaño del efecto en la simulación era 0, el ajuste es claramente insuficiente.
+
