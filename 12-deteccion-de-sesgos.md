@@ -335,9 +335,9 @@ Para otro recurso educativo abierto sobre pruebas de sesgo de publicación, véa
 
 ### P4: ¿Qué afirmación es verdadera basándose en la figura de abajo, que visualiza una meta-regresión PET-PEESE?
 
-**Figura 12.15:** Funnel plot con líneas de regresión PETPEESE para los mismos estudios que en P2.
-
 ![Figura 12.15](https://raw.githubusercontent.com/juangff85/inferencias-estadisticas-ESP/main/images/12/figura12-15.png)
+
+**Figura 12.15:** Funnel plot con líneas de regresión PETPEESE para los mismos estudios que en P2.
 
 - Utilizando meta-regresión PET-PEESE podemos mostrar que el verdadero tamaño del efecto es d = 0 (basándonos en la estimación PET).
 - Utilizando meta-regresión PET-PEESE podemos mostrar que el verdadero tamaño del efecto es d = r round(PEESE$b[1],2) (basándonos en la estimación PEESE).
@@ -346,5 +346,41 @@ Para otro recurso educativo abierto sobre pruebas de sesgo de publicación, véa
 
 ### P5: Mira la figura y la tabla de resultados de la aplicación p-curve de abajo, que ofrece los resultados de los estudios de P2. ¿Qué interpretación del resultado es correcta?
 
-![](https://raw.githubusercontent.com/juangff85/inferencias-estadisticas-ESP/main/images/12/image3.png)
+![Figura 12.16](https://raw.githubusercontent.com/juangff85/inferencias-estadisticas-ESP/main/images/12/figura12-16.png)
 
+**Figura 12.16:** Resultado del análisis p-curve de los estudios sesgados de P2.
+
+- Basándonos en la prueba continua de Stouffer para la p-curve completa, no podemos rechazar una distribución de valores p esperada bajo , y podemos rechazar una distribución de valores p como la esperada si es verdadera y los estudios tuvieran un 33 % de potencia.
+- Basándonos en la prueba continua de Stouffer para la p-curve completa, podemos concluir que la distribución observada de valores p no está lo bastante sesgada como para interpretarse como señal de un verdadero tamaño del efecto y, por tanto, la teoría utilizada para deducir estos estudios es incorrecta.
+- Basándonos en la prueba continua de Stouffer para la p-curve completa, podemos concluir que la distribución observada de valores p está lo bastante sesgada como para interpretarse en línea con una distribución de valores p como la esperada si es verdadera y los estudios tuvieran un 33 % de potencia.
+- Basándonos en la prueba continua de Stouffer para la p-curve completa, podemos concluir que la distribución observada de valores p es más plana de lo que cabría esperar si los estudios tuvieran un 33 % de potencia y, por tanto, podemos concluir que estos estudios se basan en datos fabricados.
+
+### P6: El verdadero tamaño del efecto en los estudios simulados en P2 es 0: no existe un efecto real. ¿Qué afirmación sobre el análisis z-curve de abajo es verdadera?
+
+![Figura 12.17](https://raw.githubusercontent.com/juangff85/inferencias-estadisticas-ESP/main/images/12/figura12-17.png)
+
+**Figura 12.17:** Resultado del análisis z-curve de los estudios sesgados de P2.
+
+- La tasa esperada de descubrimiento y la tasa esperada de replicabilidad son ambas estadísticamente significativas y, por tanto, podemos esperar que los efectos observados se repliquen con éxito en estudios futuros.
+- A pesar de que la potencia media observada (la tasa observada de descubrimiento) es del 100 %, la z-curve predice correctamente la tasa esperada de replicabilidad (que es del 5 %, ya que solo los errores de Tipo I serán estadísticamente significativos).
+- La z-curve no es capaz de encontrar una indicación de sesgo, ya que la tasa esperada de descubrimiento y la tasa esperada de replicabilidad no difieren entre sí estadísticamente.
+- Aunque la tasa observada de descubrimiento es 1 (lo que indica una potencia observada del 100 %), el intervalo de confianza oscila entre 0.66 y 1, lo que indica que los estudios podrían tener una potencia menor pero más realista y que el hecho de que el 100 % de los resultados fueran significativos podría haber ocurrido por azar.
+
+### P7: Todavía no hemos realizado un análisis trim and fill y, dados los análisis anteriores (por ejemplo, el análisis z-curve), ¿qué afirmación es verdadera?
+
+- Lo más probable es que el método trim-and-fill no indicara ningún estudio faltante que “rellenar”.
+- El método trim-and-fill tiene una baja potencia conocida para detectar sesgo y contradeciría el análisis z-curve o p-curve informado antes.
+- El análisis trim-and-fill indicaría sesgo, pero también lo hicieron el análisis p-curve y z-curve, y la estimación del tamaño del efecto ajustada mediante trim-and-fill no corrige adecuadamente el sesgo, por lo que el análisis no añadiría nada.
+- El método trim-and-fill proporciona una estimación fiable del verdadero tamaño del efecto, cosa que no ofrece ninguno de los otros métodos discutidos hasta ahora, y por tanto debería informarse junto con otras pruebas de detección de sesgo.
+
+### P8: El sesgo de publicación se define como la práctica de enviar y publicar selectivamente investigación científica. A lo largo de este capítulo nos hemos centrado en el envío selectivo de resultados significativos. ¿Puedes pensar en una línea de investigación o una pregunta de investigación en la que los investigadores pudieran preferir publicar selectivamente resultados no significativos?
+
+## 12.7.1 Preguntas abiertas
+
+- ¿Cuál es la idea detrás de la prueba GRIM?
+- ¿Cuál es la definición de “sesgo de publicación”?
+- ¿Qué es el problema del cajón de archivo (file-drawer problem)?
+- En un funnel plot, ¿qué es cierto para los estudios que caen dentro del embudo (cuando está centrado en 0)?
+- ¿Qué es cierto del enfoque trim-and-fill con respecto a su capacidad para detectar y corregir estimaciones del tamaño del efecto?
+- Al utilizar el enfoque PET-PEESE, ¿qué es importante tener en cuenta cuando el metaanálisis tiene un número pequeño de estudios?
+- ¿Qué conclusiones podemos extraer de las dos pruebas que se informan en un análisis p-curve?
