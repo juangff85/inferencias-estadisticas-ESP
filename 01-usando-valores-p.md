@@ -334,7 +334,7 @@ Lo que generalmente podemos extraer de este último malentendido es el hecho de 
 
 ### Preguntas sobre qué valores *p* puedes esperar
 
-Responde cada pregunta. Después haz clic en el botón “Mostrar respuestas” al final de este conjunto de preguntas para comprobar qué preguntas respondiste correctamente.
+Responde cada pregunta y, cuando hayas terminado, consulta el solucionario situado al final del capítulo.
 
 Copia el código siguiente en R y ejecuta el código. Puedes hacer clic en el icono de “portapapeles” en la parte superior derecha de la sección de código para copiar todo el código al portapapeles, de modo que puedas pegarlo fácilmente en R.
 
@@ -372,7 +372,7 @@ En el eje x vemos valores *p* de 0 a 1 en 20 barras, y en el eje y vemos con qu�
 **P1**: Puesto que la potencia estadística es la probabilidad de observar un resultado estadísticamente significativo asumiendo que hay un efecto verdadero, también podemos ver la potencia en la propia figura. ¿Dónde?
 
 - Podemos calcular el número de valores *p* mayores que 0.5 y dividirlos por el número de simulaciones.
-- **Respuesta correcta:** Podemos calcular el número de valores *p* en la primera barra —que contiene todos los valores *p* “significativos” de 0.00 a 0.05— y dividir los valores *p* de esta barra por el número total de simulaciones.
+- Podemos calcular el número de valores *p* en la primera barra —que contiene todos los valores *p* “significativos” de 0.00 a 0.05— y dividir los valores *p* de esta barra por el número total de simulaciones.
 - Podemos calcular la diferencia entre los valores *p* por encima de 0.5 menos los valores *p* por debajo de 0.5, y dividir este número por el número total de simulaciones.
 - Podemos calcular la diferencia entre los valores *p* por encima de 0.5 menos los valores *p* por debajo de 0.05, y dividir este número por el número de simulaciones.
 
@@ -380,13 +380,13 @@ En el eje x vemos valores *p* de 0 a 1 en 20 barras, y en el eje y vemos con qu�
 
 - 55%
 - 60%
-- **Respuesta correcta:** 80%
+- 80%
 - 95%
 
 **P3**: Si miras la distribución de valores *p*, ¿qué notas?
 
 - La distribución de valores *p* es exactamente la misma que con 50% de potencia.
-- **Respuesta correcta:** La distribución de valores *p* es mucho más empinada que con 50% de potencia.
+- La distribución de valores *p* es mucho más empinada que con 50% de potencia.
 - La distribución de valores *p* es mucho más plana que con 50% de potencia.
 - La distribución de valores *p* está distribuida de forma mucho más normal.
 
@@ -396,7 +396,7 @@ Siéntete libre de aumentar y disminuir el tamaño muestral y ver qué ocurre si
 
 - La distribución de valores *p* es exactamente la misma que con 50% de potencia.
 - La distribución de valores *p* es mucho más empinada que con 50% de potencia.
-- **Respuesta correcta:** La distribución de valores *p* es básicamente completamente plana —ignorando alguna pequeña variación debida al ruido aleatorio en la simulación—.
+- La distribución de valores *p* es básicamente completamente plana —ignorando alguna pequeña variación debida al ruido aleatorio en la simulación—.
 - La distribución de valores *p* está distribuida normalmente —es decir, con forma de campana—.
 
 La pregunta siguiente se basa en la simulación anterior, donde no había una diferencia verdadera entre los grupos.
@@ -405,7 +405,7 @@ La pregunta siguiente se basa en la simulación anterior, donde no había una di
 
 - La potencia —o verdaderos positivos—.
 - Los verdaderos negativos.
-- **Respuesta correcta:** El error Tipo 1 —o falsos positivos—.
+- El error Tipo 1 —o falsos positivos—.
 - El error Tipo 2 —o falsos negativos—.
 
 Echemos un vistazo solo a los valores *p* por debajo de 0.05. Ten paciencia conmigo durante los próximos pasos: merecerá la pena. Encuentra la variable que determina cuántas barras hay, en la instrucción `bars <- 20` en la línea 8. Cámbiala a `bars <- 100`. Ahora tendremos 1 barra para valores *p* entre 0 y 0.01, una barra para valores *p* entre 0.01 y 0.02, y 100 barras en total. La línea roja punteada indicará ahora la frecuencia de valores *p* cuando la hipótesis nula es verdadera, donde cada barra contiene el 1% del número total de valores *p*. Solo queremos mirar valores *p* por debajo de 0.05, y cortaremos la gráfica en 0.05. Cambia `xlim = c(0, 1)` a `xlim = c(0, 0.05)`. En lugar de ver todos los valores *p* entre 0 y 1, solo veremos valores *p* entre 0 y 0.05. Vuelve a ejecutar la simulación —todavía con `m <- 100`—. Vemos la misma distribución uniforme, pero ahora cada barra contiene el 1% de los valores *p*, de modo que la distribución de valores *p* es muy plana —más adelante en esta tarea haremos zoom en el eje y—. La línea roja proporciona ahora claramente la frecuencia para cada barra, asumiendo que la hipótesis nula es verdadera.
@@ -415,7 +415,7 @@ Cambia la media en la simulación en la línea 3 a `m <- 107` —recuerda, n sig
 **P6**: La gráfica de la última simulación te dice que tenemos aproximadamente 90.5% de potencia —el número en tu simulación podría variar un poco debido a la variación aleatoria—. Esta es la potencia si usamos un alfa del 5%. Pero también podemos usar un alfa del 1%. ¿Cuál es la potencia estadística que tenemos en los estudios simulados si usáramos un alfa del 1%, mirando el gráfico? Elige la respuesta más cercana a la respuesta de tus simulaciones. Nótese que también puedes calcular la potencia para un alfa de 0.01 cambiando `p < 0.05` a `p < 0.01` en la línea 15; solo asegúrate de volver a ponerlo en 0.05 antes de continuar.
 
 - ~90%
-- **Respuesta correcta:** ~75%
+- ~75%
 - ~50%
 - ~5%
 
@@ -432,12 +432,12 @@ En nuestras simulaciones sabemos si hay un efecto verdadero o no, pero en el mun
 - El efecto es significativo y proporciona fuerte apoyo para la hipótesis alternativa.
 - El efecto es significativo, pero sin ninguna duda es un error Tipo 1.
 - Con alta potencia, deberías usar un nivel alfa menor que 0.05 y, por tanto, este efecto no puede considerarse significativo.
-- **Respuesta correcta:** El efecto es significativo, pero los datos son más probables bajo la hipótesis nula que bajo la hipótesis alternativa.
+- El efecto es significativo, pero los datos son más probables bajo la hipótesis nula que bajo la hipótesis alternativa.
 
 **P8**: Juega con el tamaño muestral (*n*) y/o la media (*m*) cambiando los valores numéricos —y, por tanto, variando la potencia estadística en los estudios simulados—. Mira el resultado de la simulación para la barra que contiene valores *p* entre 0.04 y 0.05. La línea roja indica cuántos valores *p* se encontrarían en esta barra si la hipótesis nula fuera verdadera —y siempre está en 1%—. En el mejor de los casos, ¿cuánto más probable es que un valor *p* entre 0.04 y 0.05 proceda de una distribución de valores *p* que representa un efecto verdadero, que de una distribución de valores *p* cuando no hay efecto? Puedes responder a esta pregunta viendo cuánto más alta puede llegar a ser la barra de valores *p* entre 0.04 y 0.05. Si en el mejor de los casos la barra en la simulación es cinco veces más alta que la línea roja —de modo que la barra muestra que el 5% de los valores *p* terminan entre 0.04 y 0.05, mientras la línea roja permanece en 1%—, entonces en el mejor de los casos los valores *p* entre 0.04 y 0.05 son cinco veces más probables cuando hay un efecto verdadero que cuando no hay un efecto verdadero.
 
 - En el mejor de los casos, los valores *p* entre 0.04 y 0.05 son igualmente probables bajo la hipótesis alternativa y bajo la hipótesis nula.
-- **Respuesta correcta:** En el mejor de los casos, los valores *p* entre 0.04 y 0.05 son aproximadamente 4 veces más probables bajo la hipótesis alternativa que bajo la hipótesis nula.
+- En el mejor de los casos, los valores *p* entre 0.04 y 0.05 son aproximadamente 4 veces más probables bajo la hipótesis alternativa que bajo la hipótesis nula.
 - En el mejor de los casos, los valores *p* entre 0.04 y 0.05 son ~10 veces más probables bajo la hipótesis alternativa que bajo la hipótesis nula.
 - En el mejor de los casos, los valores *p* entre 0.04 y 0.05 son ~30 veces más probables bajo la hipótesis alternativa que bajo la hipótesis nula.
 
@@ -445,18 +445,18 @@ Por esta razón, los estadísticos advierten que valores *p* justo por debajo de
 
 ### Preguntas sobre malentendidos de los valores *p*
 
-Responde cada pregunta. Después haz clic en el botón “Mostrar respuestas” al final de este conjunto de preguntas para comprobar qué preguntas respondiste correctamente.
+Responde cada pregunta y, cuando hayas terminado, consulta el solucionario situado al final del capítulo.
 
 **P1**: Cuando el tamaño muestral en cada grupo de una prueba *t* independiente es de 50 observaciones —véase la Figura 1.3—, ¿qué afirmación es correcta?
 
 - La media de las diferencias que observarás entre los dos grupos es siempre 0.
 - La media de las diferencias que observarás entre los dos grupos es siempre diferente de 0.
-- **Respuesta correcta:** Observar una diferencia media de +0.5 o -0.5 se considera sorprendente, asumiendo que la hipótesis nula es verdadera.
+- Observar una diferencia media de +0.5 o -0.5 se considera sorprendente, asumiendo que la hipótesis nula es verdadera.
 - Observar una diferencia media de +0.1 o -0.1 se considera sorprendente, asumiendo que la hipótesis nula es verdadera.
 
 **P2**: ¿En qué sentido son similares los modelos nulos de la Figura 1.3 y la Figura 1.4, y en qué sentido son diferentes? Nótese que estas gráficas no contienen valores *t*, pero necesitas inferir cuáles son los valores *t* para estas distribuciones.
 
-- **Respuesta correcta:** En ambos casos, las distribuciones están centradas en cero, y el valor *t* crítico está entre 1.96 y 2 —para una prueba bilateral, dependiendo del tamaño muestral—. Pero cuanto mayor es el tamaño muestral, más cerca de 0 caen las diferencias medias que se consideran “sorprendentes”.
+- En ambos casos, las distribuciones están centradas en cero, y el valor *t* crítico está entre 1.96 y 2 —para una prueba bilateral, dependiendo del tamaño muestral—. Pero cuanto mayor es el tamaño muestral, más cerca de 0 caen las diferencias medias que se consideran “sorprendentes”.
 - En ambos casos, un valor *t* de 0 es el resultado más probable, pero el valor *t* crítico está alrededor de 0.4 para n = 50, y alrededor de 0.05 para n = 5000.
 - En ambos casos, las medias variarán exactamente de la misma manera alrededor de 0, pero la tasa de error Tipo 1 es mucho menor cuando n = 5000 que cuando n = 50.
 - Como el error estándar es mucho mayor para n = 50 que para n = 5000, es mucho más probable que la hipótesis nula sea verdadera para n = 50.
@@ -470,7 +470,7 @@ La aplicación también representa tres gráficos que ilustran las curvas de pot
 Abre la aplicación y asegúrate de que está configurada con los valores por defecto de un tamaño muestral de 50 y un nivel alfa de 0.05. Mira la distribución del modelo nulo. Fija el tamaño muestral en 2. Fija el tamaño muestral en 5000. La aplicación no te permitirá representar datos para un tamaño de “grupo” de 1, pero con n = 2 tendrás una idea bastante buena del rango de valores que puedes esperar cuando el efecto verdadero es 0, y cuando recoges observaciones individuales —n = 1—. Dadas tus experiencias con la aplicación al cambiar diferentes parámetros, ¿qué afirmación es verdadera?
 
 - Cuando la hipótesis nula es verdadera y la desviación estándar es 1, si tomas aleatoriamente 1 observación de cada grupo y calculas la puntuación de diferencia, las diferencias caerán entre -0.4 y 0.4 para el 95% de los pares de observaciones que extraigas.
-- **Respuesta correcta:** Cuando la hipótesis nula es verdadera y la desviación estándar es 1, con n = 50 por grupo, el 95% de los estudios en los que se recojan datos observará a largo plazo una diferencia media entre -0.4 y 0.4.
+- Cuando la hipótesis nula es verdadera y la desviación estándar es 1, con n = 50 por grupo, el 95% de los estudios en los que se recojan datos observará a largo plazo una diferencia media entre -0.4 y 0.4.
 - En cualquier estudio con n = 50 por grupo, incluso cuando la DE es desconocida y no se sabe si la hipótesis nula es verdadera, rara vez deberías observar una diferencia media más extrema que -0.4 o 0.4.
 - A medida que aumenta el tamaño muestral, la distribución esperada de las medias se vuelve más estrecha para el modelo nulo, pero no para el modelo alternativo.
 
@@ -478,7 +478,7 @@ Abre la aplicación y asegúrate de que está configurada con los valores por de
 
 - En comparación con un alfa de 0.05, solo valores *menos* extremos se consideran sorprendentes cuando se usa un alfa de 0.01, y solo diferencias mayores que 0.53 puntos de escala —o menores que -0.53— serán ahora estadísticamente significativas.
 - En comparación con un alfa de 0.05, solo valores *menos* extremos se consideran sorprendentes cuando se usa un alfa de 0.01, y solo diferencias mayores que 0.33 puntos de escala —o menores que -0.33— serán ahora estadísticamente significativas.
-- **Respuesta correcta:** En comparación con un alfa de 0.05, solo valores *más* extremos se consideran sorprendentes cuando se usa un alfa de 0.01, y solo diferencias mayores que 0.53 puntos de escala —o menores que -0.53— serán estadísticamente significativas.
+- En comparación con un alfa de 0.05, solo valores *más* extremos se consideran sorprendentes cuando se usa un alfa de 0.01, y solo diferencias mayores que 0.53 puntos de escala —o menores que -0.53— serán estadísticamente significativas.
 - En comparación con un alfa de 0.05, solo valores *más* extremos se consideran sorprendentes cuando se usa un alfa de 0.01, y solo diferencias mayores que 0.33 puntos de escala —o menores que -0.33— serán ahora estadísticamente significativas.
 
 **P5**: ¿Por qué no puedes concluir que la hipótesis nula es verdadera cuando observas un valor *p* estadísticamente no significativo (*p* > alfa)?
@@ -486,12 +486,12 @@ Abre la aplicación y asegúrate de que está configurada con los valores por de
 - Al calcular valores *p* siempre necesitas tener en cuenta la probabilidad previa.
 - Necesitas reconocer la probabilidad de que hayas observado un error Tipo 1.
 - La hipótesis alternativa nunca es verdadera.
-- **Respuesta correcta:** Necesitas reconocer la probabilidad de que hayas observado un error Tipo 2.
+- Necesitas reconocer la probabilidad de que hayas observado un error Tipo 2.
 
 **P6**: ¿Por qué no puedes concluir que la hipótesis alternativa es verdadera cuando observas un valor *p* estadísticamente significativo (*p* < alfa)?
 
 - Al calcular valores *p* siempre necesitas tener en cuenta la probabilidad previa.
-- **Respuesta correcta:** Necesitas reconocer la probabilidad de que hayas observado un error Tipo 1.
+- Necesitas reconocer la probabilidad de que hayas observado un error Tipo 1.
 - La hipótesis alternativa nunca es verdadera.
 - Necesitas reconocer la probabilidad de que hayas observado un error Tipo 2.
 
@@ -499,7 +499,7 @@ Abre la aplicación y asegúrate de que está configurada con los valores por de
 
 Ve a la aplicación: <http://shiny.ieis.tue.nl/d_p_power/>. Fija el tamaño muestral en 50000, la diferencia media en 0.5 y el nivel alfa en 0.05. ¿Qué efectos, cuando se observen, serán estadísticamente diferentes de 0?
 
-- **Respuesta correcta:** Efectos más extremos que -0.01 y 0.01.
+- Efectos más extremos que -0.01 y 0.01.
 - Efectos más extremos que -0.04 y 0.04.
 - Efectos más extremos que -0.05 y 0.05.
 - Efectos más extremos que -0.12 y 0.12.
@@ -513,13 +513,13 @@ No todos los efectos en psicología son aditivos —no podemos combinar o transf
 - 3%
 - 5%
 - 95%
-- **Respuesta correcta:** 100%
+- 100%
 
 **P9**: ¿Qué afirmación es verdadera?
 
 - La probabilidad de que un estudio de replicación produzca un resultado significativo es 1 - *p*.
 - La probabilidad de que un estudio de replicación produzca un resultado significativo es 1 - *p* multiplicado por la probabilidad de que la hipótesis nula sea verdadera.
-- **Respuesta correcta:** La probabilidad de que un estudio de replicación produzca un resultado significativo es igual a la potencia estadística del estudio de replicación —si hay un efecto verdadero—, o al nivel alfa —si no hay efecto verdadero—.
+- La probabilidad de que un estudio de replicación produzca un resultado significativo es igual a la potencia estadística del estudio de replicación —si hay un efecto verdadero—, o al nivel alfa —si no hay efecto verdadero—.
 - La probabilidad de que un estudio de replicación produzca un resultado significativo es igual a la potencia estadística del estudio de replicación + el nivel alfa.
 
 Esta pregunta es conceptualmente muy similar a la formulada por Tversky y Kahneman en el artículo “Belief in the law of small numbers”:
@@ -532,7 +532,7 @@ Tversky y Kahneman argumentan que una respuesta razonable es 48%, pero la única
 
 **P10**: ¿Significa un valor *p* no significativo —es decir, *p* = 0.65— que la hipótesis nula es verdadera?
 
-- **Respuesta correcta:** No: el resultado podría ser un error Tipo 2, o un falso negativo.
+- No: el resultado podría ser un error Tipo 2, o un falso negativo.
 - Sí, porque es un verdadero negativo.
 - Sí, si el valor *p* es mayor que el nivel alfa, entonces la hipótesis nula es verdadera.
 - No, porque necesitas al menos dos valores *p* no significativos para concluir que la hipótesis nula es verdadera.
@@ -541,13 +541,13 @@ Tversky y Kahneman argumentan que una respuesta razonable es 48%, pero la única
 
 - La hipótesis nula fue confirmada, *p* > 0.05.
 - No hubo diferencia entre las dos condiciones, *p* > 0.05.
-- **Respuesta correcta:** La diferencia observada no fue estadísticamente diferente de 0.
+- La diferencia observada no fue estadísticamente diferente de 0.
 - La hipótesis nula es verdadera.
 
 **P12**: ¿Observar un valor *p* significativo (*p* < .05) significa que la hipótesis nula es falsa?
 
 - No, porque *p* < .05 solo significa que la alternativa es verdadera, no que la hipótesis nula sea errónea.
-- **Respuesta correcta:** No, porque los valores *p* nunca son una afirmación sobre la probabilidad de una hipótesis o teoría.
+- No, porque los valores *p* nunca son una afirmación sobre la probabilidad de una hipótesis o teoría.
 - Sí, porque ha ocurrido un suceso excepcionalmente raro.
 - Sí, porque la diferencia es estadísticamente significativa.
 
@@ -555,7 +555,7 @@ Tversky y Kahneman argumentan que una respuesta razonable es 48%, pero la única
 
 - No, porque en muestras extremadamente grandes, efectos extremadamente pequeños pueden ser estadísticamente significativos, y los efectos pequeños nunca son prácticamente importantes.
 - No, porque el nivel alfa podría en teoría fijarse en 0.20, y en ese caso un efecto significativo no es prácticamente importante.
-- **Respuesta correcta:** No, porque cuán importante es un efecto depende de un análisis coste-beneficio, no de cuán sorprendentes son los datos bajo la hipótesis nula.
+- No, porque cuán importante es un efecto depende de un análisis coste-beneficio, no de cuán sorprendentes son los datos bajo la hipótesis nula.
 - Todo lo anterior es verdadero.
 
 **P14**: ¿Cuál es la definición correcta de un valor *p*?
@@ -563,7 +563,7 @@ Tversky y Kahneman argumentan que una respuesta razonable es 48%, pero la única
 - Un valor *p* es la probabilidad de que la hipótesis nula sea verdadera, dados datos que son tan extremos o más extremos que los datos que has observado.
 - Un valor *p* es la probabilidad de que la hipótesis alternativa sea verdadera, dados datos que son tan extremos o más extremos que los datos que has observado.
 - Un valor *p* es la probabilidad de observar datos que son tan extremos o más extremos que los datos que has observado, asumiendo que la hipótesis alternativa es verdadera.
-- **Respuesta correcta:** Un valor *p* es la probabilidad de observar datos que son tan extremos o más extremos que los datos que has observado, asumiendo que la hipótesis nula es verdadera.
+- Un valor *p* es la probabilidad de observar datos que son tan extremos o más extremos que los datos que has observado, asumiendo que la hipótesis nula es verdadera.
 
 ### Preguntas abiertas
 
@@ -592,6 +592,36 @@ Tversky y Kahneman argumentan que una respuesta razonable es 48%, pero la única
 12. ¿Qué representa el modelo nulo, o la hipótesis nula, en una prueba de significación de la hipótesis nula?
 
 13. No podemos usar una prueba de significación de la hipótesis nula para concluir que no hay un efecto —significativo—. ¿Qué enfoques estadísticos podemos usar para examinar si no hay un efecto —significativo—?
+
+## Solucionario
+
+### Preguntas sobre qué valores *p* puedes esperar
+
+- **P1:** Podemos calcular el número de valores *p* en la primera barra —que contiene todos los valores *p* “significativos” de 0.00 a 0.05— y dividir los valores *p* de esta barra por el número total de simulaciones.
+- **P2:** 80%
+- **P3:** La distribución de valores *p* es mucho más empinada que con 50% de potencia.
+- **P4:** La distribución de valores *p* es básicamente completamente plana —ignorando alguna pequeña variación debida al ruido aleatorio en la simulación—.
+- **P5:** El error Tipo 1 —o falsos positivos—.
+- **P6:** ~75%
+- **P7:** El efecto es significativo, pero los datos son más probables bajo la hipótesis nula que bajo la hipótesis alternativa.
+- **P8:** En el mejor de los casos, los valores *p* entre 0.04 y 0.05 son aproximadamente 4 veces más probables bajo la hipótesis alternativa que bajo la hipótesis nula.
+
+### Preguntas sobre malentendidos de los valores *p*
+
+- **P1:** Observar una diferencia media de +0.5 o -0.5 se considera sorprendente, asumiendo que la hipótesis nula es verdadera.
+- **P2:** En ambos casos, las distribuciones están centradas en cero, y el valor *t* crítico está entre 1.96 y 2 —para una prueba bilateral, dependiendo del tamaño muestral—. Pero cuanto mayor es el tamaño muestral, más cerca de 0 caen las diferencias medias que se consideran “sorprendentes”.
+- **P3:** Cuando la hipótesis nula es verdadera y la desviación estándar es 1, con n = 50 por grupo, el 95% de los estudios en los que se recojan datos observará a largo plazo una diferencia media entre -0.4 y 0.4.
+- **P4:** En comparación con un alfa de 0.05, solo valores *más* extremos se consideran sorprendentes cuando se usa un alfa de 0.01, y solo diferencias mayores que 0.53 puntos de escala —o menores que -0.53— serán estadísticamente significativas.
+- **P5:** Necesitas reconocer la probabilidad de que hayas observado un error Tipo 2.
+- **P6:** Necesitas reconocer la probabilidad de que hayas observado un error Tipo 1.
+- **P7:** Efectos más extremos que -0.01 y 0.01.
+- **P8:** 100%
+- **P9:** La probabilidad de que un estudio de replicación produzca un resultado significativo es igual a la potencia estadística del estudio de replicación —si hay un efecto verdadero—, o al nivel alfa —si no hay efecto verdadero—.
+- **P10:** No: el resultado podría ser un error Tipo 2, o un falso negativo.
+- **P11:** La diferencia observada no fue estadísticamente diferente de 0.
+- **P12:** No, porque los valores *p* nunca son una afirmación sobre la probabilidad de una hipótesis o teoría.
+- **P13:** No, porque cuán importante es un efecto depende de un análisis coste-beneficio, no de cuán sorprendentes son los datos bajo la hipótesis nula.
+- **P14:** Un valor *p* es la probabilidad de observar datos que son tan extremos o más extremos que los datos que has observado, asumiendo que la hipótesis nula es verdadera.
 
 ## Referencias
 
