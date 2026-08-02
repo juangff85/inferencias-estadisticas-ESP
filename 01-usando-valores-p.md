@@ -593,7 +593,7 @@ Tversky y Kahneman argumentan que una respuesta razonable es 48%, pero la única
 
 13. No podemos usar una prueba de significación de la hipótesis nula para concluir que no hay un efecto —significativo—. ¿Qué enfoques estadísticos podemos usar para examinar si no hay un efecto —significativo—?
 
-## Solucionario
+## Solucionario {.unnumbered}
 
 ### Preguntas sobre qué valores *p* puedes esperar
 
