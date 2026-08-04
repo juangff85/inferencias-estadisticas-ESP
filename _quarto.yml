@@ -8,6 +8,8 @@ project:
     - beta_prior_app_book.html
     - bayesian_updating_app_book.html
     - bayes_factor_app_book.html
+    - guess_correlation_app_book.html
+    - cohens_d_app_book.html
 
 book:
   title: "Mejora de tus Inferencias Estadísticas"
