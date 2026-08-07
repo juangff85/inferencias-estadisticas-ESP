@@ -14,6 +14,8 @@ project:
     - ci_sample_size_app_book.html
     - means_difference_app_book.html
     - prec_cor_app_book.html
+    - toster_ttest_app_book.html
+    - toster_power_app_book.html
 
 book:
   title: "Mejora de tus Inferencias Estadísticas"
