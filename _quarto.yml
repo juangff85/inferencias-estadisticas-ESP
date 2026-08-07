@@ -19,6 +19,7 @@ project:
     - random_variation_single_app_book.html
     - random_variation_two_groups_app_book.html
     - random_variation_correlation_app_book.html
+    - pub_bias_meta_app_book.html
 
 book:
   title: "Mejora de tus Inferencias Estadísticas"
