@@ -24,6 +24,8 @@ project:
 book:
   title: "Mejora de tus Inferencias Estadísticas"
   subtitle: "Traducción al castellano de \"Improving Your Statistical Inferences\" de Daniël Lakens"
+  output-file: inferencias-estadisticas-ESP
+  downloads: [pdf, epub]
   chapters:
     - index.md
     - 01-usando-valores-p.md
@@ -44,6 +46,8 @@ book:
     - 16-sesgo-y-escepticismo.md
     - 17-estudios-de-replicacion.md
 
+lang: es
+
 format:
   html:
     theme: cosmo
@@ -51,3 +55,10 @@ format:
     toc: true
     number-sections: true
     page-navigation: true
+  pdf:
+    documentclass: scrbook
+    toc: true
+    number-sections: true
+    colorlinks: true
+  epub:
+    toc: true
