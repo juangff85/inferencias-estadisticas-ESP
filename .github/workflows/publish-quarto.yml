@@ -7,6 +7,12 @@ on:
       - work
   workflow_dispatch:
 
+# Si llegan varios commits seguidos, solo debe publicar la ejecución más reciente.
+# Esto evita que dos procesos intenten actualizar gh-pages al mismo tiempo.
+concurrency:
+  group: publish-quarto-${{ github.ref }}
+  cancel-in-progress: true
+
 permissions:
   contents: write
 
@@ -21,6 +27,8 @@ jobs:
 
       - name: Setup Quarto
         uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: 1.10.18
 
       - name: Render Quarto project
         uses: quarto-dev/quarto-actions/render@v2
