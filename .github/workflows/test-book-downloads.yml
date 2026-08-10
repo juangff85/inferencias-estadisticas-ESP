@@ -18,13 +18,11 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup Quarto
+      - name: Setup Quarto and TinyTeX
         uses: quarto-dev/quarto-actions/setup@v2
         with:
           version: 1.10.18
-
-      - name: Install TinyTeX
-        run: quarto install tinytex --no-prompt
+          tinytex: true
 
       - name: Test ePub and PDF renders
         shell: bash
