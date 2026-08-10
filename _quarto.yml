@@ -24,16 +24,6 @@ project:
 book:
   title: "Mejora de tus Inferencias Estadísticas"
   subtitle: "Traducción al castellano de \"Improving Your Statistical Inferences\" de Daniël Lakens"
-  output-file: inferencias-estadisticas-ESP
-  repo-url: https://github.com/juangff85/inferencias-estadisticas-ESP
-  repo-branch: main
-  repo-actions: []
-  downloads: [pdf, epub]
-  navbar:
-    right:
-      - icon: bug
-        href: https://github.com/juangff85/inferencias-estadisticas-ESP/issues/new
-        aria-label: "Informar de un error"
   chapters:
     - index.md
     - 01-usando-valores-p.md
@@ -54,8 +44,6 @@ book:
     - 16-sesgo-y-escepticismo.md
     - 17-estudios-de-replicacion.md
 
-lang: es
-
 format:
   html:
     theme: cosmo
@@ -63,10 +51,3 @@ format:
     toc: true
     number-sections: true
     page-navigation: true
-  pdf:
-    documentclass: scrbook
-    toc: true
-    number-sections: true
-    colorlinks: true
-  epub:
-    toc: true
