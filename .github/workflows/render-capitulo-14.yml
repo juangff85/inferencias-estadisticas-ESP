@@ -25,16 +25,22 @@ jobs:
         with:
           version: 1.7.33
 
-      - name: Render site
-        run: quarto render
-
-      - name: Commit rendered site
+      - name: Render and capture log
         shell: bash
         run: |
+          set +e
+          quarto render > render-cap14.log 2>&1
+          status=$?
+          cat render-cap14.log
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs
+          git add docs render-cap14.log
           if ! git diff --cached --quiet; then
-            git commit -m "Renderiza el capítulo 14 traducido"
+            if [ "$status" -eq 0 ]; then
+              git commit -m "Renderiza el capítulo 14 traducido"
+            else
+              git commit -m "Registra error de renderizado del capítulo 14"
+            fi
             git push origin main
           fi
+          exit $status
