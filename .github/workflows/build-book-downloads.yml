@@ -1,0 +1,68 @@
+name: Build book downloads
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/build-book-downloads.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-downloads:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Quarto and TinyTeX
+        uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: 1.10.18
+          tinytex: true
+
+      - name: Render ePub and PDF outside docs
+        shell: bash
+        run: |
+          rm -rf _downloads
+          mkdir -p _downloads
+
+          set +e
+          quarto render --to epub --output-dir _downloads > render-epub.log 2>&1
+          epub_status=$?
+          quarto render --to pdf --output-dir _downloads > render-pdf.log 2>&1
+          pdf_status=$?
+          set -e
+
+          echo "$epub_status" > render-epub.status
+          echo "$pdf_status" > render-pdf.status
+
+          if [ "$epub_status" -eq 0 ]; then
+            epub_file=$(find _downloads -maxdepth 1 -type f -name '*.epub' | head -n 1)
+            if [ -n "$epub_file" ] && [ "$epub_file" != "_downloads/inferencias-estadisticas-ESP.epub" ]; then
+              mv "$epub_file" _downloads/inferencias-estadisticas-ESP.epub
+            fi
+          fi
+
+          if [ "$pdf_status" -eq 0 ]; then
+            pdf_file=$(find _downloads -maxdepth 1 -type f -name '*.pdf' | head -n 1)
+            if [ -n "$pdf_file" ] && [ "$pdf_file" != "_downloads/inferencias-estadisticas-ESP.pdf" ]; then
+              mv "$pdf_file" _downloads/inferencias-estadisticas-ESP.pdf
+            fi
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add _downloads render-epub.log render-pdf.log render-epub.status render-pdf.status
+          if ! git diff --cached --quiet; then
+            git commit -m "Registra compilación aislada de PDF y ePub"
+            git push origin main
+          fi
+
+          test "$epub_status" -eq 0
+          test "$pdf_status" -eq 0
