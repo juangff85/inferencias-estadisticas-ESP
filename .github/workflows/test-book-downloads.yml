@@ -18,31 +18,48 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup Quarto and TinyTeX
+      - name: Setup Quarto
         uses: quarto-dev/quarto-actions/setup@v2
         with:
           version: 1.10.18
-          tinytex: true
 
-      - name: Test ePub and PDF renders
+      - name: Render ePub and record result
         shell: bash
         run: |
           set +e
           quarto render --to epub > render-epub.log 2>&1
           epub_status=$?
+          echo "$epub_status" > render-epub.status
+          set -e
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add render-epub.log render-epub.status docs
+          if ! git diff --cached --quiet; then
+            git commit -m "Registra prueba de ePub"
+            git push origin main
+          fi
+
+          test "$epub_status" -eq 0
+
+      - name: Install TinyTeX
+        run: quarto install tinytex --no-prompt
+
+      - name: Render PDF and record result
+        shell: bash
+        run: |
+          set +e
           quarto render --to pdf > render-pdf.log 2>&1
           pdf_status=$?
-          echo "$epub_status" > render-epub.status
           echo "$pdf_status" > render-pdf.status
           set -e
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add render-epub.log render-pdf.log render-epub.status render-pdf.status docs
+          git add render-pdf.log render-pdf.status docs
           if ! git diff --cached --quiet; then
-            git commit -m "Registra prueba de PDF y ePub"
+            git commit -m "Registra prueba de PDF"
             git push origin main
           fi
 
-          test "$epub_status" -eq 0
           test "$pdf_status" -eq 0
