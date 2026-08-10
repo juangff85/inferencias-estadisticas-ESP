@@ -1,0 +1,40 @@
+name: Render capítulo 13
+
+on:
+  push:
+    paths:
+      - '13-prerregistro-y-transparencia.md'
+      - 'include/book-13.bib'
+      - '.github/workflows/render-capitulo-13.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: 1.7.33
+
+      - name: Render site
+        run: quarto render
+
+      - name: Commit rendered site
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs
+          if ! git diff --cached --quiet; then
+            git commit -m "Renderiza el capítulo 13 traducido"
+            git push origin main
+          fi
