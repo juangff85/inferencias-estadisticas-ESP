@@ -26,6 +26,11 @@ jobs:
           version: 1.10.18
           tinytex: true
 
+      - name: Fix known remote figure URL for isolated build
+        shell: bash
+        run: |
+          sed -i 's#17-replication_files/figure-html/fig-alphalevels-1.png#17-replication_files/figure-html/fig-alphalevels1-1.png#g' 17-estudios-de-replicacion.md
+
       - name: Render ePub and PDF outside docs
         shell: bash
         run: |
