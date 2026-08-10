@@ -174,17 +174,17 @@ Los siguientes pasos consisten en especificar la hipótesis en un nivel estadís
 
 **P3**: Justifica tu tamaño muestral. Utilizaré mi propia aplicación Shiny para recorrer los pasos de una [justificación del tamaño de la muestra](08-justificacion-del-tamaño-de-la-muestra.html).
 
-### 1.1 Describe la población de la que extraes la muestra
+**1.1 Describe la población de la que extraes la muestra**
 
 La población está formada por todas las películas protagonizadas por Brad Pitt y Edward Norton —hasta marzo de 2023— desde el comienzo de sus respectivas carreras, según aparecen indexadas en la Internet Movie Database (www.imdb.com). El número total de observaciones está limitado por las películas en las que Brad Pitt y Edward Norton habían aparecido hasta esa fecha: 62 y 39, respectivamente.
 
-### 1.2 ¿Puedes recoger datos de toda la población?
+**1.2 ¿Puedes recoger datos de toda la población?**
 
 Sí.
 
 El número total de observaciones está limitado por las películas en las que Brad Pitt y Edward Norton han aparecido hasta la fecha: 62 y 39, respectivamente.
 
-### 2. ¿Qué tamaños del efecto son de interés?
+**2. ¿Qué tamaños del efecto son de interés?**
 
 El menor tamaño del efecto de interés siempre es objeto de discusión entre colegas. En este caso, personalmente considero que una diferencia en las valoraciones inferior a 0,5 puntos en una escala de 10 —como la utilizada por IMDB— es suficientemente pequeña como para respaldar mi predicción de que las películas de Brad Pitt y Edward Norton son igual de buenas. En otras palabras, si la diferencia bruta es mayor que −0,5 y menor que 0,5, concluiré que los dos conjuntos de películas reciben valoraciones igualmente buenas.
 
@@ -227,11 +227,11 @@ TOSTER::power_t_TOST(
 
 Podemos concluir que tendremos una potencia razonable para la prueba planificada, dado nuestro menor tamaño del efecto de interés y nuestro nivel alfa elevado.
 
-### 3. Objetivo inferencial
+**3. Objetivo inferencial**
 
 Nuestro objetivo inferencial es realizar una prueba estadística controlando las tasas de error y, por tanto, planeamos tomar una decisión. Utilizamos el análisis de sensibilidad anterior para justificar nuestras tasas de error, aunque también podríamos haber empleado un análisis de potencia de compromiso minimizando más formalmente la tasa de error combinada [@maier_justify_2022].
 
-### 4. Valor informativo del estudio
+**4. Valor informativo del estudio**
 
 Por último, evaluamos el valor informativo del estudio. En primer lugar, utilizamos todos los datos disponibles y hemos intentado reducir la tasa combinada de errores de tipo I y tipo II equilibrando en cierta medida ambas tasas. Nuestro objetivo es tomar una decisión a partir de los datos disponibles. La decisión tiene una probabilidad relativamente alta de ser errónea, pero el valor del estudio consiste en permitirnos decidir lo mejor posible dadas las limitaciones de los datos. Por tanto, si alguien quiere saber si las películas protagonizadas por Brad Pitt y Edward Norton son realmente igual de buenas, nuestros resultados ofrecerán la mejor respuesta disponible actualmente, aunque después del estudio siga existiendo una incertidumbre considerable.
 
