@@ -25,14 +25,13 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup Quarto and TinyTeX
+      - name: Setup Quarto
         uses: quarto-dev/quarto-actions/setup@v2
         with:
           version: 1.10.18
-          tinytex: true
 
-      - name: Render Quarto project
-        uses: quarto-dev/quarto-actions/render@v2
+      - name: Render HTML
+        run: quarto render --to html
 
       - name: Publish to GitHub Pages
         uses: quarto-dev/quarto-actions/publish@v2
