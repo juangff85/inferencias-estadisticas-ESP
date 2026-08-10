@@ -1,0 +1,50 @@
+name: Test book downloads
+
+on:
+  push:
+    paths:
+      - '.github/workflows/test-book-downloads.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  test-downloads:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: 1.10.18
+
+      - name: Install TinyTeX
+        run: quarto install tinytex --no-prompt
+
+      - name: Test ePub and PDF renders
+        shell: bash
+        run: |
+          set +e
+          quarto render --to epub > render-epub.log 2>&1
+          epub_status=$?
+          quarto render --to pdf > render-pdf.log 2>&1
+          pdf_status=$?
+          echo "$epub_status" > render-epub.status
+          echo "$pdf_status" > render-pdf.status
+          set -e
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add render-epub.log render-pdf.log render-epub.status render-pdf.status docs
+          if ! git diff --cached --quiet; then
+            git commit -m "Registra prueba de PDF y ePub"
+            git push origin main
+          fi
+
+          test "$epub_status" -eq 0
+          test "$pdf_status" -eq 0
