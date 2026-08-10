@@ -1,0 +1,38 @@
+name: Restore Pages HTML
+
+on:
+  push:
+    paths:
+      - '.github/workflows/restore-pages-docs.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  restore-html:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: 1.10.18
+
+      - name: Render HTML book
+        run: quarto render --to html
+
+      - name: Commit rendered site to docs
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A docs
+          if ! git diff --cached --quiet; then
+            git commit -m "Reconstruye el sitio HTML completo en docs"
+            git push origin main
+          fi
