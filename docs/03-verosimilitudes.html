@@ -2,23 +2,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.7.33">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>3&nbsp; Verosimilitudes – Mejora de tus Inferencias Estadísticas</title>
 <style>
-/* Default styles provided by pandoc.
-** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-*/
+code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: 1.5em;}
-div.column{flex: auto;}
-@media screen {
-div.columns{gap: min(4vw, 1.5em);}
-div.column{overflow-x: auto;}
-}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -82,7 +76,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-485d01fc63b59abcd3ee1bf1e8e2748d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-7cf928e34377d226d99ca54be4f0e55f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -97,7 +91,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "No se han encontrado resultados",
+    "search-no-results-text": "Sin resultados",
     "search-matching-documents-text": "documentos encontrados",
     "search-copy-link-title": "Copiar el enlace en la búsqueda",
     "search-hide-matches-text": "Ocultar resultados adicionales",
@@ -112,7 +106,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -125,7 +119,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+      if (mathElements[i].tagName == "SPAN") {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -204,7 +198,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./04-estadistica-bayesiana.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Estadística Bayesiana</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Estadística bayesiana</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -216,25 +210,25 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./06-tamaños-del-efecto.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Tamaños del Efecto</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Tamaños del efecto</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./07-intervalos-de-confianza.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Intervalos de Confianza</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Intervalos de confianza</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./08-justificacion-del-tamaño-de-la-muestra.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Justificación del Tamaño de la Muestra</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Justificación del tamaño de la muestra</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./09-pruebas-de-equivalencia.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Pruebas de Equivalencia e Hipótesis de Intervalo</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Pruebas de equivalencia e hipótesis de intervalo</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -246,19 +240,19 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./11-meta-analisis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Meta-análisis</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Metaanálisis</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./12-deteccion-de-sesgos.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Detección de Sesgos</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Detección de sesgos</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./13-prerregistro-y-transparencia.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Prerregistro y Transparencia</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Prerregistro y transparencia</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -354,9 +348,9 @@ Pr\left(k;n,p\right)=\frac{n!}{k!\left(n-k\right)!}p^k{(1-p)}^{n-k}
 Pr\left(8;10,0.5\right)=\frac{10!}{8!\left(10-8\right)!}\times0.5^8\times{(1-0.5)}^{10-8}
 \]</span></p>
 <p>En R, esta probabilidad se calcula como:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">factorial</span>(<span class="dv">10</span>) <span class="sc">/</span> (<span class="fu">factorial</span>(<span class="dv">8</span>) <span class="sc">*</span> (<span class="fu">factorial</span>(<span class="dv">10</span> <span class="sc">-</span> <span class="dv">8</span>))) <span class="sc">*</span> <span class="fl">0.5</span><span class="sc">^</span><span class="dv">8</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fl">0.5</span>)<span class="sc">^</span>(<span class="dv">10</span> <span class="sc">-</span> <span class="dv">8</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">factorial</span>(<span class="dv">10</span>) <span class="sc">/</span> (<span class="fu">factorial</span>(<span class="dv">8</span>) <span class="sc">*</span> (<span class="fu">factorial</span>(<span class="dv">10</span> <span class="sc">-</span> <span class="dv">8</span>))) <span class="sc">*</span> <span class="fl">0.5</span><span class="sc">^</span><span class="dv">8</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fl">0.5</span>)<span class="sc">^</span>(<span class="dv">10</span> <span class="sc">-</span> <span class="dv">8</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>o utilizando la función:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="at">x =</span> <span class="dv">8</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="at">x =</span> <span class="dv">8</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Supongamos que no disponemos de ninguna otra información sobre esta moneda. —Podrías creer que la mayoría de las monedas están equilibradas; tales distribuciones previas se discutirán cuando hablemos de <a href="./04-estadistica-bayesiana.html">estadística bayesiana</a> en el capítulo siguiente—. Cuando calculamos una probabilidad, suponemos que el modelo es conocido y calculamos la probabilidad de observar un resultado concreto. La ecuación <em>Pr(k;n,p)</em> proporciona la probabilidad de observar <em>k</em> éxitos en <em>n</em> ensayos cuando la probabilidad de éxito de una moneda es <em>p</em>. Pero, a partir de los datos que hemos observado, podemos plantear la pregunta inversa: ¿qué valor de <em>p</em> hará que los datos observados sean <strong>más verosímiles</strong>? Cuando calculamos una verosimilitud, suponemos que los datos son conocidos y hacemos una inferencia sobre el parámetro más verosímil del modelo. Para responder a esta pregunta, podemos introducir los valores de <em>k</em> y <em>n</em> y encontrar qué valor de <em>p</em> maximiza esta función. <a href="https://en.wikipedia.org/wiki/Ronald_Fisher">Ronald Fisher</a> denominó a esto <strong>estimación de máxima verosimilitud</strong>. Se considera uno de los desarrollos más importantes de la estadística del siglo XX, y Fisher publicó su primer artículo sobre el tema en 1912, cuando tenía 22 años y cursaba su tercer año de universidad (Aldrich, 1997). Como <em>p</em> puede adoptar cualquier valor entre 0 y 1, podemos representar todos los valores en lo que se conoce como <em>función de verosimilitud</em>, de modo que podamos ver el máximo con mayor facilidad.</p>
 <div id="fig-like1" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -494,7 +488,7 @@ Figura&nbsp;3.8: Razón de verosimilitudes del valor <em>t</em> observado bajo <
 <li>0.8</li>
 </ul>
 <p><strong>P2</strong>: La curva de verosimilitud asciende y desciende, excepto en los casos extremos en los que se observan 0 caras o solamente caras. Copia el código siguiente —recuerda que puedes pulsar el icono del portapapeles situado en la esquina superior derecha del bloque de código—, cambia el número de éxitos a 0 caras (<code>x &lt;- 0</code>) en 10 lanzamientos (<code>n &lt;- 10</code>) y ejecuta el script. ¿Qué aspecto tiene la curva de verosimilitud?</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="co"># fija el número total de ensayos</span></span>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="co"># fija el número total de ensayos</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">5</span> <span class="co"># fija el número de éxitos</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>H0 <span class="ot">&lt;-</span> <span class="fl">0.5</span> <span class="co"># especifica una hipótesis que quieras comparar</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>H1 <span class="ot">&lt;-</span> <span class="fl">0.4</span> <span class="co"># especifica otra hipótesis que quieras comparar</span></span>
@@ -513,7 +507,7 @@ Figura&nbsp;3.8: Razón de verosimilitudes del valor <em>t</em> observado bajo <
 <span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="fu">paste</span>(<span class="st">"Razón de verosimilitudes H0/H1:"</span>,</span>
 <span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>            <span class="fu">round</span>(<span class="fu">dbinom</span>(x, n, H0) <span class="sc">/</span> <span class="fu">dbinom</span>(x, n, H1), <span class="at">digits =</span> <span class="dv">2</span>),</span>
 <span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>            <span class="st">" Razón de verosimilitudes H1/H0:"</span>,</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>            <span class="fu">round</span>(<span class="fu">dbinom</span>(x, n, H1) <span class="sc">/</span> <span class="fu">dbinom</span>(x, n, H0), <span class="at">digits =</span> <span class="dv">2</span>)))</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>            <span class="fu">round</span>(<span class="fu">dbinom</span>(x, n, H1) <span class="sc">/</span> <span class="fu">dbinom</span>(x, n, H0), <span class="at">digits =</span> <span class="dv">2</span>)))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>La curva de verosimilitud es una línea horizontal.</li>
 <li>El script devuelve un mensaje de error: no es posible representar la curva de verosimilitud para 0 caras.</li>
@@ -703,14 +697,13 @@ Figura&nbsp;3.8: Razón de verosimilitudes del valor <em>t</em> observado bajo <
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
         }
-      }
-      return codeEl.innerText;
+        return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
@@ -1059,8 +1052,8 @@ Figura&nbsp;3.8: Razón de verosimilitudes del valor <em>t</em> observado bajo <
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./04-estadistica-bayesiana.html" class="pagination-link" aria-label="Estadística Bayesiana">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Estadística Bayesiana</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./04-estadistica-bayesiana.html" class="pagination-link" aria-label="Estadística bayesiana">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Estadística bayesiana</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

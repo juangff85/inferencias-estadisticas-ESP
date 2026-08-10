@@ -2,23 +2,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.7.33">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>11&nbsp; Metaanálisis – Mejora de tus Inferencias Estadísticas</title>
 <style>
-/* Default styles provided by pandoc.
-** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-*/
+code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: 1.5em;}
-div.column{flex: auto;}
-@media screen {
-div.columns{gap: min(4vw, 1.5em);}
-div.column{overflow-x: auto;}
-}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -65,6 +59,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -101,7 +96,7 @@ div.csl-indent {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-485d01fc63b59abcd3ee1bf1e8e2748d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-7cf928e34377d226d99ca54be4f0e55f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -116,7 +111,7 @@ div.csl-indent {
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "No se han encontrado resultados",
+    "search-no-results-text": "Sin resultados",
     "search-matching-documents-text": "documentos encontrados",
     "search-copy-link-title": "Copiar el enlace en la búsqueda",
     "search-hide-matches-text": "Ocultar resultados adicionales",
@@ -131,7 +126,7 @@ div.csl-indent {
 }</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -144,7 +139,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+      if (mathElements[i].tagName == "SPAN") {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -271,13 +266,13 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./12-deteccion-de-sesgos.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Detección de Sesgos</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Detección de sesgos</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./13-prerregistro-y-transparencia.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Prerregistro y Transparencia</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Prerregistro y transparencia</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -427,13 +422,13 @@ window.addEventListener('message', function(e) {
 </script>
 <p>En el eje x, vemos la puntuación de CI de un gemelo, y en el eje y vemos la puntuación de CI del segundo gemelo, para cada par. La línea diagonal de puntos negra ilustra la correlación verdadera (0,55), mientras que la línea roja muestra la correlación observada (en este caso, <em>r</em> = 0,43). La pendiente de la línea roja está determinada por la correlación observada. El área sombreada en azul es el intervalo de confianza del 95 % alrededor del coeficiente de correlación observado. Como vimos en el capítulo sobre <a href="07-intervalos-de-confianza.html">intervalos de confianza</a>, el 95 % de las veces (a largo plazo) el área azul contendrá la correlación verdadera (la línea negra de puntos). Como en los ejemplos basados ​​en medias, si aumentamos el tamaño de la muestra en la visualización interactiva a <em>N</em> = 300 vemos que el intervalo de confianza es considerablemente más estrecho. Como consecuencia, la mayoría de las veces la correlación en la muestra es mucho más cercana a la verdadera correlación en la población. A medida que aumenta el tamaño de la muestra, la estimación de la correlación se vuelve más precisa, siguiendo la fórmula del error estándar de una correlación:</p>
 <p><span class="math display">\[SE_{r_{xy}} = \frac{1 - r^2_{xy}}{\sqrt{(n - 2)}}\]</span></p>
-<p>Debido a que las estimaciones de medias, desviaciones estándar o correlaciones basadas en muestras pequeñas tienen una incertidumbre relativamente grande, es preferible recolectar muestras más grandes. Sin embargo, esto no siempre es posible y, a menudo, el objetivo de un estudio no es proporcionar una estimación precisa, sino probar una hipótesis. Un estudio a menudo requiere menos observaciones para lograr suficiente potencia para una prueba de hipótesis que las necesarias para poder estimar con precisión un parámetro <span class="citation" data-cites="maxwell_sample_2008">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-maxwell_sample_2008" role="doc-biblioref">Maxwell et&nbsp;al. 2008</a>)</span>. Por lo tanto, los científicos suelen confiar en metaanálisis, en los que se combinan datos de múltiples estudios, para proporcionar estimaciones precisas.</p>
+<p>Debido a que las estimaciones de medias, desviaciones estándar o correlaciones basadas en muestras pequeñas tienen una incertidumbre relativamente grande, es preferible recolectar muestras más grandes. Sin embargo, esto no siempre es posible y, a menudo, el objetivo de un estudio no es proporcionar una estimación precisa, sino probar una hipótesis. Un estudio a menudo requiere menos observaciones para lograr suficiente potencia para una prueba de hipótesis que las necesarias para poder estimar con precisión un parámetro <span class="citation" data-cites="maxwell_sample_2008">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-maxwell_sample_2008" role="doc-biblioref">Maxwell, Kelley, y Rausch 2008</a>)</span>. Por lo tanto, los científicos suelen confiar en metaanálisis, en los que se combinan datos de múltiples estudios, para proporcionar estimaciones precisas.</p>
 </section>
 <section id="un-metaanálisis-de-un-solo-estudio" class="level2" data-number="11.2">
 <h2 data-number="11.2" class="anchored" data-anchor-id="un-metaanálisis-de-un-solo-estudio"><span class="header-section-number">11.2</span> Un metaanálisis de un solo estudio</h2>
 <p>Comencemos con algo que casi nunca hará en la vida real: un metaanálisis de un solo estudio. Esto es un poco absurdo, porque una simple prueba <em>t</em> o una correlación le dirán lo mismo; sin embargo, resulta instructivo comparar una prueba <em>t</em> con un metaanálisis de un solo estudio, antes de ver cómo se combinan múltiples estudios en un metaanálisis.</p>
 <p>Una diferencia entre una prueba <em>t</em> independiente y un metaanálisis es que la primera se realiza sobre los datos sin procesar, mientras que el segundo suele realizarse sobre los tamaños del efecto de los estudios individuales. El paquete <code>metafor</code> de R contiene una función muy útil, <code>escalc</code>, que permite calcular los tamaños del efecto, sus varianzas y los intervalos de confianza de sus estimaciones. Comencemos calculando el tamaño del efecto que introduciremos en nuestro metaanálisis. Como se explica en el capítulo sobre <a href="06-tamaños-del-efecto.html">tamaños del efecto</a>, los dos tamaños principales utilizados en los metaanálisis de variables continuas son la diferencia de medias estandarizada (<em>d</em>) y la correlación (<em>r</em>), aunque también es posible realizar metaanálisis de variables dicotómicas, como veremos más adelante. El siguiente código calcula la <strong>diferencia de medias estandarizada</strong> (DME) de dos grupos independientes a partir de sus <strong>medias</strong> —m1i y m2i—, <strong>desviaciones estándar</strong> —sd1i y sd2i— y números de observaciones —n1i y n2i—. De forma predeterminada, <code>metafor</code> calcula la <strong><em>g</em> de Hedges</strong>, que es la versión insesgada de la <em>d</em> de Cohen (consulte la sección sobre la <a href="06-tamaños-del-efecto.html#sec-cohend"><em>d</em> de Cohen</a>).</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(metafor)</span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(metafor)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">escalc</span>(<span class="at">measure =</span> <span class="st">"SMD"</span>,</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">n1i =</span> <span class="dv">50</span>, <span class="co"># tamaño muestral del grupo 1</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">m1i =</span> <span class="fl">5.6</span>, <span class="co"># media observada del grupo 1</span></span>
@@ -441,7 +436,7 @@ window.addEventListener('message', function(e) {
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">n2i =</span> <span class="dv">50</span>, <span class="co"># tamaño muestral del grupo 2</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">m2i =</span> <span class="fl">4.9</span>, <span class="co"># media observada del grupo 2</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">sd2i =</span> <span class="fl">1.3</span>) <span class="co"># desviación estándar observada del grupo 2</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>g</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>g</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="text"><code>         yi        vi
 1 0.5552575 0.0415416</code></pre>
 <p>El resultado proporciona la <em>g</em> de Hedges —en la columna <code>yi</code>, que siempre devuelve el tamaño del efecto; en este caso, la diferencia de medias estandarizada— y la varianza de su estimación —en <code>vi</code>—. Como se explica en las fórmulas 4.18 a 4.24 de <span class="citation" data-cites="borenstein_introduction_2009">Borenstein (<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-borenstein_introduction_2009" role="doc-biblioref">2009</a>)</span>, la diferencia de medias estandarizada <em>g</em> de Hedges se calcula dividiendo la diferencia entre medias por la desviación estándar combinada y multiplicando el resultado por un factor de corrección, J:</p>
@@ -456,8 +451,8 @@ g = J \times \ \left( \frac{{\overline{X}}_{1} - {\overline{X}}_{2}}{S_{\text{wi
 Vg = J^{2} \times \left( \frac{n_{1} + n_{2}}{n_{1}n_{2}} + \frac{g^{2}}{2(n_{1} + n_{2})} \right)
 \]</span></p>
 <p>La varianza de la diferencia de medias estandarizada depende únicamente del tamaño de la muestra (n1 y n2) y del valor de la diferencia de medias estandarizada en sí. <strong>Para realizar los cálculos necesarios para un metaanálisis, necesita los tamaños del efecto y su varianza</strong>. Esto significa que si ha codificado los tamaños del efecto y los tamaños de muestra (por grupo) de los estudios en la literatura, tiene la información que necesita para realizar un metaanálisis. No es necesario calcular manualmente el tamaño del efecto y su varianza utilizando las dos fórmulas anteriores: la función <code>escalc</code> lo hace por usted. Ahora podemos realizar fácilmente un metaanálisis de un solo estudio utilizando la función <code>rma</code> en el paquete <code>metafor</code>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>meta_res <span class="ot">&lt;-</span> <span class="fu">rma</span>(yi, vi, <span class="at">data =</span> g)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>meta_res</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>meta_res <span class="ot">&lt;-</span> <span class="fu">rma</span>(yi, vi, <span class="at">data =</span> g)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>meta_res</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="text"><code>Modelo de efectos aleatorios (k = 1; estimador de tau^2: REML)
 
 tau^2 (cantidad estimada de heterogeneidad total): 0
@@ -477,9 +472,9 @@ estimación      ee  valor z  valor p   ci.lb   ci.ub
 Códigos de significación: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <p>En «Resultados del modelo» encontramos el tamaño del efecto <em>g</em> de Hedges (0,56), el error estándar (0,20), el estadístico <em>Z</em> con el que se contrasta la diferencia de medias frente a la hipótesis nula (2,72) y el intervalo de confianza del 95 % [ci.lb = 0,16; ci.ub = 0,95] alrededor del tamaño del efecto. La amplitud del intervalo puede especificarse mediante la opción <code>level =</code>. También vemos el valor <em>p</em> de la prueba del tamaño del efecto metaanalítico frente a 0. En este caso podemos rechazar la hipótesis nula (<em>p</em> = 0,006).</p>
 <p>En un metaanálisis, se utiliza una prueba <em>Z</em> para examinar si la hipótesis nula puede rechazarse. Esto supone un modelo de tamaño de efecto aleatorio distribuido normalmente. Normalmente, se analizarían datos de un solo estudio con dos grupos utilizando una prueba <em>t</em>, que, como cabría esperar, utiliza una distribución <em>t</em>. No sé por qué los cálculos estadísticos a veces se preocupan mucho por una pequeña magnitud de sesgo (la diferencia entre el tamaño del efecto <em>d</em> y <em>g</em>, por ejemplo) y a veces no (la diferencia entre <em>Z</em> y <em>t</em>), pero los metaanalistas parecen contentos con las puntuaciones <em>Z</em> (de hecho, con tamaños de muestra suficientemente grandes (lo que suele ser cierto en un metaanálisis) la diferencia entre una prueba <em>Z</em> y una prueba <em>t</em> es pequeña). Si comparamos directamente un metaanálisis de un solo estudio basado en una prueba <em>Z</em> con una prueba <em>t</em>, veremos algunas pequeñas diferencias en los resultados.</p>
-<p>Como se explica en el capítulo sobre <a href="06-tamaños-del-efecto.html">tamaños del efecto</a> podemos calcular directamente el tamaño del efecto <em>g</em> de Hedges (y su intervalo de confianza del 95 %) usando MOTE <span class="citation" data-cites="buchanan_mote_2017">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-buchanan_mote_2017" role="doc-biblioref">Buchanan et&nbsp;al. 2017</a>)</span>. El paquete MOTE utiliza la distribución <em>t</em> al calcular los intervalos de confianza en torno al tamaño del efecto (y podemos ver que esto supone solo una pequeña diferencia en comparación con el uso de la distribución <em>Z</em> en un metaanálisis con 50 observaciones en cada grupo).</p>
+<p>Como se explica en el capítulo sobre <a href="06-tamaños-del-efecto.html">tamaños del efecto</a> podemos calcular directamente el tamaño del efecto <em>g</em> de Hedges (y su intervalo de confianza del 95 %) usando MOTE <span class="citation" data-cites="buchanan_mote_2017">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-buchanan_mote_2017" role="doc-biblioref">Buchanan, Scofield, y Valentine 2017</a>)</span>. El paquete MOTE utiliza la distribución <em>t</em> al calcular los intervalos de confianza en torno al tamaño del efecto (y podemos ver que esto supone solo una pequeña diferencia en comparación con el uso de la distribución <em>Z</em> en un metaanálisis con 50 observaciones en cada grupo).</p>
 <p>El valor <em>t</em> es 2,835 y el valor <em>p</em> es 0,006. Los resultados son muy similares a los calculados al realizar un metaanálisis, con <em>g</em> = 0,55 e IC del 95 % [0,16; 0,94], donde el tamaño del efecto y el límite superior del intervalo de confianza difieren solo 0,01 después del redondeo.</p>
-<p>Ahora es común visualizar los resultados de un metaanálisis mediante un diagrama de bosque. Según <span class="citation" data-cites="cooper_handbook_2009">Cooper et&nbsp;al. (<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-cooper_handbook_2009" role="doc-biblioref">2009</a>)</span>, el primer diagrama de bosque se publicó en 1978 <span class="citation" data-cites="freiman_importance_1978">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-freiman_importance_1978" role="doc-biblioref">Freiman et&nbsp;al. 1978</a>)</span>, con el objetivo de visualizar un gran conjunto de estudios que habían concluido la ausencia de un efecto basándose en resultados no significativos en estudios pequeños (ver <a href="#fig-freiman1978" class="quarto-xref">Figura&nbsp;<span>11.3</span></a>). Al trazar la amplitud del intervalo de confianza para cada estudio, es posible ver que aunque los estudios no rechazan un tamaño del efecto de 0 y, por lo tanto, no fueron significativos, muchos estudios tampoco rechazaron la presencia de un efecto favorable del tratamiento que fuera relevante. Para hacer que los estudios grandes sean más notorios en un diagrama de bosque, las versiones posteriores agregaron un cuadrado para indicar el tamaño del efecto estimado, donde el tamaño del cuadrado era proporcional al peso que se asignará al estudio al calcular el efecto combinado.</p>
+<p>Ahora es común visualizar los resultados de un metaanálisis mediante un diagrama de bosque. Según <span class="citation" data-cites="cooper_handbook_2009">Cooper, Hedges, y Valentine (<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-cooper_handbook_2009" role="doc-biblioref">2009</a>)</span>, el primer diagrama de bosque se publicó en 1978 <span class="citation" data-cites="freiman_importance_1978">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-freiman_importance_1978" role="doc-biblioref">Freiman et&nbsp;al. 1978</a>)</span>, con el objetivo de visualizar un gran conjunto de estudios que habían concluido la ausencia de un efecto basándose en resultados no significativos en estudios pequeños (ver <a href="#fig-freiman1978" class="quarto-xref">Figura&nbsp;<span>11.3</span></a>). Al trazar la amplitud del intervalo de confianza para cada estudio, es posible ver que aunque los estudios no rechazan un tamaño del efecto de 0 y, por lo tanto, no fueron significativos, muchos estudios tampoco rechazaron la presencia de un efecto favorable del tratamiento que fuera relevante. Para hacer que los estudios grandes sean más notorios en un diagrama de bosque, las versiones posteriores agregaron un cuadrado para indicar el tamaño del efecto estimado, donde el tamaño del cuadrado era proporcional al peso que se asignará al estudio al calcular el efecto combinado.</p>
 <div id="fig-freiman1978" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-freiman1978-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -506,7 +501,7 @@ Figura&nbsp;11.4: Diagrama de bosque para un solo estudio.
 <h2 data-number="11.3" class="anchored" data-anchor-id="simulación-de-metaanálisis-de-diferencias-estandarizadas-de-medias"><span class="header-section-number">11.3</span> Simulación de metaanálisis de diferencias estandarizadas de medias</h2>
 <p>Los metaanálisis se vuelven un poco más interesantes cuando los utilizamos para analizar los resultados de múltiples estudios. Cuando se combinan varios estudios en un metaanálisis, las estimaciones del tamaño del efecto no se promedian sin más, sino que se <strong>ponderan</strong> de acuerdo con su <strong>precisión</strong>, determinada por el error estándar, que a su vez depende del tamaño muestral del estudio. Por tanto, cuanto mayor sea la muestra de un estudio individual, mayor será su peso en el metaanálisis y más influirá en la estimación metaanalítica del tamaño del efecto.</p>
 <p>Una forma intuitiva de aprender sobre los metaanálisis es simular estudios y metaanalizarlos. El siguiente código simula 12 estudios. Hay un efecto verdadero en los estudios simulados, ya que la diferencia de medias en la población es 0,4 (y dada la desviación estándar de 1, el <em>d</em> de Cohen = 0,4 también). Los estudios varían en el tamaño de su muestra entre 30 observaciones y 100 observaciones por condición. Se realiza el metaanálisis y se crea un diagrama de bosque.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a></span>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">94</span>)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>nSims <span class="ot">&lt;-</span> <span class="dv">12</span> <span class="co"># número de estudios simulados</span></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fl">0.4</span> <span class="co"># media poblacional del grupo 1</span></span>
@@ -517,9 +512,9 @@ Figura&nbsp;11.4: Diagrama de bosque para un solo estudio.
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nSims) { <span class="co"># para cada estudio simulado</span></span>
 <span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">30</span><span class="sc">:</span><span class="dv">100</span>, <span class="dv">1</span>) <span class="co"># elegir un tamaño muestral por grupo</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> n, <span class="at">mean =</span> m1, <span class="at">sd =</span> sd1) </span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> n, <span class="at">mean =</span> m1, <span class="at">sd =</span> sd1)</span>
 <span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> n, <span class="at">mean =</span> m2, <span class="at">sd =</span> sd2)</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  metadata[i,<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>] <span class="ot">&lt;-</span> metafor<span class="sc">::</span><span class="fu">escalc</span>(<span class="at">n1i =</span> n, <span class="at">n2i =</span> n, <span class="at">m1i =</span> <span class="fu">mean</span>(x), </span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  metadata[i,<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>] <span class="ot">&lt;-</span> metafor<span class="sc">::</span><span class="fu">escalc</span>(<span class="at">n1i =</span> n, <span class="at">n2i =</span> n, <span class="at">m1i =</span> <span class="fu">mean</span>(x),</span>
 <span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">m2i =</span> <span class="fu">mean</span>(y), <span class="at">sd1i =</span> <span class="fu">sd</span>(x), <span class="at">sd2i =</span> <span class="fu">sd</span>(y), <span class="at">measure =</span> <span class="st">"SMD"</span>)</span>
 <span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> metafor<span class="sc">::</span><span class="fu">rma</span>(yi, vi, <span class="at">data =</span> metadata, <span class="at">method =</span> <span class="st">"FE"</span>)</span>
@@ -535,7 +530,7 @@ Figura&nbsp;11.4: Diagrama de bosque para un solo estudio.
 <span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.4</span>, <span class="fl">1.5</span>),</span>
 <span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>  <span class="at">alim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.2</span>, <span class="dv">1</span>),</span>
 <span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>  <span class="at">textpos =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.4</span>, <span class="fl">1.5</span>),</span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>  <span class="at">header =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>  <span class="at">header =</span> <span class="cn">TRUE</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div id="fig-meta-sim" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-meta-sim-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -629,7 +624,7 @@ Códigos de significación: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code
 OR = \ \frac{80 \times 30}{20\  \times 70} = 1,714
 \]</span></p>
 <p>Podemos simular estudios con resultados dicotómicos, donde fijamos el porcentaje de éxitos y fracasos en la condición experimental y de control. En el siguiente script, de forma predeterminada el porcentaje de éxito en la condición experimental es del 70 % y en la condición de control es del 50 %.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(metafor)</span>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(metafor)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">5333</span>)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>nSims <span class="ot">&lt;-</span> <span class="dv">12</span> <span class="co"># número de experimentos simulados</span></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -654,17 +649,17 @@ OR = \ \frac{80 \times 30}{20\  \times 70} = 1,714
 <span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Combinar datos en un marco de datos</span></span>
 <span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>metadata <span class="ot">&lt;-</span> <span class="fu">cbind</span>(ai, bi, ci, di)</span>
 <span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear un objeto de cálculo a partir de un marco de datos de metadatos</span></span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>metadata <span class="ot">&lt;-</span> <span class="fu">escalc</span>(<span class="at">measure =</span> <span class="st">"OR"</span>, </span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>                   <span class="at">ai =</span> ai, <span class="at">bi =</span> bi, <span class="at">ci =</span> ci, <span class="at">di =</span> di, </span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>metadata <span class="ot">&lt;-</span> <span class="fu">escalc</span>(<span class="at">measure =</span> <span class="st">"OR"</span>,</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>                   <span class="at">ai =</span> ai, <span class="at">bi =</span> bi, <span class="at">ci =</span> ci, <span class="at">di =</span> di,</span>
 <span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>                   <span class="at">data =</span> metadata)</span>
 <span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Realizar metaanálisis</span></span>
 <span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">rma</span>(yi, vi, <span class="at">data =</span> metadata)</span>
 <span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear diagrama de bosque. Uso de argumentos ilab e ilab.xpos para sumar recuentos</span></span>
 <span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">2</span>))</span>
 <span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">bg =</span> backgroundcolor)</span>
-<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a><span class="fu">forest</span>(result, </span>
-<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>       <span class="at">ilab =</span> <span class="fu">cbind</span>(metadata<span class="sc">$</span>ai, metadata<span class="sc">$</span>bi, metadata<span class="sc">$</span>ci, metadata<span class="sc">$</span>di), </span>
-<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>       <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">8</span>), </span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a><span class="fu">forest</span>(result,</span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>       <span class="at">ilab =</span> <span class="fu">cbind</span>(metadata<span class="sc">$</span>ai, metadata<span class="sc">$</span>bi, metadata<span class="sc">$</span>ci, metadata<span class="sc">$</span>di),</span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>       <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">8</span>),</span>
 <span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>  <span class="at">alim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="dv">2</span>),</span>
 <span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>  <span class="at">ilab.xpos =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">7</span>, <span class="sc">-</span><span class="dv">6</span>, <span class="sc">-</span><span class="dv">5</span>, <span class="sc">-</span><span class="dv">4</span>),</span>
 <span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"log(odds ratio)"</span>,</span>
@@ -676,7 +671,7 @@ OR = \ \frac{80 \times 30}{20\  \times 70} = 1,714
 <span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a>  <span class="at">colout =</span> <span class="st">"#333333"</span>,</span>
 <span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a>  <span class="at">textpos =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">8</span>),</span>
 <span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a>  <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">7</span>, <span class="sc">-</span><span class="dv">6</span>, <span class="sc">-</span><span class="dv">5</span>, <span class="sc">-</span><span class="dv">4</span>), <span class="fl">14.7</span>, <span class="fu">c</span>(<span class="st">"E+"</span>, <span class="st">"E-"</span>, <span class="st">"C+"</span>, <span class="st">"C-"</span>), <span class="at">font =</span> <span class="dv">2</span>, <span class="at">cex =</span> .<span class="dv">8</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">7</span>, <span class="sc">-</span><span class="dv">6</span>, <span class="sc">-</span><span class="dv">5</span>, <span class="sc">-</span><span class="dv">4</span>), <span class="fl">14.7</span>, <span class="fu">c</span>(<span class="st">"E+"</span>, <span class="st">"E-"</span>, <span class="st">"C+"</span>, <span class="st">"C-"</span>), <span class="at">font =</span> <span class="dv">2</span>, <span class="at">cex =</span> .<span class="dv">8</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div id="fig-meta-dicotomicos" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-meta-dicotomicos-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -689,8 +684,8 @@ Figura&nbsp;11.6: Diagrama de bosque para doce estudios con resultados dicotómi
 </div>
 <p>El diagrama de bosque presenta los estudios y cuatro columnas de datos después de la etiqueta del estudio, que contienen el número de éxitos y fracasos en los grupos experimentales (E+ y E-), y el número de éxitos y fracasos en el grupo de control (C+ y C-). Imaginemos que estudiamos el porcentaje de personas que consiguen un trabajo dentro de los 6 meses posteriores a un programa de capacitación laboral, en comparación con una condición de control. En el Estudio 1, que contó con 50 participantes en cada condición, 29 personas en la condición de capacitación laboral consiguieron un trabajo en 6 meses y 21 no consiguieron trabajo. En la condición de control, 23 personas consiguieron trabajo, pero 27 no. La estimación del tamaño del efecto para el modelo de efectos aleatorios es 0,65. Siéntase libre de jugar con el script, ajustando la cantidad de estudios o los tamaños de muestra en cada estudio, para examinar el efecto que tiene en la estimación del tamaño del efecto metaanálítico.</p>
 <p>También podemos obtener los resultados de las pruebas metaanalíticas imprimiendo el resultado de la prueba. Vemos que no hubo heterogeneidad en este metaanálisis. Esto es cierto (simulamos estudios idénticos), pero es muy poco probable que suceda en la vida real, donde la variación en los tamaños del efecto entre los estudios incluidos en un metaanálisis es un escenario mucho más realista.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Imprimir los resultados del metaanálisis</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>result</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Imprimir los resultados del metaanálisis</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>result</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="text"><code>Modelo de efectos aleatorios (k = 12; estimador de tau^2: REML)
 
 tau^2 (cantidad estimada de heterogeneidad total): 0 (EE = 0.0645)
@@ -718,7 +713,7 @@ Códigos de significación: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code
 <p><span class="math display">\[I^{2} = \ \frac{(Q - k - 1)}{Q} \times 100\%\]</span></p>
 <p>donde <span class="math inline">\(k\)</span> es el número de estudios —y <span class="math inline">\(k-1\)</span>, los grados de libertad—. <span class="math inline">\(I^2\)</span> varía entre 0 y 100 y puede interpretarse como el porcentaje de la variabilidad total de un conjunto de tamaños del efecto que se debe a la heterogeneidad. Cuando <span class="math inline">\(I^2\)</span> = 0, toda la variabilidad de las estimaciones del tamaño del efecto puede explicarse por el error intraestudio; cuando <span class="math inline">\(I^2\)</span> = 50, la heterogeneidad real explica la mitad de la variabilidad total. Los valores de <span class="math inline">\(I^2\)</span> del 25 %, 50 % y 75 % pueden interpretarse como heterogeneidad baja, media y alta. Por último, en un metaanálisis de efectos aleatorios, <span class="math inline">\(\tau^2\)</span> estima la varianza de los efectos verdaderos y <span class="math inline">\(\tau\)</span> es la desviación estándar estimada, expresada en la misma escala que el tamaño del efecto. Una ventaja de <span class="math inline">\(\tau^2\)</span> es que no depende de la precisión, a diferencia de <span class="math inline">\(I^2\)</span>, que tiende al 100 % cuando los estudios incluidos en el metaanálisis son muy grandes <span class="citation" data-cites="rucker_undue_2008">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-rucker_undue_2008" role="doc-biblioref">Rücker et&nbsp;al. 2008</a>)</span>. Su desventaja es que <span class="math inline">\(\tau^2\)</span> resulta más difícil de interpretar <span class="citation" data-cites="harrer_doing_2021">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-harrer_doing_2021" role="doc-biblioref">Harrer et&nbsp;al. 2021</a>)</span>.</p>
 <p>El siguiente script simula un metaanálisis similar al ejemplo anterior de diferencias de medias estandarizadas, pero introduce una pequeña variación. De los 30 estudios, 15 se generan a partir de una diferencia de medias verdadera de 0,2, mientras que los otros 15 se basan en un tamaño del efecto verdadero de 0,5. Por tanto, en este conjunto varía el tamaño del efecto verdadero y existe heterogeneidad real. Usamos la función <code>confint</code> del paquete <code>metafor</code> para obtener <span class="math inline">\(I^2\)</span> y <span class="math inline">\(\tau^2\)</span> junto con sus intervalos de confianza, y observamos que la prueba de heterogeneidad es estadísticamente significativa. En otras palabras, concluiríamos que el tamaño del efecto metaanalítico difiere estadísticamente de 0, pero también que existe variabilidad no explicada entre los tamaños del efecto y que estos no son iguales en todos los estudios del metaanálisis.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(metafor)</span>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(metafor)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">3</span>)</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>nSims <span class="ot">&lt;-</span> <span class="dv">30</span> <span class="co"># número de experimentos simulados (debe ser divisible por 2)</span></span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>metadata <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">yi =</span> <span class="fu">numeric</span>(<span class="dv">0</span>), <span class="at">vi =</span> <span class="fu">numeric</span>(<span class="dv">0</span>)) <span class="co"># crear el marco de datos</span></span>
@@ -765,7 +760,7 @@ Códigos de significación: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code
 <span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">rma</span>(yi, vi, <span class="at">data =</span> metadata, <span class="at">slab =</span> <span class="fu">paste</span>(true_es))</span>
 <span id="cb10-46"><a href="#cb10-46" aria-hidden="true" tabindex="-1"></a><span class="co"># Imprimir los resultados del metaanálisis</span></span>
 <span id="cb10-47"><a href="#cb10-47" aria-hidden="true" tabindex="-1"></a>result</span>
-<span id="cb10-48"><a href="#cb10-48" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(result) <span class="co"># obtener los intervalos de confianza de los índices de heterogeneidad</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb10-48"><a href="#cb10-48" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(result) <span class="co"># obtener los intervalos de confianza de los índices de heterogeneidad</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="text"><code>Modelo de efectos aleatorios (k = 30; estimador de tau^2: REML)
 
 tau^2 (cantidad estimada de heterogeneidad total): 0.0274 (EE = 0.0160)
@@ -801,16 +796,16 @@ Figura&nbsp;11.7: Diagrama de bosque de 30 estudios con dos subconjuntos de estu
 </figure>
 </div>
 <p>De acuerdo con la prueba de heterogeneidad, podemos rechazar la hipótesis nula de que no existe heterogeneidad en el metaanálisis. Estas pruebas tienen sus propias tasas de error de tipo I y de tipo II y, cuando el número de estudios es pequeño —como en nuestro ejemplo, <em>n</em> = 12—, pueden tener poca potencia estadística. Si elimina el comando <code>set.seed</code> y ejecuta el código varias veces, verá que la prueba de heterogeneidad a menudo no será significativa, aunque en la simulación exista heterogeneidad real. En metaanálisis grandes, la potencia puede ser tan elevada que la prueba siempre produzca un valor <em>p</em> lo bastante pequeño como para rechazar la hipótesis nula; en ese caso, es importante examinar la estimación de <span class="math inline">\(I^2\)</span>.</p>
-<p>Recientemente se ha prestado considerable atención a la posibilidad de que los tamaños del efecto dentro de las líneas de investigación presenten una heterogeneidad sustancial <span class="citation" data-cites="bryan_behavioural_2021">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-bryan_behavioural_2021" role="doc-biblioref">Bryan et&nbsp;al. 2021</a>)</span>. Una heterogeneidad elevada puede afectar a la potencia de los estudios y, por tanto, tiene consecuencias para su planificación <span class="citation" data-cites="kenny_unappreciated_2019">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-kenny_unappreciated_2019" role="doc-biblioref">Kenny y Judd 2019</a>)</span>. Aunque la heterogeneidad parece ser baja en los estudios de replicación directa <span class="citation" data-cites="olsson-collentine_heterogeneity_2020">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-olsson-collentine_heterogeneity_2020" role="doc-biblioref"><span class="nocase">Olsson-Collentine et&nbsp;al.</span> 2020</a>)</span>, es elevada en la mayoría de los metaanálisis, lo que, según se ha argumentado, refleja una comprensión insuficiente de los efectos en esas líneas de investigación <span class="citation" data-cites="linden_heterogeneity_2021">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-linden_heterogeneity_2021" role="doc-biblioref">Linden y Hönekopp 2021</a>)</span>.</p>
+<p>Recientemente se ha prestado considerable atención a la posibilidad de que los tamaños del efecto dentro de las líneas de investigación presenten una heterogeneidad sustancial <span class="citation" data-cites="bryan_behavioural_2021">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-bryan_behavioural_2021" role="doc-biblioref">Bryan, Tipton, y Yeager 2021</a>)</span>. Una heterogeneidad elevada puede afectar a la potencia de los estudios y, por tanto, tiene consecuencias para su planificación <span class="citation" data-cites="kenny_unappreciated_2019">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-kenny_unappreciated_2019" role="doc-biblioref">Kenny y Judd 2019</a>)</span>. Aunque la heterogeneidad parece ser baja en los estudios de replicación directa <span class="citation" data-cites="olsson-collentine_heterogeneity_2020">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-olsson-collentine_heterogeneity_2020" role="doc-biblioref">Olsson-Collentine, Wicherts, y van Assen 2020</a>)</span>, es elevada en la mayoría de los metaanálisis, lo que, según se ha argumentado, refleja una comprensión insuficiente de los efectos en esas líneas de investigación <span class="citation" data-cites="linden_heterogeneity_2021">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-linden_heterogeneity_2021" role="doc-biblioref">Linden y Hönekopp 2021</a>)</span>.</p>
 </section>
 <section id="exploración-de-la-heterogeneidad-mediante-análisis-de-subgrupos" class="level2" data-number="11.7">
 <h2 data-number="11.7" class="anchored" data-anchor-id="exploración-de-la-heterogeneidad-mediante-análisis-de-subgrupos"><span class="header-section-number">11.7</span> Exploración de la heterogeneidad mediante análisis de subgrupos</h2>
 <p>Imaginemos que mientras codificamos nuestro metaanálisis notamos que en el conjunto total de estudios se utilizaron dos manipulaciones diferentes. La manipulación A fue más fuerte y, por lo tanto, teóricamente esperaríamos un efecto más fuerte, mientras que la manipulación B fue más sutil. Hemos codificado qué manipulación se utilizó en cada uno de los estudios incluidos en nuestro metaanálisis. Esto nos permite explorar si la heterogeneidad observada anteriormente puede explicarse por el tipo de manipulación. En otras palabras, estamos probando si el tamaño del efecto está moderado por el tipo de manipulación. Este es un análisis de subgrupos. Es conceptualmente muy similar a un ANOVA donde probamos si existen diferencias entre grupos. Vemos que la prueba de moderadores arroja un resultado estadísticamente significativo, lo que significa que podemos rechazar la hipótesis nula de que los dos grupos no difieren en el tamaño del efecto. Además, no queda ninguna heterogeneidad estadísticamente significativa después de dividir los estudios en estos dos grupos.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Basado en https://www.metafor-project.org/doku.php/tips:comp_two_independent_estimates</span></span>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Basado en https://www.metafor-project.org/doku.php/tips:comp_two_independent_estimates</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Tomamos el conjunto de datos original y ejecutamos una metarregresión utilizando el argumento "mods".</span></span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Esto agrupa las estimaciones de tau, pero suele ser un buen enfoque.</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rma</span>(yi, vi, <span class="at">mods =</span> <span class="sc">~</span> group, <span class="at">data =</span> metadata, <span class="at">digits =</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rma</span>(yi, vi, <span class="at">mods =</span> <span class="sc">~</span> group, <span class="at">data =</span> metadata, <span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="text"><code>Modelo de efectos mixtos (k = 30; estimador de tau^2: REML)
 
 tau^2 (cantidad estimada de heterogeneidad residual):       0.006 (EE = 0.010)
@@ -852,7 +847,7 @@ Figura&nbsp;11.8: Dos diagramas de bosque para los dos subgrupos, con la manipul
 <p>La característica más sorprendente del ejercicio de megatonterías de Smith y Glass (1977) es su defensa de bajos estándares de juicio. Más aún, abogan y practican el abandono de juicios críticos de cualquier tipo. Una gran cantidad de informes (buenos, malos e indiferentes) se introducen en el ordenador con la esperanza de que la gente deje de preocuparse por la calidad del material en el que se basan las conclusiones. Si su abandono de la erudición se tomara en serio, una perspectiva desalentadora, aunque improbable, marcaría el comienzo de un paso hacia la era oscura de la psicología científica.</p>
 <p>La noción de que se puede destilar conocimiento científico a partir de una recopilación de estudios en su mayoría de diseño deficiente, basados ​​en juicios clínicos subjetivos, no validados y ciertamente poco fiables, y diferentes con respecto a casi todos los parámetros vitales, es difícil de eliminar. Es de esperar que este artículo sea el último estertor de tales esperanzas. «Basura entra, basura sale» es un axioma bien conocido de los especialistas en informática; se aplica aquí con igual fuerza.</p>
 </blockquote>
-<p>El problema de «basura entra, basura sale» sigue siendo una de las críticas más comunes y difíciles de abordar al metaanálisis. Es cierto que un metaanálisis no puede convertir datos de baja calidad en una buena estimación del tamaño del efecto, o tamaños del efecto altamente heterogéneos en una estimación útil de un tamaño del efecto que se generalice a todos los estudios incluidos en el metaanálisis. La decisión de qué estudios incluir en un metaanálisis es difícil y a menudo conduce a desacuerdos en las conclusiones de los metaanálisis realizados en el mismo conjunto de estudios <span class="citation" data-cites="goodyear-smith_analysis_2012 ferguson_comment_2014">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-goodyear-smith_analysis_2012" role="doc-biblioref"><span class="nocase">Goodyear-Smith et&nbsp;al.</span> 2012</a>; <a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-ferguson_comment_2014" role="doc-biblioref">Ferguson 2014</a>)</span>. Finalmente, los metaanálisis pueden estar sesgados, de la misma manera que los estudios individuales están sesgados, lo cual es un tema que se explora con más detalle en el capítulo sobre <a href="12-deteccion-de-sesgos.html">detección de sesgos</a>.</p>
+<p>El problema de «basura entra, basura sale» sigue siendo una de las críticas más comunes y difíciles de abordar al metaanálisis. Es cierto que un metaanálisis no puede convertir datos de baja calidad en una buena estimación del tamaño del efecto, o tamaños del efecto altamente heterogéneos en una estimación útil de un tamaño del efecto que se generalice a todos los estudios incluidos en el metaanálisis. La decisión de qué estudios incluir en un metaanálisis es difícil y a menudo conduce a desacuerdos en las conclusiones de los metaanálisis realizados en el mismo conjunto de estudios <span class="citation" data-cites="goodyear-smith_analysis_2012 ferguson_comment_2014">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-goodyear-smith_analysis_2012" role="doc-biblioref">Goodyear-Smith et&nbsp;al. 2012</a>; <a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-ferguson_comment_2014" role="doc-biblioref">Ferguson 2014</a>)</span>. Finalmente, los metaanálisis pueden estar sesgados, de la misma manera que los estudios individuales están sesgados, lo cual es un tema que se explora con más detalle en el capítulo sobre <a href="12-deteccion-de-sesgos.html">detección de sesgos</a>.</p>
 <p>Una ventaja del metaanálisis es que la combinación de estudios muy similares en un solo análisis aumenta la potencia estadística de la prueba, así como la precisión de la estimación del tamaño del efecto. Cuando no sea posible —o no resulte eficiente— realizar estudios con un gran número de observaciones, un metaanálisis no sesgado puede proporcionar mejores inferencias estadísticas. Además, incluir un <strong>metaanálisis interno</strong> en un artículo con varios estudios —cuando todos sean suficientemente similares— puede reducir el problema del cajón de archivo, pues permite publicar resultados mixtos. Al mismo tiempo, algunos investigadores han advertido que, si se seleccionan los estudios que se incluyen en un metaanálisis interno, simplemente se aumenta la flexibilidad del análisis y la probabilidad de afirmar erróneamente que los datos respaldan la hipótesis <span class="citation" data-cites="vosgerau_99_2019">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-vosgerau_99_2019" role="doc-biblioref">Vosgerau et&nbsp;al. 2019</a>)</span>. Los investigadores deberían publicar todos los estudios bien diseñados que hayan realizado dentro de una línea de investigación y, si los estudios son similares y no están sesgados, un metaanálisis mejorará las inferencias. Aun así, el resultado de un metaanálisis puede estar sesgado y no debe interpretarse como la respuesta definitiva. Por esta razón, el análisis de la heterogeneidad de las estimaciones del tamaño del efecto y el uso de técnicas estadísticas para detectar sesgos son componentes esenciales de cualquier metaanálisis.</p>
 </section>
 <section id="sec-reportmeta" class="level2" data-number="11.9">
@@ -864,7 +859,7 @@ Figura&nbsp;11.8: Dos diagramas de bosque para los dos subgrupos, con la manipul
 <section id="sec-metareporting" class="level2" data-number="11.10">
 <h2 data-number="11.10" class="anchored" data-anchor-id="sec-metareporting"><span class="header-section-number">11.10</span> Mejora de la reproducibilidad de los metaanálisis</h2>
 <p>Aunque los metaanálisis no proporcionan conclusiones definitivas, normalmente se interpretan como conocimiento empírico de última generación sobre un efecto o área de investigación específica. Los metaanálisis a gran escala a menudo acumulan una gran cantidad de citas e influyen en futuras investigaciones y desarrollo teórico. Por tanto, es esencial que los metaanálisis publicados sean de la mayor calidad posible.</p>
-<p>Al mismo tiempo, las conclusiones de los metaanálisis suelen estar abiertas al debate y sujetas a cambios a medida que se dispone de nuevos datos. Recientemente propusimos recomendaciones prácticas para aumentar la reproducibilidad de los metaanálisis: facilitar el control de calidad, mejorar las guías de presentación de resultados, permitir a los investigadores volver a analizar los metaanálisis con criterios de inclusión alternativos y garantizar su reutilización. Para ello, los datos metaanalíticos recopilados deben compartirse, de modo que puedan realizarse metaanálisis acumulativos actualizados continuamente y aplicarse nuevas técnicas estadísticas a medida que estén disponibles <span class="citation" data-cites="lakens_reproducibility_2016">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-lakens_reproducibility_2016" role="doc-biblioref">Lakens et&nbsp;al. 2016</a>)</span>. La necesidad de mejorar la reproducibilidad del metaanálisis es clara: una revisión reciente de 150 metaanálisis en <em>Psychological Bulletin</em> reveló que solo un metaanálisis compartía el código estadístico <span class="citation" data-cites="polanin_transparency_2020">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-polanin_transparency_2020" role="doc-biblioref">Polanin et&nbsp;al. 2020</a>)</span>. Esto es inaceptable en la época actual. Además de inspeccionar en qué medida su metaanálisis cumple los <a href="https://apastyle.apa.org/jars/quant-table-9.pdf">Estándares de presentación de metaanálisis cuantitativos de JARS</a>, seguir las recomendaciones resumidas en <a href="#tbl-table-rec1" class="quarto-xref">Tabla&nbsp;<span>11.1</span></a> debería mejorar sustancialmente el estado del arte en los metaanálisis.</p>
+<p>Al mismo tiempo, las conclusiones de los metaanálisis suelen estar abiertas al debate y sujetas a cambios a medida que se dispone de nuevos datos. Recientemente propusimos recomendaciones prácticas para aumentar la reproducibilidad de los metaanálisis: facilitar el control de calidad, mejorar las guías de presentación de resultados, permitir a los investigadores volver a analizar los metaanálisis con criterios de inclusión alternativos y garantizar su reutilización. Para ello, los datos metaanalíticos recopilados deben compartirse, de modo que puedan realizarse metaanálisis acumulativos actualizados continuamente y aplicarse nuevas técnicas estadísticas a medida que estén disponibles <span class="citation" data-cites="lakens_reproducibility_2016">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-lakens_reproducibility_2016" role="doc-biblioref">Lakens, Hilgard, y Staaks 2016</a>)</span>. La necesidad de mejorar la reproducibilidad del metaanálisis es clara: una revisión reciente de 150 metaanálisis en <em>Psychological Bulletin</em> reveló que solo un metaanálisis compartía el código estadístico <span class="citation" data-cites="polanin_transparency_2020">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-polanin_transparency_2020" role="doc-biblioref">Polanin, Hennessy, y Tsuji 2020</a>)</span>. Esto es inaceptable en la época actual. Además de inspeccionar en qué medida su metaanálisis cumple los <a href="https://apastyle.apa.org/jars/quant-table-9.pdf">Estándares de presentación de metaanálisis cuantitativos de JARS</a>, seguir las recomendaciones resumidas en <a href="#tbl-table-rec1" class="quarto-xref">Tabla&nbsp;<span>11.1</span></a> debería mejorar sustancialmente el estado del arte en los metaanálisis.</p>
 <div id="tbl-table-rec1" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-table-rec1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1016,24 +1011,24 @@ Figura&nbsp;11.10: Estudios simulados bajo un modelo de efecto fijo.
 </ul>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
 <div id="ref-borenstein_introduction_2009" class="csl-entry" role="listitem">
-Borenstein, Michael, ed. 2009. <em>Introduction to Meta-Analysis</em>. John Wiley &amp; Sons.
+Borenstein, Michael, ed. 2009. <em>Introduction to Meta-Analysis</em>. Chichester, U.K: John Wiley &amp; Sons.
 </div>
 <div id="ref-bryan_behavioural_2021" class="csl-entry" role="listitem">
 Bryan, Christopher J., Elizabeth Tipton, y David S. Yeager. 2021. <span>«Behavioural Science Is Unlikely to Change the World Without a Heterogeneity Revolution»</span>. <em>Nature Human Behaviour</em>, julio, 1-10. <a href="https://doi.org/10.1038/s41562-021-01143-3">https://doi.org/10.1038/s41562-021-01143-3</a>.
 </div>
 <div id="ref-buchanan_mote_2017" class="csl-entry" role="listitem">
-Buchanan, Erin M., J Scofield, y K. D. Valentine. 2017. <em><span>MOTE</span>: <span>Effect Size</span> and <span>Confidence Interval Calculator</span>.</em>
+Buchanan, Erin M., J Scofield, y K. D. Valentine. 2017. <span>«<span>MOTE</span>: <span>Effect Size</span> and <span>Confidence Interval Calculator</span>.»</span>
 </div>
 <div id="ref-cohen_earth_1994" class="csl-entry" role="listitem">
 Cohen, Jacob. 1994. <span>«The Earth Is Round (p <span><span class="math inline">\(&lt;\)</span></span> .05).»</span> <em>American Psychologist</em> 49 (12): 997-1003. <a href="https://doi.org/10.1037/0003-066X.49.12.997">https://doi.org/10.1037/0003-066X.49.12.997</a>.
 </div>
 <div id="ref-cooper_handbook_2009" class="csl-entry" role="listitem">
-Cooper, Harris M., Larry V. Hedges, y Jeff C. Valentine, eds. 2009. <em>The Handbook of Research Synthesis and Meta-Analysis</em>. 2nd ed. Russell Sage Foundation.
+Cooper, Harris M., Larry V. Hedges, y Jeff C. Valentine, eds. 2009. <em>The Handbook of Research Synthesis and Meta-Analysis</em>. 2nd ed. New York: Russell Sage Foundation.
 </div>
 <div id="ref-eysenck_exercise_1978" class="csl-entry" role="listitem">
-Eysenck, H. J. 1978. <span>«An Exercise in Mega-Silliness»</span>. <em>American Psychologist</em> (US) 33 (5): 517-17. <a href="https://doi.org/10.1037/0003-066X.33.5.517.a">https://doi.org/10.1037/0003-066X.33.5.517.a</a>.
+Eysenck, H. J. 1978. <span>«An Exercise in Mega-Silliness»</span>. <em>American Psychologist</em> 33 (5): 517-17. <a href="https://doi.org/10.1037/0003-066X.33.5.517.a">https://doi.org/10.1037/0003-066X.33.5.517.a</a>.
 </div>
 <div id="ref-ferguson_comment_2014" class="csl-entry" role="listitem">
 Ferguson, Christopher J. 2014. <span>«Comment: <span>Why</span> Meta-Analyses Rarely Resolve Ideological Debates»</span>. <em>Emotion Review</em> 6 (3): 251-52.
@@ -1042,16 +1037,16 @@ Ferguson, Christopher J. 2014. <span>«Comment: <span>Why</span> Meta-Analyses R
 Freiman, J. A., T. C. Chalmers, H. Smith, y R. R. Kuebler. 1978. <span>«The Importance of Beta, the Type <span>II</span> Error and Sample Size in the Design and Interpretation of the Randomized Control Trial. <span>Survey</span> of 71 "Negative" Trials»</span>. <em>The New England Journal of Medicine</em> 299 (13): 690-94. <a href="https://doi.org/10.1056/NEJM197809282991304">https://doi.org/10.1056/NEJM197809282991304</a>.
 </div>
 <div id="ref-goodyear-smith_analysis_2012" class="csl-entry" role="listitem">
-<span class="nocase">Goodyear-Smith, Felicity A, Mieke L van Driel, Bruce Arroll, y Chris Del Mar</span>. 2012. <span>«Analysis of Decisions Made in Meta-Analyses of Depression Screening and the Risk of Confirmation Bias: <span>A</span> Case Study»</span>. <em>BMC Medical Research Methodology</em> 12 (junio): 76. <a href="https://doi.org/10.1186/1471-2288-12-76">https://doi.org/10.1186/1471-2288-12-76</a>.
+Goodyear-Smith, Felicity A, Mieke L van Driel, Bruce Arroll, y Chris Del Mar. 2012. <span>«Analysis of Decisions Made in Meta-Analyses of Depression Screening and the Risk of Confirmation Bias: <span>A</span> Case Study»</span>. <em>BMC Medical Research Methodology</em> 12 (junio): 76. <a href="https://doi.org/10.1186/1471-2288-12-76">https://doi.org/10.1186/1471-2288-12-76</a>.
 </div>
 <div id="ref-harrer_doing_2021" class="csl-entry" role="listitem">
-Harrer, Mathias, Pim Cuijpers, Toshi A. Furukawa, y David D. Ebert. 2021. <em>Doing <span>Meta-Analysis</span> with <span>R</span>: <span>A Hands-On Guide</span></em>. <span>Chapman and Hall/CRC</span>. <a href="https://doi.org/10.1201/9781003107347">https://doi.org/10.1201/9781003107347</a>.
+Harrer, Mathias, Pim Cuijpers, Toshi A. Furukawa, y David D. Ebert. 2021. <em>Doing <span>Meta-Analysis</span> with <span>R</span>: <span>A Hands-On Guide</span></em>. Boca Raton: <span>Chapman and Hall/CRC</span>. <a href="https://doi.org/10.1201/9781003107347">https://doi.org/10.1201/9781003107347</a>.
 </div>
 <div id="ref-huedo-medina_assessing_2006" class="csl-entry" role="listitem">
 Huedo-Medina, Tania B., Julio Sánchez-Meca, Fulgencio Marín-Martínez, y Juan Botella. 2006. <span>«Assessing Heterogeneity in Meta-Analysis: <span>Q</span> Statistic or <span>I</span>$^2$ Index?»</span> <em>Psychological methods</em> 11 (2): 193.
 </div>
 <div id="ref-kenny_unappreciated_2019" class="csl-entry" role="listitem">
-Kenny, David A., y Charles M. Judd. 2019. <span>«The Unappreciated Heterogeneity of Effect Sizes: <span>Implications</span> for Power, Precision, Planning of Research, and Replication»</span>. <em>Psychological Methods</em> (US) 24 (5): 578-89. <a href="https://doi.org/10.1037/met0000209">https://doi.org/10.1037/met0000209</a>.
+Kenny, David A., y Charles M. Judd. 2019. <span>«The Unappreciated Heterogeneity of Effect Sizes: <span>Implications</span> for Power, Precision, Planning of Research, and Replication»</span>. <em>Psychological Methods</em> 24 (5): 578-89. <a href="https://doi.org/10.1037/met0000209">https://doi.org/10.1037/met0000209</a>.
 </div>
 <div id="ref-lakens_reproducibility_2016" class="csl-entry" role="listitem">
 Lakens, Daniël, Joe Hilgard, y Janneke Staaks. 2016. <span>«On the Reproducibility of Meta-Analyses: Six Practical Recommendations»</span>. <em>BMC Psychology</em> 4: 24. <a href="https://doi.org/10.1186/s40359-016-0126-3">https://doi.org/10.1186/s40359-016-0126-3</a>.
@@ -1066,7 +1061,7 @@ Linden, Audrey Helen, y Johannes Hönekopp. 2021. <span>«Heterogeneity of <span
 Maxwell, Scott E., Ken Kelley, y Joseph R. Rausch. 2008. <span>«Sample <span>Size Planning</span> for <span>Statistical Power</span> and <span>Accuracy</span> in <span>Parameter Estimation</span>»</span>. <em>Annual Review of Psychology</em> 59 (1): 537-63. <a href="https://doi.org/10.1146/annurev.psych.59.103006.093735">https://doi.org/10.1146/annurev.psych.59.103006.093735</a>.
 </div>
 <div id="ref-olsson-collentine_heterogeneity_2020" class="csl-entry" role="listitem">
-<span class="nocase">Olsson-Collentine, Anton, Jelte M. Wicherts, y Marcel A. L. M. van Assen</span>. 2020. <span>«Heterogeneity in Direct Replications in Psychology and Its Association with Effect Size.»</span> <em>Psychological Bulletin</em> 146 (10): 922-40. <a href="https://doi.org/10.1037/bul0000294">https://doi.org/10.1037/bul0000294</a>.
+Olsson-Collentine, Anton, Jelte M. Wicherts, y Marcel A. L. M. van Assen. 2020. <span>«Heterogeneity in Direct Replications in Psychology and Its Association with Effect Size.»</span> <em>Psychological Bulletin</em> 146 (10): 922-40. <a href="https://doi.org/10.1037/bul0000294">https://doi.org/10.1037/bul0000294</a>.
 </div>
 <div id="ref-polanin_transparency_2020" class="csl-entry" role="listitem">
 Polanin, Joshua R., Emily A. Hennessy, y Sho Tsuji. 2020. <span>«Transparency and <span>Reproducibility</span> of <span>Meta-Analyses</span> in <span>Psychology</span>: <span>A Meta-Review</span>»</span>. <em>Perspectives on Psychological Science</em> 15 (4): 1026-41. <a href="https://doi.org/10.1177/1745691620906416">https://doi.org/10.1177/1745691620906416</a>.
@@ -1138,14 +1133,13 @@ Vosgerau, Joachim, Uri Simonsohn, Leif D. Nelson, y Joseph P. Simmons. 2019. <sp
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
         }
-      }
-      return codeEl.innerText;
+        return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
@@ -1494,8 +1488,8 @@ Vosgerau, Joachim, Uri Simonsohn, Leif D. Nelson, y Joseph P. Simmons. 2019. <sp
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./12-deteccion-de-sesgos.html" class="pagination-link" aria-label="Detección de Sesgos">
-        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Detección de Sesgos</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./12-deteccion-de-sesgos.html" class="pagination-link" aria-label="Detección de sesgos">
+        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Detección de sesgos</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
