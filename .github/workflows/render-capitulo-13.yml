@@ -25,6 +25,25 @@ jobs:
         with:
           version: 1.7.33
 
+      - name: Ajustar estructura del ejercicio
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('13-prerregistro-y-transparencia.md')
+          s = p.read_text(encoding='utf-8')
+          replacements = {
+              '### 1.1 Describe la población de la que extraes la muestra': '**1.1 Describe la población de la que extraes la muestra**',
+              '### 1.2 ¿Puedes recoger datos de toda la población?': '**1.2 ¿Puedes recoger datos de toda la población?**',
+              '### 2. ¿Qué tamaños del efecto son de interés?': '**2. ¿Qué tamaños del efecto son de interés?**',
+              '### 3. Objetivo inferencial': '**3. Objetivo inferencial**',
+              '### 4. Valor informativo del estudio': '**4. Valor informativo del estudio**',
+          }
+          for old, new in replacements.items():
+              s = s.replace(old, new)
+          p.write_text(s, encoding='utf-8')
+          PY
+
       - name: Render site
         run: quarto render
 
@@ -33,8 +52,8 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs
+          git add 13-prerregistro-y-transparencia.md docs
           if ! git diff --cached --quiet; then
-            git commit -m "Renderiza el capítulo 13 traducido"
+            git commit -m "Corrige la estructura y renderiza el capítulo 13"
             git push origin main
           fi
