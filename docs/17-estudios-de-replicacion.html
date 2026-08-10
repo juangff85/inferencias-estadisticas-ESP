@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>17&nbsp; Estudios de replicación – Mejora de tus Inferencias Estadísticas</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./16-sesgo-y-escepticismo.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-343830dee7e81009abd9657442190b55.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./17-estudios-de-replicacion.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Estudios de replicación</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Mejora de tus Inferencias Estadísticas</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Inicio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-usando-valores-p.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Usar valores <em>p</em> para poner a prueba una hipótesis</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-control-de-errores.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Control de errores</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-verosimilitudes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Verosimilitudes</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-estadistica-bayesiana.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Estadística bayesiana</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-formulando-preguntas-estadisticas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Formular preguntas estadísticas</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-tamaños-del-efecto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Tamaños del efecto</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-intervalos-de-confianza.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Intervalos de confianza</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-justificacion-del-tamaño-de-la-muestra.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Justificación del tamaño de la muestra</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-pruebas-de-equivalencia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Pruebas de equivalencia e hipótesis de intervalo</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-analisis-secuencial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Análisis Secuencial</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11-meta-analisis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Metaanálisis</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12-deteccion-de-sesgos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Detección de sesgos</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13-prerregistro-y-transparencia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Prerregistro y transparencia</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./14-reproducibilidad-computacional.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Reproducibilidad computacional</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./15-integridad-de-la-investigacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Integridad de la investigación</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./16-sesgo-y-escepticismo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Sesgo de confirmación y escepticismo organizado</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./17-estudios-de-replicacion.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Estudios de replicación</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de contenidos</h2>
+   
+  <ul>
+  <li><a href="#por-qué-son-importantes-los-estudios-de-replicación" id="toc-por-qué-son-importantes-los-estudios-de-replicación" class="nav-link active" data-scroll-target="#por-qué-son-importantes-los-estudios-de-replicación"><span class="header-section-number">17.1</span> Por qué son importantes los estudios de replicación</a></li>
+  <li><a href="#replicaciones-directas-frente-a-conceptuales" id="toc-replicaciones-directas-frente-a-conceptuales" class="nav-link" data-scroll-target="#replicaciones-directas-frente-a-conceptuales"><span class="header-section-number">17.2</span> Replicaciones directas frente a conceptuales</a></li>
+  <li><a href="#análisis-de-los-estudios-de-replicación" id="toc-análisis-de-los-estudios-de-replicación" class="nav-link" data-scroll-target="#análisis-de-los-estudios-de-replicación"><span class="header-section-number">17.3</span> Análisis de los estudios de replicación</a></li>
+  <li><a href="#estudios-de-replicación-o-niveles-alfa-más-bajos" id="toc-estudios-de-replicación-o-niveles-alfa-más-bajos" class="nav-link" data-scroll-target="#estudios-de-replicación-o-niveles-alfa-más-bajos"><span class="header-section-number">17.4</span> ¿Estudios de replicación o niveles alfa más bajos?</a></li>
+  <li><a href="#cuando-los-estudios-de-replicación-producen-resultados-contradictorios" id="toc-cuando-los-estudios-de-replicación-producen-resultados-contradictorios" class="nav-link" data-scroll-target="#cuando-los-estudios-de-replicación-producen-resultados-contradictorios"><span class="header-section-number">17.5</span> Cuando los estudios de replicación producen resultados contradictorios</a></li>
+  <li><a href="#por-qué-son-tan-raros-los-estudios-de-replicación" id="toc-por-qué-son-tan-raros-los-estudios-de-replicación" class="nav-link" data-scroll-target="#por-qué-son-tan-raros-los-estudios-de-replicación"><span class="header-section-number">17.6</span> ¿Por qué son tan raros los estudios de replicación?</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="sec-replication" class="quarto-section-identifier"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Estudios de replicación</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<blockquote class="blockquote">
+<p>Traducción literal al castellano del capítulo 17, «Replication Studies», de Daniël Lakens, <em>Improving Your Statistical Inferences</em>.<br>
+Original: https://lakens.github.io/statistical_inferences/17-replication.html<br>
+Licencia del original: CC-BY-4.0. Traducción no oficial.</p>
+</blockquote>
+<p>En 2015, un equipo de 270 autores publicó los resultados de un proyecto de investigación en el que replicaron 100 estudios <span class="citation" data-cites="opensciencecollaboration_estimating_2015">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-opensciencecollaboration_estimating_2015" role="doc-biblioref">Open Science Collaboration 2015</a>)</span>. Todos los estudios originales habían sido publicados en tres revistas de psicología durante el año 2008. Los autores del proyecto de replicación seleccionaron el último estudio de cada artículo que fuera factible replicar, realizaron estudios con una potencia elevada para detectar el tamaño del efecto observado e intentaron diseñar la mejor replicación posible. Se mantuvieron tan cerca del estudio original como pudieron, aunque introdujeron cambios cuando consideraron que eran necesarios. De los 100 estudios originales publicados en 2008, 97 se habían interpretado como estadísticamente significativos. Dada una potencia estimada del 92 % para los tamaños del efecto observados en los estudios originales, cabría esperar que <span class="math inline">\(97 \times 0.92 = 89\)</span> de las replicaciones observaran un efecto significativo si los efectos reales fueran al menos tan grandes como los comunicados. Sin embargo, solo 35 de los 97 estudios originalmente significativos se replicaron, lo que supone una tasa de replicación del 36 %. Este resultado sorprendió a la mayoría de los investigadores y llevó a reconocer que replicar hallazgos era mucho más difícil de lo que intuitivamente se pensaba. El resultado consolidó la idea de una <strong>crisis de replicación</strong>, es decir, una pérdida repentina de confianza en la fiabilidad de los resultados publicados que generó confusión e incertidumbre sobre la forma en que funcionaba la ciencia. Desde 2015 se ha desarrollado con fuerza el campo de la <strong>metaciencia</strong>, que utiliza métodos empíricos para estudiar la propia ciencia, identificar algunas de las causas de las bajas tasas de replicabilidad y desarrollar posibles soluciones para aumentarlas.</p>
+<div id="fig-rpp" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-rpp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="https://lakens.github.io/statistical_inferences/images/RPP.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rpp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;17.1: Resultados del Reproducibility Project: Psychology; las replicaciones aparecen en verde y las no replicaciones —definidas mediante <em>p</em> &gt; .05— en rojo.
+</figcaption>
+</figure>
+</div>
+<p>Al mismo tiempo, los autores del proyecto reconocieron que una única replicación de 100 estudios no era más que el punto de partida para comprender por qué había resultado tan difícil replicar los hallazgos de la literatura. En sus conclusiones escribieron:</p>
+<blockquote class="blockquote">
+<p>Después de este intenso esfuerzo por reproducir una muestra de hallazgos psicológicos publicados, ¿cuántos de los efectos hemos establecido como verdaderos? Ninguno. ¿Y cuántos hemos establecido como falsos? Ninguno. ¿Es esto una limitación del diseño del proyecto? No.&nbsp;Es la realidad de hacer ciencia, aunque no siempre se reconozca en la práctica cotidiana. Los seres humanos deseamos certeza, y la ciencia rara vez la proporciona. Por mucho que quisiéramos que fuera de otro modo, un único estudio casi nunca ofrece una resolución definitiva a favor o en contra de un efecto y de su explicación. Los estudios originales examinados aquí proporcionaron evidencia tentativa; las replicaciones que realizamos proporcionaron evidencia confirmatoria adicional. En algunos casos, las replicaciones aumentan la confianza en la fiabilidad de los resultados originales; en otros, sugieren que se necesita más investigación para establecer la validez de los hallazgos originales. El progreso científico es un proceso acumulativo de reducción de la incertidumbre que solo puede tener éxito si la propia ciencia sigue siendo el mayor escéptico de sus afirmaciones explicativas.</p>
+</blockquote>
+<p>Un <strong>estudio de replicación</strong> es un experimento en el que se repiten los métodos y procedimientos de un estudio anterior recogiendo datos nuevos. El término <strong>replicación directa</strong> suele utilizarse cuando los métodos y las medidas son tan similares como sea posible a los del estudio anterior. En una <strong>replicación conceptual</strong>, en cambio, el investigador introduce intencionadamente diferencias con respecto al estudio original con el objetivo de poner a prueba la generalización del efecto, bien porque quiere explorar sistemáticamente el impacto de ese cambio, bien porque no puede utilizar exactamente los mismos métodos y procedimientos.</p>
+<p>Es importante distinguir la <strong>replicación</strong>, en la que se recogen datos nuevos, de la <strong>reproducibilidad</strong>, en la que se utilizan los mismos datos para reproducir los resultados comunicados. En las comprobaciones de reproducibilidad, el objetivo es examinar si existen errores en los archivos de análisis. De manera un tanto confusa, el gran proyecto colaborativo en el que se replicaron 100 estudios de psicología y que suele considerarse uno de los principales detonantes de la crisis de replicación se llamó <em>Reproducibility Project: Psychology</em> <span class="citation" data-cites="opensciencecollaboration_estimating_2015">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-opensciencecollaboration_estimating_2015" role="doc-biblioref">Open Science Collaboration 2015</a>)</span>. Habría sido más correcto llamarlo <em>Replication Project: Psychology</em>. Nuestras disculpas.</p>
+<p>El primer objetivo de las replicaciones directas es identificar errores de tipo I o de tipo II en la literatura. En cualquier estudio original con un alfa del 5 % y una potencia estadística del 80 % existe cierta probabilidad de realizar una afirmación errónea. Las replicaciones directas —especialmente aquellas con tasas de error bajas— pretenden detectar esos errores en la literatura científica, algo esencial para construir una base de conocimiento fiable. Esto resulta especialmente importante porque la literatura científica está sesgada, lo que aumenta la probabilidad de que una afirmación publicada sea un error de tipo I. Schmidt <span class="citation" data-cites="schmidt_shall_2009">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-schmidt_shall_2009" role="doc-biblioref">2009</a>)</span> señala además que las afirmaciones también pueden ser erróneas porque se basen en datos fraudulentos. Aunque una replicación directa no puede demostrar por sí sola que existió fraude, sí puede poner de manifiesto afirmaciones incorrectas producidas por datos fraudulentos.</p>
+<p>El segundo objetivo importante de las replicaciones directas es identificar factores del estudio que se consideraban irrelevantes pero que fueron cruciales para generar los datos observados <span class="citation" data-cites="tunc_falsificationist_2023">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-tunc_falsificationist_2023" role="doc-biblioref">Tunç y Tunç 2023</a>)</span>. Por ejemplo, podría descubrirse que un estudio original y una replicación produjeron resultados diferentes porque el experimentador de uno de ellos trató a los participantes de una manera mucho más amistosa que el del otro. Este tipo de detalles normalmente no se incluyen en la sección de método porque se consideran irrelevantes, pero una replicación directa puede revelar que no lo eran. Esto pone de relieve que, en las ciencias sociales, dos estudios de replicación nunca son idénticos. Se diseñan para ser similares en todos aquellos aspectos que el investigador piensa que importan. Sin embargo, no todos los factores considerados irrelevantes lo serán realmente —y viceversa—.</p>
+<p>El objetivo de las replicaciones conceptuales es examinar la <strong>generalizabilidad</strong> de los efectos <span class="citation" data-cites="sidman_tactics_1960">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-sidman_tactics_1960" role="doc-biblioref">Sidman 1960</a>)</span>. Los investigadores varían intencionadamente ciertos factores del experimento para comprobar si ello introduce variabilidad en los resultados. En ocasiones esa variabilidad está predicha por la teoría; en otras, simplemente se desea observar qué sucede. Yo definiría una replicación directa como un estudio en el que el investigador intenta <strong>no introducir variabilidad</strong> en el tamaño del efecto con respecto al estudio original, mientras que en una replicación conceptual se introduce variabilidad de forma intencionada para poner a prueba la generalización del efecto.</p>
+<p>Esta distinción implica que un estudio que un investigador considera una replicación directa puede ser visto por otro como una replicación conceptual. Si alguien no encuentra ninguna razón por la que un efecto estudiado en Alemania deba ser distinto en los Países Bajos, considerará una repetición neerlandesa como una replicación directa. Otro investigador puede pensar que existen diferencias teóricamente relevantes entre ambos países y considerarla conceptual, porque interpretará que se ha introducido variabilidad al no mantener constante un factor importante. La única forma de aclarar qué factores se consideran teóricamente relevantes consiste en incluir en la discusión una <strong>declaración de restricciones a la generalización</strong>, especificando en qué contextos se espera teóricamente que el efecto se replique y en cuáles una variación de los resultados no constituiría un problema para la afirmación original <span class="citation" data-cites="simons_constraints_2017">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-simons_constraints_2017" role="doc-biblioref">Simons et&nbsp;al. 2017</a>)</span>.</p>
+<p>Debe quedar claro que los objetivos de los estudios de replicación son bastante modestos. Al mismo tiempo, son esenciales para que una ciencia empírica funcione adecuadamente. Proporcionan una herramienta para identificar falsos positivos y falsos negativos, y pueden revelar variabilidad entre contextos que falsifique predicciones teóricas o conduzca al desarrollo de teorías nuevas. Ser capaz de replicar y extender de forma sistemática un efecto básico es una de las maneras más importantes en que los científicos desarrollan y ponen a prueba teorías. Aunque existen otras estrategias para generar conocimiento fiable, como la <strong>triangulación</strong>, en la que una misma teoría se contrasta de maneras diferentes pero complementarias, en la práctica la inmensa mayoría de las afirmaciones científicas consolidadas se apoyan en efectos replicables.</p>
+<p>No todos los investigadores aceptan que su ciencia estudie observaciones repetibles intersubjetivamente. En lo que se denominó la «crisis de la psicología social», Gergen <span class="citation" data-cites="gergen_social_1973">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-gergen_social_1973" role="doc-biblioref">1973</a>)</span> sostuvo que la psicología social no era una ciencia acumulativa:</p>
+<blockquote class="blockquote">
+<p>El propósito de este artículo es sostener que la psicología social es, fundamentalmente, una investigación histórica. A diferencia de las ciencias naturales, trata con hechos que son en gran medida irrepetibles y que fluctúan notablemente con el tiempo. Los principios de la interacción humana no pueden desarrollarse fácilmente a lo largo del tiempo porque los hechos en los que se basan no suelen permanecer estables. El conocimiento no puede acumularse en el sentido científico habitual porque, en general, no trasciende sus límites históricos.</p>
+</blockquote>
+<p>La creencia de que las afirmaciones básicas de la psicología no describen acontecimientos repetibles dio lugar al <strong>constructivismo social</strong>. Este enfoque no llegó a hacerse especialmente popular, pero es útil conocer su existencia. Es un hecho que la conducta humana puede cambiar con el tiempo. También es cierto que muchos mecanismos psicológicos han permitido realizar predicciones acertadas durante más de un siglo, y es poco probable que esto cambie. Aun así, algunos investigadores pueden considerar que estudian acontecimientos irrepetibles; si es así, deberían explicar por qué. Estos investigadores renuncian al objetivo de construir teorías capaces de generar predicciones generalizables y tendrán que ofrecer otros argumentos para justificar el valor de su investigación.</p>
+<p>Afortunadamente, no hace falta ser constructivista social para reconocer que el mundo cambia. No deberíamos esperar que todas las replicaciones directas produzjeran exactamente el mismo resultado. Por ejemplo, en el clásico estudio del efecto de <strong>pie en la puerta</strong>, Freedman y Fraser <span class="citation" data-cites="freedman_compliance_1966">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-freedman_compliance_1966" role="doc-biblioref">1966</a>)</span> llamaron primero por teléfono a residentes de una comunidad para pedirles que respondieran algunas preguntas —la petición pequeña—. Si aceptaban, se les formulaba después una petición mucho mayor: permitir que «cinco o seis hombres de nuestro personal entren en su casa una mañana durante unas dos horas para enumerar y clasificar todos los productos domésticos que tienen. Tendrán que disponer de total libertad en su casa para revisar armarios y lugares de almacenamiento». Parece muy improbable que hoy más de la mitad de las personas aceptaran una petición semejante procedente de un desconocido que llama por teléfono. Repetir literalmente el procedimiento ya no produciría el mismo resultado. Pero las teorías que construimos deberían ser capaces de explicar por qué algunos hallazgos dejan de replicarse, especificando qué condiciones son necesarias para que el efecto aparezca. Esa es precisamente la función de la teoría. Si disponemos de buenas teorías, deberíamos poder seguir haciendo predicciones aunque algunos aspectos del mundo cambien. Como escribe De Groot <span class="citation" data-cites="degroot_methodology_1969">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-degroot_methodology_1969" role="doc-biblioref">1969, 89</a>)</span>: «Si uno sabe que algo es verdadero, está en condiciones de predecir; donde la predicción es imposible no hay conocimiento».</p>
+<section id="por-qué-son-importantes-los-estudios-de-replicación" class="level2" data-number="17.1">
+<h2 data-number="17.1" class="anchored" data-anchor-id="por-qué-son-importantes-los-estudios-de-replicación"><span class="header-section-number">17.1</span> Por qué son importantes los estudios de replicación</h2>
+<p>Durante el último medio siglo, los investigadores han señalado repetidamente que los estudios de replicación se realizan y publican muy pocas veces. En un editorial del <em>Journal of Personality and Social Psychology</em>, Greenwald <span class="citation" data-cites="greenwald_editorial_1976">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-greenwald_editorial_1976" role="doc-biblioref">Greenwald 1976</a>)</span> escribió: «Puede existir una crisis en la psicología de la personalidad y social asociada a la dificultad que con frecuencia experimentan los investigadores al intentar replicar trabajos publicados. No puede realizarse una estimación precisa de la magnitud de este problema porque la mayoría de los fracasos de replicación no se comunican públicamente». Epstein <span class="citation" data-cites="epstein_stability_1980">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-epstein_stability_1980" role="doc-biblioref">Epstein 1980, 790</a>)</span> expresó una preocupación similar: «Los hallazgos experimentales no solo son a menudo difíciles de replicar cuando se introducen las más pequeñas modificaciones en las condiciones, sino que incluso los intentos de replicación exacta fracasan con frecuencia».</p>
+<p>Neher <span class="citation" data-cites="neher_probability_1967">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-neher_probability_1967" role="doc-biblioref">1967, 262</a>)</span> concluyó: «La adopción general de la replicación independiente como requisito para aceptar hallazgos en las ciencias de la conducta requerirá el esfuerzo conjunto de investigadores, lectores y editores. Parece claro que una política de este tipo llega con mucho retraso y es crucial para desarrollar un cuerpo sólido de conocimiento sobre la conducta humana». Lubin <span class="citation" data-cites="lubin_replicability_1957">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-lubin_replicability_1957" role="doc-biblioref">Lubin 1957</a>)</span> propuso que, cuando fuera relevante, los manuscritos que demostraran la replicabilidad de los hallazgos recibieran mayor prioridad de publicación. N. C. Smith <span class="citation" data-cites="smith_replication_1970">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-smith_replication_1970" role="doc-biblioref">1970, 974</a>)</span> señaló el abandono de la replicación: «La revisión de la literatura sobre replicación y validación cruzada revela que los psicólogos de ambas “disciplinas” de investigación han tendido a ignorar la investigación de replicación. Por ello, uno no puede evitar preguntarse qué ocurriría si cada investigador repitiera el estudio que considera su contribución más importante al campo».</p>
+<p>Un problema histórico era la dificultad de describir los métodos y análisis con suficiente detalle como para que otras personas pudieran repetir el estudio tan fielmente como fuera posible <span class="citation" data-cites="mack_need_1951">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-mack_need_1951" role="doc-biblioref">Mack 1951</a>)</span>. Pereboom <span class="citation" data-cites="pereboom_fundamental_1971">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-pereboom_fundamental_1971" role="doc-biblioref">1971, 442</a>)</span> escribió: «Relacionado con lo anterior está la dificultad habitual de comunicar a la audiencia todos los detalles importantes de un experimento psicológico. […] Los investigadores que intentan replicar el trabajo de otros son dolorosamente conscientes de estas lagunas de información». Las prácticas de ciencia abierta, como compartir código y materiales <a href="14-reproducibilidad-computacional.html">computacionalmente reproducibles</a>, constituyen una forma importante de solucionar este problema, y durante la última década se ha avanzado mucho en esta dirección.</p>
+<p>Muchos investigadores han defendido que realizar replicaciones debería ser una práctica habitual. Lykken <span class="citation" data-cites="lykken_statistical_1968">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-lykken_statistical_1968" role="doc-biblioref">1968, 159</a>)</span> escribió: «Idealmente, todos los experimentos se replicarían antes de su publicación, pero este objetivo no es práctico». Loevinger <span class="citation" data-cites="loevinger_information_1968">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-loevinger_information_1968" role="doc-biblioref">1968, 455</a>)</span> hizo una observación similar: «La mayoría de los estudios deberían replicarse antes de publicarse. Esta recomendación es especialmente pertinente cuando los resultados van en la dirección predicha pero no son significativos, son apenas significativos o solo lo son mediante pruebas unilaterales». Samelson <span class="citation" data-cites="samelson_watsons_1980">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-samelson_watsons_1980" role="doc-biblioref">1980, 623</a>)</span>, en el contexto específico del estudio del «pequeño Albert» de Watson, señaló: «Más allá de este aparente fracaso de la crítica interna de los datos existe otro todavía menos discutible: el claro abandono de una regla cardinal del método científico, a saber, la replicación».</p>
+<p>La idea de que la replicación es una «regla cardinal» o una «piedra angular» del método científico se deriva directamente de una filosofía de la ciencia <strong>falsacionista metodológica</strong>. Popper <span class="citation" data-cites="popper_logic_2002">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-popper_logic_2002" role="doc-biblioref">2002</a>)</span> explicó que aumentamos nuestra confianza en las teorías cuyas predicciones resisten los intentos de falsarlas. Para que una predicción pueda falsarse, debe excluir determinados patrones de datos observables. Si nuestra teoría predice que las personas serán más rápidas nombrando el color de una palabra cuando su significado coincida con el color en que está escrita —por ejemplo, «azul» escrito en azul en lugar de «azul» escrito en rojo—, observar que no son más rápidas, o incluso que son más lentas, falsaría la predicción.</p>
+<p>El problema es que, debido a la variabilidad de los datos observados, cualquier patrón posible aparecerá alguna vez, exactamente con la frecuencia que dicte el azar. A largo plazo, por puro azar, algún estudio mostrará que las personas son <em>más lentas</em> al nombrar el color cuando palabra y color coinciden, aunque la teoría sea correcta. Popper vio que esto planteaba un problema para su explicación de la falsación, porque significa que «los enunciados probabilísticos no serán falsables». Si todos los patrones de datos posibles tienen una probabilidad distinta de cero, aunque algunos sean extremadamente raros, ninguno queda lógicamente excluido. Si exigiéramos que la ciencia siguiera reglas lógicas perfectamente formales, esto haría imposible la falsación.</p>
+<p>La solución consiste en reconocer que la ciencia no funciona mediante reglas perfectamente formales. Y, sin embargo, como admitía Popper, funciona. Por tanto, en lugar de abandonar la falsación, propuso un enfoque más pragmático: «Parece bastante claro que esta “falsación práctica” solo puede lograrse mediante una decisión metodológica de considerar excluidos —prohibidos— los acontecimientos altamente improbables». La pregunta lógica es entonces: «¿Dónde trazamos la línea? ¿Dónde comienza esa “alta improbabilidad”?». Popper argumenta que, aunque cualquier acontecimiento de baja probabilidad <em>puede</em> ocurrir, <strong>no puede reproducirse a voluntad</strong>. Un único estudio puede revelar prácticamente cualquier efecto posible, pero una predicción debería considerarse falsada cuando no observamos «la aparición predecible y reproducible de desviaciones sistemáticas». Esta es la razón por la que la replicación constituye una «regla cardinal» en el falsacionismo metodológico: cuando las observaciones son probabilísticas, solo la aparición replicable de acontecimientos de baja probabilidad puede tomarse como falsación de una predicción. Un único <em>p</em> &lt; .05 no basta; Popper solo permite «falsar prácticamente» una predicción probabilística cuando replicaciones cercanas observan repetidamente un acontecimiento improbable.</p>
+</section>
+<section id="replicaciones-directas-frente-a-conceptuales" class="level2" data-number="17.2">
+<h2 data-number="17.2" class="anchored" data-anchor-id="replicaciones-directas-frente-a-conceptuales"><span class="header-section-number">17.2</span> Replicaciones directas frente a conceptuales</h2>
+<p>Como escribe Schmidt <span class="citation" data-cites="schmidt_shall_2009">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-schmidt_shall_2009" role="doc-biblioref">2009</a>)</span>, «no existe algo así como una replicación exacta». Sin embargo, podemos: 1) repetir un experimento manteniéndonos tan cerca como sea posible del estudio original; 2) repetirlo introduciendo probablemente alguna variación en factores que se consideran irrelevantes; o 3) variar deliberadamente aspectos del diseño. Popper coincide: «Nunca podemos repetir un experimento con total precisión; todo lo que podemos hacer es mantener determinadas condiciones constantes dentro de ciertos límites».</p>
+<p>Uno de los primeros tratamientos extensos de la replicación procede de Sidman <span class="citation" data-cites="sidman_tactics_1960">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-sidman_tactics_1960" role="doc-biblioref">1960</a>)</span>, quien distingue las replicaciones directas de las <strong>replicaciones sistemáticas</strong> —que aquí denomino replicaciones conceptuales—:</p>
+<blockquote class="blockquote">
+<p>Mientras que la replicación directa ayuda a establecer la generalidad de un fenómeno entre los miembros de una especie, la replicación sistemática puede conseguir esto mismo y, al mismo tiempo, extender su generalidad a un amplio conjunto de situaciones diferentes.</p>
+</blockquote>
+<p>Si observamos el mismo resultado al variar sistemáticamente las hipótesis auxiliares, aumenta nuestra confianza en la naturaleza general del hallazgo y, por tanto, en el propio hallazgo. Cuanto más robusto sea un efecto frente a factores considerados irrelevantes, menos probable resulta que esté causado por un factor de confusión introducido por alguno de ellos. Si una predicción se confirma a lo largo del tiempo, en distintas localizaciones, con muestras diferentes, por distintos experimentadores y mediante distintas medidas de la misma variable, disminuye la probabilidad de que todos esos efectos estén causados por el mismo confusor. Cuando una replicación conceptual tiene éxito, aporta más información que una directa porque generaliza el hallazgo más allá del contexto original. Sin embargo, esta ventaja solo existe cuando la replicación conceptual tiene éxito. Sidman advierte:</p>
+<blockquote class="blockquote">
+<p>Pero este procedimiento es una apuesta. Si la replicación sistemática fracasa, todavía será necesario repetir el experimento original; de lo contrario, no habrá forma de determinar si el fracaso se debió a las nuevas variables introducidas en el segundo experimento o a que el primer experimento no controló adecuadamente los factores relevantes.</p>
+</blockquote>
+<p>A veces no es necesario elegir entre una replicación directa y una conceptual porque pueden realizarse ambas. Los investigadores pueden llevar a cabo <strong>estudios de replicación y extensión</strong>, en los que se replica el estudio original y se añaden condiciones que ponen a prueba hipótesis nuevas. Sidman <span class="citation" data-cites="sidman_tactics_1960">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-sidman_tactics_1960" role="doc-biblioref">1960</a>)</span> se refiere a esta estrategia como <strong>técnica de línea base</strong>: el efecto original forma siempre parte del diseño experimental y las variaciones se comparan con él. Los estudios de replicación y extensión constituyen una de las mejores formas de construir conocimiento acumulativo y desarrollar teorías científicas sólidas <span class="citation" data-cites="bonett_replicationextension_2012">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-bonett_replicationextension_2012" role="doc-biblioref">Bonett 2012</a>)</span>.</p>
+<p>A menudo resulta difícil llegar a un acuerdo sobre si un estudio es una replicación directa o conceptual, porque los investigadores pueden discrepar acerca de si ciertos cambios son teóricamente relevantes. Algunos autores han intentado resolver esta dificultad definiendo una replicación como «un estudio para el cual cualquier resultado se consideraría evidencia diagnóstica sobre una afirmación de una investigación previa» <span class="citation" data-cites="nosek_what_2020">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-nosek_what_2020" role="doc-biblioref">Nosek y Errington 2020</a>)</span>. Sin embargo, esta definición es demasiado amplia para resultar útil en la práctica. Tiene una utilidad limitada cuando las predicciones teóricas son vagas —lo que, lamentablemente, ocurre en muchas líneas de investigación en psicología— y no reconoce suficientemente la importancia de especificar hipótesis auxiliares falsables.</p>
+<p>La especificación de hipótesis auxiliares falsables en las replicaciones está en el núcleo del <strong>Systematic Replications Framework</strong> <span class="citation" data-cites="tunc_falsificationist_2023">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-tunc_falsificationist_2023" role="doc-biblioref">Tunç y Tunç 2023</a>)</span>. La idea es que los investigadores deben indicar qué hipótesis auxiliares consideran relevantes. En principio, su número es infinito, pero Uygun-Tunç y Tunç <span class="citation" data-cites="tunc_falsificationist_2023">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-tunc_falsificationist_2023" role="doc-biblioref">2023</a>)</span> señalan que normalmente se asume que «el color exacto de las paredes del laboratorio, su altitud sobre el nivel del mar, el diseño preciso de las sillas utilizadas por los participantes, la humedad de la sala o muchos otros detalles minúsculos no influyen de manera significativa en los resultados». Estos factores quedan relegados a la <strong>cláusula <em>ceteris paribus</em></strong>: sus diferencias no se consideran relevantes y, a efectos prácticos, los estudios pueden tratarse como «iguales en todo lo demás», aunque las paredes tengan colores distintos.</p>
+<p>Ninguna replicación es exactamente igual al estudio original <span class="citation" data-cites="schmidt_shall_2009">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-schmidt_shall_2009" role="doc-biblioref">Schmidt 2009</a>)</span>, y algunas diferencias entre hipótesis auxiliares sí son sustantivamente importantes. El desafío consiste en identificar qué hipótesis auxiliares explican los fracasos de replicación. Una replicación directa que no produce un efecto estadísticamente significativo puede tener tres interpretaciones <span class="citation" data-cites="schmidt_shall_2009 tunc_falsificationist_2023">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-schmidt_shall_2009" role="doc-biblioref">Schmidt 2009</a>; <a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-tunc_falsificationist_2023" role="doc-biblioref">Tunç y Tunç 2023</a>)</span>: primero, la replicación puede haber producido un error de tipo II; segundo, el estudio original puede haber sido un error de tipo I; tercero, alguna de las suposiciones auxiliares relegadas a la cláusula <em>ceteris paribus</em> puede importar más de lo que se creía.</p>
+<p>Para resolver desacuerdos entre el estudio original y la replicación deberían realizarse estudios que varíen sistemáticamente aquellas hipótesis auxiliares que sean más cruciales para cada posición teórica. Resolver inconsistencias científicas es un proceso laborioso que puede facilitarse mediante una <strong>colaboración adversarial</strong>, en la que dos equipos unen fuerzas para resolver el desacuerdo <span class="citation" data-cites="mellers_frequency_2001">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-mellers_frequency_2001" role="doc-biblioref">Mellers et&nbsp;al. 2001</a>)</span>. Los equipos enfrentados pueden identificar las hipótesis auxiliares decisivas y someter las teorías rivales a pruebas severas.</p>
+</section>
+<section id="análisis-de-los-estudios-de-replicación" class="level2" data-number="17.3">
+<h2 data-number="17.3" class="anchored" data-anchor-id="análisis-de-los-estudios-de-replicación"><span class="header-section-number">17.3</span> Análisis de los estudios de replicación</h2>
+<p>Existen múltiples formas de analizar estadísticamente una replicación <span class="citation" data-cites="anderson_theres_2016">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-anderson_theres_2016" role="doc-biblioref">Anderson y Maxwell 2016</a>)</span>. El enfoque estadístico más directo es también uno de los menos utilizados: comprobar si los tamaños del efecto del estudio original y de la replicación son estadísticamente diferentes. Dos tamaños del efecto procedentes de pruebas <em>t</em> independientes pueden compararse mediante:</p>
+<p><span class="math display">\[
+Z_\mathrm{Diff} = \frac{\delta_1 - \delta_2}{\sqrt{V_{\delta_1} + V_{\delta_2}}}
+\]</span></p>
+<p>donde la diferencia entre los dos tamaños del efecto de Cohen, <span class="math inline">\(d\)</span>, se divide por el error estándar de la diferencia, calculado a partir de la raíz cuadrada de las varianzas combinadas de los tamaños del efecto <span class="citation" data-cites="borenstein_introduction_2009">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-borenstein_introduction_2009" role="doc-biblioref">Borenstein 2009</a>, fórmulas 19.6 y 19.7)</span>. La fórmula ofrece una pista de por qué los investigadores rara vez ponen a prueba directamente las diferencias entre tamaños del efecto: el error estándar depende de la varianza tanto del estudio original como de la replicación. Si el estudio original tiene una muestra pequeña, su varianza será grande y la prueba de la diferencia puede tener una potencia muy baja.</p>
+<p>Consideremos un estudio original no prerregistrado que observó <span class="math inline">\(d = 0.6\)</span> en una prueba <em>t</em> independiente con 30 participantes en cada grupo. Se realiza después una replicación prerregistrada que observa <span class="math inline">\(d = 0\)</span> con 100 participantes por grupo. La comparación puede hacerse de tres maneras que, en principio, son equivalentes —aunque detalles de implementación como utilizar <span class="math inline">\(d\)</span> de Cohen o <span class="math inline">\(g\)</span> de Hedges pueden generar valores <em>p</em> ligeramente distintos—. La primera consiste en calcular el valor <em>p</em> de la prueba <span class="math inline">\(Z\)</span> anterior. Las otras dos se implementan en el paquete <code>metafor</code>: un análisis de heterogeneidad y un análisis de moderación. Ambos son matemáticamente equivalentes. En el análisis de heterogeneidad comprobamos si la variabilidad entre los tamaños del efecto —aunque solo haya dos— es mayor que la esperable por variación aleatoria.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>d1 <span class="ot">&lt;-</span> <span class="fu">escalc</span>(<span class="at">n1i =</span> <span class="dv">30</span>,</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">n2i =</span> <span class="dv">30</span>,</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">di =</span> <span class="fl">0.6</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">measure =</span> <span class="st">"SMD"</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>d2 <span class="ot">&lt;-</span> <span class="fu">escalc</span>(<span class="at">n1i =</span> <span class="dv">100</span>,</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">n2i =</span> <span class="dv">100</span>,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">di =</span> <span class="fl">0.0</span>,</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">measure =</span> <span class="st">"SMD"</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>metadata <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">yi =</span> <span class="fu">c</span>(d1<span class="sc">$</span>yi, d2<span class="sc">$</span>yi),</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>                       <span class="at">vi =</span> <span class="fu">c</span>(d1<span class="sc">$</span>vi, d2<span class="sc">$</span>vi),</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>                       <span class="at">study =</span> <span class="fu">c</span>(<span class="st">"original"</span>, <span class="st">"replication"</span>))</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Prueba basada en el análisis de heterogeneidad</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>res_h <span class="ot">&lt;-</span> <span class="fu">rma</span>(yi,</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>             vi,</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>             <span class="at">data =</span> metadata,</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>             <span class="at">method =</span> <span class="st">"FE"</span>)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>res_h</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<pre class="text"><code>Fixed-Effects Model (k = 2)
+
+I^2 (total heterogeneity / total variability):   74.45%
+H^2 (total variability / sampling variability):  3.91
+
+Test for Heterogeneity:
+Q(df = 1) = 3.9146, p-val = 0.0479
+
+Model Results:
+estimate      se    zval    pval    ci.lb   ci.ub
+  0.1322  0.1246  1.0607  0.2888  -0.1121  0.3765</code></pre>
+<p>El resultado produce un valor <em>p</em> de 0.048, estadísticamente significativo, por lo que podemos concluir estadísticamente que ambos tamaños del efecto difieren. También puede realizarse la misma prueba mediante un análisis de moderación:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>res_mod <span class="ot">&lt;-</span> <span class="fu">rma</span>(yi,</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>               vi,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">mods =</span> <span class="sc">~</span>study,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">method =</span> <span class="st">"FE"</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">data =</span> metadata,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">digits =</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>El resultado produce el mismo valor <em>p</em>, 0.048. Spence y Stanley <span class="citation" data-cites="spence_tempered_2024">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-spence_tempered_2024" role="doc-biblioref">2024</a>)</span> han vuelto a presentar recientemente esta misma prueba en forma de intervalo de predicción, pero en esencia sigue siendo una prueba de la diferencia entre los tamaños del efecto.</p>
+<p>Conviene observar que en este ejemplo la diferencia entre ambos tamaños del efecto es grande y que la replicación tiene una muestra mucho mayor que el estudio original, pero aun así la diferencia apenas alcanza la significación estadística. Como muestra la <a href="#fig-rep-1" class="quarto-xref">Figura&nbsp;<span>17.2</span></a>, el estudio original posee una incertidumbre considerable, que forma parte de la varianza del estimador de la diferencia. Si la replicación hubiera producido un tamaño del efecto incluso ligeramente positivo —algo que ocurriría aproximadamente el 50 % de las veces si el efecto verdadero fuera cero—, la diferencia ya no habría sido estadísticamente significativa. En general, la potencia es baja cuando los estudios originales tienen muestras pequeñas. A pesar de esta limitación, comparar directamente ambos tamaños del efecto es la forma más intuitiva y coherente de afirmar que un estudio no se ha replicado.</p>
+<div id="fig-rep-1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-rep-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="https://lakens.github.io/statistical_inferences/17-replication_files/figure-html/fig-rep-1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rep-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;17.2: Diagrama de bosque para un estudio original (<span class="math inline">\(N = 60\)</span>, <span class="math inline">\(d = 0.6\)</span>) y una replicación (<span class="math inline">\(N = 200\)</span>, <span class="math inline">\(d = 0\)</span>).
+</figcaption>
+</figure>
+</div>
+<p>También es posible contrastar la diferencia entre dos correlaciones mediante:</p>
+<p><span class="math display">\[
+z_1 = \frac{1}{2}\ln\left(\frac{1+r_1}{1-r_1}\right), \quad z_2 = \frac{1}{2}\ln\left(\frac{1+r_2}{1-r_2}\right)
+\]</span></p>
+<p><span class="math display">\[
+Z = \frac{z_1 - z_2}{\sqrt{\frac{1}{n_1 - 3} + \frac{1}{n_2 - 3}}}
+\]</span></p>
+<p>Por ejemplo, la prueba puede realizarse con el paquete <code>cocor</code> de R:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cocor)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cocor.indep.groups</span>(<span class="at">n1 =</span> <span class="dv">20</span>, <span class="at">r1.jk =</span> .<span class="dv">6</span>, <span class="at">n2 =</span> <span class="dv">25</span>, <span class="at">r2.hm =</span> .<span class="dv">8</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<pre class="text"><code>Results of a comparison of two correlations based on independent groups
+
+Comparison between r1.jk = 0.6 and r2.hm = 0.8
+Difference: r1.jk - r2.hm = -0.2
+Group sizes: n1 = 20, n2 = 25
+Null hypothesis: r1.jk is equal to r2.hm
+Alternative hypothesis: r1.jk is not equal to r2.hm (two-sided)
+Alpha: 0.05
+
+fisher1925: Fisher's z (1925)
+  z = -1.2556, p-value = 0.2093
+  Null hypothesis retained
+
+zou2007: Zou's (2007) confidence interval
+  95% confidence interval for r1.jk - r2.hm: -0.6005 0.1055
+  Null hypothesis retained (Interval includes 0)</code></pre>
+<p>Fisher <span class="citation" data-cites="fisher_statistical_1925">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-fisher_statistical_1925" role="doc-biblioref">Fisher 1925</a>)</span> proporciona un ejemplo para comprobar si dos correlaciones son estadísticamente distintas. La primera es <span class="math inline">\(r = 0.6\)</span> con 20 pares y la segunda <span class="math inline">\(r = 0.8\)</span> con 25 pares. Para contrastar su diferencia, ambas correlaciones se transforman a puntuaciones <span class="math inline">\(z\)</span> mediante la transformación <span class="math inline">\(z\)</span> de Fisher:</p>
+<p><span class="math display">\[
+z_1 = \frac{1}{2}\ln\left(\frac{1+r_1}{1-r_1}\right) = \frac{1}{2}\ln\left(\frac{1+0.6}{1-0.6}\right) = 0.6931
+\]</span></p>
+<p><span class="math display">\[
+z_2 = \frac{1}{2}\ln\left(\frac{1+r_2}{1-r_2}\right) = \frac{1}{2}\ln\left(\frac{1+0.8}{1-0.8}\right) = 1.0986
+\]</span></p>
+<p>La desviación estándar de la diferencia es:</p>
+<p><span class="math display">\[
+\sigma_{z_1-z_2} = \sqrt{\frac{1}{n_1-3}+\frac{1}{n_2-3}} = \sqrt{\frac{1}{20-3}+\frac{1}{25-3}} = 0.3229
+\]</span></p>
+<p>y, finalmente, el estadístico bajo la hipótesis nula:</p>
+<p><span class="math display">\[
+z = \frac{z_1-z_2}{\sigma_{z_1-z_2}} = \frac{0.6931-1.0986}{0.3229} = \frac{-0.4055}{0.3229} = -1.256
+\]</span></p>
+<p>El estadístico <span class="math inline">\(z = -1.256\)</span> corresponde a un valor <em>p</em> bilateral de .209, por lo que la diferencia no es estadísticamente significativa con <span class="math inline">\(\alpha = 0.05\)</span>. Podemos utilizar el paquete <code>pwrss</code> <span class="citation" data-cites="bulus_pwrss_2023">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-bulus_pwrss_2023" role="doc-biblioref">Bulus y Polat 2023</a>)</span> para calcular el tamaño muestral necesario para detectar una diferencia como esta con una potencia del 90 %:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pwrss)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pwrss.z.2corrs</span>(<span class="at">r1 =</span> <span class="fl">0.6</span>, <span class="at">r2 =</span> <span class="fl">0.8</span>,</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">power =</span> .<span class="dv">90</span>, <span class="at">alpha =</span> <span class="fl">0.05</span>,</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">alternative =</span> <span class="st">"not equal"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<pre class="text"><code>Sample Size          = 131 and 131
+Type 1 Error (alpha) = 0.050
+Type 2 Error (beta)  = 0.100
+Statistical Power    = 0.9</code></pre>
+<p>El mismo cálculo puede realizarse en G*Power.</p>
+<div id="fig-powerdifcor" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-powerdifcor-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="https://lakens.github.io/statistical_inferences/images/powerdifcor.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-powerdifcor-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;17.3: Análisis de potencia para la diferencia entre dos correlaciones independientes en G*Power.
+</figcaption>
+</figure>
+</div>
+<p>Aunque comprobar una diferencia estadística entre tamaños del efecto constituye una forma coherente de decidir si un estudio se ha replicado, en ocasiones los investigadores plantean otra pregunta: <strong>¿hubo un resultado significativo en la replicación?</strong> Con este enfoque no existe una comparación directa con el efecto observado en el estudio original. La pregunta ya no es exactamente «¿se replicó el efecto original?», sino «si repetimos el procedimiento original, ¿observamos un efecto estadísticamente significativo?». Es decir, no estamos comprobando si se ha replicado el tamaño del efecto observado, sino si se ha repetido la afirmación ordinal de que existe un efecto distinto de cero. En el ejemplo de la <a href="#fig-rep-1" class="quarto-xref">Figura&nbsp;<span>17.2</span></a>, la replicación tiene un tamaño del efecto de cero, por lo que no existe un resultado significativo y el efecto original no se replicó en este sentido.</p>
+<p>Conviene detenerse y preguntar qué prueba estadística refleja mejor la pregunta «¿se replicó este estudio?». Por una parte, parece razonable considerar que un efecto <strong>no se ha replicado</strong> cuando existe una diferencia estadísticamente significativa entre los tamaños del efecto. Sin embargo, esto puede hacer que una replicación no significativa se clasifique como «replicación» simplemente porque su tamaño del efecto no sea estadísticamente menor que el original. Por otra parte, parece razonable considerar replicado un efecto cuando es significativo en la replicación. Pero ambos criterios pueden entrar en conflicto: algunos efectos de replicación son significativos y, al mismo tiempo, significativamente menores que el original. ¿Debemos considerarlos replicados?</p>
+<p>Podríamos combinar ambas pruebas y considerar que existe replicación únicamente si el efecto de la replicación es estadísticamente distinto de cero —por ejemplo, <em>p</em> &lt; .05— y, simultáneamente, la diferencia entre los tamaños del efecto no es estadísticamente distinta de cero —por ejemplo, <em>p</em> &gt; .05 en la prueba de heterogeneidad—. Lógicamente, una no replicación clara se produciría cuando ocurre lo contrario: <em>p</em> &gt; .05 en la prueba de significación de la replicación y <em>p</em> &lt; .05 en la prueba de heterogeneidad.</p>
+<p>El problema es que, debido a la baja potencia de la prueba que compara el tamaño del efecto original con el de la replicación, resulta difícil alcanzar un resultado informativo. En la práctica, muchas replicaciones no significativas tampoco mostrarán una diferencia significativa frente al estudio original. Richard Morey y yo <span class="citation" data-cites="morey_why_2016">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-morey_why_2016" role="doc-biblioref">Morey y Lakens 2016</a>)</span> resumimos este problema en el título de un preprint que nunca llegamos a reenviar tras recibir revisiones positivas: <em>Why most of psychology is statistically unfalsifiable</em>. Si exigiéramos ambos criterios, gran parte de las replicaciones conducirían a resultados inconclusos.</p>
+<p>El problema es todavía mayor si aceptamos que algunos efectos son <strong>demasiado pequeños para importar</strong>. Anderson y Maxwell <span class="citation" data-cites="anderson_theres_2016">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-anderson_theres_2016" role="doc-biblioref">Anderson y Maxwell 2016</a>)</span> señalan que podemos combinar la comparación entre los tamaños del efecto con una prueba de equivalencia para determinar si la diferencia —en caso de existir— es demasiado pequeña para resultar relevante. Con muestras enormes, diferencias minúsculas entre estudios pueden resultar estadísticamente significativas y llevarnos a concluir que un estudio no se replicó aunque la diferencia sea insignificante desde un punto de vista práctico o teórico.</p>
+<p>Anderson y Maxwell también subrayan la necesidad de incorporar un <a href="09-pruebas-de-equivalencia.html#sec-sesoi">tamaño del efecto mínimo de interés</a> al interpretar un resultado nulo en una replicación. Por ejemplo, McCarthy et al. <span class="citation" data-cites="mccarthy_registered_2018">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-mccarthy_registered_2018" role="doc-biblioref"><span class="nocase">McCarthy et&nbsp;al.</span> 2018</a>)</span> replicaron un estudio de <em>priming</em> de hostilidad cuyo tamaño del efecto original había sido <span class="math inline">\(d = 3.01\)</span>. En una replicación multilaboratorio observaron un efecto casi nulo: <span class="math inline">\(d = 0.06\)</span>, IC del 95 % [0.01, 0.12]. El efecto era estadísticamente diferente del original y, al mismo tiempo, estadísticamente significativo. Sin embargo, McCarthy y sus colaboradores argumentaron que, incluso siendo significativo, era demasiado pequeño para importar: para detectar de manera rutinaria un efecto de <span class="math inline">\(d = 0.06\)</span> con una potencia del 80 % y <span class="math inline">\(\alpha = .05\)</span> harían falta 4.362 participantes en <strong>cada</strong> condición.</p>
+<p>¿Debemos considerar una replicación con <span class="math inline">\(d = 0.06\)</span> como exitosa únicamente porque es significativa en una muestra enorme? Como se explicó en el capítulo sobre <a href="#sec-equivalencetesting">pruebas de equivalencia</a>, los efectos muy cercanos a cero suelen considerarse equivalentes a la ausencia de efecto cuando son prácticamente irrelevantes, teóricamente menores de lo esperado o imposibles de investigar de manera fiable con los recursos disponibles. McCarthy et al. <span class="citation" data-cites="mccarthy_registered_2018">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-mccarthy_registered_2018" role="doc-biblioref"><span class="nocase">McCarthy et&nbsp;al.</span> 2018</a>)</span> sostienen que el diminuto efecto observado ya no es factible de estudiar de manera práctica, por lo que los psicólogos lo considerarían equivalente a un resultado nulo. Por ello, se recomienda especificar un tamaño del efecto mínimo de interés en los estudios de replicación —cuando sea posible, de acuerdo con los autores originales; véase el ejemplo de <span class="citation" data-cites="morey_preregistered_2021">Morey et&nbsp;al. (<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-morey_preregistered_2021" role="doc-biblioref">2021</a>)</span>— y evaluar la replicación mediante una prueba de equivalencia frente a ese valor.</p>
+<p>Como hemos visto, aunque idealmente deberíamos contrastar directamente ambos tamaños del efecto, la incertidumbre del estimador original puede producir una prueba con muy poca potencia cuando la muestra inicial es pequeña. No podemos aumentar retrospectivamente el tamaño muestral del estudio original y tampoco podemos hacer ciencia si nunca somos capaces de concluir que una afirmación de la literatura no se replica. Necesitamos, por tanto, alternativas pragmáticas. Una opción intuitiva consistiría en comprobar si el efecto de la replicación es estadísticamente menor que el efecto original, por ejemplo examinando si el intervalo de confianza del 95 % de la replicación excluye <span class="math inline">\(d = 0.6\)</span> —o <span class="math inline">\(g = 0.592\)</span> tras convertirlo a <span class="math inline">\(g\)</span> de Hedges—. En esencia, sería una prueba bilateral frente al tamaño del efecto original. Pero esto equivale a convertir una prueba <em>t</em> independiente entre dos grupos en una prueba <em>t</em> de una muestra en la que ignoramos la incertidumbre de uno de ellos. No aceptaríamos esta lógica al comparar dos medias y tampoco deberíamos aceptarla al comparar dos diferencias de medias estandarizadas. La prueba rechazará demasiado fácilmente la hipótesis de que ambos efectos son iguales porque ignora la variabilidad de uno de ellos.</p>
+<p>Una alternativa es contrastar la replicación frente a una estimación más conservadora y considerar no replicado el hallazgo original cuando pueda rechazarse ese tamaño del efecto conservador. En la práctica, a menudo interesa saber si el efecto de la replicación es estadísticamente menor que el original. Esta pregunta puede responderse mediante una <strong>prueba de inferioridad</strong>, que resulta significativa cuando el intervalo de confianza del 90 % de la replicación no contiene el tamaño del efecto conservador. Una implementación es el método de los <strong>telescopios pequeños</strong> (<em>small telescopes</em>) <span class="citation" data-cites="simonsohn_small_2015">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-simonsohn_small_2015" role="doc-biblioref">Simonsohn 2015</a>)</span>. En este enfoque se contrasta la replicación frente al tamaño del efecto que el estudio original tenía un 33 % de potencia para detectar. En el ejemplo de la <a href="#fig-rep-1" class="quarto-xref">Figura&nbsp;<span>17.2</span></a>, el estudio original tenía un 33 % de potencia para detectar aproximadamente <span class="math inline">\(d = 0.4\)</span>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>pwr<span class="sc">::</span><span class="fu">pwr.t.test</span>(</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">n =</span> <span class="dv">30</span>,</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">sig.level =</span> <span class="fl">0.05</span>,</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">power =</span> <span class="fl">0.33</span>,</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">"two.sample"</span>,</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">alternative =</span> <span class="st">"two.sided"</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>El intervalo de confianza del 95 % de la replicación permite rechazar efectos superiores a 0.277, de modo que un intervalo del 90 % permitiría rechazar tamaños todavía menores. Por tanto, el procedimiento de <em>small telescopes</em> permitiría concluir que el efecto original no se replicó. Este enfoque es especialmente popular al replicar estudios originales pequeños, porque cuanto menor sea su muestra, mayor será el efecto que tenían un 33 % de potencia para detectar y más fácil resultará rechazarlo en la replicación. Es exactamente lo contrario de lo que ocurre al comparar directamente los dos tamaños del efecto, donde una muestra original pequeña reduce la potencia.</p>
+<p>Una crítica razonable al procedimiento de <em>small telescopes</em> es que la convención del 33 % es completamente arbitraria. Idealmente, los investigadores especificarían el <strong>tamaño del efecto mínimo de interés</strong> y realizarían una prueba de inferioridad frente al efecto más pequeño que realmente importara. Definir este valor es difícil. En algunos casos, los autores del estudio original pueden especificarlo. Por ejemplo, en una replicación multilaboratorio del efecto de compatibilidad acción-oración, los investigadores originales indicaron que un efecto de 50 milisegundos o menos sería teóricamente despreciable <span class="citation" data-cites="morey_preregistered_2021">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-morey_preregistered_2021" role="doc-biblioref">Morey et&nbsp;al. 2021</a>)</span>. El gran tamaño muestral permitió rechazar de manera concluyente efectos iguales o mayores que ese límite. Otra opción consiste en fijar el tamaño mínimo a partir de predicciones teóricas o por encima del <a href="#sec-crud"><em>crud factor</em></a>, es decir, del tamaño de los efectos que aparecen en una literatura debido a ruido sistemático teóricamente poco interesante <span class="citation" data-cites="orben_crud_2020">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-orben_crud_2020" role="doc-biblioref">Orben y Lakens 2020</a>)</span>. Ferguson y Heene <span class="citation" data-cites="ferguson_providing_2021">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-ferguson_providing_2021" role="doc-biblioref">Ferguson y Heene 2021</a>)</span> proponen, por ejemplo, <span class="math inline">\(r = 0.1\)</span> —o <span class="math inline">\(d = 0.2\)</span>— porque tamaños de esta magnitud pueden observarse entre variables absurdas y estar impulsados únicamente por factores de confusión metodológicos.</p>
+<p>También se ha propuesto combinar el efecto del estudio original y el de la replicación mediante un metaanálisis y comprobar si el efecto metaanalítico es estadísticamente distinto de cero. Este enfoque puede ser interesante en ausencia de sesgos, pero cuando existen sesgo de publicación o sesgo de selección sus debilidades superan a sus ventajas. Como ambos <a href="06-tamaños-del-efecto.html#sec-effectinflated">inflan los tamaños del efecto</a>, también inflarán el efecto metaanalítico y, con ello, la probabilidad de obtener una significación estadística incluso cuando no existe efecto real.</p>
+</section>
+<section id="estudios-de-replicación-o-niveles-alfa-más-bajos" class="level2" data-number="17.4">
+<h2 data-number="17.4" class="anchored" data-anchor-id="estudios-de-replicación-o-niveles-alfa-más-bajos"><span class="header-section-number">17.4</span> ¿Estudios de replicación o niveles alfa más bajos?</h2>
+<p>Quienes tienen una orientación especialmente estadística señalan a veces que, en términos de probabilidad de error de tipo I, no hay diferencia entre poner a prueba una hipótesis una sola vez con un nivel alfa más bajo —por ejemplo, <span class="math inline">\(0.05 \times 0.05 = 0.0025\)</span>— y probarla en dos estudios independientes con <span class="math inline">\(\alpha = 0.05\)</span>. Esto es correcto, pero en la práctica no podemos sustituir la función de las replicaciones simplemente reduciendo alfa en un único estudio.</p>
+<p>Reducir alfa hasta una probabilidad deseada de error de tipo I exigiría que los científicos 1) pudieran predecir perfectamente la importancia futura de una afirmación y 2) fueran capaces de alcanzar un consenso sobre la tasa de error de tipo I colectivamente aceptable para cada afirmación. Ninguna de las dos cosas ocurre en la práctica. Una afirmación puede ganar importancia con el tiempo porque muchos trabajos posteriores la citen y la den por verdadera. Ese aumento de importancia puede hacer que toda la comunidad considere valioso reducir la probabilidad de error mediante una replicación, porque un error de tipo I se ha vuelto más costoso <span class="citation" data-cites="isager_deciding_2023">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-isager_deciding_2023" role="doc-biblioref"><span class="nocase">Isager et&nbsp;al.</span> 2023</a>)</span>. En cambio, si nadie construye sobre una afirmación, quizá nadie tenga interés en reducir aún más su error. No podemos saber de antemano cuán importante será una afirmación para la investigación futura.</p>
+<p>La segunda razón es que existen diferencias individuales entre investigadores acerca de cuándo consideran que un hallazgo está suficientemente demostrado. Popper escribe: «Toda prueba de una teoría, conduzca a su corroboración o falsación, debe detenerse en algún enunciado básico que <em>decidimos aceptar</em>». Y añade: «Este procedimiento no tiene un final natural. Si queremos que la prueba nos lleve a algún sitio, no queda más remedio que detenernos en algún punto y decir que estamos satisfechos, por el momento». Algunos investigadores pueden sentirse satisfechos con una probabilidad de error de tipo I del 10 %, mientras que otros más escépticos quizá quieran reducirla al 0.1 % antes de construir sobre el hallazgo.</p>
+<p>Utilizar un alfa muy bajo en un único estudio no ofrece a la ciencia la flexibilidad de seguir reduciendo la probabilidad de error cuando surge la necesidad; realizar replicaciones sí lo permite. Conviene pensar cuidadosamente en la tasa de error deseada y, cuando los errores de tipo I sean costosos, utilizar un alfa inferior al convencional 0.05 <span class="citation" data-cites="maier_justify_2022">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-maier_justify_2022" role="doc-biblioref">Maier y Lakens 2022</a>)</span>. Pero las replicaciones seguirán siendo necesarias para reducir progresivamente el error cuando una afirmación gane importancia o cuando algunos investigadores requieran evidencia más fuerte.</p>
+<p>Existe además otra razón por la que las replicaciones independientes son preferibles a una simple reducción de alfa. Si otras personas consiguen replicar independientemente el mismo efecto, disminuye la probabilidad de que el hallazgo original se deba a un <strong>error sistemático</strong>. Los errores sistemáticos no se promedian hasta desaparecer a largo plazo, como sí ocurre con los errores aleatorios. Pueden proceder de numerosas fuentes. Por ejemplo, una báscula limitada a 150 kg podría impedir detectar un aumento de peso que sí sería visible con una báscula de mayor capacidad. También el propio experimentador puede introducir un error sistemático: el efecto observado podría deberse no a la manipulación, sino a que trata de manera diferente a los participantes de cada condición. Otros experimentadores que repitan la manipulación sin ese sesgo podrían observar resultados distintos.</p>
+<p>Cuando un investigador repite su propio experimento hablamos de <strong>autorreplicación</strong>; cuando lo repiten otros investigadores hablamos de <strong>replicación independiente</strong>. La autorreplicación puede reducir la tasa de error de tipo I de una afirmación, mientras que la replicación independiente puede, además, reducir la probabilidad de que la afirmación esté causada por un error sistemático. Ambas son útiles. Por ejemplo, las colaboraciones del Gran Colisionador de Hadrones del CERN no solo replican resultados utilizando el mismo detector, sino también entre detectores diferentes. El LHC cuenta con cuatro grandes detectores —ATLAS, CMS, ALICE y LHCb—. Un experimento puede autorreplicarse recogiendo más datos con el mismo detector —lo que los físicos denominan una <em>replica</em>— o puede replicarse mediante otro detector.</p>
+<p>Junk y Lyons <span class="citation" data-cites="junk_reproducibility_2020">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-junk_reproducibility_2020" role="doc-biblioref">2020</a>)</span> señalan que en una autorreplicación «se espera que las variaciones estadísticas sean distintas entre la réplica y el original, pero que las fuentes de error sistemático permanezcan iguales». Realizar el mismo experimento en un detector diferente permite investigar esos errores sistemáticos. Los detectores del CERN no son copias exactas unos de otros; por ello, observar el mismo resultado con dos configuraciones ligeramente diferentes aumenta la confianza en la fiabilidad de la conclusión.</p>
+<p>El valor de una replicación independiente no reside únicamente en reducir la probabilidad de error de tipo I, sino también en disminuir la preocupación por la influencia de errores sistemáticos <span class="citation" data-cites="neher_probability_1967">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-neher_probability_1967" role="doc-biblioref">Neher 1967</a>)</span>. Mack <span class="citation" data-cites="mack_need_1951">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-mack_need_1951" role="doc-biblioref">1951</a>)</span> ya señalaba que «la introducción de técnicas diferentes proporciona a la replicación la ventaja adicional de servir como comprobación de la validez de la investigación original». Lubin <span class="citation" data-cites="lubin_replicability_1957">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-lubin_replicability_1957" role="doc-biblioref">1957</a>)</span> expresaba una idea similar: «Nuestra confianza en un estudio será una función monótona positiva de la medida en que los diseños de replicación varíen esos factores supuestamente irrelevantes». En resumen, tanto la autorreplicación como la replicación independiente reducen la probabilidad de una afirmación falsa positiva, pero la segunda añade una prueba de generalización frente a factores que se suponían irrelevantes.</p>
+<p>Desde un punto de vista puramente estadístico, resulta interesante preguntar qué cuesta menos en términos de tamaño muestral: realizar un único estudio con <span class="math inline">\(\alpha = 0.0025\)</span> o dos estudios con <span class="math inline">\(\alpha = 0.05\)</span>. Si para alcanzar una potencia determinada se necesitara una muestra mucho menor en el primer caso, existiría un argumento para preferir grandes estudios únicos frente a dos estudios menores.</p>
+<p>Para una prueba <em>t</em> independiente, la estrategia más eficiente depende de la potencia deseada y de si la prueba es bilateral o unilateral. La <a href="#fig-alphalevels" class="quarto-xref">Figura&nbsp;<span>17.4</span></a> muestra la razón entre el tamaño muestral necesario para un estudio con <span class="math inline">\(\alpha = 0.0025\)</span> y el total de dos estudios con <span class="math inline">\(\alpha = 0.05\)</span>. Una razón igual a 1 indica que ambas estrategias requieren el mismo número de observaciones. En las pruebas bilaterales, la razón desciende por debajo de 1 cuando la potencia es elevada. Por ejemplo, para detectar <span class="math inline">\(d = 0.5\)</span> con una potencia del 80 %, un estudio con <span class="math inline">\(\alpha = 0.0025\)</span> necesita un tamaño total de 244 participantes; con <span class="math inline">\(\alpha = 0.05\)</span>, cada estudio necesita 128 participantes. La razón es <span class="math inline">\(244/(128+128)=0.95\)</span>, por lo que el estudio único ahorra 12 observaciones.</p>
+<div id="fig-alphalevels" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-alphalevels-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="https://lakens.github.io/statistical_inferences/17-replication_files/figure-html/fig-alphalevels-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-alphalevels-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;17.4: Razón entre el tamaño muestral requerido para realizar un estudio con <span class="math inline">\(\alpha = 0.0025\)</span> o dos estudios con <span class="math inline">\(\alpha = 0.05\)</span> en una prueba <em>t</em> independiente bilateral.
+</figcaption>
+</figure>
+</div>
+<p>Sin embargo, existen argumentos fuertes a favor de las <a href="#sec-onesided">pruebas direccionales</a>, especialmente en estudios de replicación. En una prueba unilateral las razones cambian: un estudio grande con <span class="math inline">\(\alpha = 0.0025\)</span> puede ser ligeramente más eficiente para algunos tamaños del efecto cuando la potencia deseada es del 90 %, pero con una potencia del 80 % resulta más eficiente realizar dos pruebas con <span class="math inline">\(\alpha = 0.05\)</span>. Para detectar <span class="math inline">\(d = 0.5\)</span> con un alfa de 0.0025 y una potencia del 80 % se necesita un tamaño total de 218; con alfa 0.05 se necesitan 102 participantes en cada estudio. La razón es <span class="math inline">\(218/(102+102)=1.07\)</span>, por lo que realizar dos estudios ahorra 14 observaciones.</p>
+<div id="fig-alphalevels2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-alphalevels2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="https://lakens.github.io/statistical_inferences/17-replication_files/figure-html/fig-alphalevels2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-alphalevels2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;17.5: Razón entre el tamaño muestral requerido para realizar un estudio con <span class="math inline">\(\alpha = 0.0025\)</span> o dos estudios con <span class="math inline">\(\alpha = 0.05\)</span> en una prueba <em>t</em> independiente unilateral.
+</figcaption>
+</figure>
+</div>
+<p>La potencia estadística de ambos escenarios es idéntica en estos cálculos, aunque debemos considerar cómo se analizarán los dos estudios con alfa 0.05. Si son replicaciones directas, un metaanálisis de efecto fijo de ambos tamaños del efecto tiene la misma potencia que un único estudio con el doble de muestra; por tanto, un metaanálisis con alfa 0.0025 sería equivalente a un único estudio del mismo tamaño total y alfa 0.0025. En conjunto, la elección entre dos estudios con alfa 0.05 y uno con alfa 0.0025 depende de la direccionalidad de la prueba y de la potencia deseada. No existe una ventaja inequívoca del estudio único. Dadas las ventajas no estadísticas de las replicaciones independientes y el argumento de que las replicaciones deberían ser pruebas direccionales, puede defenderse la estrategia de dos estudios. Eso exige colaboración entre científicos y que todos los estudios se compartan con independencia de su resultado —por ejemplo, mediante <em>Registered Reports</em>—.</p>
+</section>
+<section id="cuando-los-estudios-de-replicación-producen-resultados-contradictorios" class="level2" data-number="17.5">
+<h2 data-number="17.5" class="anchored" data-anchor-id="cuando-los-estudios-de-replicación-producen-resultados-contradictorios"><span class="header-section-number">17.5</span> Cuando los estudios de replicación producen resultados contradictorios</h2>
+<p>Como se señaló antes, una no replicación tiene tres posibles explicaciones: la replicación produjo un error de tipo II, el estudio original fue un error de tipo I o existe alguna diferencia relevante entre ambos estudios. La probabilidad de un error de tipo II puede reducirse mediante un análisis de potencia <em>a priori</em> o, todavía mejor, mediante un análisis de potencia para una <a href="#sec-equivalencetesting">prueba de equivalencia</a> frente a un tamaño del efecto mínimo de interés. Aun así, siempre existirá cierta probabilidad de que el resultado de una replicación sea un falso negativo.</p>
+<p>Algunos investigadores sostienen que los fracasos de replicación pueden explicarse mediante moderadores hasta entonces desconocidos u «ocultos» <span class="citation" data-cites="stroebe_alleged_2014">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-stroebe_alleged_2014" role="doc-biblioref">Stroebe y Strack 2014</a>)</span>. Existe al menos un ejemplo en el que se encontró apoyo modesto para la idea de que una replicación fallida se debía al grado de relevancia personal del mensaje utilizado en el estudio <span class="citation" data-cites="luttrell_replicating_2017">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-luttrell_replicating_2017" role="doc-biblioref">Luttrell et&nbsp;al. 2017</a>)</span>. Sin embargo, identificar de forma fiable moderadores que expliquen las no replicaciones es difícil, mientras que proponerlos retrospectivamente cuando el efecto no aparece es muy sencillo. En las ciencias sociales, algunos moderadores potenciales son además prácticamente imposibles de poner a prueba, como el hecho de que la sociedad haya cambiado con el tiempo.</p>
+<p>Este problema es muy antiguo. Galileo ya lo señaló en <em><a href="https://web.archive.org/web/https://web.stanford.edu/~jsabol/certainty/readings/Galileo-Assayer.pdf">The Assayer</a></em>, uno de los primeros libros sobre el método científico. Allí comenta la afirmación de que los babilonios cocían huevos haciéndolos girar en una honda, algo que resultó imposible de replicar:</p>
+<blockquote class="blockquote">
+<p>«Si no conseguimos un efecto que otros lograron anteriormente, debe de ser porque nos falta algo en nuestra operación que era la causa de que el efecto tuviera éxito; y si solo nos falta una cosa, entonces esa debe ser la verdadera causa. Ahora bien, no nos faltan huevos, ni hondas, ni hombres robustos que los hagan girar, y aun así no se cuecen; más bien se enfrían más deprisa si estaban calientes. Y como no nos falta nada excepto ser babilonios, entonces ser babilonio es la causa de que el huevo se endurezca».</p>
+</blockquote>
+<p>Al mismo tiempo, <strong>algunos</strong> fracasos de replicación sí se deben a diferencias en hipótesis auxiliares. En uno de los estudios más interesantes sobre esta cuestión, Ebersole et al. <span class="citation" data-cites="ebersole_many_2020">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-ebersole_many_2020" role="doc-biblioref">2020</a>)</span> realizaron replicaciones adicionales de diez estudios incluidos previamente en el <em>Reproducibility Project: Psychology</em> <span class="citation" data-cites="opensciencecollaboration_estimating_2015">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-opensciencecollaboration_estimating_2015" role="doc-biblioref">Open Science Collaboration 2015</a>)</span>. Cuando se diseñaron las primeras replicaciones, se pidió a los autores originales que comentaran el protocolo. En estos diez casos plantearon preocupaciones que finalmente no se incorporaron. Algunos señalaron, por ejemplo, que la replicación incluía participantes que ya habían cursado asignaturas de psicología o economía, o que habían participado anteriormente en experimentos, y predijeron que los efectos serían mayores entre participantes «ingenuos». Otros señalaron que los estímulos no se habían pilotado suficientemente, que la recogida se realizaba en otro país, que los materiales eran diferentes o incluso que existían diferencias en la resolución de las pantallas utilizadas.</p>
+<p>Todas estas preocupaciones implicaban predicciones acerca de hipótesis auxiliares. Un equipo de 172 investigadores colaboró con los autores originales para ponerlas a prueba en <strong>Many Labs 5</strong> <span class="citation" data-cites="ebersole_many_2020">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-ebersole_many_2020" role="doc-biblioref"><span class="nocase">Ebersole et&nbsp;al.</span> 2020</a>)</span>. El proyecto es especialmente informativo porque se realizaron grandes replicaciones tanto del protocolo del RP:P como de un protocolo revisado que incorporaba las preocupaciones de los autores.</p>
+<p>Los resultados ilustran lo difícil que es predecir si un hallazgo se replicará antes de intentarlo <span class="citation" data-cites="miller_what_2009">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-miller_what_2009" role="doc-biblioref">Miller 2009</a>)</span>. Dos estudios que no se replicaron en el RP:P tampoco lo hicieron al repetir el protocolo con una muestra mayor, pero sí produjeron un efecto con el protocolo revisado. Sin embargo, esos efectos eran posiblemente triviales —Albarracin et al., Estudio 5, y Shnabel &amp; Nadler en la <a href="#fig-manylabs5" class="quarto-xref">Figura&nbsp;<span>17.6</span></a>—. Un tercer estudio, de Van Dijk et al., mostró un patrón similar pero quedó justo por debajo de la significación con el protocolo revisado. Un cuarto, Albarracin et al., Estudio 7, había sido apenas significativo en el original; el RP:P observó un tamaño del efecto muy parecido pero apenas no significativo, de modo que un metaanálisis de ambos habría resultado significativo. Sorprendentemente, tanto la nueva replicación del protocolo RP:P como el protocolo revisado produjeron después resultados nulos claros. Un quinto estudio, Crosby et al., mostró un patrón parecido: original y RP:P apuntaban en la misma dirección, y las nuevas replicaciones no resultaron significativas, aunque los tamaños del efecto de los cuatro estudios eran muy similares y el metaanálisis conjunto producía un pequeño efecto significativo. En total, seis de los diez casos pueden considerarse no replicaciones claras en las que las preocupaciones de los autores no explicaron el resultado: solo el estudio original fue significativo y ninguna de las replicaciones lo fue.</p>
+<div id="fig-manylabs5" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-manylabs5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="https://lakens.github.io/statistical_inferences/images/manylabs5.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-manylabs5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;17.6: Diagrama de bosque de los estudios originales, las replicaciones del RP:P, las replicaciones más grandes del protocolo RP:P, los protocolos revisados tras los comentarios de los autores y el metaanálisis de todos los datos para los diez estudios de Many Labs 5.
+</figcaption>
+</figure>
+</div>
+<p>No podemos concluir, sin embargo, que las preocupaciones planteadas por los autores explicaran los otros cuatro casos. A pesar de los grandes tamaños muestrales, solo se observó una diferencia estadísticamente significativa entre el protocolo RP:P y el protocolo revisado —Payne et al.—, y en este caso los cambios sugeridos por los autores produjeron un tamaño del efecto <strong>todavía más alejado</strong> del original cuando ambos se comparan mediante una prueba de heterogeneidad:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Payne, Burkley, &amp; Stokes (2008)</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># El IC de la figura es amplio porque existe una variabilidad considerable</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># entre los centros, especialmente en el protocolo revisado.</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>r1 <span class="ot">&lt;-</span> <span class="fu">escalc</span>(<span class="at">ni =</span> <span class="dv">545</span>,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">ri =</span> <span class="fl">0.05</span>,</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">measure =</span> <span class="st">"ZCOR"</span>)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>r2 <span class="ot">&lt;-</span> <span class="fu">escalc</span>(<span class="at">ni =</span> <span class="dv">558</span>,</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">ri =</span> <span class="sc">-</span><span class="fl">0.16</span>,</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>             <span class="at">measure =</span> <span class="st">"ZCOR"</span>)</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>metadata <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">yi =</span> <span class="fu">c</span>(r1<span class="sc">$</span>yi, r2<span class="sc">$</span>yi),</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>                       <span class="at">vi =</span> <span class="fu">c</span>(r1<span class="sc">$</span>vi, r2<span class="sc">$</span>vi),</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>                       <span class="at">study =</span> <span class="fu">c</span>(<span class="st">"original"</span>, <span class="st">"replication"</span>))</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>res_h <span class="ot">&lt;-</span> <span class="fu">rma</span>(yi,</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>             vi,</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>             <span class="at">data =</span> metadata,</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>             <span class="at">method =</span> <span class="st">"FE"</span>)</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>res_h</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<pre class="text"><code>Fixed-Effects Model (k = 2)
+
+I^2 (total heterogeneity / total variability):   91.84%
+H^2 (total variability / sampling variability):  12.26
+
+Test for Heterogeneity:
+Q(df = 1) = 12.2578, p-val = 0.0005
+
+Model Results:
+estimate      se     zval    pval    ci.lb   ci.ub
+ -0.0569  0.0302  -1.8854  0.0594  -0.1161  0.0023</code></pre>
+<p>Las demás diferencias entre el protocolo RP:P y el revisado no fueron estadísticamente significativas. En otro estudio, el nuevo protocolo desplazó el tamaño del efecto todavía más lejos del original; en los otros dos, el efecto se acercó al del estudio original. En conjunto, los autores que expresan preocupaciones sobre un protocolo de replicación no parecen tener una tasa de éxito especialmente alta al predecir qué hipótesis auxiliares modificarán realmente el tamaño del efecto observado. Esta es una conclusión muy importante de Many Labs 5.</p>
+</section>
+<section id="por-qué-son-tan-raros-los-estudios-de-replicación" class="level2" data-number="17.6">
+<h2 data-number="17.6" class="anchored" data-anchor-id="por-qué-son-tan-raros-los-estudios-de-replicación"><span class="header-section-number">17.6</span> ¿Por qué son tan raros los estudios de replicación?</h2>
+<p>«Es difícil negar que existe más emoción, y normalmente más gloria, en abrir un camino nuevo que en comprobar el trabajo del pionero» <span class="citation" data-cites="mack_need_1951">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-mack_need_1951" role="doc-biblioref">Mack 1951</a>)</span>. A lo largo de la historia, numerosos investigadores han señalado que las estructuras de incentivos premian la investigación novedosa por encima de las replicaciones <span class="citation" data-cites="koole_rewarding_2012 fishman_american_1982 vaesen_neomania_2026">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-koole_rewarding_2012" role="doc-biblioref">Koole y Lakens 2012</a>; <a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-fishman_american_1982" role="doc-biblioref">Fishman y Neigher 1982</a>; <a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-vaesen_neomania_2026" role="doc-biblioref">Vaesen 2026</a>)</span>. Realizar replicaciones constituye un <strong>dilema social</strong>: es bueno para todos que los científicos hagan estudios de replicación, pero para un científico individual suele ser mejor, desde el punto de vista profesional, realizar un estudio novedoso.</p>
+<p>Es difícil saber con precisión cuántas replicaciones se realizan porque no existe una base de datos completa que las registre todas; pueden consultarse, no obstante, <a href="https://curatescience.org/">Curate Science</a>, la <a href="https://replication.uni-goettingen.de/wiki/index.php/Main_Page">Replication WIKI</a> y la <a href="https://metaanalyses.shinyapps.io/replicationdatabase/">Replication Database</a>.</p>
+<p>Aunque las estructuras de incentivos no han cambiado por completo, sí se han producido avances positivos. Al comienzo de la crisis de replicación, varias replicaciones fallidas del estudio de precognición de Bem fueron rechazadas editorialmente por Eliot Smith, editor de <em>JPSP</em>, quien afirmó: «Esta revista no publica estudios de replicación, tengan éxito o fracasen» y «No queremos convertirnos en el <em>Journal of Bem Replication</em>» <span class="citation" data-cites="aldhous_journal_2011">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-aldhous_journal_2011" role="doc-biblioref">Aldhous 2011</a>)</span>. La reacción pública a esta decisión contribuyó a que numerosas revistas comenzaran a declarar explícitamente que aceptaban replicaciones.</p>
+<p>Cada vez más revistas aceptan <strong>Registered Reports</strong>, que pueden consistir en estudios de replicación, y la iniciativa <em>Peer Community In: Registered Reports</em> también publica replicaciones. La APA ha elaborado <a href="https://apastyle.apa.org/jars/quant-table-6.pdf">directrices específicas para comunicar estudios de replicación</a>, y algunos organismos financiadores han creado <a href="https://www.nature.com/articles/nature.2016.20287">convocatorias específicas para investigación de replicación</a>.</p>
+<p>Al mismo tiempo, las replicaciones siguen recibiendo menos recompensa profesional que el trabajo novedoso, de modo que quienes intentan construir una carrera científica continúan teniendo incentivos para priorizar la novedad. Por ello, pese a los avances, en muchas disciplinas todavía queda camino por recorrer antes de que los estudios de replicación formen parte normal y cotidiana de la investigación científica.</p>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-aldhous_journal_2011" class="csl-entry" role="listitem">
+Aldhous, Peter. 2011. <span>«Journal Rejects Studies Contradicting Precognition»</span>. En <em>New Scientist</em>. Https://www.newscientist.com/article/dn20447-journal-rejects-studies-contradicting-precognition/.
+</div>
+<div id="ref-anderson_theres_2016" class="csl-entry" role="listitem">
+Anderson, Samantha F., y Scott E. Maxwell. 2016. <span>«There’s More Than One Way to Conduct a Replication Study: <span>Beyond</span> Statistical Significance.»</span> <em>Psychological Methods</em> 21 (1): 1-12. <a href="https://doi.org/10.1037/met0000051">https://doi.org/10.1037/met0000051</a>.
+</div>
+<div id="ref-bonett_replicationextension_2012" class="csl-entry" role="listitem">
+Bonett, D. G. 2012. <span>«Replication-<span>Extension Studies</span>»</span>. <em>Current Directions in Psychological Science</em> 21 (6): 409-12. <a href="https://doi.org/10.1177/0963721412459512">https://doi.org/10.1177/0963721412459512</a>.
+</div>
+<div id="ref-borenstein_introduction_2009" class="csl-entry" role="listitem">
+Borenstein, Michael, ed. 2009. <em>Introduction to Meta-Analysis</em>. John Wiley &amp; Sons.
+</div>
+<div id="ref-bulus_pwrss_2023" class="csl-entry" role="listitem">
+Bulus, M., y C. Polat. 2023. <em><span>pwrss R paketi ile istatistiksel güç analizi [Statistical power analysis with pwrss R package]</span></em>. febrero.
+</div>
+<div id="ref-degroot_methodology_1969" class="csl-entry" role="listitem">
+<span class="nocase">de Groot, Adrianus Dingeman</span>. 1969. <em>Methodology</em>. Vol. 6. Mouton &amp; Co.
+</div>
+<div id="ref-ebersole_many_2020" class="csl-entry" role="listitem">
+<span class="nocase">Ebersole, Charles R., Maya B. Mathur, Erica Baranski, et&nbsp;al.</span> 2020. <span>«Many <span>Labs</span> 5: <span>Testing Pre-Data-Collection Peer Review</span> as an <span>Intervention</span> to <span>Increase Replicability</span>»</span>. <em>Advances in Methods and Practices in Psychological Science</em> 3 (3): 309-31. <a href="https://doi.org/10.1177/2515245920958687">https://doi.org/10.1177/2515245920958687</a>.
+</div>
+<div id="ref-epstein_stability_1980" class="csl-entry" role="listitem">
+Epstein, Seymour. 1980. <span>«The Stability of Behavior: <span>II</span>. <span>Implications</span> for Psychological Research»</span>. <em>American Psychologist</em> (US) 35 (9): 790-806. <a href="https://doi.org/10.1037/0003-066X.35.9.790">https://doi.org/10.1037/0003-066X.35.9.790</a>.
+</div>
+<div id="ref-ferguson_providing_2021" class="csl-entry" role="listitem">
+Ferguson, Christopher J., y Moritz Heene. 2021. <span>«Providing a Lower-Bound Estimate for Psychology’s <span>“Crud Factor”</span>: <span>The</span> Case of Aggression»</span>. <em>Professional Psychology: Research and Practice</em> (Washington, US) 52 (6): 620-26. https://doi.org/<a href="http://dx.doi.org/10.1037/pro0000386">http://dx.doi.org/10.1037/pro0000386</a>.
+</div>
+<div id="ref-fisher_statistical_1925" class="csl-entry" role="listitem">
+Fisher, Ronald Aylmer. 1925. <em>Statistical Methods for Research Workers</em>. <span>Edinburgh, Oliver and Boyd</span>.
+</div>
+<div id="ref-fishman_american_1982" class="csl-entry" role="listitem">
+Fishman, Daniel B., y William D. Neigher. 1982. <span>«American Psychology in the Eighties: <span>Who</span> Will Buy?»</span> <em>American Psychologist</em> (US) 37 (5): 533-46. <a href="https://doi.org/10.1037/0003-066X.37.5.533">https://doi.org/10.1037/0003-066X.37.5.533</a>.
+</div>
+<div id="ref-freedman_compliance_1966" class="csl-entry" role="listitem">
+Freedman, Jonathan L., y Scott C. Fraser. 1966. <span>«Compliance Without Pressure: <span>The</span> Foot-in-the-Door Technique»</span>. <em>Journal of Personality and Social Psychology</em> (Washington, US) 4 (2): 195-202. <a href="https://doi.org/10.1037/h0023552">https://doi.org/10.1037/h0023552</a>.
+</div>
+<div id="ref-gergen_social_1973" class="csl-entry" role="listitem">
+Gergen, Kenneth J. 1973. <span>«Social Psychology as History»</span>. <em>Journal of Personality and Social Psychology</em> (US) 26: 309-20. <a href="https://doi.org/10.1037/h0034436">https://doi.org/10.1037/h0034436</a>.
+</div>
+<div id="ref-greenwald_editorial_1976" class="csl-entry" role="listitem">
+Greenwald, Anthony G., ed. 1976. <span>«An Editorial»</span>. <em>Journal of Personality and Social Psychology</em> (US) 33 (1): 1-7. <a href="https://doi.org/10.1037/h0078635">https://doi.org/10.1037/h0078635</a>.
+</div>
+<div id="ref-isager_deciding_2023" class="csl-entry" role="listitem">
+<span class="nocase">Isager, Peder Mortvedt, Robbie C. M. van Aert, Štěpán Bahník, et&nbsp;al.</span> 2023. <span>«Deciding What to Replicate: <span>A</span> Decision Model for Replication Study Selection Under Resource and Knowledge Constraints»</span>. <em>Psychological Methods</em> 28 (2): 438-51. <a href="https://doi.org/10.1037/met0000438">https://doi.org/10.1037/met0000438</a>.
+</div>
+<div id="ref-junk_reproducibility_2020" class="csl-entry" role="listitem">
+Junk, Thomas, y Louis Lyons. 2020. <span>«Reproducibility and <span>Replication</span> of <span>Experimental Particle Physics Results</span>»</span>. <em>Harvard Data Science Review</em> 2 (4). <a href="https://doi.org/10.1162/99608f92.250f995b">https://doi.org/10.1162/99608f92.250f995b</a>.
+</div>
+<div id="ref-koole_rewarding_2012" class="csl-entry" role="listitem">
+Koole, Sander L., y Daniël Lakens. 2012. <span>«Rewarding Replications <span>A</span> Sure and Simple Way to Improve Psychological Science»</span>. <em>Perspectives on Psychological Science</em> 7 (6): 608-14. <a href="https://doi.org/10.1177/1745691612462586">https://doi.org/10.1177/1745691612462586</a>.
+</div>
+<div id="ref-loevinger_information_1968" class="csl-entry" role="listitem">
+Loevinger, Jane. 1968. <span>«The "Information Explosion."»</span> <em>American Psychologist</em> (US) 23 (6): 455-55. <a href="https://doi.org/10.1037/h0020800">https://doi.org/10.1037/h0020800</a>.
+</div>
+<div id="ref-lubin_replicability_1957" class="csl-entry" role="listitem">
+Lubin, Ardie. 1957. <span>«Replicability as a Publication Criterion»</span>. <em>American Psychologist</em> (US) 12: 519-20. <a href="https://doi.org/10.1037/h0039746">https://doi.org/10.1037/h0039746</a>.
+</div>
+<div id="ref-luttrell_replicating_2017" class="csl-entry" role="listitem">
+Luttrell, Andrew, Richard E. Petty, y Mengran Xu. 2017. <span>«Replicating and Fixing Failed Replications: <span>The</span> Case of Need for Cognition and Argument Quality»</span>. <em>Journal of Experimental Social Psychology</em> 69 (marzo): 178-83. <a href="https://doi.org/10.1016/j.jesp.2016.09.006">https://doi.org/10.1016/j.jesp.2016.09.006</a>.
+</div>
+<div id="ref-lykken_statistical_1968" class="csl-entry" role="listitem">
+Lykken, David T. 1968. <span>«Statistical Significance in Psychological Research»</span>. <em>Psychological Bulletin</em> 70 (3, Pt.1): 151-59. <a href="https://doi.org/10.1037/h0026141">https://doi.org/10.1037/h0026141</a>.
+</div>
+<div id="ref-mack_need_1951" class="csl-entry" role="listitem">
+Mack, Raymond W. 1951. <span>«The <span>Need</span> for <span>Replication Research</span> in <span>Sociology</span>»</span>. <em>American Sociological Review</em> 16 (1): 93-94. <a href="https://doi.org/10.2307/2087978">https://doi.org/10.2307/2087978</a>.
+</div>
+<div id="ref-maier_justify_2022" class="csl-entry" role="listitem">
+Maier, Maximilian, y Daniël Lakens. 2022. <span>«Justify Your Alpha: <span>A</span> Primer on Two Practical Approaches»</span>. <em>Advances in Methods and Practices in Psychological Science</em>, advance online publication. <a href="https://doi.org/10.31234/osf.io/ts4r6">https://doi.org/10.31234/osf.io/ts4r6</a>.
+</div>
+<div id="ref-mccarthy_registered_2018" class="csl-entry" role="listitem">
+<span class="nocase">McCarthy, Randy J., John J. Skowronski, Bruno Verschuere, et&nbsp;al.</span> 2018. <span>«Registered <span>Replication Report</span> on <span>Srull</span> and <span>Wyer</span> (1979)»</span>. <em>Advances in Methods and Practices in Psychological Science</em> 1 (3): 321-36. <a href="https://doi.org/10.1177/2515245918777487">https://doi.org/10.1177/2515245918777487</a>.
+</div>
+<div id="ref-mellers_frequency_2001" class="csl-entry" role="listitem">
+Mellers, Barbara, Ralph Hertwig, y Daniel Kahneman. 2001. <span>«Do Frequency Representations Eliminate Conjunction Effects? <span>An</span> Exercise in Adversarial Collaboration»</span>. <em>Psychological Science</em> 12 (4): 269-75. <a href="https://doi.org/10.1111/1467-9280.00350">https://doi.org/10.1111/1467-9280.00350</a>.
+</div>
+<div id="ref-miller_what_2009" class="csl-entry" role="listitem">
+Miller, Jeff. 2009. <span>«What Is the Probability of Replicating a Statistically Significant Effect?»</span> <em>Psychonomic Bulletin &amp; Review</em> 16 (4): 617-40. <a href="https://doi.org/10.3758/PBR.16.4.617">https://doi.org/10.3758/PBR.16.4.617</a>.
+</div>
+<div id="ref-morey_preregistered_2021" class="csl-entry" role="listitem">
+Morey, Richard D., Michael P. Kaschak, Antonio M. Díez-Álamo, et&nbsp;al. 2021. <span>«A Pre-Registered, Multi-Lab Non-Replication of the Action-Sentence Compatibility Effect (<span>ACE</span>)»</span>. <em>Psychonomic Bulletin &amp; Review</em>, advance online publication, noviembre. <a href="https://doi.org/10.3758/s13423-021-01927-8">https://doi.org/10.3758/s13423-021-01927-8</a>.
+</div>
+<div id="ref-morey_why_2016" class="csl-entry" role="listitem">
+Morey, Richard D, y Daniël Lakens. 2016. <em>Why Most of Psychology Is Statistically Unfalsifiable</em>.
+</div>
+<div id="ref-neher_probability_1967" class="csl-entry" role="listitem">
+Neher, Andrew. 1967. <span>«Probability <span>Pyramiding</span>, <span>Research Error</span> and the <span>Need</span> for <span>Independent Replication</span>»</span>. <em>The Psychological Record</em> 17 (2): 257-62. <a href="https://doi.org/10.1007/BF03393713">https://doi.org/10.1007/BF03393713</a>.
+</div>
+<div id="ref-nosek_what_2020" class="csl-entry" role="listitem">
+Nosek, Brian A., y Timothy M. Errington. 2020. <span>«What Is Replication?»</span> <em>PLOS Biology</em> 18 (3): e3000691. <a href="https://doi.org/10.1371/journal.pbio.3000691">https://doi.org/10.1371/journal.pbio.3000691</a>.
+</div>
+<div id="ref-opensciencecollaboration_estimating_2015" class="csl-entry" role="listitem">
+Open Science Collaboration. 2015. <span>«Estimating the Reproducibility of Psychological Science»</span>. <em>Science</em> 349 (6251): aac4716-16. <a href="https://doi.org/10.1126/science.aac4716">https://doi.org/10.1126/science.aac4716</a>.
+</div>
+<div id="ref-orben_crud_2020" class="csl-entry" role="listitem">
+Orben, Amy, y Daniël Lakens. 2020. <span>«Crud (<span>Re</span>)<span>Defined</span>»</span>. <em>Advances in Methods and Practices in Psychological Science</em> 3 (2): 238-47. <a href="https://doi.org/10.1177/2515245920917961">https://doi.org/10.1177/2515245920917961</a>.
+</div>
+<div id="ref-pereboom_fundamental_1971" class="csl-entry" role="listitem">
+Pereboom, A. C. 1971. <span>«Some <span>Fundamental Problems</span> in <span>Experimental Psychology</span>: <span>An Overview</span>»</span>. <em>Psychological Reports</em> 28 (2). <a href="https://doi.org/10.2466/pr0.1971.28.2.439">https://doi.org/10.2466/pr0.1971.28.2.439</a>.
+</div>
+<div id="ref-popper_logic_2002" class="csl-entry" role="listitem">
+Popper, Karl R. 2002. <em><span>The logic of scientific discovery</span></em>. Routledge.
+</div>
+<div id="ref-samelson_watsons_1980" class="csl-entry" role="listitem">
+Samelson, Franz. 1980. <span>«J <span>B Watson</span>’s <span>Little Albert</span>, <span>Cyril Burt</span>’s Twins, and the Need for a Critical Science»</span>. <em>American Psychologist</em> 35 (7): 619-25. <a href="https://doi.org/10.1037/0003-066X.35.7.619">https://doi.org/10.1037/0003-066X.35.7.619</a>.
+</div>
+<div id="ref-schmidt_shall_2009" class="csl-entry" role="listitem">
+Schmidt, Stefan. 2009. <span>«Shall We Really Do It Again? <span>The</span> Powerful Concept of Replication Is Neglected in the Social Sciences.»</span> <em>Review of General Psychology</em> 13 (2): 90-100. <a href="https://doi.org/10.1037/a0015108">https://doi.org/10.1037/a0015108</a>.
+</div>
+<div id="ref-sidman_tactics_1960" class="csl-entry" role="listitem">
+Sidman, Murray. 1960. <em>Tactics of <span>Scientific Research</span>: <span>Evaluating Experimental Data</span> in <span>Psychology</span></em>. New edition. Cambridge Center for Behavioral.
+</div>
+<div id="ref-simons_constraints_2017" class="csl-entry" role="listitem">
+Simons, Daniel J., Yuichi Shoda, y D. Stephen Lindsay. 2017. <span>«Constraints on <span>Generality</span> (<span>COG</span>): <span>A Proposed Addition</span> to <span>All Empirical Papers</span>»</span>. <em>Perspectives on Psychological Science</em> 12 (6): 1123-28. <a href="https://doi.org/10.1177/1745691617708630">https://doi.org/10.1177/1745691617708630</a>.
+</div>
+<div id="ref-simonsohn_small_2015" class="csl-entry" role="listitem">
+Simonsohn, Uri. 2015. <span>«Small Telescopes: <span>Detectability</span> and the Evaluation of Replication Results»</span>. <em>Psychological Science</em> 26 (5): 559-69. <a href="https://doi.org/10.1177/0956797614567341">https://doi.org/10.1177/0956797614567341</a>.
+</div>
+<div id="ref-smith_replication_1970" class="csl-entry" role="listitem">
+Smith, Nathaniel C. 1970. <span>«Replication Studies: <span>A</span> Neglected Aspect of Psychological Research»</span>. <em>American Psychologist</em> (US) 25 (10): 970-75. <a href="https://doi.org/10.1037/h0029774">https://doi.org/10.1037/h0029774</a>.
+</div>
+<div id="ref-spence_tempered_2024" class="csl-entry" role="listitem">
+Spence, Jeffrey R., y David J. Stanley. 2024. <span>«Tempered <span>Expectations</span>: <span>A Tutorial</span> for <span>Calculating</span> and <span>Interpreting Prediction Intervals</span> in the <span>Context</span> of <span>Replications</span>»</span>. <em>Advances in Methods and Practices in Psychological Science</em> 7 (1): 25152459231217932. <a href="https://doi.org/10.1177/25152459231217932">https://doi.org/10.1177/25152459231217932</a>.
+</div>
+<div id="ref-stroebe_alleged_2014" class="csl-entry" role="listitem">
+Stroebe, W., y F. Strack. 2014. <span>«The <span>Alleged Crisis</span> and the <span>Illusion</span> of <span>Exact Replication</span>»</span>. <em>Perspectives on Psychological Science</em> 9 (1): 59-71. <a href="https://doi.org/10.1177/1745691613514450">https://doi.org/10.1177/1745691613514450</a>.
+</div>
+<div id="ref-tunc_falsificationist_2023" class="csl-entry" role="listitem">
+Tunç, Duygu Uygun, y Mehmet Necip Tunç. 2023. <span>«A <span>Falsificationist Treatment</span> of <span>Auxiliary Hypotheses</span> in <span>Social</span> and <span>Behavioral Sciences</span>: <span>Systematic Replications Framework</span>»</span>. <em>Meta-Psychology</em> 7 (septiembre). <a href="https://doi.org/10.15626/MP.2021.2756">https://doi.org/10.15626/MP.2021.2756</a>.
+</div>
+<div id="ref-vaesen_neomania_2026" class="csl-entry" role="listitem">
+Vaesen, Krist. 2026. <em>Neomania: <span>How Our Obsession With Innovation</span> Is <span>Failing Science</span>, and <span>How</span> to <span>Restore Trust</span></em>. Open Book Publishers. <a href="https://doi.org/10.11647/obp.0507">https://doi.org/10.11647/obp.0507</a>.
+</div>
+</div>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./16-sesgo-y-escepticismo.html" class="pagination-link" aria-label="Sesgo de confirmación y escepticismo organizado">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Sesgo de confirmación y escepticismo organizado</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora de razones de verosimilitud</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Open+Sans:ital,wght@0,400;0,600;1,400&family=Fira+Code&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.26.0/plotly.min.js"></script>
+<style>
+:root {
+  --bg: #fffafa;
+  --bg2: #f7f7f7;
+  --ink: #1c1717;
+  --ink2: #3d3535;
+  --ink3: #666060;
+  --rule: #d6dadc;
+  --red: #a60a0a;
+  --red-bg: #fff5f5;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Open Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.65;
+  padding: 20px 20px 32px;
+  overflow: hidden;
+}
+.calc-label, .input-label, table th {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--ink3);
+}
+.calc-label { letter-spacing: .18em; margin-bottom: 5px; }
+.calc-heading, .table-heading {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  color: var(--ink);
+}
+.calc-heading {
+  font-size: 1.1rem;
+  margin-bottom: 16px;
+  padding-bottom: 9px;
+  border-bottom: 2px solid var(--red);
+}
+.input-panel {
+  background: var(--bg2);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--red);
+  padding: 16px 18px;
+  margin-bottom: 20px;
+}
+.input-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.input-group { display: flex; flex-direction: column; gap: 5px; }
+.input-label .sym {
+  color: var(--red);
+  font-size: .88rem;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+}
+input[type="number"] {
+  width: 100%;
+  padding: 6px 8px;
+  border: 1px solid var(--rule);
+  border-bottom: 2px solid var(--red);
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Fira Code', monospace;
+  font-size: 13px;
+  outline: none;
+}
+input[type="range"] {
+  width: 100%;
+  height: 2px;
+  margin-top: 5px;
+  appearance: none;
+  background: var(--rule);
+  border-radius: 1px;
+  cursor: pointer;
+}
+input[type="range"]::-webkit-slider-thumb {
+  width: 14px;
+  height: 14px;
+  appearance: none;
+  border: 2px solid var(--red);
+  border-radius: 50%;
+  background: var(--bg);
+}
+input[type="range"]::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--red);
+  border-radius: 50%;
+  background: var(--bg);
+}
+.slider-value {
+  color: var(--red);
+  font-family: 'Fira Code', monospace;
+  font-size: 12px;
+}
+.plot-wrap { margin-bottom: 18px; border: 1px solid var(--rule); background: var(--bg); }
+#likelihoodPlot { width: 100%; height: 360px; }
+.text-block, .benchmarks {
+  padding: 11px 14px;
+  margin-bottom: 10px;
+  background: var(--bg2);
+  color: var(--ink2);
+  font-size: .9rem;
+  line-height: 1.6;
+}
+.text-block { border-left: 3px solid var(--rule); }
+.text-block.h1-result, .text-block.lr-result { border-left-color: var(--red); }
+.text-block.lr-result { background: var(--red-bg); }
+.benchmarks { margin-bottom: 18px; border: 1px solid var(--rule); color: var(--ink3); }
+.text-block strong, .benchmarks strong { color: var(--ink); }
+.table-heading { margin: 18px 0 9px; font-size: .95rem; }
+table { width: 100%; border-collapse: collapse; margin-bottom: 18px; font-size: .875rem; }
+table th { padding: 8px 11px; border-bottom: 2px solid var(--ink); background: var(--bg2); text-align: left; }
+table td {
+  padding: 7px 11px;
+  border-bottom: 1px solid var(--rule);
+  color: var(--ink2);
+  font-family: 'Fira Code', monospace;
+  font-size: 12.5px;
+}
+table tr.selected td { background: var(--red-bg); color: var(--ink); font-weight: 600; }
+@media (max-width: 560px) {
+  .input-grid { grid-template-columns: 1fr 1fr; }
+  #likelihoodPlot { height: 280px; }
+  table th, table td { padding: 6px 7px; }
+}
+</style>
+</head>
+<body>
+<p class="calc-label">Calculadora interactiva</p>
+<h2 class="calc-heading">Razón de verosimilitudes para resultados mixtos</h2>
+
+<div class="input-panel">
+  <div class="input-grid">
+    <div class="input-group">
+      <label class="input-label" for="n">Número de estudios <span class="sym">n</span></label>
+      <input type="number" id="n" min="1" max="100" value="3">
+    </div>
+    <div class="input-group">
+      <label class="input-label" for="x">Resultados significativos <span class="sym">x</span></label>
+      <input type="number" id="x" min="0" max="100" value="2">
+    </div>
+    <div class="input-group">
+      <label class="input-label" for="H0">Error Tipo 1 <span class="sym">α</span> — H₀</label>
+      <input type="range" id="H0" min="0.01" max="0.5" step="0.01" value="0.05">
+      <div class="slider-value" id="H0Val">0.05</div>
+    </div>
+    <div class="input-group">
+      <label class="input-label" for="H1">Potencia estadística <span class="sym">1−β</span> — H₁</label>
+      <input type="range" id="H1" min="0" max="1" step="0.01" value="0.80">
+      <div class="slider-value" id="H1Val">0.80</div>
+    </div>
+  </div>
+</div>
+
+<div class="plot-wrap"><div id="likelihoodPlot"></div></div>
+<div id="textH1" class="text-block h1-result"></div>
+<div id="textH0" class="text-block h0-result"></div>
+
+<div class="benchmarks">
+  <strong>Valores de referencia para la interpretación (Royall, 1997):</strong>
+  RV = 1: evidencia igual para ambas hipótesis.
+  1 &lt; RV &lt; 8: evidencia <strong>débil</strong>.
+  8 ≤ RV &lt; 32: evidencia <strong>moderada</strong>.
+  RV ≥ 32: evidencia <strong>fuerte</strong>.
+</div>
+
+<div id="textLR" class="text-block lr-result"></div>
+<div class="table-heading">Distribución de probabilidad</div>
+<table>
+  <thead><tr><th>Estudios significativos (k)</th><th>P(k | H₀)</th><th>P(k | H₁)</th></tr></thead>
+  <tbody id="tableBody"></tbody>
+</table>
+
+<script>
+function dbinom(k, n, p) {
+  if (k < 0 || k > n) return 0;
+  var c = 1;
+  for (var i = 0; i < k; i++) c *= (n - i) / (i + 1);
+  return c * Math.pow(p, k) * Math.pow(1 - p, n - k);
+}
+function fmt(num, d) {
+  d = d === undefined ? 4 : d;
+  if (!isFinite(num)) return '∞';
+  if (num === 0) return '0';
+  if (num < .0001) return num.toExponential(2);
+  return Number(num.toFixed(d));
+}
+function postHeight() {
+  var h = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+  window.parent.postMessage({ iframeHeight: h }, '*');
+}
+function resultWord(x) { return x === 1 ? 'resultado significativo' : 'resultados significativos'; }
+function update() {
+  var n = Math.max(1, parseInt(document.getElementById('n').value) || 1);
+  var rawX = parseInt(document.getElementById('x').value);
+  var x = Math.min(Math.max(0, isNaN(rawX) ? 0 : rawX), n);
+  var H0 = parseFloat(document.getElementById('H0').value) || .05;
+  var H1 = parseFloat(document.getElementById('H1').value);
+  if (isNaN(H1)) H1 = .80;
+  document.getElementById('x').value = x;
+  document.getElementById('H0Val').textContent = H0.toFixed(2);
+  document.getElementById('H1Val').textContent = H1.toFixed(2);
+
+  var p0 = dbinom(x, n, H0);
+  var p1 = dbinom(x, n, H1);
+  var LR = p0 > 0 && p1 > 0 ? Math.max(p0 / p1, p1 / p0) : Infinity;
+  var H1wins = p1 >= p0;
+  var mle = x / n;
+  var theta = [], like = [];
+  for (var i = 0; i <= 1000; i++) {
+    theta.push(i / 1000);
+    like.push(dbinom(x, n, i / 1000));
+  }
+
+  var shapes = [
+    {type:'line', x0:H0, x1:H0, y0:0, y1:1, xref:'x', yref:'paper', line:{color:'#999', dash:'dot', width:1.5}},
+    {type:'line', x0:H1, x1:H1, y0:0, y1:1, xref:'x', yref:'paper', line:{color:'#999', dash:'dot', width:1.5}},
+    {type:'line', x0:H0, x1:mle, y0:p0, y1:p0, xref:'x', yref:'y', line:{color:'#1c1717', dash:'dash', width:1.5}},
+    {type:'line', x0:H1, x1:mle, y0:p1, y1:p1, xref:'x', yref:'y', line:{color:'#1c1717', dash:'dash', width:1.5}},
+    {type:'line', x0:mle, x1:mle, y0:p0, y1:p1, xref:'x', yref:'y', line:{color:'#1c1717', width:2}}
+  ];
+  Plotly.react('likelihoodPlot', [
+    {x:theta, y:like, type:'scatter', mode:'lines', name:'Verosimilitud', line:{color:'#a60a0a', width:2.5}, hovertemplate:'θ: %{x:.3f}<br>L(θ): %{y:.4f}<extra></extra>'},
+    {x:[H0], y:[p0], type:'scatter', mode:'markers', name:'H₀ (α = '+H0.toFixed(2)+')', marker:{size:9, color:'#fffafa', line:{color:'#1c1717', width:2}}, hovertemplate:'H₀: θ = %{x:.3f}<br>L(θ) = %{y:.4f}<extra></extra>'},
+    {x:[H1], y:[p1], type:'scatter', mode:'markers', name:'H₁ (potencia = '+H1.toFixed(2)+')', marker:{size:9, color:'#fffafa', line:{color:'#a60a0a', width:2}}, hovertemplate:'H₁: θ = %{x:.3f}<br>L(θ) = %{y:.4f}<extra></extra>'}
+  ], {
+    xaxis:{title:{text:'θ (probabilidad del efecto)', font:{size:13}}, zeroline:false, gridcolor:'#ede8e8', linecolor:'#d6dadc'},
+    yaxis:{title:{text:'Verosimilitud L(θ)', font:{size:13}}, gridcolor:'#ede8e8', linecolor:'#d6dadc'},
+    shapes:shapes,
+    annotations:[
+      {x:H0, xref:'x', y:.97, yref:'paper', text:'L(H₀) = '+fmt(p0,4), showarrow:false, xanchor:'center', yanchor:'top', font:{size:11.5,color:'#555'}},
+      {x:H1, xref:'x', y:.97, yref:'paper', text:'L(H₁) = '+fmt(p1,4), showarrow:false, xanchor:'center', yanchor:'top', font:{size:11.5,color:'#a60a0a'}},
+      {x:mle, xref:'x', y:(p0+p1)/2, yref:'y', text:'<b>RV = '+(isFinite(LR)?LR.toFixed(2):'∞')+'</b>', showarrow:false, xanchor:mle>.65?'right':'left', yanchor:'middle', xshift:mle>.65?-6:6, font:{size:12,color:'#1c1717'}}
+    ],
+    plot_bgcolor:'#fffafa', paper_bgcolor:'#fffafa',
+    font:{family:"'Open Sans', sans-serif",color:'#1c1717',size:12},
+    margin:{l:55,r:24,t:16,b:48},
+    legend:{x:.5,y:1.02,xanchor:'center',yanchor:'bottom',orientation:'h',font:{size:11},bgcolor:'rgba(255,250,250,.85)'},
+    hovermode:'closest'
+  }, {responsive:true}).then(postHeight);
+
+  document.getElementById('textH1').innerHTML =
+    '<strong>Bajo H₁ (potencia = '+H1.toFixed(2)+'):</strong> la probabilidad de observar '+x+' de '+n+' '+resultWord(x)+' es <strong>'+fmt(p1,6)+'</strong>. Si los '+n+' estudios examinan efectos verdaderos con una potencia del '+(100*H1).toFixed(0)+'%, cabe esperar que el '+(100*p1).toFixed(2)+'% de los conjuntos de '+n+' estudios muestre exactamente '+x+' '+resultWord(x)+'.';
+  document.getElementById('textH0').innerHTML =
+    '<strong>Bajo H₀ (α = '+H0.toFixed(2)+'):</strong> la probabilidad de observar '+x+' de '+n+' '+resultWord(x)+' es <strong>'+fmt(p0,6)+'</strong>. Si los '+n+' estudios examinan efectos nulos con una tasa de error Tipo 1 del '+(100*H0).toFixed(0)+'%, cabe esperar que el '+(100*p0).toFixed(2)+'% de los conjuntos de '+n+' estudios muestre exactamente '+x+' '+resultWord(x)+'.';
+  var strength = LR < 8 ? 'débil' : LR < 32 ? 'moderada' : 'fuerte';
+  var direction = H1wins ? 'más verosímiles bajo H₁ (alternativa) que bajo H₀ (nula)' : 'más verosímiles bajo H₀ (nula) que bajo H₁ (alternativa)';
+  document.getElementById('textLR').innerHTML = '<strong>Razón de verosimilitudes: '+(isFinite(LR)?LR.toFixed(2):'∞')+'</strong> — los datos son '+(isFinite(LR)?LR.toFixed(2)+' veces ':'')+direction+'. Esto constituye evidencia <strong>'+strength+'</strong>.';
+
+  var tbody = document.getElementById('tableBody');
+  tbody.innerHTML = '';
+  for (var k = 0; k <= n; k++) {
+    var tr = document.createElement('tr');
+    if (k === x) tr.className = 'selected';
+    tr.innerHTML = '<td><strong>'+k+'</strong></td><td>'+fmt(dbinom(k,n,H0),6)+'</td><td>'+fmt(dbinom(k,n,H1),6)+'</td>';
+    tbody.appendChild(tr);
+  }
+  postHeight();
+}
+['n','x'].forEach(function(id) {
+  document.getElementById(id).addEventListener('input', update);
+  document.getElementById(id).addEventListener('change', update);
+});
+['H0','H1'].forEach(function(id) { document.getElementById(id).addEventListener('input', update); });
+window.addEventListener('load', function() { setTimeout(postHeight, 400); });
+if (typeof ResizeObserver !== 'undefined') new ResizeObserver(postHeight).observe(document.body);
+update();
+</script>
+</body>
+</html>

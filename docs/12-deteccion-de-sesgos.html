@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>12&nbsp; Detección de sesgos – Mejora de tus Inferencias Estadísticas</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./13-prerregistro-y-transparencia.html" rel="next">
+<link href="./11-meta-analisis.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-343830dee7e81009abd9657442190b55.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./12-deteccion-de-sesgos.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Detección de sesgos</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Mejora de tus Inferencias Estadísticas</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Inicio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-usando-valores-p.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Usar valores <em>p</em> para poner a prueba una hipótesis</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-control-de-errores.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Control de errores</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-verosimilitudes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Verosimilitudes</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-estadistica-bayesiana.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Estadística bayesiana</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-formulando-preguntas-estadisticas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Formular preguntas estadísticas</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-tamaños-del-efecto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Tamaños del efecto</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-intervalos-de-confianza.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Intervalos de confianza</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-justificacion-del-tamaño-de-la-muestra.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Justificación del tamaño de la muestra</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-pruebas-de-equivalencia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Pruebas de equivalencia e hipótesis de intervalo</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-analisis-secuencial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Análisis Secuencial</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11-meta-analisis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Metaanálisis</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12-deteccion-de-sesgos.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Detección de sesgos</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13-prerregistro-y-transparencia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Prerregistro y transparencia</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./14-reproducibilidad-computacional.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Reproducibilidad computacional</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./15-integridad-de-la-investigacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Integridad de la investigación</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./16-sesgo-y-escepticismo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Sesgo de confirmación y escepticismo organizado</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./17-estudios-de-replicacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Estudios de replicación</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de contenidos</h2>
+   
+  <ul>
+  <li><a href="#sec-publicationbias" id="toc-sec-publicationbias" class="nav-link active" data-scroll-target="#sec-publicationbias"><span class="header-section-number">12.1</span> Sesgo de publicación</a></li>
+  <li><a href="#detección-de-sesgos-en-el-metaanálisis" id="toc-detección-de-sesgos-en-el-metaanálisis" class="nav-link" data-scroll-target="#detección-de-sesgos-en-el-metaanálisis"><span class="header-section-number">12.2</span> Detección de sesgos en el metaanálisis</a></li>
+  <li><a href="#trim-and-fill" id="toc-trim-and-fill" class="nav-link" data-scroll-target="#trim-and-fill"><span class="header-section-number">12.3</span> <em>Trim-and-fill</em></a></li>
+  <li><a href="#sec-petpeese" id="toc-sec-petpeese" class="nav-link" data-scroll-target="#sec-petpeese"><span class="header-section-number">12.4</span> PET-PEESE</a></li>
+  <li><a href="#metaanálisis-de-valores-p" id="toc-metaanálisis-de-valores-p" class="nav-link" data-scroll-target="#metaanálisis-de-valores-p"><span class="header-section-number">12.5</span> Metaanálisis de valores <em>p</em></a></li>
+  <li><a href="#conclusión" id="toc-conclusión" class="nav-link" data-scroll-target="#conclusión"><span class="header-section-number">12.6</span> Conclusión</a></li>
+  <li><a href="#ponte-a-prueba" id="toc-ponte-a-prueba" class="nav-link" data-scroll-target="#ponte-a-prueba"><span class="header-section-number">12.7</span> Ponte a prueba</a>
+  <ul class="collapse">
+  <li><a href="#preguntas-abiertas" id="toc-preguntas-abiertas" class="nav-link" data-scroll-target="#preguntas-abiertas"><span class="header-section-number">12.7.1</span> Preguntas abiertas</a></li>
+  </ul></li>
+  <li><a href="#solucionario" id="toc-solucionario" class="nav-link" data-scroll-target="#solucionario">Solucionario</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="sec-bias" class="quarto-section-identifier"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Detección de sesgos</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<blockquote class="blockquote">
+<p>Traducción literal al castellano del capítulo 12, «Bias detection», de Daniël Lakens, <em>Improving Your Statistical Inferences</em>.<br> Original: https://lakens.github.io/statistical_inferences/12-bias.html<br> Licencia del original: CC-BY-4.0. Traducción no oficial.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>Cuando Diágoras, a quien llamaban el ateo, se encontraba en Samotracia, uno de sus amigos le mostró varias pinturas de personas que habían sobrevivido a tormentas muy peligrosas. «Mira —le dijo—, tú que niegas la providencia, cuántos se han salvado gracias a sus plegarias a los dioses». «Sí —respondió Diágoras—, veo a quienes se salvaron; pero ¿dónde están pintados los que naufragaron?»</p>
+<p><em>Tusculanae Disputationes</em>, Cicerón, 45 a. C.</p>
+</blockquote>
+<p>Los sesgos pueden introducirse a lo largo de todo el proceso de investigación. Conviene prevenirlos o detectarlos. Algunos investigadores recomiendan adoptar una actitud escéptica ante cualquier afirmación que aparezca en la literatura científica. Por ejemplo, la filósofa de la ciencia Deborah Mayo <span class="citation" data-cites="mayo_statistical_2018">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-mayo_statistical_2018" role="doc-biblioref">2018</a>)</span> escribe: «Ante la noticia estadística del día, la primera pregunta debe ser: ¿se deben los resultados a una publicación selectiva, a una selección interesada de los datos o a alguna otra maniobra semejante?». Quizá no te haga muy popular formular esta pregunta al ponente de tu próxima conferencia científica, pero sería ingenuo ignorar que los investigadores introducen sesgos en sus afirmaciones, de manera más o menos intencionada.</p>
+<p>En el extremo más grave de las prácticas que introducen sesgos en la investigación científica se encuentra la <strong>mala conducta científica</strong>: inventar datos o resultados, o modificarlos u omitirlos de tal modo que la investigación no quede representada con exactitud en el registro científico. Por ejemplo, <a href="https://en.wikipedia.org/wiki/Andrew_Wakefield">Andrew Wakefield</a> publicó en 1998 un artículo fraudulento que afirmaba que existía una relación entre la vacuna triple vírica —sarampión, paperas y rubéola— y el autismo. El artículo se retractó en 2010, después de haber dañado la confianza en las vacunas de una parte de la población. Otro ejemplo de la psicología fue el estudio de <a href="https://en.wikipedia.org/wiki/James_Vicary">James Vicary</a> sobre <em>priming</em> subliminal. Vicary afirmó que proyectar fugazmente los mensajes «COME PALOMITAS» y «BEBE COCA-COLA» durante una película había incrementado las ventas un 57,5 % y un 18,1 %, respectivamente. Más tarde se concluyó que probablemente había cometido fraude científico: no existían pruebas de que el estudio hubiera llegado a realizarse <span class="citation" data-cites="rogers_how_1992">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-rogers_how_1992" role="doc-biblioref">Rogers 1992--1993</a>)</span>. Retraction Watch mantiene una <a href="http://retractiondatabase.org">base de datos</a> que registra los motivos de las retractaciones, entre ellos la fabricación de datos. No sabemos con qué frecuencia ocurre, pero, como se explica en el capítulo sobre <a href="15-integridad-de-la-investigacion.html">integridad de la investigación</a>, cabe esperar que al menos un pequeño porcentaje de científicos haya fabricado, falsificado o modificado datos o resultados alguna vez.</p>
+<div id="fig-outliers" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-outliers-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/12/ch12-fig-01-theranos.gif" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-outliers-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;12.1: Escena en The Dropout sobre la empresa Theranos que afirmaba falsamente tener dispositivos que podían realizar análisis de sangre en cantidades muy pequeñas de sangre. En la escena, dos denunciantes se enfrentan a sus jefes cuando los presionan para eliminar puntos de datos que no muestran los resultados deseados.
+</figcaption>
+</figure>
+</div>
+<p>Una categoría distinta son los errores al informar resultados estadísticos: desde comunicar grados de libertad incorrectos hasta presentar <em>p</em> = 0,056 como <em>p</em> &lt; 0,05 <span class="citation" data-cites="nuijten_prevalence_2015">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-nuijten_prevalence_2015" role="doc-biblioref"><span class="nocase">Nuijten et&nbsp;al.</span> 2015</a>)</span>. Aunque debemos hacer cuanto podamos para evitarlos, todos cometemos errores. A medida que compartir datos y código se haga más habitual, también resultará más fácil detectar errores en el trabajo de otros investigadores. Como escribe Dorothy Bishop <span class="citation" data-cites="bishop_fallibility_2018">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-bishop_fallibility_2018" role="doc-biblioref">2018</a>)</span>: «A medida que la ciencia abierta se convierta en la norma, descubriremos que todo el mundo es falible. La reputación de los científicos no dependerá de que su investigación tenga defectos, sino de cómo respondan cuando estos se señalen».</p>
+<p><a href="http://statcheck.io/">Statcheck</a> es un programa que extrae automáticamente los estadísticos de los artículos y vuelve a calcular sus valores <em>p</em>, siempre que se hayan comunicado siguiendo las normas de la American Psychological Association (APA). Comprueba la coherencia interna: dados el estadístico de contraste y los grados de libertad, ¿es correcto el valor <em>p</em> informado? Si lo es, resulta menos probable que se haya cometido un error —aunque no descarta errores internamente coherentes—; si no lo es, conviene revisar todos los datos del contraste. Statcheck no es perfecto y puede producir errores de tipo I al señalar como incorrecto algo que no lo es. Aun así, es una herramienta sencilla para revisar un artículo antes de enviarlo, y los primeros trabajos metacientíficos indican que puede reducir los errores de comunicación estadística <span class="citation" data-cites="nuijten_effectiveness_2023">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-nuijten_effectiveness_2023" role="doc-biblioref">Nuijten y Wicherts 2023</a>)</span>.</p>
+<p>Otras incoherencias son más difíciles de detectar automáticamente, pero pueden identificarse de forma manual. <span class="citation" data-cites="brown_grim_2017">Brown y Heathers (<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-brown_grim_2017" role="doc-biblioref">2017</a>)</span> muestran que numerosos artículos presentan medias imposibles dado el tamaño muestral; es lo que examina la <a href="http://nickbrown.fr/GRIM">prueba <em>GRIM</em></a>. Matti Heino advirtió en una <a href="https://mattiheino.com/2016/11/13/legacy-of-psychology/">entrada de blog</a> que tres medias de la tabla de un estudio clásico de Festinger y Carlsmith eran matemáticamente imposibles. Con 20 observaciones por condición y una escala de −5 a 5, cualquier media debe variar en múltiplos de 1/20, es decir, de 0,05. Las tres medias terminadas en X,X8 o X,X2 no son compatibles con el tamaño muestral y la escala comunicados. La incoherencia podría deberse, por ejemplo, a datos ausentes no declarados en algunas preguntas; pero la prueba GRIM también se ha empleado para descubrir <a href="https://en.wikipedia.org/wiki/GRIM_test">casos de mala conducta científica</a>.</p>
+<div id="fig-festinger" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-festinger-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/12/ch12-fig-02-grim.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-festinger-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;12.2: Captura de pantalla de la tabla que informa los principales resultados de Festinger y Carlsmith, 1959.
+</figcaption>
+</figure>
+</div>
+<section id="sec-publicationbias" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="sec-publicationbias"><span class="header-section-number">12.1</span> Sesgo de publicación</h2>
+<p>El sesgo de publicación es uno de los mayores problemas a los que se enfrenta la ciencia. El <strong>sesgo de publicación</strong> consiste en enviar y publicar selectivamente investigaciones científicas, a menudo en función de que sus resultados sean o no «estadísticamente significativos». La literatura científica está dominada por resultados significativos. En 1959, Sterling <span class="citation" data-cites="sterling_publication_1959">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-sterling_publication_1959" role="doc-biblioref">1959</a>)</span> contó cuántos contrastes de hipótesis publicados en cuatro revistas de psicología habían producido resultados significativos. De los 294 artículos examinados, 286 —el 97 %— rechazaban la hipótesis nula con un resultado estadísticamente significativo. La réplica de Bozarth y Roberts <span class="citation" data-cites="bozarth_signifying_1972">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-bozarth_signifying_1972" role="doc-biblioref">1972</a>)</span> obtuvo una estimación del 94 %.</p>
+<p>Al mismo tiempo, sabemos que muchos estudios no producen resultados significativos. Si los científicos solo tienen acceso a los resultados significativos, carecen de una visión completa de la evidencia sobre una hipótesis <span class="citation" data-cites="smart_importance_1964">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-smart_importance_1964" role="doc-biblioref">Smart 1964</a>)</span>. En el caso extremo, puede haber cientos de resultados significativos publicados y, aun así, ningún efecto verdadero, porque existan todavía más estudios no significativos que nunca se compartieron. Es el <strong>problema del cajón de archivo</strong>: los resultados no significativos quedan ocultos en cajones —o, actualmente, en carpetas del ordenador— y no llegan a la comunidad científica. Este sesgo afecta especialmente al contraste principal de un artículo, pues de su resultado suele depender que haya una historia interesante que contar. Es menos probable en trabajos sin una hipótesis central que necesite ser significativa para sostener el relato, por ejemplo cuando se describen tamaños del efecto en una tabla amplia de correlaciones. Todos los científicos deberían contribuir a resolver el sesgo de publicación: mientras no se compartan todos los resultados, será extremadamente difícil averiguar qué es probablemente cierto. Greenwald <span class="citation" data-cites="greenwald_consequences_1975">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-greenwald_consequences_1975" role="doc-biblioref">1975</a>)</span> llega a considerar una vulneración ética la comunicación selectiva de resultados significativos.</p>
+<div id="fig-greenwald" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-greenwald-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/12/ch12-fig-03-greenwald.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-greenwald-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;12.3: Adaptación al castellano del pasaje final de Greenwald, A. G. (1975), «Consequences of prejudice against the null hypothesis», <em>Psychological Bulletin</em>, 82(1), 1–20.
+</figcaption>
+</figure>
+</div>
+<p>El sesgo de publicación solo puede resolverse haciendo accesibles todos los resultados, con independencia del valor <em>p</em> del contraste principal. Los informes registrados son una forma de combatirlo: la introducción, el método y el plan de análisis se revisan antes de recoger los datos <span class="citation" data-cites="chambers_present_2022 nosek_registered_2014">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-chambers_present_2022" role="doc-biblioref">Chambers y Tzavella 2022</a>; <a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-nosek_registered_2014" role="doc-biblioref">Nosek y Lakens 2014</a>)</span>. Tras la revisión por expertos, que pueden proponer mejoras en el diseño y el análisis, el artículo puede recibir una «aceptación en principio». Si se sigue el plan aprobado, se publicará con independencia de los resultados. Esto facilita la publicación de resultados nulos. Como muestra <a href="#fig-scheel" class="quarto-xref">Figura&nbsp;<span>12.4</span></a>, entre los primeros informes registrados publicados en psicología, 31 de 71 —el 44 %— obtuvieron resultados positivos, frente a 146 de 152 —el 96 %— de los artículos convencionales comparables publicados en el mismo periodo <span class="citation" data-cites="scheel_excess_2021">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-scheel_excess_2021" role="doc-biblioref">Scheel et&nbsp;al. 2021</a>)</span>.</p>
+<div id="fig-scheel" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-scheel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/12/ch12-fig-04-informes-registrados.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-scheel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;12.4: Tasas de resultados positivos para informes estándar e informes registrados. Las barras de error indican intervalos de confianza del 95 % en torno a la tasa de resultados positivos observados.
+</figcaption>
+</figure>
+</div>
+<p>En el pasado no existían los informes registrados y los científicos no compartían todos sus resultados <span class="citation" data-cites="franco_publication_2014 greenwald_consequences_1975 sterling_publication_1959">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-franco_publication_2014" role="doc-biblioref">Franco et&nbsp;al. 2014</a>; <a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-greenwald_consequences_1975" role="doc-biblioref">Greenwald 1975</a>; <a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-sterling_publication_1959" role="doc-biblioref">Sterling 1959</a>)</span>. Por eso debemos intentar detectar hasta qué punto el sesgo de publicación limita nuestra capacidad para evaluar la literatura. Todo metaanálisis debería examinar cuidadosamente su impacto sobre la estimación metaanalítica del tamaño del efecto. Sin embargo, solo el 57 % de los metaanálisis publicados en <em>Psychological Bulletin</em> entre 1990 y 2017 indicaron haber evaluado el sesgo de publicación <span class="citation" data-cites="polanin_transparency_2020">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-polanin_transparency_2020" role="doc-biblioref">Polanin et&nbsp;al. 2020</a>)</span>. En metaanálisis más recientes de investigación educativa, el 82 % empleó alguna prueba de detección, pero los métodos solían estar lejos del estado del arte <span class="citation" data-cites="ropovik_neglect_2021">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-ropovik_neglect_2021" role="doc-biblioref">Ropovik et&nbsp;al. 2021</a>)</span>. Se han desarrollado numerosas técnicas y esta continúa siendo un área muy activa. Cada método parte de supuestos concretos que deben considerarse antes de aplicarlo <span class="citation" data-cites="carter_correcting_2019">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-carter_correcting_2019" role="doc-biblioref">Carter et&nbsp;al. 2019</a>)</span>. No hay una solución milagrosa: ninguna técnica puede reparar el sesgo ni decirnos con certeza cuál sería la estimación metaanalítica verdadera tras corregirlo. Como máximo, estos métodos detectan determinados mecanismos de sesgo bajo determinadas condiciones. El sesgo de publicación puede detectarse, pero no corregirse.</p>
+<p>En el capítulo sobre <a href="03-verosimilitudes.html">verosimilitudes</a> vimos que los resultados mixtos son esperables y pueden constituir evidencia sólida a favor de la hipótesis alternativa. No solo debemos esperarlos: observar exclusivamente resultados significativos resulta muy sorprendente, sobre todo cuando la potencia estadística es baja. Incluso con una potencia del 80 %, cabe esperar un resultado no significativo de cada cinco cuando existe un efecto verdadero. Algunos investigadores han señalado que <em>no</em> encontrar resultados mixtos puede ser muy improbable —«demasiado bueno para ser verdad»— <span class="citation" data-cites="francis_frequency_2014 schimmack_ironic_2012">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-francis_frequency_2014" role="doc-biblioref">Francis 2014</a>; <a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-schimmack_ironic_2012" role="doc-biblioref">Schimmack 2012</a>)</span>. Nuestra intuición sobre el aspecto que tienen las series reales de estudios está deformada porque vemos una literatura que no refleja la realidad. Casi todos los artículos con varios estudios presentan únicamente resultados significativos, aunque ese patrón sea improbable.</p>
+<p>La <a href="http://shiny.ieis.tue.nl/mixed_results_likelihood/">aplicación Shiny para calcular verosimilitudes binomiales</a> muestra, al final de la página, la probabilidad de obtener varios resultados significativos bajo un supuesto determinado sobre la potencia de los contrastes. <span class="citation" data-cites="francis_frequency_2014">Francis (<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-francis_frequency_2014" role="doc-biblioref">2014</a>)</span> utilizó estas probabilidades para calcular la prueba de exceso de significación <span class="citation" data-cites="ioannidis_exploratory_2007">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-ioannidis_exploratory_2007" role="doc-biblioref">Ioannidis y Trikalinos 2007</a>)</span> en 44 artículos de <em>Psychological Science</em> publicados entre 2009 y 2012 que contenían al menos cuatro estudios. En 36 artículos, la probabilidad de observar cuatro resultados significativos, dada la potencia media calculada a partir de los tamaños del efecto observados, era inferior al 10 %. Con un nivel alfa de 0,10, esta probabilidad binomial funciona como un contraste de hipótesis: si la probabilidad del número observado de resultados significativos es inferior al 10 %, los datos resultan sorprendentes y puede rechazarse la hipótesis de que el conjunto de estudios no esté sesgado. En otras palabras, observar tantos resultados significativos es improbable y sugiere que han intervenido el sesgo de publicación u otros efectos de selección.</p>
+<p>Yo mismo era coautor de uno de esos 44 artículos <span class="citation" data-cites="jostmann_weight_2009">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-jostmann_weight_2009" role="doc-biblioref">Jostmann et&nbsp;al. 2009</a>)</span>. Por entonces sabía poco sobre potencia estadística y sesgo de publicación, y resultó estresante que nos acusaran de conducta científica inadecuada. Sin embargo, la acusación era correcta: habíamos comunicado selectivamente los resultados y los análisis que funcionaban. Como apenas habíamos recibido formación sobre el asunto, nos formamos por nuestra cuenta y subimos un estudio no publicado a psychfiledrawer.org —un sitio que ya no existe— para compartir nuestro «cajón de archivo». Años después colaboramos cuando Many Labs 3 incluyó uno de nuestros estudios entre los que iba a replicar <span class="citation" data-cites="ebersole_many_2016">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-ebersole_many_2016" role="doc-biblioref"><span class="nocase">Ebersole et&nbsp;al.</span> 2016</a>)</span>. Tras observarse un resultado nulo, escribimos: «Hemos tenido que concluir que, en realidad, no existe evidencia fiable del efecto» <span class="citation" data-cites="jostmann_short_2016">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-jostmann_short_2016" role="doc-biblioref">Jostmann et&nbsp;al. 2016</a>)</span>. Espero que este material educativo evite que otras personas hagan el ridículo como lo hicimos nosotros.</p>
+</section>
+<section id="detección-de-sesgos-en-el-metaanálisis" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="detección-de-sesgos-en-el-metaanálisis"><span class="header-section-number">12.2</span> Detección de sesgos en el metaanálisis</h2>
+<p>Continuamente se desarrollan nuevos métodos para detectar el sesgo de publicación, mientras que otros quedan obsoletos —aunque aún aparezcan en algunos metaanálisis—. Uno de los métodos desaconsejados es el <strong>fail-safe N</strong>. Su idea era calcular cuántos resultados no significativos tendrían que permanecer ocultos para que la estimación metaanalítica dejara de ser estadísticamente distinta de cero. El método <a href="https://handbook-5-1.cochrane.org/chapter_10/10_4_4_3_fail_safe_n.htm">ya no se recomienda</a>. Becker <span class="citation" data-cites="becker_failsafe_2005">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-becker_failsafe_2005" role="doc-biblioref">2005</a>)</span> sostiene que, dados los enfoques disponibles actualmente, el <em>fail-safe N</em> debería abandonarse en favor de análisis más informativos. Hoy su principal utilidad es identificar metaanálisis que no están al día metodológicamente.</p>
+<p>Antes de que podamos explicar un segundo método (<em>Trim-and-fill</em>), es útil explicar una forma común de visualizar metaanálisis, conocida como <strong>diagrama de embudo</strong>. En un diagrama de embudo, el eje x se utiliza para trazar el tamaño del efecto de cada estudio, y el eje y se utiliza para trazar la “precisión” de cada tamaño del efecto (normalmente, el error estándar de cada estimación del tamaño del efecto). Cuanto mayor sea el número de observaciones en un estudio, más precisa será la estimación del tamaño del efecto, menor será el error estándar y, por lo tanto, más arriba en el diagrama de embudo estará el estudio. Un estudio infinitamente preciso (con un error estándar de 0) estaría en la parte superior del eje y. El siguiente script simula metaanálisis de <code>nsims</code> estudios y guarda los resultados necesarios para examinar la detección del sesgo. En la primera parte simula resultados estadísticamente significativos en la dirección prevista; en la segunda genera resultados nulos. <code>pub.bias</code> determina la proporción de resultados significativos: si vale 1, todos lo son. En el ejemplo vale 0,05. Como no existe un efecto verdadero (<code>m1</code> y <code>m2</code> son iguales), los únicos resultados significativos esperables son el 5 % de falsos positivos. Por último, el script realiza el metaanálisis, imprime los resultados y crea un diagrama de embudo.</p>
+<p>Si prefieres no utilizar R, la simulación interactiva permite explorar los efectos del sesgo de publicación y aplicar <em>trim-and-fill</em>, la metarregresión PET-PEESE y el metaanálisis límite de Rücker. Este último se explica en <a href="https://doing-meta.guide/pub-bias#rucker-ma"><em>Doing Meta-Analysis in R</em></a>.</p>
+<iframe id="pub-bias-meta-iframe" src="pub_bias_meta_app_book.html" width="100%" height="650" scrolling="no" style="border:none;display:block;margin:1.5rem 0;overflow:hidden;" title="Sesgo de publicación en el metaanálisis">
+</iframe>
+<script>
+window.addEventListener('message', function(e) {
+  if (e.data && typeof e.data.iframeHeight === 'number') {
+    var f = document.getElementById('pub-bias-meta-iframe');
+    if (f && e.source === f.contentWindow) f.style.height = e.data.iframeHeight + 'px';
+  }
+});
+</script>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(metafor)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(truncnorm)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>nsims    <span class="ot">&lt;-</span> <span class="dv">100</span>   <span class="co"># número de experimentos simulados</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>pub.bias <span class="ot">&lt;-</span> <span class="fl">0.05</span>  <span class="co"># proporción de resultados significativos en la literatura</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="dv">0</span>; sd1 <span class="ot">&lt;-</span> <span class="dv">1</span>  <span class="co"># los efectos demasiado grandes hacen que los resultados no significativos sean muy raros</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="dv">0</span>; sd2 <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>n_sig    <span class="ot">&lt;-</span> <span class="fu">round</span>(nsims <span class="sc">*</span> pub.bias)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>n_nonsig <span class="ot">&lt;-</span> nsims <span class="sc">-</span> n_sig</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Preasignar un marco de datos de resultados con n filas</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>make_meta_df <span class="ot">&lt;-</span> <span class="cf">function</span>(n) {</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(<span class="at">m1 =</span> <span class="fu">numeric</span>(n), <span class="at">m2 =</span> <span class="fu">numeric</span>(n), <span class="at">sd1 =</span> <span class="fu">numeric</span>(n), <span class="at">sd2 =</span> <span class="fu">numeric</span>(n),</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>             <span class="at">n1 =</span> <span class="fu">integer</span>(n), <span class="at">n2 =</span> <span class="fu">integer</span>(n), <span class="at">pvalues =</span> <span class="fu">numeric</span>(n),</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>             <span class="at">pcurve =</span> <span class="fu">character</span>(n), <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Simular resultados significativos: p unilateral &lt; 0,025 en la dirección esperada</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>sim_sig <span class="ot">&lt;-</span> <span class="cf">function</span>(n_sig) {</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (n_sig <span class="sc">==</span> <span class="dv">0</span>) <span class="fu">return</span>(<span class="fu">make_meta_df</span>(<span class="dv">0</span>))</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">make_meta_df</span>(n_sig)</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_len</span>(n_sig)) {</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    n <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">rtruncnorm</span>(<span class="dv">1</span>, <span class="at">a =</span> <span class="dv">20</span>, <span class="at">b =</span> <span class="dv">1000</span>, <span class="at">mean =</span> <span class="dv">100</span>, <span class="at">sd =</span> <span class="dv">100</span>))</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    p <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> (p <span class="sc">&gt;</span> <span class="fl">0.025</span>) {</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>      x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="at">mean =</span> m1, <span class="at">sd =</span> sd1)</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>      y <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="at">mean =</span> m2, <span class="at">sd =</span> sd2)</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>      p <span class="ot">&lt;-</span> <span class="fu">t.test</span>(x, y, <span class="at">alternative =</span> <span class="st">"greater"</span>, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)<span class="sc">$</span>p.value</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    res <span class="ot">&lt;-</span> <span class="fu">t.test</span>(x, y, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>    out[i, ] <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">mean</span>(x), <span class="fu">mean</span>(y), <span class="fu">sd</span>(x), <span class="fu">sd</span>(y), n, n, res<span class="sc">$</span>p.value,</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>                     <span class="fu">paste0</span>(<span class="st">"t("</span>, res<span class="sc">$</span>parameter, <span class="st">")="</span>, res<span class="sc">$</span>statistic))</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>  out</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="co"># Simular resultados no significativos: bilateral p &gt;= 0,05</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>sim_nonsig <span class="ot">&lt;-</span> <span class="cf">function</span>(n_nonsig) {</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (n_nonsig <span class="sc">==</span> <span class="dv">0</span>) <span class="fu">return</span>(<span class="fu">make_meta_df</span>(<span class="dv">0</span>))</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">make_meta_df</span>(n_nonsig)</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_len</span>(n_nonsig)) {</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>    n <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">rtruncnorm</span>(<span class="dv">1</span>, <span class="at">a =</span> <span class="dv">20</span>, <span class="at">b =</span> <span class="dv">1000</span>, <span class="at">mean =</span> <span class="dv">100</span>, <span class="at">sd =</span> <span class="dv">100</span>))</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>    p <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> (p <span class="sc">&lt;</span> <span class="fl">0.05</span>) {</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>      x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="at">mean =</span> m1, <span class="at">sd =</span> sd1)</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>      y <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="at">mean =</span> m2, <span class="at">sd =</span> sd2)</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>      p <span class="ot">&lt;-</span> <span class="fu">t.test</span>(x, y, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)<span class="sc">$</span>p.value</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>    res <span class="ot">&lt;-</span> <span class="fu">t.test</span>(x, y, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>    out[i, ] <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">mean</span>(x), <span class="fu">mean</span>(y), <span class="fu">sd</span>(x), <span class="fu">sd</span>(y), n, n, res<span class="sc">$</span>p.value,</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>                     <span class="fu">paste0</span>(<span class="st">"t("</span>, res<span class="sc">$</span>parameter, <span class="st">")="</span>, res<span class="sc">$</span>statistic))</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>  out</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>metadata <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">sim_sig</span>(n_sig), <span class="fu">sim_nonsig</span>(n_nonsig))</span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>metadata <span class="ot">&lt;-</span> <span class="fu">escalc</span>(<span class="at">n1i =</span> n1, <span class="at">n2i =</span> n2, <span class="at">m1i =</span> m1, <span class="at">m2i =</span> m2, <span class="at">sd1i =</span> sd1,</span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>                   <span class="at">sd2i =</span> sd2, <span class="at">measure =</span> <span class="st">"SMD"</span>, <span class="at">data =</span> metadata)</span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>metadata<span class="sc">$</span>sei <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(metadata<span class="sc">$</span>vi)</span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">rma</span>(yi, vi, <span class="at">data =</span> metadata)</span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>result</span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a><span class="fu">funnel</span>(result, <span class="at">level =</span> <span class="fl">0.95</span>, <span class="at">refline =</span> <span class="dv">0</span>)</span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> result<span class="sc">$</span>b[<span class="dv">1</span>], <span class="at">lty =</span> <span class="st">"dashed"</span>)</span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="at">x =</span> result<span class="sc">$</span>b[<span class="dv">1</span>], <span class="at">y =</span> <span class="dv">0</span>, <span class="at">cex =</span> <span class="fl">1.5</span>, <span class="at">pch =</span> <span class="dv">17</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Comencemos por una literatura no sesgada: mantenemos <code>pub.bias</code> en 0,05, de modo que solo el 5 % de errores de tipo I entre en la literatura científica.</p>
+<pre class="text"><code>Modelo de efectos aleatorios (k = 100; estimador de tau²: REML)
+tau² = 0,0000 (EE = 0,0018); tau = 0,0006; I² = 0,00 %; H² = 1,00
+Prueba de heterogeneidad: Q(99) = 91,7310; p = 0,6851
+Estimación = −0,0021; EE = 0,0121; z = −0,1775; p = 0,8591
+IC del 95 % [−0,0258; 0,0215]</code></pre>
+<p>El metaanálisis contiene 100 estudios (<code>k = 100</code>) y no muestra heterogeneidad estadísticamente significativa (<em>p</em> = 0,69), algo esperable porque programamos un tamaño del efecto verdadero igual a cero y sin heterogeneidad. La estimación metaanalítica es <em>d</em> = −0,002, muy próxima a cero, con un error estándar de 0,012. Con 100 estudios obtenemos una estimación muy precisa. Para contrastarla frente a <em>d</em> = 0 se obtiene <em>z</em> = −0,177 y <em>p</em> = 0,86, por lo que no podemos rechazar que el tamaño del efecto verdadero sea cero. El intervalo de confianza [−0,026; 0,021] también incluye cero.</p>
+<p>En <a href="#fig-funnel1" class="quarto-xref">Figura&nbsp;<span>12.5</span></a> cada punto representa un estudio. Los estudios con muestras grandes tienen errores estándar menores y aparecen más arriba; los pequeños, más abajo. La zona blanca delimita los resultados no significativos: dentro de ella, el efecto observado no se aleja lo suficiente de cero para que su intervalo de confianza lo excluya. Al disminuir el error estándar, el intervalo se estrecha y basta un efecto menor para alcanzar la significación. Al mismo tiempo, las estimaciones más precisas deberían concentrarse cerca del efecto verdadero. Si el embudo está centrado en ese valor, cabe esperar que contenga aproximadamente el 95 % de las estimaciones. Solo cinco estudios quedan fuera por la derecha: son el 5 % de falsos positivos introducido en la simulación. Si el efecto verdadero fuera <em>d</em> = 0,5 —puede probarse cambiando <code>m1 &lt;- 0</code> por <code>m1 &lt;- 0.5</code>—, la nube se desplazaría y quedaría centrada en 0,5.</p>
+<div id="fig-funnel1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-funnel1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/12/ch12-fig-05-embudo-sin-sesgo.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-funnel1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;12.5: Diagrama de embudo de resultados nulos sin sesgo.
+</figcaption>
+</figure>
+</div>
+<p>Comparemos ahora ese metaanálisis con otro sometido a un sesgo de publicación extremo. A partir de la estimación de <span class="citation" data-cites="scheel_excess_2021">Scheel et&nbsp;al. (<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-scheel_excess_2021" role="doc-biblioref">2021</a>)</span>, suponemos que el 96 % de los estudios ofrece resultados positivos y fijamos <code>pub.bias &lt;- 0.96</code>. Las dos medias siguen siendo cero, por lo que no existe un efecto verdadero; el conjunto final estará compuesto casi por completo por errores de tipo I en la dirección prevista. El metaanálisis permite comprobar hasta qué punto esta selección produce una inferencia engañosa.</p>
+<pre class="text"><code>Modelo de efectos aleatorios (k = 100; estimador de tau²: REML)
+tau² = 0,0000 (EE = 0,0019); tau = 0; I² = 0,00 %; H² = 1,00
+Prueba de heterogeneidad: Q(99) = 77,6540; p = 0,9445
+Estimación = 0,2701; EE = 0,0125; z = 21,6075; p &lt; 0,0001
+IC del 95 % [0,2456; 0,2946]</code></pre>
+<p>La naturaleza sesgada del conjunto se aprecia con claridad en <a href="#fig-funnel2" class="quarto-xref">Figura&nbsp;<span>12.6</span></a>. Hay cuatro resultados nulos no sesgados, como se programó, pero los otros 96 son estadísticamente significativos aunque la hipótesis nula sea verdadera. La mayoría se sitúa justo fuera del borde de la zona blanca. Como los valores <em>p</em> se distribuyen uniformemente bajo la hipótesis nula, muchos de estos errores de tipo I tienen valores entre 0,02 y 0,05. Cuanto mayor es el estudio, menor es el tamaño del efecto necesario para alcanzar la significación. Que los efectos no varíen alrededor de un único valor verdadero —por ejemplo, <em>d</em> = 0 o <em>d</em> = 0,5—, sino que disminuyan a medida que aumenta el tamaño muestral, constituye una señal fuerte de sesgo. La línea vertical discontinua y el triángulo superior muestran la estimación metaanalítica observada, sesgada al alza.</p>
+<div id="fig-funnel2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-funnel2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/12/ch12-fig-06-embudo-sesgado.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-funnel2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;12.6: Diagrama de embudo de resultados nulos sesgados, en su mayoría significativos.
+</figcaption>
+</figure>
+</div>
+<p>Podría parecer que un sesgo tan extremo rara vez aparece en la investigación, pero ocurre. <a href="#fig-carterbias" class="quarto-xref">Figura&nbsp;<span>12.7</span></a> reproduce el patrón descrito por <span class="citation" data-cites="carter_publication_2014">Carter y McCullough (<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-carter_publication_2014" role="doc-biblioref">2014</a>)</span> al examinar 198 estudios publicados sobre el «agotamiento del ego», la idea de que el autocontrol depende de un recurso limitado. Mediante técnicas como la <a href="#sec-petpeese">metarregresión PET-PEESE</a>, estimaron con PET <em>d</em> = −0,10, un valor no distinguible estadísticamente de cero, aunque el metaanálisis sin ajustar por sesgo ofrecía <em>d</em> = 0,62. El verdadero efecto podía ser nulo. No sorprende que un <em>Registered Replication Report</em> posterior obtuviera un efecto no significativo <span class="citation" data-cites="hagger_multilab_2016">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-hagger_multilab_2016" role="doc-biblioref"><span class="nocase">Hagger et&nbsp;al.</span> 2016</a>)</span> y que los propios investigadores originales tampoco lograran replicarlo <span class="citation" data-cites="vohs_multisite_2021">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-vohs_multisite_2021" role="doc-biblioref"><span class="nocase">Vohs et&nbsp;al.</span> 2021</a>)</span>. Pensemos en el tiempo, el esfuerzo y el dinero desperdiciados en una literatura construida sobre sesgos. Ese desperdicio tiene implicaciones éticas y debemos asumir la responsabilidad de prevenirlo.</p>
+<div id="fig-carterbias" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-carterbias-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/12/ch12-fig-07-carter.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-carterbias-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;12.7: Diagrama de embudo basado en Carter y McCullough (2014), con 198 contrastes publicados sobre el agotamiento del ego y las estimaciones ajustadas mediante PET-PEESE.
+</figcaption>
+</figure>
+</div>
+<p>También podemos detectar señales de sesgo en un diagrama de bosque. <a href="#fig-twoforestplot" class="quarto-xref">Figura&nbsp;<span>12.8</span></a> presenta dos metaanálisis de 100 estudios: el de la izquierda utiliza datos no sesgados y el de la derecha, datos sesgados. A la izquierda, los efectos varían aleatoriamente alrededor de cero, como cabría esperar. A la derecha, después de los cuatro primeros estudios, todos los intervalos de confianza excluyen por muy poco el valor cero.</p>
+<div id="fig-twoforestplot" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-twoforestplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/12/ch12-fig-08-bosques.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-twoforestplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;12.8: Diagramas de bosque de un metaanálisis no sesgado (izquierda) y otro sesgado (derecha).
+</figcaption>
+</figure>
+</div>
+<p>Cuando solo se publican resultados estadísticamente significativos (<em>p</em> &lt; <span class="math inline">\(\alpha\)</span>), la estimación metaanalítica del tamaño del efecto resulta <strong>mayor</strong> que en ausencia de sesgo. La selección elimina los efectos pequeños y no significativos, que dejan de contribuir al cálculo. La estimación queda así inflada respecto al efecto poblacional verdadero. Sabemos que existe inflación, pero no en qué medida: el efecto real podría ser algo menor o incluso igual a cero, como en la literatura sobre el agotamiento del ego.</p>
+</section>
+<section id="trim-and-fill" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="trim-and-fill"><span class="header-section-number">12.3</span> <em>Trim-and-fill</em></h2>
+<p><em>Trim-and-fill</em> amplía el conjunto de datos añadiendo estudios hipotéticos «ausentes», que podrían encontrarse en el cajón de archivo. El procedimiento comienza recortando los estudios pequeños que sesgan la estimación, calcula después un nuevo centro y rellena el diagrama de embudo con los estudios supuestamente perdidos. En <a href="#fig-trimfill1" class="quarto-xref">Figura&nbsp;<span>12.9</span></a>, estos estudios imputados aparecen como círculos vacíos. Cada uno es la imagen especular de un estudio observado respecto al centro estimado. El método nos advierte correctamente de que hay sesgo —de otro modo no imputaría estudios—, pero fracasa al corregir la estimación: el círculo azul indica un valor algo menor que el original, pero todavía muy alejado del efecto verdadero, que en la simulación era cero.</p>
+<div id="fig-trimfill1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-trimfill1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/12/ch12-fig-09-trim-fill.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-trimfill1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;12.9: Diagrama de embudo con los efectos supuestamente ausentes añadidos mediante <em>trim-and-fill</em>.
+</figcaption>
+</figure>
+</div>
+<p><em>Trim-and-fill</em> funciona mal en muchos escenarios realistas. Depende del supuesto fuerte de que el diagrama de embudo debería ser simétrico. Cuando la selección depende del valor <em>p</em> —probablemente una de las fuentes principales de sesgo en muchos campos—, el método no aproxima bien el tamaño del efecto verdadero <span class="citation" data-cites="peters_performance_2007 terrin_adjusting_2003">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-peters_performance_2007" role="doc-biblioref">Peters et&nbsp;al. 2007</a>; <a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-terrin_adjusting_2003" role="doc-biblioref">Terrin et&nbsp;al. 2003</a>)</span>. Si se cumplen sus supuestos, puede emplearse como <strong>análisis de sensibilidad</strong>, pero la estimación ajustada no debería presentarse como si fuera una estimación realista del efecto no sesgado. Si otras pruebas —como <em>p</em>-curve o <em>z</em>-curve— ya han detectado sesgo, <em>trim-and-fill</em> puede no aportar información adicional.</p>
+</section>
+<section id="sec-petpeese" class="level2" data-number="12.4">
+<h2 data-number="12.4" class="anchored" data-anchor-id="sec-petpeese"><span class="header-section-number">12.4</span> PET-PEESE</h2>
+<p>Otra familia de soluciones al sesgo de publicación utiliza la <strong>metarregresión</strong>. En lugar de ajustar una línea a observaciones individuales, cada punto representa un estudio. Como en cualquier regresión, cuantos más datos haya, mayor será la precisión; por tanto, la metarregresión funciona mejor cuando el metaanálisis incluye muchos estudios. Con pocos estudios, todas las pruebas de detección pierden potencia. La regresión también necesita variación suficiente: aquí implica disponer de un intervalo amplio de tamaños muestrales. Las recomendaciones indican que funciona mejor cuando los estudios abarcan aproximadamente de 15 a 200 participantes por grupo, algo poco habitual en muchas áreas de la psicología. Estas técnicas intentan estimar cuál sería el efecto poblacional con precisión perfecta, es decir, cuando el error estándar es cero.</p>
+<p>Una de estas técnicas es PET-PEESE <span class="citation" data-cites="stanley_metaregression_2014 stanley_finding_2017">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-stanley_metaregression_2014" role="doc-biblioref">Stanley y Doucouliagos 2014</a>; <a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-stanley_finding_2017" role="doc-biblioref">Stanley et&nbsp;al. 2017</a>)</span>. PET —<em>precision-effect test</em>— contrasta, dentro del marco de Neyman-Pearson, si la intersección de la metarregresión cuando <span class="math inline">\(EE = 0\)</span> permite rechazar un efecto igual a cero. Si hay pocas observaciones, el intervalo de confianza puede ser muy amplio y el contraste tendrá poca potencia. PET estima:</p>
+<p><span class="math display">\[
+d_i = \beta_0 + \beta_1 EE_i + u_i,
+\]</span></p>
+<p>donde <span class="math inline">\(d_i\)</span> es el tamaño del efecto, <span class="math inline">\(EE_i\)</span> su error estándar y la ecuación se ajusta mediante mínimos cuadrados ponderados, con <span class="math inline">\(1/EE_i^2\)</span> como peso. Cuando existe un efecto verdadero, PET tiende a subestimarlo. Por eso el procedimiento recomienda aplicar primero PET; si permite rechazar el efecto nulo, se emplea después PEESE —<em>precision-effect estimate with standard error</em>— para estimar el efecto metaanalítico. PEESE sustituye el error estándar por su varianza, lo que reduce el sesgo de la intersección estimada <span class="citation" data-cites="stanley_metaregression_2014">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-stanley_metaregression_2014" role="doc-biblioref">Stanley y Doucouliagos 2014</a>)</span>.</p>
+<p>PET-PEESE comparte las limitaciones de otras técnicas de detección: funciona mal con pocos estudios, cuando todos tienen muestras pequeñas o cuando existe mucha heterogeneidad <span class="citation" data-cites="stanley_finding_2017">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-stanley_finding_2017" role="doc-biblioref">Stanley et&nbsp;al. 2017</a>)</span>. Además, el tamaño muestral y la precisión pueden estar correlacionados por motivos distintos del sesgo. Si los efectos verdaderos varían entre estudios y los investigadores realizan buenos análisis de potencia, los efectos grandes requerirán muestras pequeñas y los efectos pequeños, muestras grandes. La metarregresión contrasta una asociación, igual que la regresión ordinaria; interpretar esa asociación exige pensar en el mecanismo causal que la produce.</p>
+<p><a href="#fig-petpeese" class="quarto-xref">Figura&nbsp;<span>12.10</span></a> muestra cómo PET-PEESE intenta estimar el efecto no sesgado bajo supuestos concretos sobre el mecanismo de selección. La línea vertical en <em>d</em> = 0,27 es la estimación metaanalítica ordinaria, inflada porque solo promedia estudios significativos. La línea recta diagonal proporciona la estimación PET cuando <span class="math inline">\(EE = 0\)</span>, indicada por el círculo. Su intervalo de confianza del 95 % contiene cero; con PET = 0,02 no podemos rechazar un efecto metaanalítico nulo. Incluso con 100 estudios, el intervalo sigue siendo amplio: la metarregresión solo es tan precisa como los datos disponibles. Si PET hubiera permitido rechazar el valor nulo, se habría utilizado la estimación PEESE —el rombo— de <em>d</em> = 0,17. Aun así, nunca sabríamos con certeza si el modelo de PEESE reproduce el verdadero mecanismo que generó el sesgo.</p>
+<div id="fig-petpeese" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-petpeese-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/12/ch12-fig-10-pet-peese.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-petpeese-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;12.10: Diagrama de embudo con las líneas de metarregresión PET y PEESE.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="metaanálisis-de-valores-p" class="level2" data-number="12.5">
+<h2 data-number="12.5" class="anchored" data-anchor-id="metaanálisis-de-valores-p"><span class="header-section-number">12.5</span> Metaanálisis de valores <em>p</em></h2>
+<p>Además de combinar tamaños del efecto, es posible realizar un metaanálisis de valores <em>p</em>. El primer enfoque de este tipo fue la <a href="https://en.wikipedia.org/wiki/Fisher%27s_method"><strong>prueba de probabilidad combinada de Fisher</strong></a>. Métodos posteriores, como <em>p</em>-curve <span class="citation" data-cites="simonsohn_pcurve_2014">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-simonsohn_pcurve_2014" role="doc-biblioref">Simonsohn et&nbsp;al. 2014</a>)</span> y <em>p</em>-uniform* <span class="citation" data-cites="aert_correcting_2018">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-aert_correcting_2018" role="doc-biblioref">Aert y Assen 2018</a>)</span>, se apoyan en la misma idea. Son <strong>modelos de selección</strong> <span class="citation" data-cites="iyengar_selection_1988">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-iyengar_selection_1988" role="doc-biblioref">Iyengar y Greenhouse 1988</a>)</span>: combinan un modelo del proceso que genera los tamaños del efecto con otro modelo que describe cómo la selección determina qué resultados llegan a la literatura. Por ejemplo, el proceso generador puede asumir contrastes que cumplen sus supuestos y una determinada potencia media; el modelo de selección puede suponer que se publican todos los estudios significativos con <span class="math inline">\(\alpha = 0,05\)</span>.</p>
+<p><em>P</em>-curve utiliza precisamente este modelo. Supone que se publican todos los resultados significativos y compara su distribución con la que cabría esperar bajo una determinada potencia o bajo la hipótesis nula. Como vimos al estudiar <a href="01-usando-valores-p.html">qué valores <em>p</em> cabe esperar</a>, con estadísticos continuos —<em>t</em>, <em>F</em> o <em>z</em>— los valores <em>p</em> son uniformes cuando la hipótesis nula es verdadera; si la alternativa es verdadera, aparecen más valores significativos pequeños —por ejemplo, 0,01— que grandes —por ejemplo, 0,04—.</p>
+<p><em>P</em>-curve realiza dos pruebas. La primera examina si la distribución es más plana de lo esperable con una potencia del 33 %. El umbral es algo arbitrario y puede modificarse, pero pretende representar la potencia mínima que todavía permitiría aprender algo útil. Si la potencia media fuera inferior, podría existir un efecto, aunque los estudios no estuvieran bien diseñados para detectarlo. Rechazar el patrón correspondiente al 33 % sugiere que la distribución se parece más a la esperada bajo la hipótesis nula, <em>aunque todos los estudios incluidos sean significativos</em>.</p>
+<p>La segunda prueba examina si la distribución está suficientemente sesgada a la derecha —más valores <em>p</em> pequeños que grandes— para rechazar una distribución uniforme. Si se rechaza, los estudios podrían haber examinado un efecto verdadero y haber tenido alguna potencia, aunque todavía pudiera existir sesgo de publicación. Simonsohn y colaboradores <span class="citation" data-cites="simonsohn_pcurve_2014">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-simonsohn_pcurve_2014" role="doc-biblioref">2014</a>)</span> compararon veinte artículos de <em>Journal of Personality and Social Psychology</em> que incluían una covariable con otros veinte que no la incluían. Sospechaban que algunos investigadores podían añadir covariables después de que el primer análisis no alcanzara <em>p</em> &lt; 0,05.</p>
+<div id="fig-pcurve" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pcurve-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/12/ch12-fig-11-p-curve.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pcurve-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;12.11: Figura 3 de Simonsohn et al (2014) que muestra una curva <em>p</em> con y sin sesgo.
+</figcaption>
+</figure>
+</div>
+<p>En <a href="#fig-pcurve" class="quarto-xref">Figura&nbsp;<span>12.11</span></a>, los cinco puntos azules representan la proporción de valores <em>p</em> en los intervalos 0–0,01, 0,01–0,02, 0,02–0,03, 0,03–0,04 y 0,04–0,05. El análisis utiliza <em>solo</em> resultados significativos, bajo el supuesto de que todos ellos se publican. En el panel derecho, la línea azul está más sesgada a la derecha que la distribución uniforme roja. Los autores describen este patrón como «valor evidencial», una expresión que puede resultar engañosa. La interpretación formal es que puede rechazarse la distribución uniforme esperada si la hipótesis nula fuera verdadera en todos los estudios. Eso no demuestra por sí solo el efecto teorizado: el patrón también podría surgir de una mezcla de efectos nulos y unos pocos estudios afectados por una variable de confusión.</p>
+<p>El panel izquierdo muestra lo contrario: predominan los valores próximos a 0,05 y casi no hay valores cercanos a 0,01. La línea azul es más plana que la línea verde correspondiente al 33 % de potencia; el conjunto parece afectado por selección y no generado por estudios con potencia suficiente. <em>P</em>-curve es útil, pero debe interpretarse con cuidado. Una curva sesgada a la derecha no demuestra ausencia de sesgo ni confirma la hipótesis teórica. Una curva plana tampoco demuestra que la teoría sea falsa; indica que los estudios se parecen más al patrón esperado cuando la hipótesis nula es verdadera y existe selección.</p>
+<p>El script almacena todas las estadísticas de las 100 pruebas <em>t</em> simuladas que se incluyen en el metaanálisis. Las primeras filas se ven así:</p>
+<pre class="text"><code>t(136) = 0,208132209831132
+t(456) = −1,20115958535433
+t(58) = 0,0422284763301259
+t(358) = 0,0775200850900646
+t(188) = 2,43353676652346</code></pre>
+<p>Imprime todos los resultados con <code>cat(metadata$pcurve, sep = "\n")</code> y abre la <a href="http://www.p-curve.com/app4/">aplicación <em>p</em>-curve</a>. Pega los contrastes y pulsa «Make the p-curve». La aplicación solo genera resultados si hay valores <em>p</em> inferiores a 0,05; si todos son mayores, no puede calcularse la curva porque esos contrastes se excluyen.</p>
+<div id="fig-pcurveresult" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pcurveresult-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/12/ch12-fig-12-p-curve-resultado.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pcurveresult-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;12.12: Resultado del análisis de la curva <em>p</em> de los estudios sesgados.
+</figcaption>
+</figure>
+</div>
+<p>La distribución parece uniforme —y en la simulación lo es—. La prueba permite rechazar una distribución tan pronunciada como la que producirían estudios con un 33 % de potencia, <em>p</em> &lt; 0,0001. La aplicación estima además una potencia media del 5 %, que es correcta. Aunque muchos resultados sean significativos, el conjunto es más compatible con la publicación selectiva de errores de tipo I que con el patrón esperado si hubiera un efecto verdadero estudiado con potencia suficiente. La teoría aún podría ser cierta, pero estos estudios no la respaldan.</p>
+<p>Una técnica semejante es <em>p</em>-uniform<em>. A diferencia de </em>p<em>-curve, utiliza resultados significativos y no significativos y permite estimar un tamaño del efecto ajustado por sesgo. Emplea un modelo de efectos aleatorios y pondera los estudios mediante un modelo que supone que los resultados significativos tienen mayor probabilidad de publicarse. En este ejemplo estima </em>d* = 0,0126, un valor no distinto estadísticamente de cero, <em>p</em> = 0,3857. La técnica indica correctamente que el conjunto no ofrece una buena razón para rechazar un efecto metaanalítico nulo, aunque muchos resultados sean significativos.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>puniform<span class="sc">::</span><span class="fu">puniform</span>(<span class="at">m1i =</span> metadata<span class="sc">$</span>m1, <span class="at">m2i =</span> metadata<span class="sc">$</span>m2, <span class="at">n1i =</span> metadata<span class="sc">$</span>n1,</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">n2i =</span> metadata<span class="sc">$</span>n2, <span class="at">sd1i =</span> metadata<span class="sc">$</span>sd1, <span class="at">sd2i =</span> metadata<span class="sc">$</span>sd2, <span class="at">side =</span> <span class="st">"right"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<pre class="text"><code>Método: estimación del tamaño del efecto p-uniform*
+Estimación = 0,0126; IC [−0,0811; 0,0887]; L₀ = −0,2904; p = 0,3857; k sig. = 96
+Prueba de sesgo de publicación: L = 7,9976; p &lt; 0,001
+Metaanálisis de efecto fijo: estimación = 0,2701; EE = 0,0125; z = 21,6025; p &lt; 0,001
+IC [0,2456; 0,2946]; Q = 77,6031; p = 0,945</code></pre>
+<p>Otra técnica que combina los valores <em>p</em> individuales es <em>z</em>-curve, un metaanálisis de la potencia observada <span class="citation" data-cites="bartos_zcurve20_2020 brunner_estimating_2020 sotola_garbage_2022">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-bartos_zcurve20_2020" role="doc-biblioref">Bartoš y Schimmack 2020</a>; <a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-brunner_estimating_2020" role="doc-biblioref">Brunner y Schimmack 2020</a>; véase también <a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-sotola_garbage_2022" role="doc-biblioref">Sotola 2022</a>)</span>. Como un metaanálisis tradicional, transforma los resultados observados en puntuaciones <em>z</em>. En una literatura no sesgada donde la hipótesis nula es verdadera, debería ser significativo aproximadamente el <span class="math inline">\(\alpha\)</span> por ciento de los resultados. La distribución de <em>z</em> estaría centrada en cero. Como <em>z</em>-curve utiliza valores absolutos, con <span class="math inline">\(\alpha = 0,05\)</span> aproximadamente un 5 % debería superar el valor crítico 1,96. <a href="#fig-zcurveunbiasednull" class="quarto-xref">Figura&nbsp;<span>12.13</span></a> representa 1000 estudios con un efecto verdadero igual a cero y exactamente un 5 % de resultados significativos.</p>
+<div id="fig-zcurveunbiasednull" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-zcurveunbiasednull-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/12/ch12-fig-13-z-curve-nula.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-zcurveunbiasednull-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;12.13: Análisis <em>z</em>-curve de 1000 estudios con un tamaño del efecto verdadero igual a cero y sin sesgo de publicación.
+</figcaption>
+</figure>
+</div>
+<p>Cuando existe un efecto verdadero, la distribución se aleja de cero en función de la potencia: cuanto mayor sea, más a la derecha aparecerán las puntuaciones. <a href="#fig-zcurveunbiasedalternative" class="quarto-xref">Figura&nbsp;<span>12.14</span></a> muestra una distribución no sesgada con un 66 % de potencia.</p>
+<div id="fig-zcurveunbiasedalternative" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-zcurveunbiasedalternative-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/12/ch12-fig-14-z-curve-efecto.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-zcurveunbiasedalternative-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;12.14: Análisis <em>z</em>-curve de 1000 estudios con <em>d</em> = 0,37 y <em>n</em> = 100 por condición en una prueba <em>t</em> para grupos independientes, sin sesgo de publicación.
+</figcaption>
+</figure>
+</div>
+<p>En un metaanálisis real, los estudios difieren en potencia y en su tamaño del efecto verdadero debido a la heterogeneidad. <em>Z</em>-curve ajusta una mezcla de distribuciones normales con medias entre 0 y 6 para representar los resultados observados <span class="citation" data-cites="bartos_zcurve20_2020">(<a href="08-justificacion-del-tamaño-de-la-muestra.html#ref-bartos_zcurve20_2020" role="doc-biblioref">Bartoš y Schimmack 2020</a>)</span>. A partir de ese modelo estima la potencia media y calcula tres cantidades: la <strong>tasa de descubrimientos observada</strong> (ODR), es decir, el porcentaje de resultados significativos; la <strong>tasa de descubrimientos esperada</strong> (EDR), la proporción del área estimada situada a la derecha del criterio de significación; y la <strong>tasa de replicación esperada</strong> (ERR), la proporción esperada de réplicas significativas entre los estudios significativos. Bajo supuestos concretos, <em>z</em>-curve puede ajustar la selección de resultados positivos y estimar EDR y ERR usando solo valores <em>p</em> significativos.</p>
+<p>Para examinar el sesgo conviene introducir valores <em>p</em> significativos y no significativos, aunque las estimaciones utilicen únicamente los primeros. La comparación entre ODR y EDR es informativa: si la proporción observada de resultados significativos supera ampliamente la esperada, existe una señal de selección. Aplicamos el análisis al mismo conjunto sesgado de los ejemplos anteriores:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>z_res <span class="ot">&lt;-</span> zcurve<span class="sc">::</span><span class="fu">zcurve</span>(<span class="at">p =</span> metadata<span class="sc">$</span>pvalues, <span class="at">method =</span> <span class="st">"EM"</span>, <span class="at">bootstrap =</span> <span class="dv">1000</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(z_res, <span class="at">all =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(z_res, <span class="at">annotation =</span> <span class="cn">TRUE</span>, <span class="at">CI =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="fig-zcurvebiased" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-zcurvebiased-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/12/ch12-fig-15-z-curve-sesgada.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-zcurvebiased-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;12.15: Resultado del análisis <em>z</em>-curve de los estudios sesgados.
+</figcaption>
+</figure>
+</div>
+<pre class="text"><code>Modelo: EM mediante EM
+ERR = 0,052; IC [0,025; 0,160]
+EDR = 0,053; IC [0,050; 0,119]
+FDR de Sorić = 0,947; IC [0,389; 1,000]
+Razón del cajón de archivo = 17,987; N ausente estimado = 1723
+Ajuste con 96 valores p. Se proporcionaron 100; 96 significativos
+ODR = 0,96; IC del 95 % [0,89; 0,99]</code></pre>
+<p>La distribución es peculiar: faltan casi todas las puntuaciones esperadas entre 0 y 1,96. Fueron significativos 96 de 100 estudios, de modo que ODR = 0,96, IC del 95 % [0,89; 0,99]. En cambio, EDR = 0,053 y su intervalo no se solapa con ODR, una señal clara de selección. ERR = 0,052, coherente con que solo se reproduzca la tasa del 5 % de errores de tipo I, pues en la simulación no existe ningún efecto. Aunque el modelo recibe únicamente valores <em>p</em> significativos para calcular sus estimaciones, concluye correctamente que no cabe esperar una replicación superior a la tasa de error de tipo I.</p>
+</section>
+<section id="conclusión" class="level2" data-number="12.6">
+<h2 data-number="12.6" class="anchored" data-anchor-id="conclusión"><span class="header-section-number">12.6</span> Conclusión</h2>
+<p>El sesgo de publicación constituye un problema grave. Afecta a casi todos los metaanálisis del contraste principal de los artículos, porque es mucho más probable que un trabajo se envíe y se acepte cuando ese resultado es significativo. Las estimaciones no ajustadas casi siempre sobreestiman el efecto verdadero, pero las estimaciones ajustadas también pueden engañar. Una vez distorsionada la literatura, no hay forma de saber con certeza si el metaanálisis recupera el efecto correcto. La inflación es de magnitud desconocida y, en algunos casos, el efecto verdadero ha resultado ser cero. Las pruebas de este capítulo no proporcionan certeza, pero funcionan como señales de alerta y ofrecen estimaciones que pueden acercarse más a la verdad si el modelo del mecanismo de selección es correcto.</p>
+<p>Hay mucha actividad en la literatura sobre pruebas de sesgo de publicación. Hay muchas pruebas diferentes y es necesario comprobar cuidadosamente los supuestos de cada prueba antes de aplicarla. La mayoría de las pruebas no funcionan bien cuando hay una gran heterogeneidad, y la heterogeneidad es bastante probable. Un metaanálisis siempre debe examinar si existe sesgo de publicación, preferiblemente utilizando múltiples pruebas de sesgo de publicación y, por lo tanto, es útil no solo codificar los tamaños del efecto, sino también codificar estadísticas de prueba o valores <em>p</em>. Ninguna de las técnicas de detección de sesgos analizadas en este capítulo será una solución milagrosa, pero serán mejores que interpretar ingenuamente la estimación del tamaño del efecto no corregida del metaanálisis.</p>
+<p>Para consultar otro recurso educativo abierto sobre pruebas de sesgo de publicación, consulte <a href="https://bookdown.org/MathiasHarrer/Doing_Meta_Analysis_in_R/pub-bias.html">Realizar metaanálisis en R</a>.</p>
+</section>
+<section id="ponte-a-prueba" class="level2" data-number="12.7">
+<h2 data-number="12.7" class="anchored" data-anchor-id="ponte-a-prueba"><span class="header-section-number">12.7</span> Ponte a prueba</h2>
+<p><strong>P1</strong>: ¿Qué ocurre con la estimación metaanalítica del tamaño del efecto cuando solo se publican resultados estadísticamente significativos (<em>p</em> &lt; <span class="math inline">\(\alpha\)</span>)?</p>
+<ul>
+<li>A. Es idéntica con y sin sesgo de publicación.</li>
+<li>B. Está más cerca del efecto verdadero cuando existe sesgo de publicación.</li>
+<li>C. Está inflada cuando existe sesgo de publicación.</li>
+<li>D. Es menor cuando existe sesgo de publicación.</li>
+</ul>
+<p><strong>P2</strong>: El siguiente diagrama de bosque presenta un aspecto peculiar. ¿Qué observas?</p>
+<div id="fig-bosque-pregunta" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bosque-pregunta-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/12/ch12-fig-16-bosque-pregunta.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bosque-pregunta-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;12.16: Diagrama de bosque de diez estudios simulados.
+</figcaption>
+</figure>
+</div>
+<ul>
+<li>A. Los tamaños del efecto son muy similares, lo que indica muestras grandes y estimaciones muy precisas.</li>
+<li>B. Los estudios parecen haberse diseñado mediante análisis de potencia <em>a priori</em> perfectos y todos producen resultados apenas significativos.</li>
+<li>C. Los intervalos de confianza apenas dejan fuera el cero, lo que sugiere que casi todos los estudios son significativos por muy poco y que puede existir sesgo de publicación.</li>
+<li>D. Todos los efectos siguen la misma dirección, lo que demuestra que se utilizaron contrastes unilaterales no prerregistrados.</li>
+</ul>
+<p><strong>P3</strong>: ¿Qué afirmación es verdadera?</p>
+<ul>
+<li>A. Con un sesgo extremo, todos los estudios pueden ser significativos, pero sus errores estándar hacen que la estimación metaanalítica no difiera de cero.</li>
+<li>B. Con un sesgo extremo, todos los estudios pueden ser significativos y la estimación metaanalítica quedar gravemente inflada, dando la impresión de un apoyo abrumador a <span class="math inline">\(H_1\)</span> aunque el efecto verdadero sea pequeño o nulo.</li>
+<li>C. Los programas estadísticos corrigen automáticamente el sesgo de publicación y la estimación metaanalítica suele ser fiable.</li>
+<li>D. Con independencia de que exista sesgo de publicación, toda estimación metaanalítica está gravemente sesgada y nunca debe considerarse una estimación válida de la población.</li>
+</ul>
+<p><strong>P4</strong>: ¿Qué afirmación es verdadera a partir de esta metarregresión PET-PEESE?</p>
+<div id="fig-petpeeseq4" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-petpeeseq4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/12/ch12-fig-17-pet-peese-pregunta.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-petpeeseq4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;12.17: Diagrama de embudo con las líneas PET y PEESE para los estudios de la pregunta 2.
+</figcaption>
+</figure>
+</div>
+<ul>
+<li>A. PET-PEESE demuestra que el tamaño del efecto verdadero es <em>d</em> = 0, según la estimación PET.</li>
+<li>B. PET-PEESE demuestra que el tamaño del efecto verdadero es <em>d</em> = 0,23, según PEESE.</li>
+<li>C. PET-PEESE demuestra que el tamaño del efecto verdadero es <em>d</em> = 0,34, según la estimación metaanalítica ordinaria.</li>
+<li>D. Con solo diez estudios, PET tiene muy poca potencia para rechazar el efecto nulo y no constituye un indicador fiable, aunque sí haya motivos para preocuparse.</li>
+</ul>
+<p><strong>P5</strong>: La siguiente figura y su tabla presentan el análisis <em>p</em>-curve de los estudios de la pregunta 2. ¿Qué interpretación es correcta?</p>
+<div id="fig-pcurveresultq5" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pcurveresultq5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/12/ch12-fig-18-p-curve-pregunta.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pcurveresultq5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;12.18: Resultado del análisis <em>p</em>-curve de los estudios sesgados de la pregunta 2.
+</figcaption>
+</figure>
+</div>
+<ul>
+<li>A. La prueba continua de Stouffer no permite rechazar la distribución esperada bajo <span class="math inline">\(H_0\)</span>, pero sí permite rechazar la distribución esperada si <span class="math inline">\(H_1\)</span> fuera verdadera y los estudios tuvieran un 33 % de potencia.</li>
+<li>B. La distribución no está suficientemente sesgada a la derecha y, por tanto, la teoría que originó los estudios es necesariamente falsa.</li>
+<li>C. La distribución está suficientemente sesgada a la derecha para concluir que coincide con la esperada bajo <span class="math inline">\(H_1\)</span> con un 33 % de potencia.</li>
+<li>D. La distribución es más plana de lo esperado con un 33 % de potencia y, por tanto, los datos fueron fabricados.</li>
+</ul>
+<p><strong>P6</strong>: En los estudios simulados de la pregunta 2, el efecto verdadero es cero. ¿Qué afirmación sobre este análisis <em>z</em>-curve es correcta?</p>
+<div id="fig-zcurveq6" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-zcurveq6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/12/ch12-fig-19-z-curve-pregunta.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-zcurveq6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;12.19: Resultado del análisis <em>z</em>-curve de los estudios sesgados de la pregunta 2.
+</figcaption>
+</figure>
+</div>
+<ul>
+<li>A. EDR y ERR son estadísticamente significativas, por lo que los efectos deberían replicarse con éxito.</li>
+<li>B. Aunque ODR —la potencia observada— es del 100 %, <em>z</em>-curve predice correctamente una ERR próxima al 5 %, porque solo los errores de tipo I serán significativos.</li>
+<li>C. <em>Z</em>-curve no detecta sesgo porque EDR y ERR no difieren estadísticamente.</li>
+<li>D. El intervalo de confianza de ODR muestra que el 100 % de resultados significativos pudo aparecer por azar en estudios con una potencia realista.</li>
+</ul>
+<p><strong>P7</strong>: Todavía no hemos aplicado <em>trim-and-fill</em>. Dados los análisis anteriores, ¿qué afirmación es verdadera?</p>
+<ul>
+<li>A. Lo más probable es que <em>trim-and-fill</em> no impute ningún estudio ausente.</li>
+<li>B. <em>Trim-and-fill</em> tiene poca potencia y necesariamente contradiría los análisis <em>p</em>-curve y <em>z</em>-curve.</li>
+<li>C. <em>Trim-and-fill</em> señalaría sesgo, pero <em>p</em>-curve y <em>z</em>-curve ya lo hacen; además, su estimación ajustada no corrige adecuadamente el sesgo, por lo que no añadiría información útil.</li>
+<li>D. <em>Trim-and-fill</em> proporciona una estimación fiable del efecto verdadero y siempre debe presentarse junto a las demás pruebas.</li>
+</ul>
+<p><strong>P8</strong>: El sesgo de publicación consiste en enviar y publicar selectivamente investigaciones. En este capítulo nos hemos centrado en la selección de resultados <em>significativos</em>. ¿Puedes pensar en una línea o pregunta de investigación en la que exista un incentivo para publicar selectivamente resultados <em>no significativos</em>?</p>
+<section id="preguntas-abiertas" class="level3" data-number="12.7.1">
+<h3 data-number="12.7.1" class="anchored" data-anchor-id="preguntas-abiertas"><span class="header-section-number">12.7.1</span> Preguntas abiertas</h3>
+<ol type="1">
+<li><p>¿En qué se basa la prueba GRIM?</p></li>
+<li><p>¿Cómo se define el sesgo de publicación?</p></li>
+<li><p>¿Qué es el problema del cajón de archivo?</p></li>
+<li><p>Cuando un diagrama de embudo está centrado en cero, ¿qué caracteriza a los estudios situados dentro del embudo?</p></li>
+<li><p>¿Qué limitaciones tiene <em>trim-and-fill</em> para detectar sesgo y corregir la estimación del tamaño del efecto?</p></li>
+<li><p>¿Qué debe tenerse en cuenta al utilizar PET-PEESE con pocos estudios?</p></li>
+<li><p>¿Qué conclusiones permiten extraer las dos pruebas de un análisis <em>p</em>-curve?</p></li>
+</ol>
+</section>
+</section>
+<section id="solucionario" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="solucionario">Solucionario</h2>
+<ul>
+<li><strong>Pregunta 1:</strong> C</li>
+<li><strong>Pregunta 2:</strong> C</li>
+<li><strong>Pregunta 3:</strong> B</li>
+<li><strong>Pregunta 4:</strong> D</li>
+<li><strong>Pregunta 5:</strong> A</li>
+<li><strong>Pregunta 6:</strong> B</li>
+<li><strong>Pregunta 7:</strong> C</li>
+</ul>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-aert_correcting_2018" class="csl-entry" role="listitem">
+Aert, Robbie C. M. van, y Marcel A. L. M. van Assen. 2018. <em>Correcting for <span>Publication Bias</span> in a <span>Meta-Analysis</span> with the <span>P-Uniform</span>* <span>Method</span></em>. MetaArXiv. <a href="https://doi.org/10.31222/osf.io/zqjr9">https://doi.org/10.31222/osf.io/zqjr9</a>.
+</div>
+<div id="ref-bartos_zcurve20_2020" class="csl-entry" role="listitem">
+Bartoš, František, y Ulrich Schimmack. 2020. <em>Z-<span>Curve</span>.2.0: <span>Estimating Replication Rates</span> and <span>Discovery Rates</span></em>. enero. <a href="https://doi.org/10.31234/osf.io/urgtn">https://doi.org/10.31234/osf.io/urgtn</a>.
+</div>
+<div id="ref-becker_failsafe_2005" class="csl-entry" role="listitem">
+Becker, Betsy Jane. 2005. <span>«Failsafe <span>N</span> or <span>File-Drawer Number</span>»</span>. Chap. 7 en <em>Publication <span>Bias</span> in <span>Meta-Analysis</span></em>. John Wiley &amp; Sons, Ltd. <a href="https://doi.org/10.1002/0470870168.ch7">https://doi.org/10.1002/0470870168.ch7</a>.
+</div>
+<div id="ref-bishop_fallibility_2018" class="csl-entry" role="listitem">
+Bishop, D. V. M. 2018. <span>«Fallibility in <span>Science</span>: <span>Responding</span> to <span>Errors</span> in the <span>Work</span> of <span>Oneself</span> and <span>Others</span>»</span>. <em>Advances in Methods and Practices in Psychological Science</em>, julio, 2515245918776632. <a href="https://doi.org/10.1177/2515245918776632">https://doi.org/10.1177/2515245918776632</a>.
+</div>
+<div id="ref-bozarth_signifying_1972" class="csl-entry" role="listitem">
+Bozarth, Jerold D., y Ralph R. Roberts. 1972. <span>«Signifying Significant Significance.»</span> <em>American Psychologist</em> 27 (8): 774.
+</div>
+<div id="ref-brown_grim_2017" class="csl-entry" role="listitem">
+Brown, Nicholas J. L., y James A. J. Heathers. 2017. <span>«The <span>GRIM Test</span>: <span>A Simple Technique Detects Numerous Anomalies</span> in the <span>Reporting</span> of <span>Results</span> in <span>Psychology</span>»</span>. <em>Social Psychological and Personality Science</em> 8 (4): 363-69. <a href="https://doi.org/10.1177/1948550616673876">https://doi.org/10.1177/1948550616673876</a>.
+</div>
+<div id="ref-brunner_estimating_2020" class="csl-entry" role="listitem">
+Brunner, Jerry, y Ulrich Schimmack. 2020. <span>«Estimating <span>Population Mean Power Under Conditions</span> of <span>Heterogeneity</span> and <span>Selection</span> for <span>Significance</span>»</span>. <em>Meta-Psychology</em> 4. <a href="https://doi.org/10.15626/MP.2018.874">https://doi.org/10.15626/MP.2018.874</a>.
+</div>
+<div id="ref-carter_publication_2014" class="csl-entry" role="listitem">
+Carter, Evan C., y Michael E. McCullough. 2014. <span>«Publication Bias and the Limited Strength Model of Self-Control: Has the Evidence for Ego Depletion Been Overestimated?»</span> <em>Frontiers in Psychology</em> 5 (julio). <a href="https://doi.org/10.3389/fpsyg.2014.00823">https://doi.org/10.3389/fpsyg.2014.00823</a>.
+</div>
+<div id="ref-carter_correcting_2019" class="csl-entry" role="listitem">
+Carter, Evan C., Felix D. Schönbrodt, Will M. Gervais, y Joseph Hilgard. 2019. <span>«Correcting for <span>Bias</span> in <span>Psychology</span>: <span>A Comparison</span> of <span>Meta-Analytic Methods</span>»</span>. <em>Advances in Methods and Practices in Psychological Science</em> 2 (2): 115-44. <a href="https://doi.org/10.1177/2515245919847196">https://doi.org/10.1177/2515245919847196</a>.
+</div>
+<div id="ref-chambers_present_2022" class="csl-entry" role="listitem">
+Chambers, Christopher D., y Loukia Tzavella. 2022. <span>«The Past, Present and Future of <span>Registered Reports</span>»</span>. <em>Nature Human Behaviour</em> 6 (1): 29-42. <a href="https://doi.org/10.1038/s41562-021-01193-7">https://doi.org/10.1038/s41562-021-01193-7</a>.
+</div>
+<div id="ref-ebersole_many_2016" class="csl-entry" role="listitem">
+<span class="nocase">Ebersole, Charles R., Olivia E. Atherton, Aimee L. Belanger, et&nbsp;al.</span> 2016. <span>«Many <span>Labs</span> 3: <span>Evaluating</span> Participant Pool Quality Across the Academic Semester via Replication»</span>. <em>Journal of Experimental Social Psychology</em>, Special <span>Issue</span>: <span>Confirmatory</span>, vol. 67 (noviembre): 68-82. <a href="https://doi.org/10.1016/j.jesp.2015.10.012">https://doi.org/10.1016/j.jesp.2015.10.012</a>.
+</div>
+<div id="ref-francis_frequency_2014" class="csl-entry" role="listitem">
+Francis, Gregory. 2014. <span>«The Frequency of Excess Success for Articles in <span>Psychological Science</span>»</span>. <em>Psychonomic Bulletin &amp; Review</em> 21 (5): 1180-87. <a href="https://doi.org/10.3758/s13423-014-0601-x">https://doi.org/10.3758/s13423-014-0601-x</a>.
+</div>
+<div id="ref-franco_publication_2014" class="csl-entry" role="listitem">
+Franco, Annie, Neil Malhotra, y Gabor Simonovits. 2014. <span>«Publication Bias in the Social Sciences: <span>Unlocking</span> the File Drawer»</span>. <em>Science</em> 345 (6203): 1502-5. <a href="https://doi.org/10.1126/SCIENCE.1255484">https://doi.org/10.1126/SCIENCE.1255484</a>.
+</div>
+<div id="ref-greenwald_consequences_1975" class="csl-entry" role="listitem">
+Greenwald, Anthony G. 1975. <span>«Consequences of Prejudice against the Null Hypothesis.»</span> <em>Psychological Bulletin</em> 82 (1): 1-20.
+</div>
+<div id="ref-hagger_multilab_2016" class="csl-entry" role="listitem">
+<span class="nocase">Hagger, M. S., N. L. D. Chatzisarantis, H. Alberts, et&nbsp;al.</span> 2016. <span>«A <span>Multilab Preregistered Replication</span> of the <span>Ego-Depletion Effect</span>»</span>. <em>Perspectives on Psychological Science</em> 11 (4): 546-73. <a href="https://doi.org/10.1177/1745691616652873">https://doi.org/10.1177/1745691616652873</a>.
+</div>
+<div id="ref-ioannidis_exploratory_2007" class="csl-entry" role="listitem">
+Ioannidis, John P. A., y T. A Trikalinos. 2007. <span>«An Exploratory Test for an Excess of Significant Findings»</span>. <em>Clinical Trials</em> 4 (3): 245-53. <a href="https://doi.org/10.1177/1740774507079441">https://doi.org/10.1177/1740774507079441</a>.
+</div>
+<div id="ref-iyengar_selection_1988" class="csl-entry" role="listitem">
+Iyengar, Satish, y Joel B. Greenhouse. 1988. <span>«Selection <span>Models</span> and the <span>File Drawer Problem</span>»</span>. <em>Statistical Science</em> 3 (1): 109-17. <a href="https://www.jstor.org/stable/2245925">https://www.jstor.org/stable/2245925</a>.
+</div>
+<div id="ref-jostmann_weight_2009" class="csl-entry" role="listitem">
+Jostmann, Nils B., Daniël Lakens, y Thomas W. Schubert. 2009. <span>«Weight as an <span>Embodiment</span> of <span>Importance</span>»</span>. <em>Psychological Science</em> 20 (9): 1169-74. <a href="https://doi.org/10.1111/j.1467-9280.2009.02426.x">https://doi.org/10.1111/j.1467-9280.2009.02426.x</a>.
+</div>
+<div id="ref-jostmann_short_2016" class="csl-entry" role="listitem">
+Jostmann, Nils B., Daniël Lakens, y Thomas W. Schubert. 2016. <span>«A Short History of the Weight-Importance Effect and a Recommendation for Pre-Testing: <span>Commentary</span> on <span>Ebersole</span> Et Al. (2016)»</span>. <em>Journal of Experimental Social Psychology</em> 67: 93-94. <a href="https://doi.org/10.1016/j.jesp.2015.12.001">https://doi.org/10.1016/j.jesp.2015.12.001</a>.
+</div>
+<div id="ref-mayo_statistical_2018" class="csl-entry" role="listitem">
+Mayo, Deborah G. 2018. <em>Statistical Inference as Severe Testing: How to Get Beyond the Statistics Wars</em>. Cambridge University Press.
+</div>
+<div id="ref-nosek_registered_2014" class="csl-entry" role="listitem">
+Nosek, Brian A., y Daniël Lakens. 2014. <span>«Registered Reports: <span>A</span> Method to Increase the Credibility of Published Results»</span>. <em>Social Psychology</em> 45 (3): 137-41. <a href="https://doi.org/10.1027/1864-9335/a000192">https://doi.org/10.1027/1864-9335/a000192</a>.
+</div>
+<div id="ref-nuijten_prevalence_2015" class="csl-entry" role="listitem">
+<span class="nocase">Nuijten, Michèle B., Chris H. J. Hartgerink, Marcel A. L. M. van Assen, Sacha Epskamp, y Jelte M. Wicherts</span>. 2015. <span>«The Prevalence of Statistical Reporting Errors in Psychology (1985–2013)»</span>. <em>Behavior Research Methods</em>, advance online publication, octubre. <a href="https://doi.org/10.3758/s13428-015-0664-2">https://doi.org/10.3758/s13428-015-0664-2</a>.
+</div>
+<div id="ref-nuijten_effectiveness_2023" class="csl-entry" role="listitem">
+Nuijten, Michèle B., y Jelte Wicherts. 2023. <em>The Effectiveness of Implementing Statcheck in the Peer Review Process to Avoid Statistical Reporting Errors</em>. PsyArXiv. <a href="https://doi.org/10.31234/osf.io/bxau9">https://doi.org/10.31234/osf.io/bxau9</a>.
+</div>
+<div id="ref-peters_performance_2007" class="csl-entry" role="listitem">
+Peters, Jaime L., Alex J. Sutton, David R. Jones, Keith R. Abrams, y Lesley Rushton. 2007. <span>«Performance of the Trim and Fill Method in the Presence of Publication Bias and Between-Study Heterogeneity»</span>. <em>Statistics in Medicine</em> 26 (25): 4544-62. <a href="https://doi.org/10.1002/sim.2889">https://doi.org/10.1002/sim.2889</a>.
+</div>
+<div id="ref-polanin_transparency_2020" class="csl-entry" role="listitem">
+Polanin, Joshua R., Emily A. Hennessy, y Sho Tsuji. 2020. <span>«Transparency and <span>Reproducibility</span> of <span>Meta-Analyses</span> in <span>Psychology</span>: <span>A Meta-Review</span>»</span>. <em>Perspectives on Psychological Science</em> 15 (4): 1026-41. <a href="https://doi.org/10.1177/1745691620906416">https://doi.org/10.1177/1745691620906416</a>.
+</div>
+<div id="ref-rogers_how_1992" class="csl-entry" role="listitem">
+Rogers, Stuart. 1992--1993. <span>«How a Publicity Blitz Created the Myth of Subliminal Advertising»</span>. <em>Public Relations Quarterly</em> (Rhinebeck, United States) 37 (4): 12.
+</div>
+<div id="ref-ropovik_neglect_2021" class="csl-entry" role="listitem">
+Ropovik, Ivan, Matus Adamkovic, y David Greger. 2021. <span>«Neglect of Publication Bias Compromises Meta-Analyses of Educational Research»</span>. <em>PLOS ONE</em> 16 (6): e0252415. <a href="https://doi.org/10.1371/journal.pone.0252415">https://doi.org/10.1371/journal.pone.0252415</a>.
+</div>
+<div id="ref-scheel_excess_2021" class="csl-entry" role="listitem">
+Scheel, Anne M., Mitchell R. M. J. Schijen, y Daniël Lakens. 2021. <span>«An <span>Excess</span> of <span>Positive Results</span>: <span>Comparing</span> the <span>Standard Psychology Literature With Registered Reports</span>»</span>. <em>Advances in Methods and Practices in Psychological Science</em> 4 (2): 25152459211007467. <a href="https://doi.org/10.1177/25152459211007467">https://doi.org/10.1177/25152459211007467</a>.
+</div>
+<div id="ref-schimmack_ironic_2012" class="csl-entry" role="listitem">
+Schimmack, Ulrich. 2012. <span>«The Ironic Effect of Significant Results on the Credibility of Multiple-Study Articles.»</span> <em>Psychological Methods</em> 17 (4): 551-66. <a href="https://doi.org/10.1037/a0029487">https://doi.org/10.1037/a0029487</a>.
+</div>
+<div id="ref-simonsohn_pcurve_2014" class="csl-entry" role="listitem">
+Simonsohn, Uri, Leif D. Nelson, y Joseph P. Simmons. 2014. <span>«P-Curve: <span>A</span> Key to the File-Drawer.»</span> <em>Journal of Experimental Psychology: General</em> 143 (2): 534.
+</div>
+<div id="ref-smart_importance_1964" class="csl-entry" role="listitem">
+Smart, Reginald G. 1964. <span>«The Importance of Negative Results in Psychological Research.»</span> <em>Canadian Psychologist / Psychologie Canadienne</em> 5a (4): 225-32. <a href="https://doi.org/10.1037/h0083036">https://doi.org/10.1037/h0083036</a>.
+</div>
+<div id="ref-sotola_garbage_2022" class="csl-entry" role="listitem">
+Sotola, Lukas K. 2022. <span>«Garbage <span>In</span>, <span>Garbage Out</span>? <span>Evaluating</span> the <span>Evidentiary Value</span> of <span>Published Meta-analyses Using Z-Curve Analysis</span>»</span>. <em>Collabra: Psychology</em> 8 (1): 32571. <a href="https://doi.org/10.1525/collabra.32571">https://doi.org/10.1525/collabra.32571</a>.
+</div>
+<div id="ref-stanley_metaregression_2014" class="csl-entry" role="listitem">
+Stanley, T. D., y Hristos Doucouliagos. 2014. <span>«Meta-Regression Approximations to Reduce Publication Selection Bias.»</span> <em>Research Synthesis Methods</em> 5 (1): 60-78. <a href="https://doi.org/10.1002/jrsm.1095">https://doi.org/10.1002/jrsm.1095</a>.
+</div>
+<div id="ref-stanley_finding_2017" class="csl-entry" role="listitem">
+Stanley, T. D., Hristos Doucouliagos, y John P. A. Ioannidis. 2017. <span>«Finding the Power to Reduce Publication Bias: <span>Finding</span> the Power to Reduce Publication Bias»</span>. <em>Statistics in Medicine</em>, advance online publication. <a href="https://doi.org/10.1002/sim.7228">https://doi.org/10.1002/sim.7228</a>.
+</div>
+<div id="ref-sterling_publication_1959" class="csl-entry" role="listitem">
+Sterling, Theodore D. 1959. <span>«Publication <span>Decisions</span> and <span>Their Possible Effects</span> on <span>Inferences Drawn</span> from <span>Tests</span> of <span>Significance–Or Vice Versa</span>»</span>. <em>Journal of the American Statistical Association</em> 54 (285): 30-34. <a href="https://doi.org/10.2307/2282137">https://doi.org/10.2307/2282137</a>.
+</div>
+<div id="ref-terrin_adjusting_2003" class="csl-entry" role="listitem">
+Terrin, Norma, Christopher H. Schmid, Joseph Lau, y Ingram Olkin. 2003. <span>«Adjusting for Publication Bias in the Presence of Heterogeneity»</span>. <em>Statistics in Medicine</em> 22 (13): 2113-26. <a href="https://doi.org/10.1002/sim.1461">https://doi.org/10.1002/sim.1461</a>.
+</div>
+<div id="ref-vohs_multisite_2021" class="csl-entry" role="listitem">
+<span class="nocase">Vohs, Kathleen D., Brandon J. Schmeichel, Sophie Lohmann, et&nbsp;al.</span> 2021. <span>«A <span>Multisite Preregistered Paradigmatic Test</span> of the <span>Ego-Depletion Effect</span>»</span>. <em>Psychological Science</em> 32 (10): 1566-81. <a href="https://doi.org/10.1177/0956797621989733">https://doi.org/10.1177/0956797621989733</a>.
+</div>
+</div>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./11-meta-analisis.html" class="pagination-link" aria-label="Metaanálisis">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Metaanálisis</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./13-prerregistro-y-transparencia.html" class="pagination-link" aria-label="Prerregistro y transparencia">
+        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Prerregistro y transparencia</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
