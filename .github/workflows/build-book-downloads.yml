@@ -35,12 +35,12 @@ jobs:
         shell: bash
         run: |
           rm -rf _downloads
-          mkdir -p _downloads
+          mkdir -p _downloads/epub _downloads/pdf
 
           set +e
-          quarto render --to epub --output-dir _downloads > render-epub.log 2>&1
+          quarto render --to epub --output-dir _downloads/epub > render-epub.log 2>&1
           epub_status=$?
-          quarto render --to pdf --output-dir _downloads > render-pdf.log 2>&1
+          quarto render --to pdf --output-dir _downloads/pdf > render-pdf.log 2>&1
           pdf_status=$?
           set -e
 
@@ -48,16 +48,16 @@ jobs:
           echo "$pdf_status" > render-pdf.status
 
           if [ "$epub_status" -eq 0 ]; then
-            epub_file=$(find _downloads -maxdepth 1 -type f -name '*.epub' | head -n 1)
-            if [ -n "$epub_file" ] && [ "$epub_file" != "_downloads/inferencias-estadisticas-ESP.epub" ]; then
-              mv "$epub_file" _downloads/inferencias-estadisticas-ESP.epub
+            epub_file=$(find _downloads/epub -maxdepth 1 -type f -name '*.epub' | head -n 1)
+            if [ -n "$epub_file" ] && [ "$epub_file" != "_downloads/epub/inferencias-estadisticas-ESP.epub" ]; then
+              mv "$epub_file" _downloads/epub/inferencias-estadisticas-ESP.epub
             fi
           fi
 
           if [ "$pdf_status" -eq 0 ]; then
-            pdf_file=$(find _downloads -maxdepth 1 -type f -name '*.pdf' | head -n 1)
-            if [ -n "$pdf_file" ] && [ "$pdf_file" != "_downloads/inferencias-estadisticas-ESP.pdf" ]; then
-              mv "$pdf_file" _downloads/inferencias-estadisticas-ESP.pdf
+            pdf_file=$(find _downloads/pdf -maxdepth 1 -type f -name '*.pdf' | head -n 1)
+            if [ -n "$pdf_file" ] && [ "$pdf_file" != "_downloads/pdf/inferencias-estadisticas-ESP.pdf" ]; then
+              mv "$pdf_file" _downloads/pdf/inferencias-estadisticas-ESP.pdf
             fi
           fi
 
