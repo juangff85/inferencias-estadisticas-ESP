@@ -22,7 +22,7 @@ project:
     - pub_bias_meta_app_book.html
 
 book:
-  title: "Mejora de tus Inferencias Estadísticas"
+  title: "Mejora tus inferencias estadísticas"
   subtitle: "Traducción al castellano de \"Improving Your Statistical Inferences\" de Daniël Lakens"
   chapters:
     - index.md
