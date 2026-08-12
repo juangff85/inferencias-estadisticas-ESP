@@ -26,39 +26,18 @@ jobs:
           version: 1.10.18
           tinytex: true
 
-      - name: Prepare isolated download build
+      - name: Prepare isolated PDF build
         shell: bash
         run: |
-          sed -i 's#17-replication_files/figure-html/fig-alphalevels-1.png#17-replication_files/figure-html/fig-alphalevels1-1.png#g' 17-estudios-de-replicacion.md
-
-      - name: Render ePub outside docs
-        shell: bash
-        run: |
-          rm -rf _downloads
-          mkdir -p _downloads/epub _downloads/pdf
-
-          set +e
-          quarto render --to epub --output-dir _downloads/epub > render-epub.log 2>&1
-          epub_status=$?
-          set -e
-          echo "$epub_status" > render-epub.status
-
-          if [ "$epub_status" -eq 0 ]; then
-            epub_file=$(find _downloads/epub -maxdepth 1 -type f -name '*.epub' | head -n 1)
-            if [ -n "$epub_file" ] && [ "$epub_file" != "_downloads/epub/inferencias-estadisticas-ESP.epub" ]; then
-              mv "$epub_file" _downloads/epub/inferencias-estadisticas-ESP.epub
-            fi
-          fi
-
-      - name: Prepare GIF figures for PDF only
-        shell: bash
-        run: |
+          rm -rf _downloads .quarto
+          mkdir -p _downloads/pdf _downloads/epub
           sudo apt-get update
           sudo apt-get install -y imagemagick
           convert 'images/02/figura2-7.gif[0]' images/02/figura2-7-pdf.png
           convert 'images/02/figura2-8.gif[0]' images/02/figura2-8-pdf.png
           sed -i 's#https://github.com/juangff85/inferencias-estadisticas-ESP/blob/main/images/02/figura2-7.gif?raw=true#images/02/figura2-7-pdf.png#g' 02-control-de-errores.md
           sed -i 's#https://github.com/juangff85/inferencias-estadisticas-ESP/blob/main/images/02/figura2-8.gif?raw=true#images/02/figura2-8-pdf.png#g' 02-control-de-errores.md
+          sed -i 's#17-replication_files/figure-html/fig-alphalevels-1.png#17-replication_files/figure-html/fig-alphalevels1-1.png#g' 17-estudios-de-replicacion.md
 
       - name: Render PDF outside docs
         shell: bash
@@ -76,9 +55,34 @@ jobs:
             fi
           fi
 
+      - name: Restore sources and prepare ePub build
+        shell: bash
+        run: |
+          git restore 02-control-de-errores.md 17-estudios-de-replicacion.md
+          rm -f images/02/figura2-7-pdf.png images/02/figura2-8-pdf.png
+          rm -rf .quarto
+          sed -i 's#17-replication_files/figure-html/fig-alphalevels-1.png#17-replication_files/figure-html/fig-alphalevels1-1.png#g' 17-estudios-de-replicacion.md
+
+      - name: Render ePub outside docs
+        shell: bash
+        run: |
+          set +e
+          quarto render --to epub --output-dir _downloads/epub > render-epub.log 2>&1
+          epub_status=$?
+          set -e
+          echo "$epub_status" > render-epub.status
+
+          if [ "$epub_status" -eq 0 ]; then
+            epub_file=$(find _downloads/epub -maxdepth 1 -type f -name '*.epub' | head -n 1)
+            if [ -n "$epub_file" ] && [ "$epub_file" != "_downloads/epub/inferencias-estadisticas-ESP.epub" ]; then
+              mv "$epub_file" _downloads/epub/inferencias-estadisticas-ESP.epub
+            fi
+          fi
+
       - name: Record isolated build results
         shell: bash
         run: |
+          git restore 17-estudios-de-replicacion.md
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add _downloads render-epub.log render-pdf.log render-epub.status render-pdf.status
