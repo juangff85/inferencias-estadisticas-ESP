@@ -24,6 +24,15 @@ project:
 book:
   title: "Mejora tus inferencias estadísticas"
   subtitle: "Traducción al castellano de \"Improving Your Statistical Inferences\" de Daniël Lakens"
+  navbar:
+    right:
+      - icon: book
+        text: "ePub"
+        href: https://github.com/juangff85/inferencias-estadisticas-ESP/raw/refs/heads/main/_downloads/epub/inferencias-estadisticas-ESP.epub
+        aria-label: "Descargar libro en ePub"
+      - icon: github
+        href: https://github.com/juangff85/inferencias-estadisticas-ESP
+        aria-label: "Repositorio en GitHub"
   chapters:
     - index.md
     - 01-usando-valores-p.md
