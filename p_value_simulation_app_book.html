@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>P-value Distribution Simulation</title>
+<title>Simulación de la distribución de valores p</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Open+Sans:ital,wght@0,400;0,600;1,400&family=Fira+Code&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jstat/1.9.6/jstat.min.js"></script>
@@ -97,44 +97,44 @@ input[type="number"]:focus { border-bottom-color: var(--red-l); }
 </head>
 <body>
 
-<p class="calc-label">Interactive simulation</p>
-<h2 class="calc-heading">P-value Distribution from Simulated t-tests</h2>
+<p class="calc-label">Simulación interactiva</p>
+<h2 class="calc-heading">Distribución de valores p a partir de pruebas t simuladas</h2>
 
 <div class="input-panel">
   <div class="input-row">
     <div class="input-group">
-      <label class="input-label" for="nIn">n per group</label>
+      <label class="input-label" for="nIn">n por grupo</label>
       <input type="number" id="nIn" min="5" max="500" step="1" value="49">
     </div>
     <div class="input-group">
-      <label class="input-label" for="m1In">Mean 1 <span class="sym">&#956;&#8321;</span></label>
+      <label class="input-label" for="m1In">Media 1 <span class="sym">&#956;&#8321;</span></label>
       <input type="number" id="m1In" step="1" value="100">
     </div>
     <div class="input-group">
-      <label class="input-label" for="m2In">Mean 2 <span class="sym">&#956;&#8322;</span></label>
+      <label class="input-label" for="m2In">Media 2 <span class="sym">&#956;&#8322;</span></label>
       <input type="number" id="m2In" step="1" value="130">
     </div>
     <div class="input-group">
-      <label class="input-label" for="sigmaIn">SD <span class="sym">&#963;</span></label>
+      <label class="input-label" for="sigmaIn">DE <span class="sym">&#963;</span></label>
       <input type="number" id="sigmaIn" min="0.1" step="1" value="75">
     </div>
     <div class="input-group">
-      <label class="input-label" for="alphaIn">Alpha <span class="sym">&#945;</span></label>
+      <label class="input-label" for="alphaIn">Alfa <span class="sym">&#945;</span></label>
       <input type="number" id="alphaIn" min="0.001" max="0.5" step="0.001" value="0.05">
     </div>
     <div class="input-group">
-      <label class="input-label" for="simIn">Simulations <span class="sym">m</span></label>
+      <label class="input-label" for="simIn">Simulaciones <span class="sym">m</span></label>
       <input type="number" id="simIn" min="1000" max="1000000" step="1000" value="100000">
     </div>
     <div class="input-group">
       <div class="input-label">&nbsp;</div>
-      <button class="btn" id="runBtn">Run simulation</button>
+      <button class="btn" id="runBtn">Ejecutar simulación</button>
     </div>
   </div>
 </div>
 
 <div class="plot-wrap"><div id="plot"></div></div>
-<div id="statsBlock" class="text-block">Click <strong>Run simulation</strong> to start.</div>
+<div id="statsBlock" class="text-block">Haz clic en <strong>Ejecutar simulación</strong> para comenzar.</div>
 
 <script>
 var NBINS = 20;
@@ -154,9 +154,9 @@ function postHeight() {
 function startSim() {
   var btn = document.getElementById('runBtn');
   btn.disabled = true;
-  btn.textContent = 'Simulating…';
+  btn.textContent = 'Simulando…';
   document.getElementById('statsBlock').innerHTML =
-    '<span style="color:var(--ink3);">Simulating… this may take a moment.</span>';
+    '<span style="color:var(--ink3);">Simulando… puede tardar unos instantes.</span>';
   setTimeout(doSim, 20);
 }
 
@@ -173,15 +173,12 @@ function doSim() {
   if (isNaN(mu1)) mu1 = 100;
   if (isNaN(mu2)) mu2 = 130;
 
-  // Pooled t-test: same true SD and equal n → df = 2n-2 is constant
   var df = 2 * n - 2;
 
   var bins = new Int32Array(NBINS);
   var sig  = 0;
 
   for (var sim = 0; sim < m; sim++) {
-    // Compute group means and sum-of-squares using Welford's online algorithm.
-    // Box-Muller generates two independent normals per call; one goes to each group.
     var mean1 = 0, mean2 = 0, ss1 = 0, ss2 = 0;
     for (var i = 1; i <= n; i++) {
       var u = Math.random(); if (u === 0) u = 1e-14;
@@ -193,7 +190,6 @@ function doSim() {
       var dy = y - mean2; mean2 += dy / i; ss2 += dy * (y - mean2);
     }
 
-    // Pooled variance and t-statistic
     var sp2  = (ss1 + ss2) / df;
     var tstat = (mean1 - mean2) / Math.sqrt(2 * sp2 / n);
     var p    = 2 * jStat.studentt.cdf(-Math.abs(tstat), df);
@@ -202,7 +198,6 @@ function doSim() {
     bins[Math.min(NBINS - 1, Math.floor(p * NBINS))]++;
   }
 
-  // Build bar chart arrays
   var barX = [], barY = [];
   for (var i = 0; i < NBINS; i++) {
     barX.push((i + 0.5) / NBINS);
@@ -210,7 +205,7 @@ function doSim() {
   }
 
   var power    = (sig / m * 100).toFixed(1);
-  var h0Count  = m / NBINS;           // expected count per bin under H₀
+  var h0Count  = m / NBINS;
   var cohensd  = Math.abs(mu2 - mu1) / SIGMA;
 
   Plotly.react('plot', [
@@ -223,16 +218,16 @@ function doSim() {
     }
   ], {
     title: {
-      text: 'Power = <b>' + power + '%</b>  (&#945; = ' + ALPHA + ', <i>m</i> = ' + m.toLocaleString() + ')',
+      text: 'Potencia = <b>' + power + '%</b>  (&#945; = ' + ALPHA + ', <i>m</i> = ' + m.toLocaleString('es-ES') + ')',
       font: { size: 13, color: '#1c1717', family: "'Montserrat', sans-serif" },
       x: 0.5
     },
     xaxis: Object.assign({
-      title: { text: 'p-value', font: { size: 13 } },
+      title: { text: 'valor p', font: { size: 13 } },
       range: [0, 1], dtick: 0.1
     }, AXIS),
     yaxis: Object.assign({
-      title: { text: 'Frequency', font: { size: 13 } },
+      title: { text: 'Frecuencia', font: { size: 13 } },
       range: [0, m]
     }, AXIS),
     shapes: [{
@@ -242,7 +237,7 @@ function doSim() {
     }],
     annotations: [{
       x: 1, xref: 'paper', y: h0Count, yref: 'y',
-      text: 'H₀ expected',
+      text: 'Esperado bajo H₀',
       showarrow: false, xanchor: 'right', yanchor: 'bottom',
       font: { size: 10, color: '#a60a0a', family: "'Open Sans', sans-serif" }
     }],
@@ -255,20 +250,20 @@ function doSim() {
   }, { responsive: true, displayModeBar: false });
 
   document.getElementById('statsBlock').innerHTML =
-    '<strong>' + sig.toLocaleString() + '</strong> / <strong>' + m.toLocaleString()
-    + '</strong> simulations had <em>p</em> &lt; ' + ALPHA
-    + ' &nbsp;→&nbsp; simulated power = <strong>' + power + '%</strong>'
-    + ' &nbsp;|&nbsp; Cohen\'s <em>d</em> = |' + mu2 + ' − ' + mu1 + '| / ' + SIGMA
+    '<strong>' + sig.toLocaleString('es-ES') + '</strong> de <strong>' + m.toLocaleString('es-ES')
+    + '</strong> simulaciones tuvieron <em>p</em> &lt; ' + ALPHA
+    + ' &nbsp;→&nbsp; potencia simulada = <strong>' + power + '%</strong>'
+    + ' &nbsp;|&nbsp; <em>d</em> de Cohen = |' + mu2 + ' − ' + mu1 + '| / ' + SIGMA
     + ' = <strong>' + cohensd.toFixed(2) + '</strong>'
     + '<br><span style="font-size:.82rem;color:var(--ink3);">'
-    + 'Red dotted line = expected frequency per bar if H₀ were true'
-    + ' (uniform <em>p</em>-values): '
-    + Math.round(h0Count).toLocaleString() + ' per bar.'
+    + 'Línea roja de puntos = frecuencia esperada por barra si H₀ fuera verdadera'
+    + ' (valores <em>p</em> uniformemente distribuidos): '
+    + Math.round(h0Count).toLocaleString('es-ES') + ' por barra.'
     + '</span>';
 
   var btn = document.getElementById('runBtn');
   btn.disabled = false;
-  btn.textContent = 'Run simulation';
+  btn.textContent = 'Ejecutar simulación';
   postHeight();
 }
 
