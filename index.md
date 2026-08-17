@@ -29,3 +29,7 @@ Es el creador del curso y del manual abierto *Improving Your Statistical Inferen
 *“Ningún libro puede darse por terminado.  
 Mientras trabajamos en él aprendemos lo suficiente como para encontrarlo inmaduro en el momento en que nos alejamos de él.”*  
 Karl Popper, *La Sociedad Abierta y sus Enemigos*
+
+<div id="page-views-counter" style="margin-top: 2rem;">
+<img alt="Visitas a la página de inicio" src="https://hits.sh/juangff85.github.io/inferencias-estadisticas-ESP.svg?label=Visitas&style=flat-square&color=6c757d&labelColor=495057">
+</div>
